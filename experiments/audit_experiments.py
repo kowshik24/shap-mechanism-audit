@@ -196,7 +196,9 @@ def run(name, numeric_cols, exclusive=False, y_train=None):
            'n_RNF_machine_failure': int(y[groups['RNF']].sum()),
            'top_feature': {m: abs_shap.loc[groups[m]].mean(axis=0).idxmax() for m in MODES},
            'naive_null_p': naive_null(abs_shap, groups),
-           'audit': verdict(obs, null)}
+           'audit': verdict(obs, null),
+           'observed': obs,
+           'null_draws': {m: [float(v) for v in null[m]] for m in MODES}}
     print(f'\n=== {name} === ({time.time()-t0:.0f}s)  test F1={perf["test_f1"]:.3f} '
           f'P={perf["test_precision"]:.3f} R={perf["test_recall"]:.3f}')
     for m in MODES:

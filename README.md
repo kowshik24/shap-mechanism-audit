@@ -139,8 +139,9 @@ The scripts in `experiments/` are the source of truth for every number and figur
 
 ```bash
 python experiments/audit_experiments.py   # audit tables, ~9 min (600 model fits)
+python experiments/make_audit_figure.py   # paper Fig. 1, from the audit results
 python experiments/bootstrap_ci.py        # test-set confidence intervals
-python experiments/make_figures.py        # every paper figure -> paper/figures/
+python experiments/make_figures.py        # every other paper figure -> paper/figures/
 ```
 
 Results land in `experiments/results/`.
