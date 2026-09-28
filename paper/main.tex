@@ -37,16 +37,19 @@ independently defined failure mechanisms (tool wear, heat dissipation, power, ov
 random failure with no physical cause), each with an exact, published triggering rule. We train an
 imbalance-aware gradient-boosted classifier on the composite label only -- withholding the five
 sub-labels from the feature set entirely -- and then use the sub-labels purely as a post-hoc audit:
-for each mechanism, we compute the model's mean absolute SHAP attribution restricted to the rows
-where that mechanism fired, and check whether the top attributed feature matches the mechanism's
-known physical cause. The random-failure mechanism, which by construction has no learnable
-predictor, serves as a negative control. Across five mechanisms, our tuned XGBoost model
-(precision~1.00, recall~0.82, F1~0.90 on the held-out failure class) attributes each real mechanism
-to its correct physical cause and shows no dominant feature for the random mechanism. We argue this
-cross-checking protocol -- using a dataset's own latent causal substructure as a faithfulness probe,
-rather than constructing synthetic ground truth for the purpose -- generalizes to any
-predictive-maintenance setting where a coarse target is known to aggregate several distinct,
-partially-labeled failure modes, which is the common case in industrial practice.
+for each mechanism, we measure the share of the model's mean absolute SHAP attribution, on the rows
+where that mechanism fired, that falls on the features the mechanism's trigger depends on, and test
+it against a model-randomization null built from models retrained on permuted labels. We show that
+a naive null (random subsets of failure rows under the same model) is inadequate: a model trained
+on permuted labels passes it, because mechanism rows are atypical in their own features. Under the
+model-randomization null, our tuned XGBoost model (precision~1.00, recall~0.82, F1~0.90 on the
+held-out failure class) passes all four physical mechanisms ($p \le 0.02$), while a label-permuted
+model fails all four and a model given a spurious shortcut sensor fails exactly the mechanism the
+shortcut mimics -- despite that model's accuracy staying competitive. The result holds on rows where
+exactly one mechanism fired, and three of four mechanisms remain clearly recoverable from raw sensor
+features alone. We argue this protocol -- a dataset's own latent causal substructure used as a
+faithfulness probe -- applies to any predictive-maintenance setting where a coarse target aggregates
+several distinct, partially-labeled failure modes.
 \end{abstract}
 
 \section{Introduction}
@@ -67,17 +70,17 @@ dissipation failure (HDF), power failure (PWF), overstrain failure (OSF), and a 
 (RNF) that fires with fixed probability regardless of process state. Each of the first four has an
 exact, published closed-form trigger (Table~\ref{tab:mechanisms}); RNF has none. Critically, a model
 trained to predict \texttt{Machine failure} is never given these five labels -- it only ever sees
-the OR of them. This is exactly the situation faced in real industrial settings, where a single
-``needs maintenance'' flag is often an aggregate of several distinct root causes that are logged
-separately (or not logged at all) but never exposed to the model as a training signal.
+the OR of them. This mirrors deployments in which a single ``needs maintenance'' flag aggregates
+several distinct root causes that are recorded separately, or not at all, and never reach the model
+as a training signal.
 
 This gives us a natural faithfulness probe: after training on the composite label alone, we can go
 back and ask, for the subset of rows where a specific mechanism actually fired, whether the model's
 SHAP attributions concentrate on the feature that mechanism's own definition implicates. If they do
 not, that is a warning sign that the classifier is exploiting a different, possibly spurious,
-correlate. If RNF -- which has no real cause -- shows no dominant attributed feature, that is a
-sanity check that the method is not simply finding \emph{something} to blame in every subgroup by
-construction.
+correlate. An audit is only meaningful if it can fail, so we also construct models it
+\emph{should} reject -- one trained on permuted labels, one given a spurious shortcut sensor --
+following the model-randomization logic of \citet{adebayo2018sanity}.
 
 \paragraph{Contributions.}
 \begin{enumerate}
@@ -87,19 +90,23 @@ construction.
     decision-threshold tuning, and 5-fold cross-validation.
   \item A lightweight cross-checking protocol that uses a dataset's own latent, partially-labeled
     causal substructure -- rather than purpose-built synthetic ground truth -- to audit whether a
-    trained model's SHAP explanations are faithful to the real generating mechanism, including a
-    built-in negative control.
-  \item An empirical demonstration that a well-tuned XGBoost classifier passes this audit on all
-    five mechanisms of AI4I~2020, and a discussion of what a failed audit would look like and how
-    the protocol generalizes to other multi-mechanism PdM datasets.
+    trained model's SHAP explanations are faithful to the real generating mechanism, with a
+    model-randomization null. We show the obvious alternative null is confounded and passes a
+    model that learned nothing.
+  \item Evidence the audit discriminates: the tuned model passes all four physical mechanisms; a
+    label-permuted model fails all four; a model with an injected shortcut fails exactly the
+    mechanism the shortcut mimics while its accuracy stays competitive. We also report an
+    exclusive-mode analysis and a raw-feature ablation addressing circularity.
 \end{enumerate}
 
 \begin{table}[htbp]
 \centering
 \caption{The five failure mechanisms underlying \texttt{Machine failure} in AI4I~2020
-\citep{matzka2020explainable}. Only the composite OR label is ever shown to the model; the
-individual triggers are withheld from training and used only for the audit in
-Section~\ref{sec:crosscheck}.}
+\citep{matzka2020explainable}, with counts as they appear in the released data. Only the composite
+label is ever shown to the model; the individual flags are withheld from training and used only for
+the audit in Section~\ref{sec:crosscheck}. TWF is only partly determined by the features (the
+failure point is drawn at random within the window). 18 of the 19 RNF rows have
+\texttt{Machine failure}~$= 0$ (see Section~\ref{sec:dataset}).}
 \label{tab:mechanisms}
 \begin{tabular}{@{}llp{7cm}r@{}}
 \toprule
@@ -122,7 +129,7 @@ attributions against the five sub-mechanisms across the dataset. Several subsequ
 SHAP to AI4I~2020 for global feature-importance reporting -- e.g., a recent milling-machine study
 \citep{milling2025shap} reports SHAP summary plots for tree ensembles trained on this dataset --
 but, to our knowledge, none of them cross-check per-mechanism attributions against the known
-triggering rules, nor use the random-failure mechanism as a negative control. A recent
+triggering rules, nor test whether such a check can fail. A recent
 physics-informed benchmarking study \citep{physicsinformed2026} constructs engineered features from
 the same sensor variables and reports a Random Forest positive-class F1 of 0.722 on AI4I~2020, and
 a connected-vehicles study \citep{connectedvehicles2026} benchmarks LightGBM under a stricter
@@ -138,7 +145,10 @@ using labels that already encode that mechanism.
 
 Work on faithfulness evaluation for explainability methods generally relies on \emph{synthetic}
 ground truth: data is generated from a known functional form specifically so that the correct
-attribution is computable in closed form \citep{liu2021synthetic}. Our approach differs in
+attribution is computable in closed form \citep{liu2021synthetic}, or on randomization tests such
+as \citet{adebayo2018sanity}, who show that some saliency methods produce near-identical
+explanations for trained and randomized models. We borrow that randomization logic for our null.
+Our approach differs in
 where the ground truth comes from -- rather than designing a synthetic task for the purpose of
 evaluating explanations, we reuse sub-labels that already exist in an otherwise ordinary,
 publicly available PdM benchmark, aggregated away in the task the model is actually asked to solve.
@@ -146,6 +156,7 @@ AI4I~2020 is itself a simulated dataset generated from these same closed-form ru
 return to in Section~\ref{sec:limitations}.
 
 \section{Dataset}
+\label{sec:dataset}
 
 AI4I~2020 \citep{matzka2020explainable} contains 10{,}000 rows and 14 columns: a row identifier and
 product ID (dropped), a categorical product quality variant (\texttt{Type} $\in \{L, M, H\}$, 50/30/20\%
@@ -153,6 +164,14 @@ of rows respectively), five continuous/integer process variables (air temperatur
 temperature, rotational speed, torque, tool wear), the composite \texttt{Machine failure} label, and
 the five mechanism indicators of Table~\ref{tab:mechanisms}. \texttt{Machine failure} is 1 for 339
 of 10{,}000 rows (3.39\%), a severe class imbalance typical of real PdM data.
+
+The released labels are not perfectly consistent with the stated OR rule, and this matters for the
+audit. 24 rows have more than one mechanism flag set; 9 failures have no mechanism flag at all; and
+18 of the 19 RNF rows have \texttt{Machine failure}~$= 0$. The last point means the RNF subgroup is
+almost entirely rows the model is supposed to classify as \emph{non}-failures, so it cannot serve as
+a strong negative control on its own -- we still report it, but the discriminating evidence for the
+audit comes from the positive controls in Section~\ref{sec:robustness}. We run the audit both on all
+flagged rows and on rows where exactly one mechanism fired.
 
 \section{Methodology}
 
@@ -180,31 +199,46 @@ Random Forest, XGBoost, and a small PyTorch feed-forward network -- on the resam
 and evaluate on the untouched, imbalanced validation and test splits.
 
 \subsection{Tuning and validation}
-The best baseline model (XGBoost) is tuned with a 40-iteration, 5-fold stratified
-\texttt{RandomizedSearchCV} scored on F1. Its decision threshold is then chosen from the
-precision-recall curve on the validation split, maximizing F1, rather than using the default 0.5
-cutoff. We additionally run 5-fold stratified cross-validation, refitting preprocessing, resampling,
-and the tuned hyperparameters inside each fold, to obtain a variance estimate rather than relying on
-a single 1{,}000-row test split. We check probability calibration with isotonic regression and the
-Brier score before trusting the tuned model's raw scores for threshold selection.
+Model selection uses the validation split only: XGBoost has the highest validation F1 (0.826,
+against 0.739 for the runner-up, Random Forest) and is the only model tuned further. Tuning uses a
+40-iteration, 5-fold stratified randomized search scored on F1. The decision threshold is then chosen
+on the validation precision-recall curve, maximizing F1, instead of the default 0.5. We additionally
+run 5-fold stratified cross-validation, refitting preprocessing, resampling, and the tuned
+hyperparameters inside each fold, for a variance estimate beyond a single 1{,}000-row test split.
+Test-set intervals are exact binomial (Clopper--Pearson) for precision and recall and a 5{,}000-sample
+stratified bootstrap for F1 and the AUCs.
 
 \subsection{XAI cross-checking protocol}
 \label{sec:crosscheck}
 This is the core methodological contribution. We compute SHAP \texttt{TreeExplainer} values for the
-final tuned model over the full dataset (not just the small test split -- several mechanisms have
-fewer than 20 total positive rows, too few to analyze reliably within a 1{,}000-row test partition
-alone; this uses no additional training signal, only post-hoc explanation of an already-fixed
-model). For each mechanism $m$ and each feature $j$, we compute
+final tuned model on all flagged rows (not just the test split -- TWF and RNF have under 50 rows in
+total, too few to analyze within a 1{,}000-row test partition; this uses no training signal, only
+post-hoc explanation of an already-fixed model). For mechanism $m$ and feature $j$,
 \[
   I_{m,j} = \frac{1}{|S_m|} \sum_{i \in S_m} \left| \phi_j(x_i) \right|,
 \]
-where $S_m$ is the set of rows for which mechanism $m$ fired and $\phi_j(x_i)$ is the SHAP value of
-feature $j$ for row $i$. For each real mechanism (TWF, HDF, PWF, OSF) we check whether
-$\arg\max_j I_{m,j}$ matches the feature(s) implicated by that mechanism's known trigger. For RNF,
-which has no real cause, we instead check that no single feature dominates: we compute the share of
-total importance held by the top feature, $\max_j I_{\text{RNF},j} / \sum_j I_{\text{RNF},j}$, and
-treat a share below 0.35 as passing -- i.e., the audit is designed so that a model that spuriously
-``explains'' random failure would fail it.
+where $S_m$ is the set of rows for which $m$ fired and $\phi_j(x_i)$ is the SHAP value of feature $j$
+for row $i$. Let $E_m$ be the features $m$'s trigger depends on (raw inputs and their derived
+versions): TWF -- tool wear; HDF -- air and process temperature, their difference, rotational
+speed; PWF -- torque, rotational speed, power; OSF -- tool wear, torque, overstrain, overstrain
+ratio. The audit statistic is the \emph{relevant share}
+\[
+  R_m = \sum_{j \in E_m} I_{m,j} \Big/ \sum_j I_{m,j}.
+\]
+
+\paragraph{Why a naive null fails.} The obvious test compares $R_m$ against the same statistic on
+random, equally sized subsets of failure rows under the same model. This is confounded: rows where
+$m$ fired are, by definition, extreme in the features of $E_m$, and $|\phi_j|$ tends to be large at
+extreme feature values even for a model that learned nothing useful. A model trained on permuted
+labels passes this naive test on every mechanism (Section~\ref{sec:robustness}).
+
+\paragraph{Model-randomization null.} Following \citet{adebayo2018sanity}, we instead retrain the
+identical pipeline (same features, resampling, and hyperparameters) $K = 100$ times on permuted
+training labels and compute $R_m$ for each. A mechanism passes if the real model's $R_m$ exceeds the
+permuted models' with $p = (1 + \#\{R^{\text{perm}}_m \ge R_m\})/(K+1) < 0.05$; the smallest
+attainable $p$ is $1/101 \approx 0.0099$. For RNF, which has no cause, the statistic is the share of
+the single top feature, and RNF passes if the real model is \emph{not} more concentrated on RNF rows
+than the permuted models ($p \ge 0.05$).
 
 \section{Results}
 \label{sec:results}
@@ -216,6 +250,11 @@ outperform the linear and instance-based models, consistent with the class bound
 nonlinear and threshold-based (Section~\ref{sec:dimred}) rather than a simple linear separation.
 Hyperparameter and threshold tuning lift positive-class F1 from 0.87 to 0.90, driven almost entirely
 by a precision gain (0.86 $\rightarrow$ 1.00) at a moderate recall cost (0.88 $\rightarrow$ 0.82).
+These rest on 34 test failures, so the uncertainty is substantial: the tuned model flags 28 rows,
+all true failures, giving precision 1.00 with 95\% CI [0.88, 1.00]; recall is 0.82 [0.65, 0.93],
+F1 0.90 [0.83, 0.97], and ROC-AUC 0.984 [0.958, 0.999]. Its scores are also well calibrated (Brier
+score 0.0095 against 0.033 for a constant prevalence prediction; expected calibration error 0.007),
+although the threshold choice depends only on how scores rank rows.
 
 \begin{table}[htbp]
 \centering
@@ -280,6 +319,7 @@ studies (macro-F1 averages both classes; positive-class F1 reports the failure c
 is substantially harder under 3.39\% prevalence) -- we report both where available rather than
 force a single number.}
 \label{tab:priorwork}
+\small
 \begin{tabular}{@{}llrl@{}}
 \toprule
 Study & Model & Metric & Value \\
@@ -371,28 +411,34 @@ occupy a consistent region of the embedding at every setting.}
 \end{figure}
 
 \subsection{XAI cross-check}
-Table~\ref{tab:crosscheck} reports the outcome of the protocol in Section~\ref{sec:crosscheck}. All
-five mechanisms pass: the model's top attributed feature for each of TWF, HDF, PWF, and OSF matches
-that mechanism's known physical driver, and for RNF no single feature accounts for more than 17\% of
-total subgroup attribution (below the 0.35 threshold), consistent with the fact that random failure
-has no learnable cause. Figure~\ref{fig:shap-heatmap} shows the full per-feature,
-per-mechanism attribution heatmap underlying this table, and Figure~\ref{fig:shap-summary} shows the
-global SHAP summary for context.
+Table~\ref{tab:crosscheck} reports the protocol of Section~\ref{sec:crosscheck} for the tuned model.
+All four physical mechanisms pass: on each mechanism's rows, the model concentrates attribution on
+that mechanism's causal features well beyond what any of the 100 permuted-label models does (e.g.\
+PWF: $R = 0.686$ vs.\ a permuted-model mean of $0.331$). The top attributed feature also matches the
+mechanism's driver in every case. Restricting to rows where exactly one mechanism fired leaves every
+verdict unchanged and slightly raises each $R_m$, so the result is not an artifact of overlapping
+mechanisms. RNF passes as well -- the model is no more concentrated on RNF rows than a model that
+learned nothing -- but, given that 18 of its 19 rows are non-failures (Section~\ref{sec:dataset}),
+we treat this as a weak check. Figure~\ref{fig:shap-heatmap} shows the full per-feature,
+per-mechanism attribution underlying the table, and Figure~\ref{fig:shap-summary} the global SHAP
+summary.
 
 \begin{table}[htbp]
 \centering
-\caption{XAI cross-check: does the model's top SHAP-attributed feature, restricted to rows where
-mechanism $m$ fired, match $m$'s known physical cause?}
+\caption{Audit of the tuned model. $R_m$: share of mean $|$SHAP$|$ on mechanism $m$'s rows that falls
+on $m$'s causal features (for RNF: share of the single top feature). Null: mean over 100
+permuted-label models. $p$: model-randomization $p$-value (minimum 0.0099); ``excl.'': rows where
+only $m$ fired. RNF passes if $p \ge 0.05$ (not more concentrated than the null).}
 \label{tab:crosscheck}
-\begin{tabular}{@{}llll@{}}
+\begin{tabular}{@{}lrlrrrrc@{}}
 \toprule
-Mechanism & Top attributed feature & Known cause & Result \\
+Mech. & $n$ & Top attributed feature & $R_m$ & Null & $p$ & $p$ (excl.) & Result \\
 \midrule
-TWF & Tool wear [min] & Tool wear & \checkmark \\
-HDF & Rotational speed [rpm] & Temp.\ gap / rotational speed & \checkmark \\
-PWF & Power [W] & Torque $\times$ rpm & \checkmark \\
-OSF & Overstrain\_ratio & Tool wear $\times$ torque & \checkmark \\
-RNF & (none dominant, top share 0.17) & none -- pure chance & \checkmark \\
+TWF & 46  & Tool wear [min]        & 0.309 & 0.143 & 0.020 & 0.010 & \checkmark \\
+HDF & 115 & Rotational speed [rpm] & 0.705 & 0.553 & 0.010 & 0.010 & \checkmark \\
+PWF & 95  & Power [W]              & 0.686 & 0.331 & 0.010 & 0.010 & \checkmark \\
+OSF & 98  & Overstrain\_ratio      & 0.664 & 0.344 & 0.010 & 0.010 & \checkmark \\
+RNF & 19  & Rotational speed [rpm] & 0.168 & 0.218 & 0.970 & 0.891 & \checkmark \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -411,17 +457,62 @@ RNF & (none dominant, top share 0.17) & none -- pure chance & \checkmark \\
 \label{fig:shap-summary}
 \end{figure}
 
+\subsection{Can the audit fail? Controls and ablation}
+\label{sec:robustness}
+Table~\ref{tab:robustness} runs the same audit, each with its own 100-model randomization null,
+on five variants of the pipeline.
+
+\paragraph{Label permutation.} A model trained on shuffled labels (test F1 0.08) fails all four
+physical mechanisms. The naive null from Section~\ref{sec:crosscheck} passes this same model on all
+four ($p = 0.0005$ each), which is the concrete reason we reject it.
+
+\paragraph{Spurious shortcut.} We add a synthetic ``sensor'' with no physical role that tracks HDF,
+at two strengths. With a weak, noisy signal ($\mathcal{N}(0,1) + 1.5\,\text{HDF}$) the model ignores
+it -- the true HDF features already determine HDF exactly -- and the audit correctly passes every
+mechanism. With a strong signal ($\mathcal{N}(0,0.1) + \text{HDF}$) the model routes HDF through the
+shortcut: HDF's top feature becomes the fake sensor and $R_{\text{HDF}}$ collapses from 0.705 to
+0.156, a clear fail, while TWF, PWF and OSF still pass. The audit localizes the fault to the one
+mechanism the shortcut mimics. This model's test F1 is 0.86 -- below the tuned model but above every
+non-XGBoost baseline in Table~\ref{tab:models} -- so accuracy alone would not have flagged it.
+
+\paragraph{Raw features only.} To address the concern that engineered features built from the
+trigger rules make the audit circular, we retrain without them. Test F1 drops from 0.90 to 0.84.
+TWF, PWF and OSF still pass clearly ($p = 0.0099$), with the expected raw drivers on top (torque for
+PWF, tool wear for OSF). HDF passes only marginally ($p = 0.0495$): its trigger is a
+\emph{difference} of two temperatures, which a tree ensemble on raw inputs must approximate, and a
+know-nothing model already places much of its attribution on those same three features (null mean
+0.60). The audit therefore has low power for difference-based mechanisms unless the relevant
+quantity is available as a feature.
+
+\begin{table}[htbp]
+\centering
+\caption{Audit $p$-values across pipeline variants (model-randomization null, $K = 100$; minimum
+$p = 0.0099$). Physical mechanisms pass if $p < 0.05$; \texttimes{} marks a fail. RNF passes if
+$p \ge 0.05$.}
+\label{tab:robustness}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Variant & Test F1 & TWF & HDF & PWF & OSF & RNF \\
+\midrule
+Tuned model (engineered features) & 0.90 & 0.020 & 0.010 & 0.010 & 0.010 & 0.970 \\
+\quad exclusive-mode rows only    & 0.90 & 0.010 & 0.010 & 0.010 & 0.010 & 0.891 \\
+Raw features only                 & 0.84 & 0.010 & 0.0495 & 0.010 & 0.010 & 0.376 \\
+Weak shortcut sensor              & 0.86 & 0.010 & 0.010 & 0.010 & 0.010 & 0.822 \\
+Strong shortcut sensor            & 0.86 & 0.010 & 1.000\,\texttimes & 0.010 & 0.010 & 0.366 \\
+Permuted training labels          & 0.08 & 0.703\,\texttimes & 0.535\,\texttimes & 0.683\,\texttimes & 0.366\,\texttimes & 0.851 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Discussion}
 
-\subsection{What a failed audit would have shown}
-Had the model instead attributed, say, Tool wear as the dominant feature for HDF rows, that would
-indicate the classifier had latched onto a correlate of heat-dissipation failure (perhaps because
-HDF and TWF co-occur more than chance in this particular data split) rather than the actual
-temperature/speed mechanism -- a case where the model could still score well on held-out data while
-being wrong about \emph{why}, a distinction that plain accuracy or even SHAP summary plots alone
-would not surface. The RNF negative control is what makes the audit meaningful rather than
-tautological: without it, a protocol that always finds \emph{some} top feature for every subgroup
-provides no evidence of discriminating validity.
+\subsection{What the controls show}
+The strong-shortcut model is the case the audit exists for: it scores competitively on held-out
+data, yet it is wrong about \emph{why} one class of failure happens. Only the per-mechanism view exposes it, and it does so selectively -- the other
+three mechanisms still pass. The permuted-label result makes a second, methodological point: an
+attribution audit whose null does not account for how atypical the audited rows are will certify
+models that learned nothing. We expect this confound to apply to any subgroup-level attribution
+analysis, not only this one.
 
 \subsection{Limitations}
 \label{sec:limitations}
@@ -433,35 +524,47 @@ claim here -- our contribution is the protocol and its demonstration, not a vali
 finding about real machinery. This concern is not merely theoretical: \citet{autran2024ai4ipmdi}
 show that injecting realistic irregularities (missing data, irregular time-series sampling) into
 AI4I~2020 measurably changes downstream model performance, underscoring that results on the clean
-synthetic version -- ours included -- may not transfer directly to messier real deployments. RNF
-(19 rows total dataset-wide) and TWF (46 rows) are small enough
-that per-mechanism subgroup SHAP estimates carry non-trivial variance; we mitigate this by computing
-attributions over the full dataset rather than a single split, but a larger or non-synthetic
-multi-mechanism dataset would give a more convincing demonstration. Finally, the audit as described
-requires sub-labels for at least a validation subset of failures -- available here by construction,
-and available in many industrial settings where maintenance logs record root cause even when the
-model is only asked to predict binary failure, but not universal.
+synthetic version -- ours included -- may not transfer directly to messier real deployments.
+
+Several further limitations are specific to the audit. The RNF check is weak: 18 of its 19 rows are
+non-failures, so it mainly shows the model does not concentrate attribution on arbitrary rows; the
+discriminating evidence comes from the permutation and shortcut controls. TWF (46 rows) is small,
+and its trigger is partly random, so its $R$ is low in absolute terms even when it passes. With
+$K = 100$ permuted models the smallest attainable $p$ is 0.0099, so several verdicts sit at that
+floor and more permutations would sharpen them. The audit has low power for mechanisms defined by a
+difference or ratio of raw inputs unless that quantity is a feature (HDF in the raw-feature
+ablation). We audit one model family (XGBoost) with one explainer (TreeSHAP); whether the null's
+behaviour carries over to other explainers is untested. Finally, the audit requires sub-labels for
+at least some failures -- available here by construction, and in industrial settings where
+maintenance logs record a root cause, but not universal.
 
 \subsection{Generalizability}
 The protocol requires only two things: (1) a classifier trained on a coarse target, and (2) a
 held-out set of finer-grained sub-labels for at least some of the positive cases, not used in
-training. Both conditions are common in industrial PdM: maintenance tickets are frequently logged
-with a root-cause code even when the deployed model only predicts a binary failure risk. In that
-setting, this protocol offers a cheap, dataset-native alternative to constructing synthetic
+training. Both hold wherever maintenance records log a root-cause code for failures that a deployed
+model predicts only as a binary risk; we have not measured how widespread such records are. Where
+they exist, this protocol offers a cheap, dataset-native alternative to constructing synthetic
 ground-truth benchmarks purely to evaluate explanation faithfulness.
 
 \section{Conclusion}
 We show that AI4I~2020's five failure mechanisms, ordinarily discarded once the composite failure
-label is formed, can be repurposed as a faithfulness probe for post-hoc SHAP explanations. A tuned
-XGBoost classifier trained only on the composite label attributes each of four real mechanisms to
-its correct physical driver and shows no dominant feature for the one mechanism with no real cause.
-Beyond the specific result, we position this as a general, low-cost protocol applicable wherever a
-coarse PdM target aggregates several distinct, partially-labeled failure modes -- the common case in
-practice -- as a complement to, not a replacement for, existing faithfulness-evaluation methods built
-on purpose-designed synthetic data.
+label is formed, can be repurposed as a faithfulness probe for post-hoc SHAP explanations. With a
+model-randomization null, a tuned XGBoost classifier trained only on the composite label passes all
+four physical mechanisms, a label-permuted model fails all four, and a model given a spurious
+shortcut fails exactly the mechanism the shortcut mimics while its accuracy stays competitive. Along
+the way we find that the obvious null for this kind of subgroup audit is confounded and certifies a
+model that learned nothing. We position the protocol as a low-cost check applicable wherever a
+coarse PdM target aggregates several distinct, partially-labeled failure modes -- a complement to,
+not a replacement for, faithfulness evaluation on purpose-built synthetic data.
 
-\paragraph{Code and data availability.} Code, the trained model artifacts, and the full notebook
-reproducing every table and figure in this paper are available at
+\section*{Acknowledgment}
+Portions of the manuscript text and the analysis code were drafted with the assistance of an AI
+system (Claude, Anthropic). The author reviewed and verified all content and takes full
+responsibility for it.
+
+\paragraph{Code and data availability.} The scripts in \texttt{experiments/} produce every number,
+table, and figure in this paper from the committed model artifacts; an exploratory notebook is
+included for context. Both are available at
 \url{https://github.com/kowshik24/glowing-broccoli}. AI4I~2020 is public
 \citep{matzka2020explainable} and included in the repository.
 

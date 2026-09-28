@@ -1,0 +1,406 @@
+{
+  "label_facts": {
+    "machine_failure_total": 339,
+    "failures_with_no_mode": 9,
+    "rows_with_multiple_modes": 24,
+    "RNF_total": 19,
+    "RNF_with_machine_failure_0": 18
+  },
+  "K_PERM": 100,
+  "main": {
+    "perf": {
+      "threshold": 0.9833409190177917,
+      "test_precision": 1.0,
+      "test_recall": 0.8235294117647058,
+      "test_f1": 0.9032258064516129
+    },
+    "n": {
+      "TWF": 46,
+      "HDF": 115,
+      "PWF": 95,
+      "OSF": 98,
+      "RNF": 19
+    },
+    "n_RNF_machine_failure": 1,
+    "top_feature": {
+      "TWF": "Tool wear [min]",
+      "HDF": "Rotational speed [rpm]",
+      "PWF": "Power [W]",
+      "OSF": "Overstrain_ratio",
+      "RNF": "Rotational speed [rpm]"
+    },
+    "naive_null_p": {
+      "TWF": 0.0004997501249375312,
+      "HDF": 0.0004997501249375312,
+      "PWF": 0.0004997501249375312,
+      "OSF": 0.0004997501249375312
+    },
+    "audit": {
+      "TWF": {
+        "relevant_share": 0.30937817692756653,
+        "null_mean": 0.14257918290793895,
+        "null_max": 0.3145524859428406,
+        "p_value": 0.019801980198019802,
+        "pass": true
+      },
+      "HDF": {
+        "relevant_share": 0.7054081559181213,
+        "null_mean": 0.5532337814569473,
+        "null_max": 0.6857450604438782,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "PWF": {
+        "relevant_share": 0.6861103773117065,
+        "null_mean": 0.33097820341587064,
+        "null_max": 0.4465424120426178,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "OSF": {
+        "relevant_share": 0.6637346148490906,
+        "null_mean": 0.343609983921051,
+        "null_max": 0.5381791591644287,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "RNF": {
+        "top_share": 0.16763362288475037,
+        "null_mean": 0.21825625568628312,
+        "null_max": 0.2850863039493561,
+        "p_value_more_concentrated": 0.9702970297029703,
+        "pass": true
+      }
+    }
+  },
+  "main_exclusive": {
+    "perf": {
+      "threshold": 0.9833409190177917,
+      "test_precision": 1.0,
+      "test_recall": 0.8235294117647058,
+      "test_f1": 0.9032258064516129
+    },
+    "n": {
+      "TWF": 42,
+      "HDF": 106,
+      "PWF": 80,
+      "OSF": 78,
+      "RNF": 18
+    },
+    "n_RNF_machine_failure": 0,
+    "top_feature": {
+      "TWF": "Tool wear [min]",
+      "HDF": "Rotational speed [rpm]",
+      "PWF": "Power [W]",
+      "OSF": "Overstrain_ratio",
+      "RNF": "Rotational speed [rpm]"
+    },
+    "naive_null_p": {
+      "TWF": 0.0004997501249375312,
+      "HDF": 0.0004997501249375312,
+      "PWF": 0.0004997501249375312,
+      "OSF": 0.0004997501249375312
+    },
+    "audit": {
+      "TWF": {
+        "relevant_share": 0.3356349766254425,
+        "null_mean": 0.14582017153501511,
+        "null_max": 0.2818855941295624,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "HDF": {
+        "relevant_share": 0.7270313501358032,
+        "null_mean": 0.5481116685271263,
+        "null_max": 0.6762878894805908,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "PWF": {
+        "relevant_share": 0.7166289687156677,
+        "null_mean": 0.3348933470249176,
+        "null_max": 0.4465247392654419,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "OSF": {
+        "relevant_share": 0.695694625377655,
+        "null_mean": 0.33973202362656596,
+        "null_max": 0.4716220498085022,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "RNF": {
+        "top_share": 0.17439916729927063,
+        "null_mean": 0.2116653725504875,
+        "null_max": 0.2887524366378784,
+        "p_value_more_concentrated": 0.8910891089108911,
+        "pass": true
+      }
+    }
+  },
+  "raw_ablation": {
+    "perf": {
+      "threshold": 0.9292939305305481,
+      "test_precision": 0.9285714285714286,
+      "test_recall": 0.7647058823529411,
+      "test_f1": 0.8387096774193549
+    },
+    "n": {
+      "TWF": 46,
+      "HDF": 115,
+      "PWF": 95,
+      "OSF": 98,
+      "RNF": 19
+    },
+    "n_RNF_machine_failure": 1,
+    "top_feature": {
+      "TWF": "Tool wear [min]",
+      "HDF": "Air temperature [K]",
+      "PWF": "Torque [Nm]",
+      "OSF": "Tool wear [min]",
+      "RNF": "Torque [Nm]"
+    },
+    "naive_null_p": {
+      "TWF": 0.0004997501249375312,
+      "HDF": 0.0004997501249375312,
+      "PWF": 0.0004997501249375312,
+      "OSF": 0.0004997501249375312
+    },
+    "audit": {
+      "TWF": {
+        "relevant_share": 0.40443119406700134,
+        "null_mean": 0.22797893092036248,
+        "null_max": 0.3738105595111847,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "HDF": {
+        "relevant_share": 0.692901074886322,
+        "null_mean": 0.6027246108651161,
+        "null_max": 0.7340423464775085,
+        "p_value": 0.04950495049504951,
+        "pass": true
+      },
+      "PWF": {
+        "relevant_share": 0.6550139784812927,
+        "null_mean": 0.3647980758547783,
+        "null_max": 0.5224897861480713,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "OSF": {
+        "relevant_share": 0.6250837445259094,
+        "null_mean": 0.3875831116735935,
+        "null_max": 0.5781412124633789,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "RNF": {
+        "top_share": 0.2833663821220398,
+        "null_mean": 0.2698779805004597,
+        "null_max": 0.34228000044822693,
+        "p_value_more_concentrated": 0.37623762376237624,
+        "pass": true
+      }
+    }
+  },
+  "shortcut_weak": {
+    "perf": {
+      "threshold": 0.840778112411499,
+      "test_precision": 0.9032258064516129,
+      "test_recall": 0.8235294117647058,
+      "test_f1": 0.8615384615384616
+    },
+    "n": {
+      "TWF": 46,
+      "HDF": 115,
+      "PWF": 95,
+      "OSF": 98,
+      "RNF": 19
+    },
+    "n_RNF_machine_failure": 1,
+    "top_feature": {
+      "TWF": "Tool wear [min]",
+      "HDF": "Rotational speed [rpm]",
+      "PWF": "Power [W]",
+      "OSF": "Overstrain_ratio",
+      "RNF": "Rotational speed [rpm]"
+    },
+    "naive_null_p": {
+      "TWF": 0.0004997501249375312,
+      "HDF": 0.0004997501249375312,
+      "PWF": 0.0004997501249375312,
+      "OSF": 0.0004997501249375312
+    },
+    "audit": {
+      "TWF": {
+        "relevant_share": 0.29352402687072754,
+        "null_mean": 0.13485187631100415,
+        "null_max": 0.271845281124115,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "HDF": {
+        "relevant_share": 0.6396962404251099,
+        "null_mean": 0.47601124316453935,
+        "null_max": 0.6138100028038025,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "PWF": {
+        "relevant_share": 0.6808003187179565,
+        "null_mean": 0.3053858610987663,
+        "null_max": 0.44115516543388367,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "OSF": {
+        "relevant_share": 0.6314693093299866,
+        "null_mean": 0.30521760508418083,
+        "null_max": 0.4474797546863556,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "RNF": {
+        "top_share": 0.16481593251228333,
+        "null_mean": 0.18509747013449668,
+        "null_max": 0.2451135814189911,
+        "p_value_more_concentrated": 0.8217821782178217,
+        "pass": true
+      }
+    }
+  },
+  "shortcut_strong": {
+    "perf": {
+      "threshold": 0.914253830909729,
+      "test_precision": 0.9032258064516129,
+      "test_recall": 0.8235294117647058,
+      "test_f1": 0.8615384615384616
+    },
+    "n": {
+      "TWF": 46,
+      "HDF": 115,
+      "PWF": 95,
+      "OSF": 98,
+      "RNF": 19
+    },
+    "n_RNF_machine_failure": 1,
+    "top_feature": {
+      "TWF": "Tool wear [min]",
+      "HDF": "Sensor_strong",
+      "PWF": "Power [W]",
+      "OSF": "Overstrain_ratio",
+      "RNF": "Tool wear [min]"
+    },
+    "naive_null_p": {
+      "TWF": 0.0004997501249375312,
+      "HDF": 0.0004997501249375312,
+      "PWF": 0.0004997501249375312,
+      "OSF": 0.0004997501249375312
+    },
+    "audit": {
+      "TWF": {
+        "relevant_share": 0.34216877818107605,
+        "null_mean": 0.1439201430976391,
+        "null_max": 0.2737988233566284,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "HDF": {
+        "relevant_share": 0.15559054911136627,
+        "null_mean": 0.45659854263067245,
+        "null_max": 0.6086559891700745,
+        "p_value": 1.0,
+        "pass": false
+      },
+      "PWF": {
+        "relevant_share": 0.662512481212616,
+        "null_mean": 0.3007598941028118,
+        "null_max": 0.4489690959453583,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "OSF": {
+        "relevant_share": 0.7504344582557678,
+        "null_mean": 0.30126899734139445,
+        "null_max": 0.5293175578117371,
+        "p_value": 0.009900990099009901,
+        "pass": true
+      },
+      "RNF": {
+        "top_share": 0.2045971006155014,
+        "null_mean": 0.19387919276952745,
+        "null_max": 0.26309528946876526,
+        "p_value_more_concentrated": 0.36633663366336633,
+        "pass": true
+      }
+    }
+  },
+  "label_permutation": {
+    "perf": {
+      "threshold": 0.012152166105806828,
+      "test_precision": 0.04230769230769231,
+      "test_recall": 0.3235294117647059,
+      "test_f1": 0.07482993197278912
+    },
+    "n": {
+      "TWF": 46,
+      "HDF": 115,
+      "PWF": 95,
+      "OSF": 98,
+      "RNF": 19
+    },
+    "n_RNF_machine_failure": 1,
+    "top_feature": {
+      "TWF": "Temp_diff [K]",
+      "HDF": "Temp_diff [K]",
+      "PWF": "Temp_diff [K]",
+      "OSF": "Temp_diff [K]",
+      "RNF": "Temp_diff [K]"
+    },
+    "naive_null_p": {
+      "TWF": 0.0004997501249375312,
+      "HDF": 0.0004997501249375312,
+      "PWF": 0.0004997501249375312,
+      "OSF": 0.0004997501249375312
+    },
+    "audit": {
+      "TWF": {
+        "relevant_share": 0.11851710081100464,
+        "null_mean": 0.14816394235938787,
+        "null_max": 0.32097765803337097,
+        "p_value": 0.7029702970297029,
+        "pass": false
+      },
+      "HDF": {
+        "relevant_share": 0.5437055826187134,
+        "null_mean": 0.5439462739229203,
+        "null_max": 0.6562974452972412,
+        "p_value": 0.5346534653465347,
+        "pass": false
+      },
+      "PWF": {
+        "relevant_share": 0.3109963834285736,
+        "null_mean": 0.32751557514071467,
+        "null_max": 0.43690225481987,
+        "p_value": 0.6831683168316832,
+        "pass": false
+      },
+      "OSF": {
+        "relevant_share": 0.35585397481918335,
+        "null_mean": 0.33762696012854576,
+        "null_max": 0.45299604535102844,
+        "p_value": 0.36633663366336633,
+        "pass": false
+      },
+      "RNF": {
+        "top_share": 0.1873268187046051,
+        "null_mean": 0.215376266092062,
+        "null_max": 0.29030895233154297,
+        "p_value_more_concentrated": 0.8514851485148515,
+        "pass": true
+      }
+    }
+  }
+}

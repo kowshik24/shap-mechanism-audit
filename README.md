@@ -122,7 +122,7 @@ won't import (`libomp.dylib` not found), `brew install libomp` first.
 
 ## Scoring new data
 
-Once the notebook's been run once (saves `models/*.joblib`):
+The trained model and preprocessor are committed in `models/` (the notebook regenerates them):
 
 ```bash
 python src/predict.py --csv path/to/new_readings.csv --out predictions.csv
@@ -131,13 +131,29 @@ python src/predict.py --csv path/to/new_readings.csv --out predictions.csv
 Input needs: `Type`, `Air temperature [K]`, `Process temperature [K]`, `Rotational speed [rpm]`,
 `Torque [Nm]`, `Tool wear [min]`.
 
+## Reproducing the paper
+
+The scripts in `experiments/` are the source of truth for every number and figure in the paper
+(`paper/main.tex`); the notebook is the exploratory record. Both scripts use the committed model in
+`models/`, so no notebook run is needed.
+
+```bash
+python experiments/audit_experiments.py   # audit tables, ~9 min (600 model fits)
+python experiments/bootstrap_ci.py        # test-set confidence intervals
+python experiments/make_figures.py        # every paper figure -> paper/figures/
+```
+
+Results land in `experiments/results/`.
+
 ## Layout
 
 ```
 dataset/ai4i2020.csv     raw data
-notebooks/                EDA through XAI, one notebook
-models/                   saved model + preprocessor (generated, gitignored)
-src/predict.py             CLI inference on new rows
+notebooks/                EDA through XAI, one notebook (exploratory)
+experiments/              scripts behind every paper number and figure
+models/                   saved model + preprocessor
+src/predict.py            CLI inference on new rows
+paper/                    LaTeX source, figures, bibliography
 assets/                   pipeline diagram + result plots
 requirements.txt          pinned versions
 ```
