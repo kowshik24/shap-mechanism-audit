@@ -1,0 +1,19 @@
+\begin{tabular}{@{}lrrrrrrrrr@{}}
+\toprule
+& & \multicolumn{2}{c}{TWF} & \multicolumn{2}{c}{HDF} & \multicolumn{2}{c}{PWF} & \multicolumn{2}{c}{OSF} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}\cmidrule(lr){9-10}
+Variant & $K$ & $R$ & $D$ & $R$ & $D$ & $R$ & $D$ & $R$ & $D$ \\
+\midrule
+Primary, seed 42 & 1000 & 0.096$^{\times}$ & 0.039 & 0.004 & 0.004 & 0.004 & 0.004 & 0.004 & 0.004 \\
+\quad single-mechanism rows & 1000 & 0.107$^{\times}$ & 0.044 & 0.004 & 0.004 & 0.004 & 0.004 & 0.004 & 0.004 \\
+Seed 1 & 200 & 0.119$^{\times}$ & 0.080$^{\times}$ & 0.020 & 0.020 & 0.020 & 0.020 & 0.020 & 0.020 \\
+Seed 2 & 200 & 0.065$^{\times}$ & 0.035 & 0.020 & 0.020 & 0.020 & 0.020 & 0.020 & 0.020 \\
+Seed 3 & 200 & 0.154$^{\times}$ & 0.0498 & 0.020 & 0.020 & 0.020 & 0.020 & 0.020 & 0.020 \\
+Seed 4 & 200 & 0.199$^{\times}$ & 0.119$^{\times}$ & 0.020 & 0.020 & 0.020 & 0.020 & 0.020 & 0.020 \\
+Raw features only & 200 & 0.289$^{\times}$ & 0.517$^{\times}$ & 0.159$^{\times}$ & 0.020 & 0.020 & 0.020 & 0.020 & 0.070$^{\times}$ \\
+In-sample SHAP & 1000 & 0.008 & 0.004 & 0.008 & 0.004 & 0.004 & 0.004 & 0.004 & 0.004 \\
+Permuted labels (sanity) & 200 & 1.000$^{\times}$ & 1.000$^{\times}$ & 0.796$^{\times}$ & 1.000$^{\times}$ & 1.000$^{\times}$ & 0.836$^{\times}$ & 1.000$^{\times}$ & 1.000$^{\times}$ \\
+\midrule
+Permuted labels, naive null & -- & 0.002 & -- & 0.002 & -- & 0.002 & -- & 0.002 & -- \\
+\bottomrule
+\end{tabular}

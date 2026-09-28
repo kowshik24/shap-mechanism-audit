@@ -11,3 +11,7 @@ paper/**/*.bbl
 paper/**/*.blg
 paper/**/*.log
 paper/**/*.out
+*.egg-info/
+__pycache__/
+*.pyc
+.pytest_cache/

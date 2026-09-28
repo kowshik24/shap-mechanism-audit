@@ -2,9 +2,9 @@
 
 ![pipeline](assets/pipeline.drawio.png)
 
-Predicts `Machine failure` on the AI4I 2020 predictive maintenance dataset, then uses SHAP to
-verify the model is actually keying off the right physics for each of the five underlying failure
-mechanisms instead of just fitting noise.
+Predicts `Machine failure` on the AI4I 2020 predictive maintenance dataset, then tests whether the
+model's SHAP explanations point at the physical cause of each failure, using the five mechanism
+flags the model never sees in training.
 
 Dataset: [AI4I 2020 Predictive Maintenance](https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset)
 (also in `dataset/ai4i2020.csv`) — 10,000 rows, synthetic but modeled on real industrial sensor
@@ -34,7 +34,7 @@ instead of the default 0.5.
 | **XGBoost (tuned)** | **1.00** | 0.82 | **0.90** | 0.984 |
 | XGBoost (baseline) | 0.86 | 0.88 | 0.87 | 0.988 |
 | Random Forest | 0.79 | 0.88 | 0.83 | 0.989 |
-| PyTorch MLP | 0.53 | 0.91 | 0.67 | 0.978 |
+| PyTorch MLP | 0.65 | 0.91 | 0.76 | 0.988 |
 | Decision Tree | 0.68 | 0.82 | 0.75 | 0.927 |
 | SVM (RBF) | 0.42 | 0.88 | 0.57 | 0.976 |
 | KNN | 0.43 | 0.79 | 0.56 | 0.877 |
@@ -50,9 +50,11 @@ carving out its own little neighborhood in feature space instead of one shared "
 
 ![PCA vs t-SNE vs UMAP](assets/images/dimred_comparison.png)
 
-5-fold CV on the tuned model: F1 = 0.784 ± 0.029 — confirms the test-set score above isn't a lucky
-split (the tuned threshold is fit per-split there, so the raw number differs slightly from the
-single-split result above, which is expected).
+Numbers above are from `experiments/01_benchmark.py` on the 1,000-row test split (34 failures, so
+the tuned model's precision of 1.00 has a 95% Clopper–Pearson interval of 0.88–1.00). 5-fold CV of the
+whole pipeline (Borderline-SMOTE inside the folds, default threshold): F1 = 0.823 ± 0.016,
+macro-F1 = 0.908 ± 0.009. The notebook's older CV cell used plain SMOTE and reported 0.784; the
+script is the reference.
 
 Class imbalance is why accuracy is useless here — a model that predicts "no failure" every time
 still scores ~96% accuracy. Precision/recall/F1 on the failure class is what actually matters.
@@ -74,23 +76,32 @@ table above shows in numbers.
 
 ## Explainable AI — does the model know *why*?
 
-`Machine failure` is the OR of five independent mechanisms, and the model is never told which one
-fired. SHAP was used to check, per mechanism, whether the model's top attributed feature actually
-matches the real physical cause:
+`Machine failure` is the OR of five mechanisms, and the model is never told which one fired. For
+each mechanism the audit computes out-of-sample SHAP (5-fold cross-fitting) and two statistics:
 
-| Failure mode | Model's top SHAP feature | Actual mechanism | Match |
-|---|---|---|---|
-| TWF (tool wear) | `Tool wear [min]` | Tool wear | ✅ |
-| HDF (heat dissipation) | `Rotational speed [rpm]` | Temp gap + rpm | ✅ |
-| PWF (power) | `Power [W]` | Torque × rpm | ✅ |
-| OSF (overstrain) | `Overstrain_ratio` | Tool wear × torque | ✅ |
-| RNF (random) | no dominant feature | none — pure chance | ✅ |
+- **relevant share** R — fraction of attribution on the mechanism's rows that falls on its trigger
+  features;
+- **specificity** D — how much larger that share is on the mechanism's rows than on other failures.
 
-RNF passing means the model correctly found *nothing* to hang onto for the one failure mode that
-has no real cause — a model that "explained" RNF confidently would be the red flag, not the
-other way around.
+Both are compared with 1,000 copies of the full pipeline retrained on permuted labels, with Holm
+correction over the four physical mechanisms.
 
-<img src="assets/images/shap_summary.png" width="420"> <img src="assets/images/shap_crosscheck_heatmap.png" width="420">
+| Mechanism | Top out-of-sample SHAP feature | R | D | Verdict |
+|---|---|---|---|---|
+| TWF (tool wear) | `Rotational speed [rpm]` | 0.20 | 0.13 | fails R (p = 0.096) |
+| HDF (heat dissipation) | `Rotational speed [rpm]` | 0.73 | 0.41 | passes (p = 0.004) |
+| PWF (power) | `Power [W]` | 0.67 | 0.29 | passes (p = 0.004) |
+| OSF (overstrain) | `Overstrain_ratio` | 0.63 | 0.39 | passes (p = 0.004) |
+| RNF (random) | no dominant feature | — | — | descriptive only |
+
+HDF, PWF, and OSF pass in all five seeds. TWF passes only when SHAP is computed on training rows,
+which is why the audit uses held-out rows. Two controls: a model trained on shuffled labels fails
+every test (a naive "random failure subset" null would wrongly pass it), and a planted shortcut
+sensor is flagged once it takes about a third of the HDF attribution.
+
+![audit overview](paper/figures/audit_overview.png)
+
+<img src="assets/images/shap_summary.png" width="420"> <img src="paper/figures/shap_crosscheck_heatmap.png" width="420">
 
 ## Running it
 
@@ -122,7 +133,8 @@ won't import (`libomp.dylib` not found), `brew install libomp` first.
 
 ## Scoring new data
 
-The trained model and preprocessor are committed in `models/` (the notebook regenerates them):
+The trained model and preprocessor are committed in `models/` (`experiments/01_benchmark.py`
+regenerates them):
 
 ```bash
 python src/predict.py --csv path/to/new_readings.csv --out predictions.csv
@@ -133,28 +145,42 @@ Input needs: `Type`, `Air temperature [K]`, `Process temperature [K]`, `Rotation
 
 ## Reproducing the paper
 
-The scripts in `experiments/` are the source of truth for every number and figure in the paper
-(`paper/main.tex`); the notebook is the exploratory record. Both scripts use the committed model in
-`models/`, so no notebook run is needed.
+The code in `src/pdm_audit/` (data, models, audit statistics, metrics) and the numbered scripts in
+`experiments/` produce every number, table, and figure in the IEEE paper
+(`paper/ieee_bigdata/main.tex`). The notebook is the exploratory record and is not needed.
 
 ```bash
-python experiments/audit_experiments.py   # audit tables, ~9 min (600 model fits)
-python experiments/make_audit_figure.py   # paper Fig. 1, from the audit results
-python experiments/bootstrap_ci.py        # test-set confidence intervals
-python experiments/make_figures.py        # every other paper figure -> paper/figures/
+./reproduce.sh          # everything, ~45 min on 8 cores; ends with paper/ieee_bigdata/main.pdf
+./reproduce.sh --quick  # smoke test of the audit stages with tiny K
 ```
 
-Results land in `experiments/results/`.
+or stage by stage:
+
+| Stage | Script | Output |
+|---|---|---|
+| 1 | `experiments/01_benchmark.py` | model comparison, tuning, CIs, CV, `models/` |
+| 2 | `experiments/02_audit.py` | cross-fitted audit, seeds, raw-feature and in-sample variants (~28 min) |
+| 3 | `experiments/03_shortcut_sweep.py` | graded shortcut experiment (~11 min) |
+| 4 | `experiments/04_tables.py` | LaTeX tables in `paper/ieee_bigdata/tables/` |
+| 5 | `experiments/05_figures.py` | figures in `paper/figures/` |
+
+Stages 2–5 read the outputs of stage 1 from `experiments/results/`. Tables are generated, never
+typed by hand. Seeds are fixed, and re-running a stage reproduces its numbers exactly. Unit tests for
+the audit statistics: `python -m pytest`.
 
 ## Layout
 
 ```
-dataset/ai4i2020.csv     raw data
-notebooks/                EDA through XAI, one notebook (exploratory)
-experiments/              scripts behind every paper number and figure
-models/                   saved model + preprocessor
+dataset/ai4i2020.csv      raw data
+src/pdm_audit/            package: config, data, models, audit statistics, metrics
 src/predict.py            CLI inference on new rows
-paper/                    LaTeX source, figures, bibliography
-assets/                   pipeline diagram + result plots
+experiments/              numbered pipeline stages; results/ holds their outputs
+tests/                    unit tests
+models/                   saved model, preprocessor, tuned hyperparameters
+paper/ieee_bigdata/       IEEE BigData submission (tables/ generated)
+paper/main.tex            single-column preprint, generated by paper/sync_arxiv.py
+paper/figures/            generated figures
+notebooks/                exploratory notebook
+reproduce.sh              runs everything in order
 requirements.txt          pinned versions
 ```
