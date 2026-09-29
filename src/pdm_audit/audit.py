@@ -7,9 +7,13 @@ over S_m:
   relevant share   R_m = sum_{j in E_m} I_{m,j} / sum_j I_{m,j}
   specificity      D_m = R_m(S_m) - R_m(F minus S_m), F = all failure rows
 
+  shortcut score   S_m = max_{j not in E_m} [ s_j(S_m) - s_j(F minus S_m) ], s_j = share of feature j
+
 R_m asks whether attribution on the mechanism's rows sits on its trigger features; D_m asks whether
-that concentration is specific to the mechanism's rows rather than common to every failure. Both
-are compared with a model-randomization null: the same pipeline retrained on permuted labels.
+that concentration is specific to the mechanism's rows rather than common to every failure. S_m asks
+the converse: does any feature outside E_m take attribution specifically on the mechanism's rows?
+R_m and D_m pass when large; S_m flags a shortcut when large. All three are compared with a
+model-randomization null: the same pipeline retrained on permuted labels.
 """
 import numpy as np
 import pandas as pd
@@ -22,26 +26,25 @@ from .data import mechanism_groups
 from .models import feature_names, fit_pipeline
 
 
-N_BACKGROUND = 200  # shap subsamples this to 100 rows (its max_samples default, fixed seed)
-
-
-def abs_shap(model, pre, df, rows, numeric_cols, explainer='path', background_rows=None, seed=SEED):
+def abs_shap(model, pre, df, rows, numeric_cols, explainer='path', background_rows=None, seed=SEED,
+             n_background=100, background_seed=0):
     """
     |SHAP| per row and feature. explainer='path' is path-dependent TreeSHAP; 'interventional'
-    averages over a background of N_BACKGROUND rows drawn from `background_rows` (training rows).
+    averages over a background of `n_background` rows drawn from `background_rows` (training rows).
     """
     cols = list(numeric_cols) + ['Type']
     X = pre.transform(df.loc[rows, cols])
     if explainer == 'path':
         tree = shap.TreeExplainer(model)
     else:
-        bg = np.random.default_rng(seed).choice(background_rows, N_BACKGROUND, replace=False)
+        bg = np.random.default_rng([seed, background_seed]).choice(background_rows, n_background, replace=False)
         # XGBoost >= 3 marks sklearn models as categorical-enabled, which shap refuses for the
-        # interventional algorithm; the booster carries the same trees (all splits here are numeric)
+        # interventional algorithm; the booster carries the same trees (all splits here are numeric).
+        # check_additivity below verifies that the SHAP values sum to the booster's margin output.
         est = model.get_booster() if hasattr(model, 'get_booster') else model
-        tree = shap.TreeExplainer(est, data=pre.transform(df.loc[bg, cols]),
-                                  feature_perturbation='interventional')
-    sv = tree.shap_values(X, check_additivity=False)
+        masker = shap.maskers.Independent(pre.transform(df.loc[bg, cols]), max_samples=n_background)
+        tree = shap.TreeExplainer(est, data=masker.data, feature_perturbation='interventional')
+    sv = tree.shap_values(X, check_additivity=True)
     if isinstance(sv, list):
         sv = sv[1]
     elif np.ndim(sv) == 3:
@@ -54,12 +57,14 @@ def audit_rows(df):
     return np.union1d(df.index[df['Machine failure'] == 1], df.index[df['RNF'] == 1])
 
 
-def shap_in_sample(df, train_idx, numeric_cols, params, seed, labels=None, model='xgb', explainer='path'):
+def shap_in_sample(df, train_idx, numeric_cols, params, seed, labels=None, model='xgb', explainer='path',
+                   **shap_kw):
     pre, est = fit_pipeline(df, train_idx, numeric_cols, params, seed, y=labels, model=model)
-    return abs_shap(est, pre, df, audit_rows(df), numeric_cols, explainer, train_idx, seed)
+    return abs_shap(est, pre, df, audit_rows(df), numeric_cols, explainer, train_idx, seed, **shap_kw)
 
 
-def shap_cross_fitted(df, numeric_cols, params, seed, labels=None, n_folds=5, model='xgb', explainer='path'):
+def shap_cross_fitted(df, numeric_cols, params, seed, labels=None, n_folds=5, model='xgb', explainer='path',
+                      **shap_kw):
     """Out-of-sample SHAP: each row is explained by a model that never saw it in training."""
     y = df['Machine failure']
     rows = audit_rows(df)
@@ -67,7 +72,7 @@ def shap_cross_fitted(df, numeric_cols, params, seed, labels=None, n_folds=5, mo
     for tr, te in StratifiedKFold(n_folds, shuffle=True, random_state=seed).split(df, y):
         pre, est = fit_pipeline(df, df.index[tr], numeric_cols, params, seed, y=labels, model=model)
         held_out = np.intersect1d(df.index[te], rows)
-        parts.append(abs_shap(est, pre, df, held_out, numeric_cols, explainer, df.index[tr], seed))
+        parts.append(abs_shap(est, pre, df, held_out, numeric_cols, explainer, df.index[tr], seed, **shap_kw))
     return pd.concat(parts).loc[rows]
 
 
@@ -83,8 +88,10 @@ def statistics(A: pd.DataFrame, df: pd.DataFrame, groups: dict, extra_features=(
     for m in PHYSICAL:
         own = A.loc[groups[m]].mean(axis=0)
         rest = A.loc[np.setdiff1d(failures, groups[m])].mean(axis=0)
+        excess = (own / own.sum() - rest / rest.sum()).drop([f for f in TRIGGER_FEATURES[m] if f in own.index])
         out[m] = {'R': _share(own, TRIGGER_FEATURES[m]),
                   'D': _share(own, TRIGGER_FEATURES[m]) - _share(rest, TRIGGER_FEATURES[m]),
+                  'S': float(excess.max()), 'S_feature': str(excess.idxmax()),
                   'top_feature': str(own.idxmax()),
                   **{f'share[{f}]': _share(own, [f]) for f in extra_features}}
     rnf = A.loc[groups['RNF']].mean(axis=0)
@@ -138,13 +145,14 @@ def _null_draw(k, df, numeric_cols, params, seed, train_idx, cross_fit, groups_b
 
 
 def run_audit(df, numeric_cols, params, *, seed=SEED, K=100, cross_fit=True, train_idx=None,
-              extra_features=(), n_jobs=-1, observed_labels=None, model='xgb', explainer='path'):
+              extra_features=(), n_jobs=-1, observed_labels=None, model='xgb', explainer='path',
+              **shap_kw):
     """
     Observed statistics, a K-model randomization null, p-values and Holm-adjusted p-values, for
     all flagged rows ('all') and single-mechanism rows ('single'). `model` ('xgb', 'rf') and
     `explainer` ('path', 'interventional') apply to the audited model and every null run alike.
     """
-    fit_kw = {'model': model, 'explainer': explainer}
+    fit_kw = {'model': model, 'explainer': explainer, **shap_kw}
     groups_by_name = {'all': mechanism_groups(df), 'single': mechanism_groups(df, exclusive=True)}
     if cross_fit:
         A = shap_cross_fitted(df, numeric_cols, params, seed, labels=observed_labels, **fit_kw)
@@ -163,7 +171,7 @@ def run_audit(df, numeric_cols, params, *, seed=SEED, K=100, cross_fit=True, tra
     for name in groups_by_name:
         tests, null_store = {}, {}
         for m in PHYSICAL:
-            for stat in ('R', 'D'):
+            for stat in ('R', 'D', 'S'):
                 null = [d[name][m][stat] for d in draws]
                 null_store[f'{m}.{stat}'] = null
                 tests[f'{m}.{stat}'] = permutation_p(observed[name][m][stat], null)
@@ -173,6 +181,7 @@ def run_audit(df, numeric_cols, params, *, seed=SEED, K=100, cross_fit=True, tra
             'p': tests,
             'p_holm_R': holm({m: tests[f'{m}.R'] for m in PHYSICAL}),
             'p_holm_D': holm({m: tests[f'{m}.D'] for m in PHYSICAL}),
+            'p_holm_S': holm({m: tests[f'{m}.S'] for m in PHYSICAL}),  # small = shortcut flagged
             'p_RNF_more_concentrated': permutation_p(observed[name]['RNF']['top_share'], rnf_null),
             'null_mean': {k: float(np.mean(v)) for k, v in null_store.items()},
             'null_draws': null_store,

@@ -47,12 +47,14 @@ for sigma in SIGMAS:
     a, obs = res['all'], res['observed']['all']
     row = {'sigma': sigma, 'test_f1': perf['f1'], 'sensor_share_HDF': obs['HDF']['share[Shortcut sensor]'],
            'R_HDF': obs['HDF']['R'], 'D_HDF': obs['HDF']['D'], 'top_HDF': obs['HDF']['top_feature'],
-           'p_holm_R': a['p_holm_R'], 'p_holm_D': a['p_holm_D'],
+           'p_holm_R': a['p_holm_R'], 'p_holm_D': a['p_holm_D'], 'p_holm_S': a['p_holm_S'],
+           'S_HDF': obs['HDF']['S'], 'S_feature_HDF': obs['HDF']['S_feature'],
+           'null_mean_S_HDF': a['null_mean']['HDF.S'],
            'null_mean_R_HDF': a['null_mean']['HDF.R']}
     rows.append(row)
     print(f'sigma={sigma:<5} F1={perf["f1"]:.3f} sensor_share={row["sensor_share_HDF"]:.3f} '
           f'R_HDF={row["R_HDF"]:.3f} pR_HDF={a["p_holm_R"]["HDF"]:.3f} pD_HDF={a["p_holm_D"]["HDF"]:.3f} '
-          f'others_R={ {m: round(v, 3) for m, v in a["p_holm_R"].items() if m != "HDF"} } ({time.time()-t0:.0f}s)',
+          f'pS_HDF={a["p_holm_S"]["HDF"]:.3f} others_R={ {m: round(v, 3) for m, v in a["p_holm_R"].items() if m != "HDF"} } ({time.time()-t0:.0f}s)',
           flush=True)
 
 name = 'shortcut_sweep_quick.json' if args.quick else 'shortcut_sweep.json'

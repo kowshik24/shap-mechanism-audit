@@ -39,19 +39,19 @@ we show that an obvious test for it certifies a model fitted to shuffled labels.
 % Z: what we do
 We use the AI4I~2020 dataset, whose failure label is the logical OR of separately recorded failure
 mechanisms. We train a classifier on the combined label only, compute out-of-sample SHAP values by
-cross-fitting, and test two statistics per mechanism against 1{,}000 models retrained on permuted
-labels: the share of attribution on the mechanism's trigger features, and how much larger that
-share is on the mechanism's rows than on other failures.
+cross-fitting, and test three statistics per mechanism against 1{,}000 models retrained on permuted
+labels: the share of attribution on the mechanism's trigger features, how much larger that share is
+on the mechanism's rows than on other failures, and whether any other feature takes attribution
+specifically on those rows.
 % 1: evidence
 With Holm correction, the tuned XGBoost model (test F1 0.89) passes both tests for heat
-dissipation, power, and overstrain failure in all five seeds (adjusted $p \le 0.02$), but not for
-tool wear failure, which passes only when SHAP is computed on training rows. Without the features
-derived from the trigger rules, power and overstrain still pass both tests and heat dissipation
-passes one. A graded shortcut experiment shows that the audit flags a synthetic sensor once it
-carries about a fifth of the attribution on the affected mechanism's rows, but not at 13\%, while
-test F1 stays between 0.84 and 0.92. On re-simulations of up to 300{,}000 rows, the permutation test
-gains power for true mechanisms but stops flagging a shortcut that carries 28\% of the attribution,
-so the attribution share itself, not only its $p$-value, has to be reported.
+dissipation, power, and overstrain failure in all five seeds (adjusted $p \le 0.02$), with a second
+explainer, and with a random forest. Tool wear failure fails with path-dependent TreeSHAP and passes
+with interventional TreeSHAP, so its verdict depends on the explainer. A synthetic shortcut sensor
+is flagged once it carries about a fifth to a third of the attribution on the affected mechanism's
+rows, but not at 13\%, while test F1 stays between 0.84 and 0.92. On data generated from the AI4I
+process at up to 300{,}000 rows, the relevant-share test stops flagging a shortcut that carries 27\%
+of the attribution, while the third statistic still flags it.
 \end{abstract}
 
 \noindent\textbf{Keywords:} 
@@ -93,15 +93,15 @@ We test three hypotheses:
 \begin{itemize}
   \item \textbf{H1:} for each physical mechanism, the model's attribution concentrates on the
     trigger features (1) more than permuted-label models do and (2) more on that mechanism's rows
-    than on other failures;
+    than on other failures, and (3) no other feature takes attribution specifically on those rows;
   \item \textbf{H2:} the audit flags a model that relies on a shortcut sensor for the mechanism the
     shortcut imitates, while mechanisms that passed before keep passing;
   \item \textbf{H3:} a naive null, which compares random failure rows under the same model, does not
     separate a trained model from a permuted-label one.
 \end{itemize}
-H1 holds for HDF, PWF, and OSF but not for TWF (\cref{fig:overview}), whose verdict also depends on
-the SHAP variant; H2 holds on the released data once the shortcut carries about a fifth of the
-attribution, but not on a 300{,}000-row re-simulation; H3 holds.
+H1 holds for HDF, PWF, and OSF; for TWF it fails with the default explainer and holds with
+interventional TreeSHAP (\cref{fig:overview}). H2 holds once the shortcut carries about a third of
+the attribution, at every data size we test when the third statistic is used; H3 holds.
 
 \begin{figure}[htbp]
 \centering
@@ -116,15 +116,15 @@ both; TWF lies inside it on both.}
 % 2: contributions, separated from prior work
 Our contributions are:
 \begin{itemize}
-  \item a per-mechanism SHAP audit with two statistics, out-of-sample attributions, a
+  \item a per-mechanism SHAP audit with three statistics, out-of-sample attributions, a
     model-randomization null, and multiple-comparison correction (\cref{sec:method});
   \item evidence that a naive within-model null is confounded (\cref{sec:robust});
   \item a graded shortcut experiment that measures when the audit detects reliance on a spurious
     sensor (\cref{sec:sweep}), plus seed, single-mechanism, in-sample, raw-feature, explainer, and
     model-family analyses;
-  \item a scaling study on AI4I~2020 re-simulated at up to $10^6$ rows, which shows how the test's
-    power and cost change with data size and where the permutation test alone stops detecting a
-    shortcut (\cref{sec:scale});
+  \item a scaling study on data generated from the AI4I~2020 process at up to $3 \cdot 10^5$ rows
+    (timed up to $10^6$), which shows how the tests' power and cost change with data size
+    (\cref{sec:scale});
   \item an imbalance-aware benchmark of seven model families on AI4I~2020 with confidence
     intervals, and a code base that regenerates every number, table, and figure.
 \end{itemize}
@@ -178,7 +178,7 @@ interventional TreeSHAP (\cref{sec:variants}).
 
 % Causal PdM: different goal
 \textit{Causal PdM.} Dhande et al.~\cite{causalbenchmark2026} compare a Bayesian structural causal
-model with correlational models on 10{,}000 CNC records with 3.3\% failures, which matches
+model with correlational models on 10{,}000 computer numerical control (CNC) records with 3.3\% failures, which matches
 AI4I~2020, and report that the causal model attributes HDF, PWF, and OSF failures correctly. They
 replace the correlational model with a causal one; we keep the kind of correlational model that dominates
 PdM work~\cite{serradilla2022deep} and test its explanation.
@@ -222,6 +222,21 @@ The audit uses two statistics, the \textit{relevant share} and the \textit{speci
 $R_m$ is large when attribution on the mechanism's rows falls on its trigger features; $D_m$ is
 large when this concentration is specific to those rows rather than common to all failures.
 
+% Shortcut score: the converse test
+Both statistics can be large while a feature outside $E_m$ also takes a sizable share, so we add a
+converse statistic, the \textit{shortcut score}. With $s_j(S) = I_{m,j}(S) / \sum_{k} I_{m,k}(S)$ the
+share of feature $j$,
+\begin{equation}
+  S_m = \max_{j \notin E_m} \big[ s_j(S_m) - s_j(F \setminus S_m) \big]. \label{eq:shortcut}
+\end{equation}
+$S_m$ is large when some feature outside the trigger set takes attribution specifically on the
+mechanism's rows, which is what a shortcut for that mechanism does. A mechanism passes the audit if
+$R_m$ and $D_m$ are significantly large and $S_m$ is not; the first two establish that the model uses
+the mechanism's features, the third that it does not also rely on another feature for it. $S_m$ is
+related to conditional randomization and knockoff tests~\cite{candes2018panning}, which ask whether a
+feature matters given the others, but it is computed from the explanation and restricted to the
+mechanism's rows.
+
 % Out-of-sample attributions
 \textit{Out-of-sample attributions.} Attributions on training rows reflect what the model fitted,
 not what it generalizes. We therefore cross-fit~\cite{chernozhukov2018double}: we split the data into five stratified folds, train
@@ -237,14 +252,15 @@ atypical feature values whatever the model has fitted.
 
 % Model-randomization null, p-values, correction
 \textit{Model-randomization null.} We rerun the full procedure -- features, resampling, fitting,
-and cross-fitting -- $K$ times on permuted labels and compute both statistics for each run. The
+and cross-fitting -- $K$ times on permuted labels and compute the three statistics for each run. The
 hyperparameters stay at the values tuned on the real labels, so the null runs differ from the audited
-model only in the labels. For $T \in \{R_m, D_m\}$ with null values $T^{(k)}$,
+model only in the labels. For $T \in \{R_m, D_m, S_m\}$ with null values $T^{(k)}$,
 \begin{equation}
   p = \frac{1 + \#\{k : T^{(k)} \ge T\}}{K + 1},
 \end{equation}
 and we adjust the four physical mechanisms for multiple comparisons with Holm's method~\cite{holm1979simple}, separately
-for each statistic. A mechanism passes a test if its adjusted $p$ is below 0.05.
+for each statistic. $R_m$ and $D_m$ pass if their adjusted $p$ is below 0.05; $S_m$ flags a
+shortcut if its adjusted $p$ is below 0.05.
 
 % RNF
 \textit{Random failures.} RNF has no trigger features. We report the share of its single largest
@@ -318,7 +334,8 @@ subsample and column sample 0.6--1.0, minimum child weight 1--5, and $\gamma$ 0-
 decision threshold to maximize F1 on the validation precision-recall (PR) curve. Confidence intervals
 (CIs) are exact binomial (Clopper--Pearson) for precision and recall and a 5{,}000-sample stratified
 bootstrap otherwise. We also run 5-fold stratified cross-validation of the whole pipeline at the
-default threshold of 0.5.
+default threshold of 0.5. The hyperparameters are tuned on the training split, which the
+cross-validation and the audit reuse, so the cross-validated F1 is mildly optimistic.
 
 % Audit configuration and cost
 \textit{Audit.} The primary audit cross-fits the tuned pipeline with seed 42 and $K = 1{,}000$
@@ -326,22 +343,31 @@ permuted-label runs, so the smallest attainable $p$ before correction is 0.001. 
 seeds 1--4 ($K = 200$), with raw features only ($K = 1{,}000$; without the four derived features,
 to test whether they make the audit circular), and with SHAP from a single model fitted on all rows
 and explaining those same rows (\textit{in-sample}, $K = 1{,}000$). Each cross-fitted run costs
-$5(K+1)$ model fits; the runs are independent, and the primary audit takes 11 minutes on eight CPU
+$5(K+1)$ model fits; the runs are independent, and the primary audit takes 12 minutes on eight CPU
 cores.
 
 % Controls
 \textit{Explainer and model variants.} We repeat the primary audit ($K = 200$) with interventional
-TreeSHAP, using a background of 100 training rows per fold, and with the random forest of
-\cref{tab:config} in place of XGBoost; in both, the null runs use the same explainer and model.
+TreeSHAP, using backgrounds of 100, 500, and 1{,}000 training rows per fold (three background seeds
+for 100 and 500), and with the random forest of \cref{tab:config} in place of XGBoost; the null runs
+use the same explainer and model. The interventional values sum to the model's margin output to
+within $5 \cdot 10^{-6}$.
 
-\textit{Scaling.} To study larger data, we re-simulate AI4I~2020 at $n \in \{10^4, 3 \cdot 10^4,
-10^5, 3 \cdot 10^5\}$ rows: we draw the five process variables jointly from the released rows with
-small Gaussian jitter and recompute the flags from the published trigger rules, which reproduce the
-released HDF, PWF, and OSF flags exactly. TWF is random in the original simulator, so we draw it with
-the released rate among worn tools; RNF fires with probability 0.001. Unlike the release, the
-simulated labels are consistent. At each size we run the audit without the shortcut sensor and with
-it at $\sigma \in \{0.5, 0.35, 0.25\}$ ($K = 100$, smallest adjusted $p$ 0.040), and we time one
-cross-fitted run at $10^6$ rows.
+\textit{Scaling.} To study larger data, we generate new data from the process documented with
+AI4I~2020~\cite{matzka2020explainable}, copying no released row: quality type L/M/H with
+probability 0.6/0.3/0.1; air temperature $\mathcal{N}(300, 2)$\,K; a process--air difference
+$\mathcal{N}(10, 1)$\,K correlated $-0.70$ with air temperature, as in the release; torque
+$\mathcal{N}(40, 10)$\,Nm; speed as a quadratic in inverse torque fitted to the release plus
+residual noise; and tool wear that grows by 2/3/5\,min per row for L/M/H until the tool reaches a
+life drawn from $U(200, 240)$\,min, where it fails (TWF) with probability 0.4 or is replaced. The
+documented temperatures are random walks; we draw rows independently, because the model never sees
+row order and a slowly varying walk makes the HDF rate of $10^4$ rows depend on a few excursions.
+HDF, PWF, and OSF follow the published rules, which reproduce the released flags exactly, and RNF
+fires with probability 0.001. The generated failure rate is 3.5--4.0\%, against 3.4\% released.
+We run the audit at $n \in \{10^4, 3 \cdot 10^4, 10^5\}$ with three generation seeds and at
+$3 \cdot 10^5$ with one, each without the shortcut sensor and with it at $\sigma \in \{0.35,
+0.25\}$ ($K = 200$, smallest adjusted $p$ 0.020), and we time one cross-fitted run up to $10^6$
+rows.
 
 \textit{Controls.} A model trained on permuted labels is exchangeable with the null runs, so its
 $p$-values are uniform by construction; we use it only as a sanity check of the code and as the
@@ -374,7 +400,8 @@ view (b) ranks features overall but does not separate the mechanisms.}
 \begin{table}[htbp]
 \centering
 \caption{Primary audit (cross-fitted, seed 42, $K = 1{,}000$). Null: mean over permuted-label runs.
-$p$: Holm-adjusted over the four physical mechanisms; $^{\times}$ marks $p \ge 0.05$. For RNF the
+$p$: Holm-adjusted over the four physical mechanisms; $^{\times}$ marks a failed $R_m$ or $D_m$ test
+($p \ge 0.05$); $S_m$ (\cref{eq:shortcut}) flags a shortcut if $p < 0.05$. For RNF the
 statistic is the largest feature's share and $p$ tests for more concentration than the null.}
 \label{tab:audit}
 \footnotesize
@@ -383,13 +410,16 @@ statistic is the largest feature's share and $p$ tests for more concentration th
 
 \begin{table}[htbp]
 \centering
-\caption{Holm-adjusted audit $p$-values for $R_m$ and $D_m$ across analysis variants;
-$^{\times}$ marks $p \ge 0.05$. The smallest attainable adjusted $p$ is $4/(K+1)$. The permuted-label
+\caption{Holm-adjusted audit $p$-values for $R_m$, $D_m$, and $S_m$ across analysis variants;
+$^{\times}$ marks a failed $R$ or $D$ test ($p \ge 0.05$), $^{\dagger}$ a flagged shortcut
+($p_S < 0.05$); no variant flags one. Interventional rows use background seed 0; seeds 1 and 2 give
+the same verdicts. The smallest attainable adjusted $p$ is $4/(K+1)$. The permuted-label
 model is exchangeable with its null and serves only as a sanity check; the last two rows apply the
 naive null of \cref{sec:method}. The interventional and random forest rows are discussed in
 \cref{sec:variants}.}
 \label{tab:robust}
 \footnotesize
+\setlength{\tabcolsep}{3.2pt}
 \input{ieee_bigdata/tables/robustness}
 \end{table}
 
@@ -409,7 +439,8 @@ tuning search, which resamples inside its folds (\cref{tab:prior}). \Cref{fig:pr
 
 \begin{table}[htbp]
 \centering
-\caption{Positive-class test metrics, sorted by F1; bootstrap 95\% CI for F1.}
+\caption{Positive-class test metrics, sorted by F1; bootstrap 95\% CI for F1. ROC-AUC: area under
+the receiver operating characteristic curve.}
 \label{tab:models}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -443,7 +474,8 @@ rate.}
 \label{sec:audit-results}
 
 % H1 supported for HDF, PWF, OSF
-For HDF, PWF, and OSF the tuned model passes both tests (\cref{tab:audit}, \cref{fig:overview}). On
+For HDF, PWF, and OSF the tuned model passes the relevant-share and specificity tests, and the
+shortcut score flags no mechanism (\cref{tab:audit}, \cref{fig:overview}). On
 each mechanism's held-out rows, the share of attribution on its trigger features exceeds that of
 every permuted-label run, and it exceeds the share on other failures by 0.33 to 0.43, against
 null means below 0.09. The highest-attribution feature is a trigger feature in each case.
@@ -487,11 +519,12 @@ not separate the two models, which supports H3.
 \begin{table}[htbp]
 \centering
 \caption{Shortcut sweep ($K = 500$): test F1, the sensor's share of attribution on HDF rows,
-$R_{\mathrm{HDF}}$, Holm-adjusted HDF $p$-values, and the verdict for the other mechanisms that pass
-the primary audit; $^{\times}$ marks $p \ge 0.05$.}
+$R_{\mathrm{HDF}}$, Holm-adjusted $p$-values for HDF and TWF, and the verdict for PWF and OSF.
+$^{\times}$ marks a failed $R$ or $D$ test ($p \ge 0.05$), $^{\dagger}$ a flagged shortcut
+($p_S < 0.05$).}
 \label{tab:sweep}
-\footnotesize
-\setlength{\tabcolsep}{3pt}
+\scriptsize
+\setlength{\tabcolsep}{2.4pt}
 \input{ieee_bigdata/tables/sweep}
 \end{table}
 
@@ -506,11 +539,19 @@ the primary audit; $^{\times}$ marks $p \ge 0.05$.}
 \Cref{tab:sweep,fig:sweep} show the shortcut sweep. For $\sigma \ge 0.4$ the sensor receives at most
 8\% of the attribution on HDF rows and the audit passes, which is correct because the model barely
 uses it. At $\sigma = 0.35$ the sensor takes 13\% and the relevant-share test passes narrowly
-($p = 0.044$). From $\sigma = 0.3$, where the sensor takes 21\%, the HDF relevant-share test fails,
-and from $\sigma = 0.2$ (43\%) the specificity test fails as well. Test F1 stays between 0.84 and
-0.92 across the sweep, so accuracy does not reveal the shortcut. H2 therefore holds once a shortcut
-takes about a fifth of the attribution, not for lighter reliance. PWF and OSF pass at every noise
-level, and TWF fails at every level, as in the primary audit.
+($p = 0.044$). From $\sigma = 0.3$, where the sensor takes 21\%, the HDF relevant-share test fails;
+from $\sigma = 0.25$ (35\%) the shortcut score flags the sensor as well, and from $\sigma = 0.2$
+(42\%) the specificity test fails. Test F1 stays between 0.84 and 0.92 across the sweep, so accuracy
+does not reveal the shortcut. On the released data H2 therefore holds once a shortcut takes about a
+fifth of the attribution, not for lighter reliance. PWF and OSF pass at every noise level. TWF fails
+the relevant-share test at every level; its specificity test passes narrowly at four levels
+($0.030 \le p \le 0.0499$) and fails at the other seven, so TWF stays near the decision boundary.
+
+% Why the shortcut score is conservative on the released data
+The shortcut score is conservative here because the null runs see the sensor too: a permuted-label
+model gives the sensor attribution on HDF rows, where its values are atypical, so the null mean of
+$S_{\mathrm{HDF}}$ rises to 0.09. This is the confound of the naive null (\cref{sec:method}), and the
+model-randomization null absorbs it.
 
 \subsection{Explainer and model variants}
 \label{sec:variants}
@@ -518,91 +559,72 @@ level, and TWF fails at every level, as in the primary audit.
 % HDF/PWF/OSF robust; TWF depends on the SHAP variant
 The HDF, PWF, and OSF verdicts hold with interventional TreeSHAP and with a random forest
 (\cref{tab:robust}). TWF does not behave consistently: it passes both tests with interventional
-TreeSHAP ($R_{\mathrm{TWF}} = 0.45$, tool wear its top feature) and fails both with the random forest
-($R_{\mathrm{TWF}} = 0.13$, speed its top feature). Path-dependent TreeSHAP spreads credit over
-features correlated with those a tree splits on, and tool wear is correlated with the two overstrain
-features, so the two variants can divide the TWF attribution differently~\cite{aas2021explaining}.
-An audit verdict is therefore a statement about a model \emph{and} an explainer, and a mechanism
-that passes under one explainer only should be reported as unresolved.
+TreeSHAP at every background size and seed ($R_{\mathrm{TWF}}$ between 0.45 and 0.47, tool wear its
+top feature) and fails both with the random forest ($R_{\mathrm{TWF}} = 0.13$, speed its top
+feature). Tool wear has Spearman correlation 0.92 with both overstrain features, and path-dependent
+TreeSHAP spreads credit over features correlated with those a tree splits on, whereas the
+interventional variant breaks that dependence~\cite{aas2021explaining}. An audit verdict is
+therefore a statement about a model \emph{and} an explainer, and a mechanism that passes under one
+explainer only should be reported as unresolved.
 
 \subsection{Scaling (H1, H2)}
 \label{sec:scale}
 
 \begin{table}[htbp]
 \centering
-\caption{Audit on AI4I~2020 re-simulated at size $n$ ($K = 100$): sensor share of attribution on HDF
-rows, $R_{\mathrm{HDF}}$ and its null mean, Holm-adjusted $p$ for $R_{\mathrm{HDF}}$ and
-$D_{\mathrm{TWF}}$, and wall-clock minutes for one audit on eight cores. HDF, PWF, and OSF pass both
-tests in every row except where marked.}
+\caption{Audit on data generated from the AI4I~2020 process at size $n$ ($K = 200$): mean sensor
+share of the HDF attribution, and the fraction of generation seeds in which the HDF shortcut is
+flagged by the relevant-share test ($p_R \ge 0.05$) or the shortcut score ($p_S < 0.05$), TWF passes
+the specificity test, or the shortcut score flags TWF. Min.: wall-clock minutes for one audit on
+eight cores. HDF, PWF, and OSF pass the $R$ and $D$ tests in every run without the sensor.}
 \label{tab:scale}
 \footnotesize
-\setlength{\tabcolsep}{3.5pt}
+\setlength{\tabcolsep}{3pt}
 \input{ieee_bigdata/tables/scale}
 \end{table}
 
-% Power grows for true mechanisms
-With more data the audit gains power for true mechanisms (\cref{tab:scale}). Without the sensor, HDF, PWF, and OSF
-pass both tests at every size, and TWF specificity, which fails on 10{,}000 rows, passes from 30{,}000;
-TWF relevant share fails at every size, so its weak attribution is not a small-sample effect.
+% True mechanisms: stable; TWF stays weak
+Without the sensor, HDF, PWF, and OSF pass the relevant-share and specificity tests and are never
+flagged by the shortcut score, at every size and seed (\cref{tab:scale}). TWF fails the
+relevant-share test in every run; its specificity test passes in one of the seven runs from
+30{,}000 rows and in none at 10{,}000, so more data does not resolve TWF. The shortcut score flags TWF in 3 of the 10 runs without the sensor, each
+time for process temperature, which plays no role in tool wear failure; the effect is small
+($S_{\mathrm{TWF}} \le 0.05$) but indicates that the model uses a non-trigger feature on TWF rows.
 
-% But the p-value stops detecting the shortcut
-The shortcut result does not scale the same way. With more data the model relies less on the sensor
-at a fixed $\sigma$, but at $\sigma = 0.25$ it still gives the sensor 28--35\% of the HDF
-attribution at every size. On up to 100{,}000 rows the relevant-share test flags this; on 300{,}000
-rows it does not ($p = 0.040$), because the null concentrates as $n$ grows ($R_{\mathrm{HDF}}$ of
-0.486 against a null mean of 0.359) while the shortcut still takes more than a quarter of the
-attribution. The model-randomization null tests whether a model uses a mechanism's features more
-than a model that learned nothing, not whether it uses them exclusively, and at scale that bar is
-low. The attribution share itself does reveal the shortcut: $R_{\mathrm{HDF}}$ drops from 0.755
-without the sensor to 0.486 with it. We therefore report $R_m$ and $D_m$ as effect sizes next to
-their $p$-values, and read a pass as ``better than chance'' rather than ``free of shortcuts''.
+% Shortcut: relevant share misses it at scale, the shortcut score does not
+The two shortcut tests diverge as $n$ grows. At $\sigma = 0.25$ the sensor takes 27--45\% of the
+HDF attribution. The relevant-share test flags it in all nine runs up to 100{,}000 rows but not at
+300{,}000, where $R_{\mathrm{HDF}} = 0.472$ still exceeds the 95th null percentile of 0.417: with
+more data the null tightens, and ``more than a model that learned nothing'' becomes a low bar. The
+shortcut score flags the sensor in all ten runs, including at 300{,}000 rows ($S_{\mathrm{HDF}} =
+0.249$ against a 95th percentile of 0.211). Neither test flags the lighter shortcut at $\sigma =
+0.35$ (6--20\% of the attribution) except the relevant-share test in two runs at 10{,}000 rows. H2
+therefore holds at every size for a shortcut that takes about a third of the attribution, provided
+the audit includes the shortcut score, and does not hold for a shortcut of a tenth.
 
 % Cost
-Cost grows with $n$ and $K$: one audit with $K = 100$ takes 1 minute at 10{,}000 rows and 23 minutes
-at 300{,}000 on eight cores, and one cross-fitted run at $10^6$ rows (34{,}285 failures) takes
-93\,s on one core, so $K = 1{,}000$ at that size needs at least 3 hours on eight cores. The null runs
-are independent and parallelize across machines.
+The audit costs $5(K+1)$ model fits. One cross-fitted run takes 1.3\,s at $10^4$ rows, 31\,s at
+$3 \cdot 10^5$, and 115\,s at $10^6$ (38{,}230 failures) on one core, roughly linear in $n$. On eight
+cores an audit with $K = 200$ took 3 minutes at $10^4$ rows and about an hour at $3 \cdot 10^5$, four
+times the ideal because parallel runs compete for memory bandwidth; at $10^6$ rows and $K = 1{,}000$
+the ideal is 4 hours on eight cores and, with the same slowdown, about 16. The runs are independent,
+so the cost divides across machines.
 
-\subsection{Resampling and feature-space structure}
+\subsection{Resampling}
 \label{sec:structure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.9\textwidth]{decision_boundary_2d.pdf}
-\caption{Logistic regression decision boundary on a two-dimensional principal component analysis
-(PCA) projection of the training data, for each resampler.}
-\label{fig:boundary}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.78\textwidth]{dimred_comparison.pdf}
-\caption{PCA, t-SNE, and UMAP projections of the training data, colored by \texttt{Machine failure}.}
-\label{fig:dimred}
-\end{figure}
 
 \begin{table}[htbp]
 \centering
-\caption{Oversampler comparison on the validation set (default XGBoost).}
+\caption{Oversampler comparison on the validation set (default XGBoost). PR-AUC: area under the
+precision-recall curve.}
 \label{tab:resamplers}
 \footnotesize
 \input{ieee_bigdata/tables/resamplers}
 \end{table}
 
 % Resampling effect
-Borderline-SMOTE has the highest validation F1 (\cref{tab:resamplers}). \Cref{fig:boundary} shows its
-geometric effect on a logistic regression fitted to a two-dimensional PCA projection: without
-resampling the decision boundary barely reaches the failure class, and each oversampler moves it
-into the majority class, trading precision for recall.
-
-% Structure consistent with several mechanisms
-\Cref{fig:dimred} projects the training data with PCA, t-distributed stochastic neighbor embedding
-(t-SNE)~\cite{vandermaaten2008tsne}, and uniform manifold approximation and projection
-(UMAP)~\cite{mcinnes2018umap}. The classes overlap in the linear projection, consistent with the low
-F1 of the linear models, while failures form several separate groups in the nonlinear ones,
-consistent with several distinct mechanisms. The groups persist at t-SNE perplexities from 5 to
-100 (repository figure), which matters because t-SNE shapes depend on
-perplexity~\cite{wattenberg2016misread}.
+Borderline-SMOTE has the highest validation F1 (\cref{tab:resamplers}), with the other two
+oversamplers trading precision for recall.
 
 \subsection{Limitations}
 \label{sec:limits}
@@ -615,12 +637,14 @@ realistic irregularities added to AI4I~2020 change model performance, so results
 may not transfer.
 
 % Audit-specific
-The permutation test detects reliance on a shortcut from about a fifth of the attribution on the
-released data but not below, and on large data not even at a quarter, so its $p$-value must be read
-with the effect size. The audit needs the trigger features
-$E_m$ to be known, and the derived features influence its outcomes. We audit two model families and two
-explainers on one simulator, released at 10{,}000 rows and re-simulated at up to $10^6$; mechanisms
-with few rows, such as TWF and RNF, give weak evidence either way.
+The audit detects a shortcut that takes a fifth to a third of the attribution but not one that
+takes a tenth; without the shortcut score, the relevant-share test alone misses even a quarter on
+large data. We test one kind of shortcut, a noisy copy of one mechanism's flag. The audit needs the
+trigger features $E_m$ to be known, the derived features influence the HDF verdict, and the TWF
+verdict depends on the explainer. We audit two model families and two explainers on one simulator,
+released at 10{,}000 rows and generated at up to $3 \cdot 10^5$; the generator follows the documented
+process but draws rows independently. Mechanisms with few rows, such as TWF and RNF, give weak
+evidence either way.
 
 \section{Conclusion}
 \label{sec:conclusion}
@@ -628,11 +652,12 @@ with few rows, such as TWF and RNF, give weak evidence either way.
 % Recap
 We audited SHAP explanations of a PdM classifier against failure mechanisms that the model never
 saw. With out-of-sample attributions, a model-randomization null, and Holm correction, the tuned
-model's explanations match the heat dissipation, power, and overstrain mechanisms in all five seeds,
-but not tool wear failure, which passes only when SHAP is computed on training rows. The audit flags
-a shortcut sensor once it carries about a fifth of the attribution, while accuracy stays unchanged,
-but on 300{,}000 re-simulated rows its $p$-value no longer does, and only the drop in the attribution
-share shows the shortcut. The tool wear verdict changes with the SHAP variant.
+model's explanations match the heat dissipation, power, and overstrain mechanisms in all five
+seeds, with two explainers and two model families; the tool wear verdict depends on the explainer.
+The audit flags a shortcut sensor once it carries a fifth to a third of the attribution, while
+accuracy stays unchanged. On larger generated data the relevant-share test alone stops flagging such
+a shortcut, and a converse statistic -- whether a non-trigger feature takes attribution specifically
+on the mechanism's rows -- is needed to keep detecting it.
 A naive null that compares random failure rows under the same model passes a permuted-label model,
 so subgroup attribution tests need a null that accounts for how atypical the audited rows are.
 
@@ -640,8 +665,8 @@ so subgroup attribution tests need a null that accounts for how atypical the aud
 The audit applies wherever maintenance records log a root cause for failures that a model predicts
 as a binary risk; we have not measured how common such records are. Next steps are real maintenance
 logs with recorded root causes, process data with labeled fault types such as the extended Tennessee
-Eastman simulation~\cite{rieth2017tepdata,rieth2018issues}, a null with an effect-size margin so that
-a pass also bounds reliance on shortcuts, and a formal power analysis of the shortcut threshold.
+Eastman simulation~\cite{rieth2017tepdata,rieth2018issues}, shortcuts other than noisy label
+copies, and a formal power analysis of the detection threshold.
 
 \section*{Acknowledgment}
 Portions of the manuscript text and the analysis code were drafted with the assistance of an AI

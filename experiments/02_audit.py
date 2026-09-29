@@ -38,6 +38,7 @@ def timed(name, **kw):
     a = res['all']
     print(f'{name:<24} {time.time() - t0:6.0f}s  p(R)={ {m: round(v, 4) for m, v in a["p_holm_R"].items()} }'
           f'  p(D)={ {m: round(v, 4) for m, v in a["p_holm_D"].items()} }', flush=True)
+    res['seconds'] = time.time() - t0
     return res
 
 

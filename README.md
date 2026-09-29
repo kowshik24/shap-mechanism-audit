@@ -81,7 +81,9 @@ each mechanism the audit computes out-of-sample SHAP (5-fold cross-fitting) and 
 
 - **relevant share** R — fraction of attribution on the mechanism's rows that falls on its trigger
   features;
-- **specificity** D — how much larger that share is on the mechanism's rows than on other failures.
+- **specificity** D — how much larger that share is on the mechanism's rows than on other failures;
+- **shortcut score** S — the largest excess share any *non*-trigger feature takes on the mechanism's
+  rows (large S flags a shortcut).
 
 Both are compared with 1,000 copies of the full pipeline retrained on permuted labels, with Holm
 correction over the four physical mechanisms.
@@ -94,13 +96,13 @@ correction over the four physical mechanisms.
 | OSF (overstrain) | `Overstrain_ratio` | 0.67 | 0.42 | passes (p = 0.004) |
 | RNF (random) | no dominant feature | — | — | descriptive only |
 
-HDF, PWF, and OSF pass in all five seeds, with interventional TreeSHAP, with a random forest, and
-(PWF, OSF) without the rule-derived features. TWF passes only in-sample or with interventional
-TreeSHAP, so its verdict is unresolved. Controls: a model trained on shuffled labels fails every
-test (a naive "random failure subset" null would wrongly pass it), and a planted shortcut sensor is
-flagged once it takes about a fifth of the HDF attribution. On AI4I re-simulated at 300k rows the
-p-value no longer flags a sensor that takes 28% of the attribution, though the drop in R shows it:
-a pass means "better than a model that learned nothing", not "free of shortcuts".
+HDF, PWF, and OSF pass in all five seeds, with interventional TreeSHAP (backgrounds of 100–1000
+rows), with a random forest, and (PWF, OSF) without the rule-derived features. TWF passes only
+in-sample or with interventional TreeSHAP, so its verdict is unresolved. Controls: a model trained
+on shuffled labels fails every test (a naive "random failure subset" null would wrongly pass it),
+and a planted shortcut sensor is flagged once it takes a fifth to a third of the HDF attribution.
+On data generated from the AI4I process at up to 300k rows (`src/pdm_audit/sim.py`), the R test
+alone misses a sensor taking 27% of the attribution; S still flags it in every run.
 
 ![audit overview](paper/figures/audit_overview.png)
 
@@ -153,7 +155,7 @@ The code in `src/pdm_audit/` (data, models, audit statistics, metrics) and the n
 (`paper/ieee_bigdata/main.tex`). The notebook is the exploratory record and is not needed.
 
 ```bash
-./reproduce.sh          # everything, ~4.5 h on 8 cores; ends with paper/ieee_bigdata/main.pdf
+./reproduce.sh          # everything, ~9 h on 8 cores; ends with paper/ieee_bigdata/main.pdf
 ./reproduce.sh --quick  # smoke test of the audit stages with tiny K
 ```
 
@@ -166,8 +168,8 @@ or stage by stage:
 | 3 | `experiments/03_shortcut_sweep.py` | graded shortcut experiment (~11 min) |
 | 4 | `experiments/04_tables.py` | LaTeX tables in `paper/ieee_bigdata/tables/` |
 | 5 | `experiments/05_figures.py` | figures in `paper/figures/` |
-| 6 | `experiments/06_explainers.py` | interventional TreeSHAP and random-forest variants (~26 min) |
-| 7 | `experiments/07_scale.py` | audit on AI4I re-simulated at 10k–300k rows, cost at 1M (~2.5 h) |
+| 6 | `experiments/06_explainers.py` | interventional TreeSHAP (3 background sizes, 3 seeds) and random forest (~55 min) |
+| 7 | `experiments/07_scale.py` | audit on AI4I generated at 10k–300k rows (3 seeds), cost at 1M (~6 h) |
 
 Stages 2–7 read the outputs of stage 1 (4 and 5 also read 2, 3, 6, 7) from `experiments/results/`. Tables are generated, never
 typed by hand. Seeds are fixed, and re-running a stage reproduces its numbers exactly. Unit tests for
