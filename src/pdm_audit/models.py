@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import xgboost as xgb
 from imblearn.over_sampling import ADASYN, SMOTE, BorderlineSMOTE
+from imblearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
@@ -49,14 +50,20 @@ def baseline_models(seed=SEED):
     }
 
 
-def tune_xgb(X, y, seed=SEED):
+def tune_xgb(X, y, sampler='Borderline-SMOTE', seed=SEED):
+    """
+    Randomized search on the original (not resampled) training rows. The oversampler sits inside
+    the pipeline, so each CV fold resamples only its own training part and is scored on real rows.
+    """
+    pipe = Pipeline([('sampler', resampler(sampler, seed)),
+                     ('xgb', xgb.XGBClassifier(eval_metric='logloss', random_state=seed, n_jobs=1))])
     search = RandomizedSearchCV(
-        xgb.XGBClassifier(eval_metric='logloss', random_state=seed, n_jobs=1),
-        XGB_SEARCH_SPACE, n_iter=XGB_SEARCH_ITER, scoring='f1',
+        pipe, {f'xgb__{k}': v for k, v in XGB_SEARCH_SPACE.items()}, n_iter=XGB_SEARCH_ITER, scoring='f1',
         cv=StratifiedKFold(n_splits=5, shuffle=True, random_state=seed),
         random_state=seed, n_jobs=1)
     search.fit(X, y)
-    return search.best_params_, float(search.best_score_)
+    params = {k.removeprefix('xgb__'): v for k, v in search.best_params_.items()}
+    return params, float(search.best_score_)
 
 
 def f1_threshold(y_true, proba):
@@ -99,12 +106,15 @@ def train_mlp(X, y, seed=SEED, epochs=40):
     return predict_proba
 
 
-def fit_pipeline(df: pd.DataFrame, train_idx, numeric_cols, params, seed=SEED, y=None):
-    """Preprocess -> Borderline-SMOTE -> tuned XGBoost on the given rows. `y` overrides the labels."""
+def fit_pipeline(df: pd.DataFrame, train_idx, numeric_cols, params, seed=SEED, y=None, model='xgb'):
+    """
+    Preprocess -> Borderline-SMOTE -> tuned XGBoost (or, with model='rf', the random forest of
+    baseline_models) on the given rows. `y` overrides the labels.
+    """
     labels = df['Machine failure'] if y is None else y
     cols = list(numeric_cols) + ['Type']
     pre = make_preprocessor(numeric_cols)
     X_tr = pre.fit_transform(df.loc[train_idx, cols])
     X_res, y_res = resampler('Borderline-SMOTE', seed).fit_resample(X_tr, labels.loc[train_idx])
-    model = tuned_xgb(params, seed).fit(X_res, y_res)
-    return pre, model
+    est = tuned_xgb(params, seed) if model == 'xgb' else baseline_models(seed)['Random forest']
+    return pre, est.fit(X_res, y_res)

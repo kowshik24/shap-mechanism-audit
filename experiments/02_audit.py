@@ -4,7 +4,7 @@ Stage 2: the SHAP failure-mechanism audit and its robustness variants.
   primary       cross-fitted (out-of-sample SHAP), seed 42, K permuted-label models
   seeds         the primary analysis repeated with other seeds (smaller K)
   raw           raw sensor features only (circularity check)
-  in_sample     SHAP on a single model's own rows, as in the first version of the analysis
+  in_sample     one model fitted on all rows explains those same rows (fully in-sample SHAP)
   permuted      a model trained on permuted labels (sanity check only: exchangeable with the null)
 
 Usage: python experiments/02_audit.py [--quick]
@@ -19,7 +19,7 @@ import pandas as pd
 
 from pdm_audit.audit import run_audit
 from pdm_audit.config import ENGINEERED, MODELS_DIR, RAW_NUMERIC, RESULTS_DIR, SEED
-from pdm_audit.data import load, split
+from pdm_audit.data import load
 
 ap = argparse.ArgumentParser()
 ap.add_argument('--quick', action='store_true', help='tiny K for a smoke test')
@@ -29,7 +29,6 @@ SEEDS = [1, 2, 3, 4]
 
 df = load()
 params = json.loads((MODELS_DIR / 'xgboost_params.json').read_text())
-idx_train, _, _ = split(df)
 results = {'K_main': K_MAIN, 'K_robust': K_ROBUST}
 
 
@@ -45,9 +44,9 @@ def timed(name, **kw):
 results['primary'] = timed('primary', numeric_cols=ENGINEERED, params=params, seed=SEED, K=K_MAIN)
 results['seeds'] = {str(s): timed(f'seed {s}', numeric_cols=ENGINEERED, params=params, seed=s, K=K_ROBUST)
                     for s in SEEDS}
-results['raw'] = timed('raw features', numeric_cols=RAW_NUMERIC, params=params, seed=SEED, K=K_ROBUST)
+results['raw'] = timed('raw features', numeric_cols=RAW_NUMERIC, params=params, seed=SEED, K=K_MAIN)
 results['in_sample'] = timed('in-sample', numeric_cols=ENGINEERED, params=params, seed=SEED, K=K_MAIN,
-                             cross_fit=False, train_idx=idx_train)
+                             cross_fit=False, train_idx=df.index)
 y = df['Machine failure']
 perm = pd.Series(np.random.default_rng(7).permutation(y.values), index=y.index)
 results['permuted'] = timed('permuted labels', numeric_cols=ENGINEERED, params=params, seed=SEED,

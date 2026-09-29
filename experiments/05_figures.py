@@ -79,14 +79,14 @@ for r in rows:
         ax.scatter(r['sigma'], r['R_HDF'], s=90, facecolors='none', edgecolors='k', linewidths=1, zorder=4)
 ax.set(xscale='log', xlabel='Shortcut noise $\\sigma$ (stronger shortcut $\\rightarrow$)', ylabel='Attribution share', ylim=(0, 1))
 ax.invert_xaxis()
-ax.legend(frameon=False, loc='center left', fontsize=6.5)
+ax.legend(frameon=False, loc='lower center', bbox_to_anchor=(0.5, 1.0), ncol=2, fontsize=7)
 save(fig, 'shortcut_sweep')
 
 # ---- attribution heatmap from cross-fitted (out-of-sample) SHAP of the primary analysis
 mat = pd.DataFrame(prim['mean_abs_shap']).rename(columns=lambda m: f'{m}\n(n={bench["label_facts"]["mode_counts"][m]})')
-fig, ax = plt.subplots(figsize=(4.4, 3.9))
+fig, ax = plt.subplots(figsize=(3.6, 3.4))
 sns.heatmap(mat, annot=True, fmt='.2f', cmap='viridis', ax=ax, cbar_kws={'label': 'mean |SHAP|'},
-            annot_kws={'fontsize': 6.5})
+            annot_kws={'fontsize': 7.5})
 ax.set(xlabel='Failure mechanism', ylabel='')
 plt.setp(ax.get_xticklabels(), rotation=0)
 save(fig, 'shap_crosscheck_heatmap')
@@ -94,14 +94,15 @@ save(fig, 'shap_crosscheck_heatmap')
 # ---- PR curves and confusion matrix (test split)
 y_test = preds['y_test']
 order = ['Logistic regression', 'SVM', 'k-NN', 'Decision tree', 'Random forest', 'MLP', 'XGBoost', 'XGBoost (tuned)']
-fig, ax = plt.subplots(figsize=(3.6, 4.2))
+fig, ax = plt.subplots(figsize=(3.4, 3.9))
 for name, color in zip(order, sns.color_palette('colorblind', len(order))):
     prec, rec, _ = precision_recall_curve(y_test, preds[name])
     ax.plot(rec, prec, color=color, linewidth=2.2 if name == 'XGBoost (tuned)' else 1.1,
             label=f'{name} ({average_precision_score(y_test, preds[name]):.3f})')
 ax.axhline(y_test.mean(), color='k', linestyle='--', linewidth=0.8)
 ax.set(xlabel='Recall', ylabel='Precision')
-ax.legend(frameon=False, fontsize=6, loc='upper center', bbox_to_anchor=(0.5, -0.18), ncol=2)
+ax.legend(frameon=False, fontsize=7, loc='upper center', bbox_to_anchor=(0.5, -0.16), ncol=2,
+          handlelength=1.2, columnspacing=0.8)
 save(fig, 'pr_curves')
 
 cm = np.array(bench['confusion_matrix_tuned'])
@@ -138,9 +139,9 @@ P = pca.fit_transform(Xtr)
 
 
 def scatter(ax, Z):
-    for cls, color, label in [(0, C_NEG, 'No failure'), (1, C_POS, 'Failure')]:
+    for cls, color, label, size, alpha in [(0, '0.75', 'No failure', 2, 0.4), (1, C_POS, 'Failure', 7, 0.9)]:
         m = ytr == cls
-        ax.scatter(Z[m, 0], Z[m, 1], s=3, alpha=0.5, color=color, label=label, rasterized=True, linewidths=0)
+        ax.scatter(Z[m, 0], Z[m, 1], s=size, alpha=alpha, color=color, label=label, rasterized=True, linewidths=0)
 
 
 fig, axes = plt.subplots(1, 4, figsize=(12, 3))

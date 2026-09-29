@@ -31,7 +31,7 @@ instead of the default 0.5.
 
 | Model | Precision | Recall | F1 | ROC-AUC |
 |---|---|---|---|---|
-| **XGBoost (tuned)** | **1.00** | 0.82 | **0.90** | 0.984 |
+| **XGBoost (tuned)** | **1.00** | 0.79 | **0.89** | 0.988 |
 | XGBoost (baseline) | 0.86 | 0.88 | 0.87 | 0.988 |
 | Random Forest | 0.79 | 0.88 | 0.83 | 0.989 |
 | PyTorch MLP | 0.65 | 0.91 | 0.76 | 0.988 |
@@ -51,9 +51,9 @@ carving out its own little neighborhood in feature space instead of one shared "
 ![PCA vs t-SNE vs UMAP](assets/images/dimred_comparison.png)
 
 Numbers above are from `experiments/01_benchmark.py` on the 1,000-row test split (34 failures, so
-the tuned model's precision of 1.00 has a 95% Clopper–Pearson interval of 0.88–1.00). 5-fold CV of the
-whole pipeline (Borderline-SMOTE inside the folds, default threshold): F1 = 0.823 ± 0.016,
-macro-F1 = 0.908 ± 0.009. The notebook's older CV cell used plain SMOTE and reported 0.784; the
+the tuned model's precision of 1.00 has a 95% Clopper–Pearson interval of 0.87–1.00). 5-fold CV of the
+whole pipeline (Borderline-SMOTE inside the folds, default threshold): F1 = 0.822 ± 0.013,
+macro-F1 = 0.908 ± 0.007. Hyperparameter search also resamples inside its folds (search CV F1 0.831). The notebook's older CV cell used plain SMOTE and reported 0.784; the
 script is the reference.
 
 Class imbalance is why accuracy is useless here — a model that predicts "no failure" every time
@@ -88,16 +88,19 @@ correction over the four physical mechanisms.
 
 | Mechanism | Top out-of-sample SHAP feature | R | D | Verdict |
 |---|---|---|---|---|
-| TWF (tool wear) | `Rotational speed [rpm]` | 0.20 | 0.13 | fails R (p = 0.096) |
-| HDF (heat dissipation) | `Rotational speed [rpm]` | 0.73 | 0.41 | passes (p = 0.004) |
-| PWF (power) | `Power [W]` | 0.67 | 0.29 | passes (p = 0.004) |
-| OSF (overstrain) | `Overstrain_ratio` | 0.63 | 0.39 | passes (p = 0.004) |
+| TWF (tool wear) | `Tool wear [min]` | 0.19 | 0.13 | fails both (p = 0.20, 0.077) |
+| HDF (heat dissipation) | `Rotational speed [rpm]` | 0.71 | 0.43 | passes (p = 0.004) |
+| PWF (power) | `Power [W]` | 0.70 | 0.33 | passes (p = 0.004) |
+| OSF (overstrain) | `Overstrain_ratio` | 0.67 | 0.42 | passes (p = 0.004) |
 | RNF (random) | no dominant feature | — | — | descriptive only |
 
-HDF, PWF, and OSF pass in all five seeds. TWF passes only when SHAP is computed on training rows,
-which is why the audit uses held-out rows. Two controls: a model trained on shuffled labels fails
-every test (a naive "random failure subset" null would wrongly pass it), and a planted shortcut
-sensor is flagged once it takes about a third of the HDF attribution.
+HDF, PWF, and OSF pass in all five seeds, with interventional TreeSHAP, with a random forest, and
+(PWF, OSF) without the rule-derived features. TWF passes only in-sample or with interventional
+TreeSHAP, so its verdict is unresolved. Controls: a model trained on shuffled labels fails every
+test (a naive "random failure subset" null would wrongly pass it), and a planted shortcut sensor is
+flagged once it takes about a fifth of the HDF attribution. On AI4I re-simulated at 300k rows the
+p-value no longer flags a sensor that takes 28% of the attribution, though the drop in R shows it:
+a pass means "better than a model that learned nothing", not "free of shortcuts".
 
 ![audit overview](paper/figures/audit_overview.png)
 
@@ -150,7 +153,7 @@ The code in `src/pdm_audit/` (data, models, audit statistics, metrics) and the n
 (`paper/ieee_bigdata/main.tex`). The notebook is the exploratory record and is not needed.
 
 ```bash
-./reproduce.sh          # everything, ~45 min on 8 cores; ends with paper/ieee_bigdata/main.pdf
+./reproduce.sh          # everything, ~4.5 h on 8 cores; ends with paper/ieee_bigdata/main.pdf
 ./reproduce.sh --quick  # smoke test of the audit stages with tiny K
 ```
 
@@ -163,8 +166,10 @@ or stage by stage:
 | 3 | `experiments/03_shortcut_sweep.py` | graded shortcut experiment (~11 min) |
 | 4 | `experiments/04_tables.py` | LaTeX tables in `paper/ieee_bigdata/tables/` |
 | 5 | `experiments/05_figures.py` | figures in `paper/figures/` |
+| 6 | `experiments/06_explainers.py` | interventional TreeSHAP and random-forest variants (~26 min) |
+| 7 | `experiments/07_scale.py` | audit on AI4I re-simulated at 10k–300k rows, cost at 1M (~2.5 h) |
 
-Stages 2–5 read the outputs of stage 1 from `experiments/results/`. Tables are generated, never
+Stages 2–7 read the outputs of stage 1 (4 and 5 also read 2, 3, 6, 7) from `experiments/results/`. Tables are generated, never
 typed by hand. Seeds are fixed, and re-running a stage reproduces its numbers exactly. Unit tests for
 the audit statistics: `python -m pytest`.
 
@@ -172,7 +177,7 @@ the audit statistics: `python -m pytest`.
 
 ```
 dataset/ai4i2020.csv      raw data
-src/pdm_audit/            package: config, data, models, audit statistics, metrics
+src/pdm_audit/            package: config, data, models, audit statistics, metrics, simulator
 src/predict.py            CLI inference on new rows
 experiments/              numbered pipeline stages; results/ holds their outputs
 tests/                    unit tests

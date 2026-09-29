@@ -11,6 +11,8 @@ python -m pytest -q
 python experiments/01_benchmark.py
 python experiments/02_audit.py "$@"
 python experiments/03_shortcut_sweep.py "$@"
+python experiments/06_explainers.py "$@"
+python experiments/07_scale.py "$@"
 
 if [[ "${1:-}" != "--quick" ]]; then
   python experiments/04_tables.py

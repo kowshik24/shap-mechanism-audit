@@ -22,9 +22,26 @@ from .data import mechanism_groups
 from .models import feature_names, fit_pipeline
 
 
-def abs_shap(model, pre, df, rows, numeric_cols):
-    X = pre.transform(df.loc[rows, list(numeric_cols) + ['Type']])
-    sv = shap.TreeExplainer(model).shap_values(X)
+N_BACKGROUND = 200  # shap subsamples this to 100 rows (its max_samples default, fixed seed)
+
+
+def abs_shap(model, pre, df, rows, numeric_cols, explainer='path', background_rows=None, seed=SEED):
+    """
+    |SHAP| per row and feature. explainer='path' is path-dependent TreeSHAP; 'interventional'
+    averages over a background of N_BACKGROUND rows drawn from `background_rows` (training rows).
+    """
+    cols = list(numeric_cols) + ['Type']
+    X = pre.transform(df.loc[rows, cols])
+    if explainer == 'path':
+        tree = shap.TreeExplainer(model)
+    else:
+        bg = np.random.default_rng(seed).choice(background_rows, N_BACKGROUND, replace=False)
+        # XGBoost >= 3 marks sklearn models as categorical-enabled, which shap refuses for the
+        # interventional algorithm; the booster carries the same trees (all splits here are numeric)
+        est = model.get_booster() if hasattr(model, 'get_booster') else model
+        tree = shap.TreeExplainer(est, data=pre.transform(df.loc[bg, cols]),
+                                  feature_perturbation='interventional')
+    sv = tree.shap_values(X, check_additivity=False)
     if isinstance(sv, list):
         sv = sv[1]
     elif np.ndim(sv) == 3:
@@ -37,20 +54,20 @@ def audit_rows(df):
     return np.union1d(df.index[df['Machine failure'] == 1], df.index[df['RNF'] == 1])
 
 
-def shap_in_sample(df, train_idx, numeric_cols, params, seed, labels=None):
-    pre, model = fit_pipeline(df, train_idx, numeric_cols, params, seed, y=labels)
-    return abs_shap(model, pre, df, audit_rows(df), numeric_cols)
+def shap_in_sample(df, train_idx, numeric_cols, params, seed, labels=None, model='xgb', explainer='path'):
+    pre, est = fit_pipeline(df, train_idx, numeric_cols, params, seed, y=labels, model=model)
+    return abs_shap(est, pre, df, audit_rows(df), numeric_cols, explainer, train_idx, seed)
 
 
-def shap_cross_fitted(df, numeric_cols, params, seed, labels=None, n_folds=5):
+def shap_cross_fitted(df, numeric_cols, params, seed, labels=None, n_folds=5, model='xgb', explainer='path'):
     """Out-of-sample SHAP: each row is explained by a model that never saw it in training."""
     y = df['Machine failure']
     rows = audit_rows(df)
     parts = []
     for tr, te in StratifiedKFold(n_folds, shuffle=True, random_state=seed).split(df, y):
-        pre, model = fit_pipeline(df, df.index[tr], numeric_cols, params, seed, y=labels)
+        pre, est = fit_pipeline(df, df.index[tr], numeric_cols, params, seed, y=labels, model=model)
         held_out = np.intersect1d(df.index[te], rows)
-        parts.append(abs_shap(model, pre, df, held_out, numeric_cols))
+        parts.append(abs_shap(est, pre, df, held_out, numeric_cols, explainer, df.index[tr], seed))
     return pd.concat(parts).loc[rows]
 
 
@@ -107,35 +124,37 @@ def naive_null_p(A, df, groups, n_draws=2000, seed=0):
     return out
 
 
-def _null_draw(k, df, numeric_cols, params, seed, train_idx, cross_fit, groups_by_name, extra):
+def _null_draw(k, df, numeric_cols, params, seed, train_idx, cross_fit, groups_by_name, extra, fit_kw):
     rng = np.random.default_rng(seed * 100_003 + k)
     y = df['Machine failure']
     perm = pd.Series(y.values, index=y.index)
     if cross_fit:
         perm[:] = rng.permutation(y.values)
-        A = shap_cross_fitted(df, numeric_cols, params, seed, labels=perm)
+        A = shap_cross_fitted(df, numeric_cols, params, seed, labels=perm, **fit_kw)
     else:
         perm.loc[train_idx] = rng.permutation(y.loc[train_idx].values)
-        A = shap_in_sample(df, train_idx, numeric_cols, params, seed, labels=perm)
+        A = shap_in_sample(df, train_idx, numeric_cols, params, seed, labels=perm, **fit_kw)
     return {name: statistics(A, df, g, extra) for name, g in groups_by_name.items()}
 
 
 def run_audit(df, numeric_cols, params, *, seed=SEED, K=100, cross_fit=True, train_idx=None,
-              extra_features=(), n_jobs=-1, observed_labels=None):
+              extra_features=(), n_jobs=-1, observed_labels=None, model='xgb', explainer='path'):
     """
     Observed statistics, a K-model randomization null, p-values and Holm-adjusted p-values, for
-    all flagged rows ('all') and single-mechanism rows ('single').
+    all flagged rows ('all') and single-mechanism rows ('single'). `model` ('xgb', 'rf') and
+    `explainer` ('path', 'interventional') apply to the audited model and every null run alike.
     """
+    fit_kw = {'model': model, 'explainer': explainer}
     groups_by_name = {'all': mechanism_groups(df), 'single': mechanism_groups(df, exclusive=True)}
     if cross_fit:
-        A = shap_cross_fitted(df, numeric_cols, params, seed, labels=observed_labels)
+        A = shap_cross_fitted(df, numeric_cols, params, seed, labels=observed_labels, **fit_kw)
     else:
-        A = shap_in_sample(df, train_idx, numeric_cols, params, seed, labels=observed_labels)
+        A = shap_in_sample(df, train_idx, numeric_cols, params, seed, labels=observed_labels, **fit_kw)
     observed = {name: statistics(A, df, g, extra_features) for name, g in groups_by_name.items()}
 
     draws = Parallel(n_jobs=n_jobs)(
         delayed(_null_draw)(k, df, numeric_cols, params, seed, train_idx, cross_fit, groups_by_name,
-                            extra_features) for k in range(K))
+                            extra_features, fit_kw) for k in range(K))
 
     result = {'seed': seed, 'K': K, 'cross_fit': cross_fit, 'observed': observed,
               'naive_null_p': naive_null_p(A, df, groups_by_name['all']),

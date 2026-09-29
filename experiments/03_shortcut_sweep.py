@@ -23,8 +23,8 @@ from pdm_audit.models import f1_threshold, fit_pipeline
 ap = argparse.ArgumentParser()
 ap.add_argument('--quick', action='store_true')
 args = ap.parse_args()
-K = 4 if args.quick else 100
-SIGMAS = [2.0, 1.0, 0.67, 0.5, 0.35, 0.25, 0.15, 0.1]
+K = 4 if args.quick else 500
+SIGMAS = [2.0, 1.0, 0.67, 0.5, 0.4, 0.35, 0.3, 0.25, 0.2, 0.15, 0.1]
 
 base = load()
 params = json.loads((MODELS_DIR / 'xgboost_params.json').read_text())

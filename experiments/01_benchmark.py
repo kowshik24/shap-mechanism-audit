@@ -49,7 +49,7 @@ print('selected on validation:', selected, round(val_metrics[selected]['f1'], 3)
 assert selected == 'XGBoost', 'tuning below assumes XGBoost is selected'
 
 # ---- tuning + threshold
-params, cv_f1 = tune_xgb(X_res, y_res)
+params, cv_f1 = tune_xgb(X_train, y_train, best_sampler)
 tuned = tuned_xgb(params).fit(X_res, y_res)
 predictors['XGBoost (tuned)'] = tuned.predict_proba
 threshold = f1_threshold(y_val, tuned.predict_proba(X_val)[:, 1])

@@ -10,6 +10,8 @@ from pdm_audit.config import PHYSICAL, RESULTS_DIR, TABLES_DIR
 bench = json.loads((RESULTS_DIR / 'benchmark.json').read_text())
 audit = json.loads((RESULTS_DIR / 'audit.json').read_text())
 sweep = json.loads((RESULTS_DIR / 'shortcut_sweep.json').read_text())
+explainers = json.loads((RESULTS_DIR / 'explainers.json').read_text())
+scale = json.loads((RESULTS_DIR / 'scale.json').read_text())
 TABLES_DIR.mkdir(parents=True, exist_ok=True)
 
 SHORT = {'Tool wear [min]': 'tool wear', 'Rotational speed [rpm]': 'speed', 'Power [W]': 'power',
@@ -55,10 +57,8 @@ tuned, cv = bench['test']['XGBoost (tuned)'], bench['cv5_default_threshold']
 write('prior', [
     r'\begin{tabular}{@{}llr@{}}', r'\toprule', r'Study and protocol & Metric & Value \\', r'\midrule',
     r'Random forest, single split~\cite{physicsinformed2026} & pos.-class F1 & 0.722 \\',
-    r'LightGBM, 5-fold CV~\cite{connectedvehicles2026} & macro-F1 & $0.814 \pm 0.012$ \\',
     f"Ours, single split & pos.-class F1 & {f2(tuned['f1'])} \\\\",
     f"Ours, 5-fold CV & pos.-class F1 & ${f3(cv['f1'][0])} \\pm {f3(cv['f1'][1])}$ \\\\",
-    f"Ours, 5-fold CV & macro-F1 & ${f3(cv['macro_f1'][0])} \\pm {f3(cv['macro_f1'][1])}$ \\\\",
     r'\bottomrule', r'\end{tabular}'])
 
 # ---- oversamplers
@@ -106,6 +106,8 @@ write('audit', lines + [r'\bottomrule', r'\end{tabular}'])
 variants = [('Primary, seed 42', prim, 'all'), ('\\quad single-mechanism rows', prim, 'single')]
 variants += [(f'Seed {s}', audit['seeds'][s], 'all') for s in sorted(audit['seeds'])]
 variants += [('Raw features only', audit['raw'], 'all'), ('In-sample SHAP', audit['in_sample'], 'all'),
+             ('Interventional TreeSHAP', explainers['interventional'], 'all'),
+             ('Random forest', explainers['random_forest'], 'all'),
              ('Permuted labels (sanity)', audit['permuted'], 'all')]
 lines = [r'\begin{tabular}{@{}lr' + 'rr' * len(PHYSICAL) + r'@{}}', r'\toprule',
          r'& & ' + ' & '.join(rf'\multicolumn{{2}}{{c}}{{{m}}}' for m in PHYSICAL) + r' \\',
@@ -115,18 +117,36 @@ for label, res, grp in variants:
     a = res[grp]
     cells = [f"{pv(a['p_holm_R'][m])} & {pv(a['p_holm_D'][m])}" for m in PHYSICAL]
     lines.append(f"{label} & {res['K']} & " + ' & '.join(cells) + r' \\')
-naive = holm(audit['permuted']['naive_null_p'])
 lines.append(r'\midrule')
-lines.append(r'Permuted labels, naive null & -- & ' +
-             ' & '.join(f"{pv(naive[m])} & --" for m in PHYSICAL) + r' \\')
+for label, res in [('Naive null, tuned model', prim), ('Naive null, permuted labels', audit['permuted'])]:
+    naive = holm(res['naive_null_p'])
+    lines.append(f'{label} & -- & ' + ' & '.join(f"{pv(naive[m])} & --" for m in PHYSICAL) + r' \\')
 write('robustness', lines + [r'\bottomrule', r'\end{tabular}'])
 
 # ---- shortcut sweep
+# mechanisms other than HDF that pass both tests in the primary audit; the sweep checks they keep passing
+passed_primary = [m for m in PHYSICAL if m != 'HDF' and max(prim['all']['p_holm_R'][m], prim['all']['p_holm_D'][m]) < 0.05]
 lines = [r'\begin{tabular}{@{}rrrrrrl@{}}', r'\toprule',
-         r'$\sigma$ & F1 & Sensor share & $R_{\mathrm{HDF}}$ & $p_R$ & $p_D$ & Other mechanisms \\', r'\midrule']
+         r'$\sigma$ & F1 & Sensor share & $R_{\mathrm{HDF}}$ & $p_R$ & $p_D$ & ' + ', '.join(passed_primary) + r' \\',
+         r'\midrule']
 for r in sweep['rows']:
-    others = [m for m in PHYSICAL if m != 'HDF' and r['p_holm_R'][m] >= 0.05]
+    others = [f'{m} ({"/".join(s for s in ("R", "D") if r[f"p_holm_{s}"][m] >= 0.05)})'
+              for m in passed_primary if max(r['p_holm_R'][m], r['p_holm_D'][m]) >= 0.05]
     lines.append(f"{r['sigma']} & {f2(r['test_f1'])} & {f3(r['sensor_share_HDF'])} & {f3(r['R_HDF'])} & "
                  f"{pv(r['p_holm_R']['HDF'])} & {pv(r['p_holm_D']['HDF'])} & "
-                 f"{'all pass' if not others else 'fail: ' + ', '.join(others)} \\\\")
+                 f"{'pass' if not others else 'fail: ' + ', '.join(others)} \\\\")
 write('sweep', lines + [r'\bottomrule', r'\end{tabular}'])
+
+# ---- scale: re-simulated AI4I at several sizes, without the sensor and with a light and a heavy one
+lines = [r'\begin{tabular}{@{}rlrrrrrr@{}}', r'\toprule',
+         r'$n$ & $\sigma$ & Sensor & $R_{\mathrm{HDF}}$ & Null & $p_R^{\mathrm{HDF}}$ & $p_D^{\mathrm{TWF}}$ & Time \\',
+         r'\midrule']
+for r in scale['rows']:
+    if r['sigma'] not in (None, 0.35, 0.25):
+        continue
+    first = r['sigma'] is None
+    n = f"{r['n']:,}".replace(',', '{,}') if first else ''
+    time_ = f"{r['seconds'] / 60:.0f}" if first else ''
+    lines.append(f"{n} & {'--' if first else r['sigma']} & {f3(r['sensor_share_HDF'] or 0)} & {f3(r['R']['HDF'])} & "
+                 f"{f3(r['null_mean_R_HDF'])} & {pv(r['p_holm_R']['HDF'])} & {pv(r['p_holm_D']['TWF'])} & {time_} \\\\")
+write('scale', lines + [r'\bottomrule', r'\end{tabular}'])

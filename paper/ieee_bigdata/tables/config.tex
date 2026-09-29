@@ -8,7 +8,7 @@ $k$-NN & $k = 7$ \\
 Decision tree & max.\ depth 10 \\
 Random forest & 300 trees, max.\ depth 12 \\
 XGBoost & 300 trees, max.\ depth 6, learning rate 0.1 \\
-XGBoost (tuned) & 200 trees, max.\ depth 8, learning rate 0.2, subsample 0.8, column sample 1.0, min.\ child weight 1, $\gamma = 0$ \\
+XGBoost (tuned) & 200 trees, max.\ depth 8, learning rate 0.1, subsample 0.8, column sample 0.8, min.\ child weight 1, $\gamma = 0$ \\
 MLP & 64 and 32 hidden units, ReLU, batch norm, dropout 0.3/0.2; Adam (learning rate $10^{-3}$, weight decay $10^{-5}$), binary cross-entropy, batch 64, 40 epochs \\
 \bottomrule
 \end{tabular}
