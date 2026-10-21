@@ -13,6 +13,7 @@ python experiments/02_audit.py "$@"
 python experiments/03_shortcut_sweep.py "$@"
 python experiments/06_explainers.py "$@"
 python experiments/07_scale.py "$@"
+python experiments/08_compare.py "$@"
 
 if [[ "${1:-}" != "--quick" ]]; then
   python experiments/04_tables.py
