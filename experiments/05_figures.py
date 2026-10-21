@@ -27,6 +27,8 @@ plt.rcParams.update({
     'font.family': 'sans-serif', 'font.sans-serif': ['Arial', 'Helvetica', 'DejaVu Sans'],
     'font.size': 8, 'axes.labelsize': 9, 'axes.titlesize': 9, 'legend.fontsize': 7,
     'xtick.labelsize': 8, 'ytick.labelsize': 8, 'axes.spines.top': False, 'axes.spines.right': False,
+    # embed TrueType instead of Type 3 fonts; IEEE PDF eXpress flags Type 3
+    'pdf.fonttype': 42, 'ps.fonttype': 42,
 })
 PAL = sns.color_palette('colorblind')
 C_NEG, C_POS = PAL[0], PAL[3]

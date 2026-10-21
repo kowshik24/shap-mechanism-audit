@@ -170,6 +170,7 @@ or stage by stage:
 | 5 | `experiments/05_figures.py` | figures in `paper/figures/` |
 | 6 | `experiments/06_explainers.py` | interventional TreeSHAP (3 background sizes, 3 seeds) and random forest (~55 min) |
 | 7 | `experiments/07_scale.py` | audit on AI4I generated at 10k–300k rows (3 seeds), cost at 1M (~6 h) |
+| 8 | `experiments/08_compare.py` | missing audit-design combinations for the comparison table: naive null and in-sample SHAP on shortcut data, in-sample SHAP on a permuted-label model |
 
 Stages 2–7 read the outputs of stage 1 (4 and 5 also read 2, 3, 6, 7) from `experiments/results/`. Tables are generated, never
 typed by hand. Seeds are fixed, and re-running a stage reproduces its numbers exactly. Unit tests for
