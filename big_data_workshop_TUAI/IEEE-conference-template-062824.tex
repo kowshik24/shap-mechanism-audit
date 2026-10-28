@@ -177,7 +177,10 @@ TreeSHAP explanation from a model that did not train on it. (3)~The
 absolute attributions $|\phi_{ij}|$ are split into mechanism observations
 $S_m$ and other failures $F\setminus S_m$, and into trigger features $E_m$
 and all other features, giving the relevant share $R_m$, the specificity
-$D_m$, and the shortcut score $C_m$. (4)~Each observed statistic $T_m$ is
+$D_m$, and the shortcut score $C_m$. Green marks the trigger features $E_m$
+(solid: $S_m$ rows, giving $R_m$; solid versus dashed gives $D_m$); red marks
+the non-trigger feature with the largest excess, giving $C_m$. Cell values are
+illustrative. (4)~Each observed statistic $T_m$ is
 compared with its distribution over $K$ shuffled-label runs (orange), in
 which $y$ is permuted, $\mathbf{x}$ and $\mathbf{z}$ are kept, and the same
 pipeline is refitted. After Holm correction, a mechanism is flagged if
