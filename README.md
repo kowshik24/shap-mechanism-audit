@@ -77,15 +77,15 @@ table above shows in numbers.
 ## Explainable AI — does the model know *why*?
 
 `Machine failure` is the OR of five mechanisms, and the model is never told which one fired. For
-each mechanism the audit computes out-of-sample SHAP (5-fold cross-fitting) and two statistics:
+each mechanism the audit computes out-of-sample SHAP (5-fold cross-fitting) and three statistics:
 
 - **relevant share** R — fraction of attribution on the mechanism's rows that falls on its trigger
   features;
 - **specificity** D — how much larger that share is on the mechanism's rows than on other failures;
-- **shortcut score** S — the largest excess share any *non*-trigger feature takes on the mechanism's
-  rows (large S flags a shortcut).
+- **shortcut score** C — the largest excess share any *non*-trigger feature takes on the mechanism's
+  rows (large C flags a shortcut).
 
-Both are compared with 1,000 copies of the full pipeline retrained on permuted labels, with Holm
+All three are compared with 1,000 copies of the full pipeline retrained on permuted labels, with Holm
 correction over the four physical mechanisms.
 
 | Mechanism | Top out-of-sample SHAP feature | R | D | Verdict |
@@ -102,7 +102,7 @@ in-sample or with interventional TreeSHAP, so its verdict is unresolved. Control
 on shuffled labels fails every test (a naive "random failure subset" null would wrongly pass it),
 and a planted shortcut sensor is flagged once it takes a fifth to a third of the HDF attribution.
 On data generated from the AI4I process at up to 300k rows (`src/pdm_audit/sim.py`), the R test
-alone misses a sensor taking 27% of the attribution; S still flags it in every run.
+alone misses a sensor taking 27% of the attribution; C still flags it in every run.
 
 ![audit overview](paper/figures/audit_overview.png)
 
@@ -171,8 +171,12 @@ or stage by stage:
 | 6 | `experiments/06_explainers.py` | interventional TreeSHAP (3 background sizes, 3 seeds) and random forest (~55 min) |
 | 7 | `experiments/07_scale.py` | audit on AI4I generated at 10k–300k rows (3 seeds), cost at 1M (~6 h) |
 | 8 | `experiments/08_compare.py` | missing audit-design combinations for the comparison table: naive null and in-sample SHAP on shortcut data, in-sample SHAP on a permuted-label model |
+| 9 | `experiments/09_retuned_null.py` | primary audit against a null re-tuned on every permutation (K=200, ~50 min on 8 cores) |
+| 10 | `experiments/10_effect_sizes.py` | null-standardized effect sizes and bootstrap CIs for R and D (seconds) |
+| 11 | `experiments/11_twf_diagnostics.py` | interventional TreeSHAP with failure-only, non-failure, oversampled backgrounds and raw features (~20 min) |
+| 12 | `experiments/12_other_explainers.py` | the MLP audited with KernelSHAP and Integrated Gradients (~30 min) |
 
-Stages 2–7 read the outputs of stage 1 (4 and 5 also read 2, 3, 6, 7) from `experiments/results/`. Tables are generated, never
+Stages 2–7 read the outputs of stage 1 (4 and 5 also read 2, 3, 6, 7; 4 also reads 9–12) from `experiments/results/`. Tables are generated, never
 typed by hand. Seeds are fixed, and re-running a stage reproduces its numbers exactly. Unit tests for
 the audit statistics: `python -m pytest`.
 

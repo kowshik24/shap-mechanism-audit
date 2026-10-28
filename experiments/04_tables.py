@@ -1,19 +1,26 @@
 """
 Stage 4: LaTeX tables for the paper, generated from experiments/results/*.json so no number is
-transcribed by hand. Writes paper/ieee_bigdata/tables/*.tex (tabular bodies, \\input by main.tex).
+transcribed by hand. Writes paper/ieee_bigdata/tables/*.tex (tabular bodies, \\input by main.tex) and
+the tables the TUAI workshop paper uses to big_data_workshop_TUAI/tables/. The shortcut statistic is
+S_m in the IEEE BigData paper and C_m in the workshop paper (where S_m names the mechanism's rows), so
+headers carry the placeholder @SC@ and each target substitutes its own symbol.
 """
 import json
 
 import numpy as np
 
 from pdm_audit.audit import holm
-from pdm_audit.config import PHYSICAL, RESULTS_DIR, TABLES_DIR
+from pdm_audit.config import PHYSICAL, RESULTS_DIR, TABLES_DIR, WORKSHOP_TABLES_DIR
 
 bench = json.loads((RESULTS_DIR / 'benchmark.json').read_text())
 audit = json.loads((RESULTS_DIR / 'audit.json').read_text())
 sweep = json.loads((RESULTS_DIR / 'shortcut_sweep.json').read_text())
 explainers = json.loads((RESULTS_DIR / 'explainers.json').read_text())
 scale = json.loads((RESULTS_DIR / 'scale.json').read_text())
+retuned = json.loads((RESULTS_DIR / 'retuned_null.json').read_text())
+effects = json.loads((RESULTS_DIR / 'effect_sizes.json').read_text())['mechanisms']
+twf_diag = json.loads((RESULTS_DIR / 'twf_diagnostics.json').read_text())
+other = json.loads((RESULTS_DIR / 'other_explainers.json').read_text())
 TABLES_DIR.mkdir(parents=True, exist_ok=True)
 
 SHORT = {'Tool wear [min]': 'tool wear', 'Rotational speed [rpm]': 'speed', 'Power [W]': 'power',
@@ -22,8 +29,17 @@ SHORT = {'Tool wear [min]': 'tool wear', 'Rotational speed [rpm]': 'speed', 'Pow
          'Overstrain [minNm]': 'overstrain', 'Shortcut sensor': 'shortcut sensor'}
 
 
-def write(name, lines):
-    (TABLES_DIR / f'{name}.tex').write_text('\n'.join(lines) + '\n')
+WORKSHOP_TABLES = {'models', 'audit', 'robustness', 'scale'}
+WORKSHOP_TABLES_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def write(name, lines, workshop_lines=None):
+    """`workshop_lines` replaces `lines` in the workshop copy (for rows only that paper reports)."""
+    text = '\n'.join(lines) + '\n'
+    (TABLES_DIR / f'{name}.tex').write_text(text.replace('@SC@', 'S'))
+    if name in WORKSHOP_TABLES:
+        text = text if workshop_lines is None else '\n'.join(workshop_lines) + '\n'
+        (WORKSHOP_TABLES_DIR / f'{name}.tex').write_text(text.replace('@SC@', 'C'))
     print('wrote', name)
 
 
@@ -91,22 +107,39 @@ write('config', [
 prim = audit['primary']
 counts = bench['label_facts']['mode_counts']
 lines = [r'\begin{tabular}{@{}lrlrrrrrrrrr@{}}', r'\toprule',
-         r'& $n$ & Top feature & $R_m$ & Null & $p$ & $D_m$ & Null & $p$ & $S_m$ & Null & $p$ \\', r'\midrule']
+         r'& $n$ & Top feature & $R_m$ & Null & $p$ & $D_m$ & Null & $p$ & $@SC@_m$ & Null & $p$ \\', r'\midrule']
 for m in PHYSICAL:
     o, a = prim['observed']['all'][m], prim['all']
     lines.append(f"{m} & {counts[m]} & {SHORT.get(o['top_feature'], o['top_feature'])} & "
                  + ' & '.join(f"{f3(o[t])} & {f3(a['null_mean'][f'{m}.{t}'])} & "
                               + (pv(a[f'p_holm_{t}'][m]) if t != 'S' else pv(a['p_holm_S'][m], fail_if_high=False))
                               for t in ('R', 'D', 'S')) + r' \\')
-o = prim['observed']['all']['RNF']
+o = o_rnf = prim['observed']['all']['RNF']
 lines.append(f"RNF & {counts['RNF']} & {SHORT.get(o['top_feature'], o['top_feature'])} & {f3(o['top_share'])} & "
              f"{f3(prim['all']['null_mean']['RNF.top_share'])} & {f3(prim['all']['p_RNF_more_concentrated'])} & "
              r"-- & -- & -- & -- & -- & -- \\")
-write('audit', lines + [r'\bottomrule', r'\end{tabular}'])
+
+# workshop paper: R_m and D_m with 95% bootstrap CIs and null-standardized effect sizes z (stage 10)
+ws = [r'\begin{tabular}{@{}lrlrrrrrrrrrrr@{}}', r'\toprule',
+      r'& $n$ & Top feature & $R_m$ [95\% CI] & Null & $z$ & $p$ & $D_m$ [95\% CI] & Null & $z$ & $p$ '
+      r'& $@SC@_m$ & Null & $p$ \\', r'\midrule']
+for m in PHYSICAL:
+    o, a = prim['observed']['all'][m], prim['all']
+    cells = []
+    for t in ('R', 'D'):
+        e = effects[m][t]
+        cells.append(f"{f3(o[t])} [{f2(e['ci95'][0])}, {f2(e['ci95'][1])}] & {f3(a['null_mean'][f'{m}.{t}'])} & "
+                     f"{e['z']:.1f} & {pv(a[f'p_holm_{t}'][m])}")
+    cells.append(f"{f3(o['S'])} & {f3(a['null_mean'][f'{m}.S'])} & {pv(a['p_holm_S'][m], fail_if_high=False)}")
+    ws.append(f"{m} & {counts[m]} & {SHORT.get(o['top_feature'], o['top_feature'])} & " + ' & '.join(cells) + r' \\')
+ws.append(f"RNF & {counts['RNF']} & {SHORT.get(o_rnf['top_feature'], o_rnf['top_feature'])} & {f3(o_rnf['top_share'])} & "
+          f"{f3(prim['all']['null_mean']['RNF.top_share'])} & -- & {f3(prim['all']['p_RNF_more_concentrated'])} & "
+          r"-- & -- & -- & -- & -- & -- & -- \\")
+write('audit', lines + [r'\bottomrule', r'\end{tabular}'], ws + [r'\bottomrule', r'\end{tabular}'])
 
 
 def flag_s(p):
-    """S flags a shortcut when p < 0.05: mark those with a dagger."""
+    """The shortcut statistic flags a shortcut when p < 0.05: mark those with a dagger."""
     return f'{p:.3f}' + ('$^{\\dagger}$' if p < 0.05 else '')
 
 
@@ -121,23 +154,44 @@ variants += [('Random forest', explainers['random_forest'], 'all'),
 lines = [r'\begin{tabular}{@{}lr' + 'rrr' * len(PHYSICAL) + r'@{}}', r'\toprule',
          r'& & ' + ' & '.join(rf'\multicolumn{{3}}{{c}}{{{m}}}' for m in PHYSICAL) + r' \\',
          ''.join(rf'\cmidrule(lr){{{3 + 3 * i}-{5 + 3 * i}}}' for i in range(len(PHYSICAL))),
-         r'Variant & $K$ & ' + ' & '.join(['$R$ & $D$ & $S$'] * len(PHYSICAL)) + r' \\', r'\midrule']
-for label, res, grp in variants:
+         r'Variant & $K$ & ' + ' & '.join(['$R$ & $D$ & $@SC@$'] * len(PHYSICAL)) + r' \\', r'\midrule']
+
+
+def variant_row(label, res, grp):
     a = res[grp]
     cells = [f"{pv(a['p_holm_R'][m])} & {pv(a['p_holm_D'][m])} & {flag_s(a['p_holm_S'][m])}" for m in PHYSICAL]
-    lines.append(f"{label} & {res['K']} & " + ' & '.join(cells) + r' \\')
-lines.append(r'\midrule')
+    return f"{label} & {res['K']} & " + ' & '.join(cells) + r' \\'
+
+
+header = lines
+lines = header + [variant_row(*v) for v in variants]
+# workshop paper only: the primary audit against a null re-tuned on every permutation (stage 9)
+workshop = header + [variant_row(*v) for v in variants[:2]]
+workshop.append(variant_row('\\quad null re-tuned per permutation', {'K': retuned['K'], 'all': retuned['retuned']}, 'all'))
+# and, after the interventional rows, the background-composition and raw-feature checks (stage 11)
+rf = next(i for i, v in enumerate(variants) if v[0] == 'Random forest')
+workshop += [variant_row(*v) for v in variants[2:rf]]
+workshop += [variant_row(f'\\quad {label}', twf_diag[key], 'all') for key, label in
+             [('failures', 'failure-only background'), ('non_failures', 'non-failure background'),
+              ('oversampled', 'oversampled background'), ('raw', 'raw features only')]]
+workshop += [variant_row(*v) for v in variants[rf:rf + 1]]
+# beyond trees (stage 12)
+workshop += [variant_row('MLP, KernelSHAP', other['mlp_kernel'], 'all'),
+             variant_row('MLP, Integrated Gradients', other['mlp_ig'], 'all')]
+workshop += [variant_row(*v) for v in variants[rf + 1:]]
+tail = [r'\midrule']
 for label, res in [('Naive null, tuned model', prim), ('Naive null, permuted labels', audit['permuted'])]:
     naive = holm(res['naive_null_p'])
-    lines.append(f'{label} & -- & ' + ' & '.join(f"{pv(naive[m])} & -- & --" for m in PHYSICAL) + r' \\')
-write('robustness', lines + [r'\bottomrule', r'\end{tabular}'])
+    tail.append(f'{label} & -- & ' + ' & '.join(f"{pv(naive[m])} & -- & --" for m in PHYSICAL) + r' \\')
+tail += [r'\bottomrule', r'\end{tabular}']
+write('robustness', lines + tail, workshop + tail)
 
 # ---- shortcut sweep
 passed_primary = [m for m in PHYSICAL if m not in ('HDF', 'TWF')
                   and max(prim['all']['p_holm_R'][m], prim['all']['p_holm_D'][m]) < 0.05]
 lines = [r'\begin{tabular}{@{}rrrrrrrrl@{}}', r'\toprule',
          r'&&& \multicolumn{4}{c}{HDF} & \multicolumn{1}{c}{TWF} & \\', r'\cmidrule(lr){4-7}\cmidrule(lr){8-8}',
-         r'$\sigma$ & F1 & Sensor & $R$ & $p_R$ & $p_D$ & $p_S$ & $p_R$ / $p_D$ & ' + ', '.join(passed_primary) + r' \\',
+         r'$\sigma$ & F1 & Sensor & $R$ & $p_R$ & $p_D$ & $p_@SC@$ & $p_R$ / $p_D$ & ' + ', '.join(passed_primary) + r' \\',
          r'\midrule']
 for r in sweep['rows']:
     others = [m for m in passed_primary if max(r['p_holm_R'][m], r['p_holm_D'][m]) >= 0.05
@@ -155,7 +209,7 @@ for r in scale['rows']:
 lines = [r'\begin{tabular}{@{}rlrrrrrrr@{}}', r'\toprule',
          r'& & & & \multicolumn{2}{c}{HDF flagged by} & \multicolumn{2}{c}{TWF} & \\',
          r'\cmidrule(lr){5-6}\cmidrule(lr){7-8}',
-         r'$n$ & $\sigma$ & Seeds & Sensor & $R$ & $S$ & $D$ pass & $S$ flag & Min. \\', r'\midrule']
+         r'$n$ & $\sigma$ & Seeds & Sensor & $R$ & $@SC@$ & $D$ pass & $@SC@$ flag & Min. \\', r'\midrule']
 for (n, sigma), rs in groups.items():
     first = sigma is None
     frac = lambda cond: f"{sum(bool(cond(r)) for r in rs)}/{len(rs)}"

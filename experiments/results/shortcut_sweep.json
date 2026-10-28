@@ -26,6 +26,14 @@
     "OSF": 1.0,
     "HDF": 1.0
    },
+   "p_holm_Z": {
+    "TWF": 0.4550898203592814,
+    "OSF": 1.0,
+    "PWF": 1.0,
+    "HDF": 1.0
+   },
+   "Z_HDF": -0.3214421108536504,
+   "Z_feature_HDF": "Type_H",
    "S_HDF": 0.00046351971104741096,
    "S_feature_HDF": "Type_H",
    "null_mean_S_HDF": 0.019591356178745627,
@@ -56,6 +64,14 @@
     "OSF": 1.0,
     "HDF": 1.0
    },
+   "p_holm_Z": {
+    "TWF": 0.6946107784431138,
+    "PWF": 1.0,
+    "OSF": 1.0,
+    "HDF": 1.0
+   },
+   "Z_HDF": -0.4071822322045551,
+   "Z_feature_HDF": "Type_H",
    "S_HDF": 6.781728006899357e-05,
    "S_feature_HDF": "Type_H",
    "null_mean_S_HDF": 0.03034148052148521,
@@ -86,6 +102,14 @@
     "PWF": 1.0,
     "HDF": 1.0
    },
+   "p_holm_Z": {
+    "TWF": 0.6467065868263473,
+    "OSF": 1.0,
+    "PWF": 1.0,
+    "HDF": 1.0
+   },
+   "Z_HDF": -0.29352881890168503,
+   "Z_feature_HDF": "Type_H",
    "S_HDF": 0.0008594505488872528,
    "S_feature_HDF": "Shortcut sensor",
    "null_mean_S_HDF": 0.04493387116119266,
@@ -116,6 +140,14 @@
     "PWF": 1.0,
     "OSF": 1.0
    },
+   "p_holm_Z": {
+    "TWF": 0.35129740518962077,
+    "OSF": 1.0,
+    "PWF": 1.0,
+    "HDF": 1.0
+   },
+   "Z_HDF": -0.2761721789822478,
+   "Z_feature_HDF": "Type_H",
    "S_HDF": 0.010367870330810547,
    "S_feature_HDF": "Shortcut sensor",
    "null_mean_S_HDF": 0.059868441911414265,
@@ -146,6 +178,14 @@
     "OSF": 1.0,
     "PWF": 1.0
    },
+   "p_holm_Z": {
+    "TWF": 0.49500998003992014,
+    "OSF": 1.0,
+    "PWF": 1.0,
+    "HDF": 1.0
+   },
+   "Z_HDF": -0.34235467901066274,
+   "Z_feature_HDF": "Tool wear [min]",
    "S_HDF": 0.038597360253334045,
    "S_feature_HDF": "Shortcut sensor",
    "null_mean_S_HDF": 0.07304692287184299,
@@ -176,6 +216,14 @@
     "PWF": 1.0,
     "OSF": 1.0
    },
+   "p_holm_Z": {
+    "TWF": 0.36726546906187624,
+    "OSF": 1.0,
+    "PWF": 1.0,
+    "HDF": 1.0
+   },
+   "Z_HDF": 0.040768431533709626,
+   "Z_feature_HDF": "Shortcut sensor",
    "S_HDF": 0.08030803501605988,
    "S_feature_HDF": "Shortcut sensor",
    "null_mean_S_HDF": 0.0802272526640445,
@@ -206,6 +254,14 @@
     "PWF": 1.0,
     "OSF": 1.0
    },
+   "p_holm_Z": {
+    "TWF": 0.3193612774451098,
+    "HDF": 1.0,
+    "OSF": 1.0,
+    "PWF": 1.0
+   },
+   "Z_HDF": 1.3403320485403951,
+   "Z_feature_HDF": "Shortcut sensor",
    "S_HDF": 0.16253039240837097,
    "S_feature_HDF": "Shortcut sensor",
    "null_mean_S_HDF": 0.08449616487696766,
@@ -236,6 +292,14 @@
     "PWF": 1.0,
     "OSF": 1.0
    },
+   "p_holm_Z": {
+    "HDF": 0.1596806387225549,
+    "TWF": 0.1596806387225549,
+    "OSF": 1.0,
+    "PWF": 1.0
+   },
+   "Z_HDF": 3.503074949080787,
+   "Z_feature_HDF": "Shortcut sensor",
    "S_HDF": 0.30094054341316223,
    "S_feature_HDF": "Shortcut sensor",
    "null_mean_S_HDF": 0.08745838110335172,
@@ -266,6 +330,14 @@
     "OSF": 1.0,
     "PWF": 1.0
    },
+   "p_holm_Z": {
+    "HDF": 0.031936127744510975,
+    "TWF": 0.16167664670658682,
+    "OSF": 1.0,
+    "PWF": 1.0
+   },
+   "Z_HDF": 4.752532608249446,
+   "Z_feature_HDF": "Shortcut sensor",
    "S_HDF": 0.38149580359458923,
    "S_feature_HDF": "Shortcut sensor",
    "null_mean_S_HDF": 0.08744431452453136,
@@ -296,6 +368,14 @@
     "OSF": 1.0,
     "PWF": 1.0
    },
+   "p_holm_Z": {
+    "HDF": 0.023952095808383235,
+    "TWF": 0.11976047904191617,
+    "OSF": 1.0,
+    "PWF": 1.0
+   },
+   "Z_HDF": 5.324800026826845,
+   "Z_feature_HDF": "Shortcut sensor",
    "S_HDF": 0.41633936762809753,
    "S_feature_HDF": "Shortcut sensor",
    "null_mean_S_HDF": 0.08751423108391464,
@@ -326,6 +406,14 @@
     "OSF": 1.0,
     "PWF": 1.0
    },
+   "p_holm_Z": {
+    "HDF": 0.031936127744510975,
+    "TWF": 0.16766467065868262,
+    "OSF": 1.0,
+    "PWF": 1.0
+   },
+   "Z_HDF": 4.568354363888888,
+   "Z_feature_HDF": "Shortcut sensor",
    "S_HDF": 0.36837542057037354,
    "S_feature_HDF": "Shortcut sensor",
    "null_mean_S_HDF": 0.08952376583591104,

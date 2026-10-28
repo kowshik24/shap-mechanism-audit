@@ -79,6 +79,7 @@ def train_mlp(X, y, seed=SEED, epochs=40):
     import torch.nn as nn
     from torch.utils.data import DataLoader, TensorDataset
 
+    torch.set_num_threads(1)
     torch.manual_seed(seed)
     np.random.seed(seed)
     net = nn.Sequential(
@@ -103,18 +104,27 @@ def train_mlp(X, y, seed=SEED, epochs=40):
             p = torch.sigmoid(net(torch.tensor(np.asarray(Xn), dtype=torch.float32))).numpy().ravel()
         return np.column_stack([1 - p, p])
 
+    def logit(Xn):
+        with torch.no_grad():
+            return net(torch.tensor(np.asarray(Xn), dtype=torch.float32)).numpy().ravel()
+
+    predict_proba.logit = logit  # the explainers attribute the logit, as TreeSHAP does the margin
+    predict_proba.net = net
     return predict_proba
 
 
 def fit_pipeline(df: pd.DataFrame, train_idx, numeric_cols, params, seed=SEED, y=None, model='xgb'):
     """
     Preprocess -> Borderline-SMOTE -> tuned XGBoost (or, with model='rf', the random forest of
-    baseline_models) on the given rows. `y` overrides the labels.
+    baseline_models; with model='mlp', the MLP of train_mlp, returned as its predict_proba callable)
+    on the given rows. `y` overrides the labels.
     """
     labels = df['Machine failure'] if y is None else y
     cols = list(numeric_cols) + ['Type']
     pre = make_preprocessor(numeric_cols)
     X_tr = pre.fit_transform(df.loc[train_idx, cols])
     X_res, y_res = resampler('Borderline-SMOTE', seed).fit_resample(X_tr, labels.loc[train_idx])
+    if model == 'mlp':
+        return pre, train_mlp(X_res, np.asarray(y_res), seed)
     est = tuned_xgb(params, seed) if model == 'xgb' else baseline_models(seed)['Random forest']
     return pre, est.fit(X_res, y_res)

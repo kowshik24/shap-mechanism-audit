@@ -14,6 +14,10 @@ python experiments/03_shortcut_sweep.py "$@"
 python experiments/06_explainers.py "$@"
 python experiments/07_scale.py "$@"
 python experiments/08_compare.py "$@"
+python experiments/09_retuned_null.py "$@"
+python experiments/10_effect_sizes.py
+python experiments/11_twf_diagnostics.py "$@"
+python experiments/12_other_explainers.py "$@"
 
 if [[ "${1:-}" != "--quick" ]]; then
   python experiments/04_tables.py

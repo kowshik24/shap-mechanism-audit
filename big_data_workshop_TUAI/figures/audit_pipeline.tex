@@ -1,0 +1,23 @@
+% Audit pipeline schematic (single column). \input by the main .tex; needs tikz with arrows.meta.
+\begin{tikzpicture}[
+  font=\scriptsize,
+  box/.style={draw=black!60,rounded corners=2pt,align=center,text width=3.65cm,inner sep=3pt,minimum height=0.9cm},
+  obs/.style={box,fill=blue!6},
+  nul/.style={box,fill=orange!10},
+  neutral/.style={box,fill=gray!8},
+  link/.style={-{Stealth[length=1.6mm]},line width=0.6pt,black!70}]
+\node[neutral] (data) at (0,0) {\textbf{AI4I data} $(x_i,y_i,z_i)$\\train on $(x,y)$; flags $z$ held out};
+\node[neutral] (tune) at (4.3,0) {\textbf{Model selection}\\70/20/10 split: search on train,\\threshold on val., test metrics};
+\node[obs] (cf) at (0,-1.45) {\textbf{Cross-fitting}, 5 folds\\scale, Borderline-SMOTE, fit on 4;\\SHAP $|\phi_j(x_i)|$ on held-out fold};
+\node[nul] (null) at (4.3,-1.45) {\textbf{Null}, $k=1,\dots,K$\\permute $y$ (keep $x$, $z$); rerun\\the whole left column};
+\node[obs] (stats) at (0,-2.95) {\textbf{Group by mechanism}\\rows $S_m$, $F\setminus S_m$; triggers $E_m$\\$R_m$, $D_m$, $C_m$};
+\node[nul] (nstats) at (4.3,-2.95) {\textbf{Null statistics}\\$R_m^{(k)}$, $D_m^{(k)}$, $C_m^{(k)}$};
+\node[neutral,text width=8.0cm] (dec) at (2.15,-4.3) {\textbf{Decision}: Monte Carlo $p$, Holm over 4 mechanisms;\\aligned ($R_m$, $D_m$ significant, $C_m$ not), flagged ($C_m$ significant), or not aligned};
+\draw[link] (data) -- (cf);
+\draw[link] (tune) -- node[right,font=\tiny,align=left]{hyper-\\parameters} (null);
+\draw[link] (tune.south west) -- (cf.north east);
+\draw[link] (cf) -- (stats);
+\draw[link] (null) -- (nstats);
+\draw[link] (stats) -- (stats |- dec.north);
+\draw[link] (nstats) -- (nstats |- dec.north);
+\end{tikzpicture}
