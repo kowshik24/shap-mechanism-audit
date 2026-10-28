@@ -42,24 +42,6 @@ email address or ORCID}
 \textit{name of organization (of Aff.)}\\
 City, Country \\
 email address or ORCID}
-\and
-\IEEEauthorblockN{4\textsuperscript{th} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
-\and
-\IEEEauthorblockN{5\textsuperscript{th} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
-\and
-\IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
 }
 
 \maketitle
@@ -68,7 +50,7 @@ email address or ORCID}
 
 
 \begin{abstract}
-Machine learning models are increasingly used to predict equipment failures in industrial systems, helping reduce downtime and maintenance costs. However, many high-performing models operate as black boxes, making it difficult to understand their predictions. Explainable AI (XAI) methods identify influential features, but whether these explanations align with the underlying physical failure mechanisms remains unclear. To investigate this gap, we propose a statistical framework that evaluates the consistency between feature attributions and known failure mechanisms using three complementary measures. Using the AI4I 2020 dataset, which provides both failure outcomes and mechanism-specific labels, we assess whether observed alignment exceeds chance-level expectations through comparisons with 1,000 models trained on randomly shuffled labels. Experiments show that an XGBoost classifier (test F1 = 0.89) achieves statistically significant alignment for three failure mechanisms across five random seeds and against a null re-tuned on every permutation, with supporting results from a random forest and interventional TreeSHAP; a neural network explained by Integrated Gradients or KernelSHAP shows weaker alignment. However, explanations for tool wear are sensitive to the choice of SHAP formulation, which we trace mainly to the reference distribution against which attributions are measured. Controlled experiments further show that models can achieve strong predictive performance while assigning substantial importance to misleading features, highlighting a potential disconnect between predictive accuracy and explanation reliability. Additionally, some evaluation measures become less sensitive to attribution differences as dataset size increases. These findings demonstrate that predictive accuracy alone cannot establish the physical relevance of model explanations and underscore the importance of statistically evaluating their alignment with known failure mechanisms.
+Machine learning models predict equipment failures in industrial systems, but whether their explanations reflect the physical failure mechanisms is rarely tested statistically. We propose an audit that measures, for each known failure mechanism, how much SHAP attribution falls on the mechanism's trigger features, how specific that concentration is to the mechanism, and whether any other feature takes unusual attribution. Explanations are computed out of sample, and each statistic is compared with up to 1,000 models retrained on shuffled labels. On the AI4I 2020 dataset, a tuned XGBoost classifier (test F1 = 0.89) shows significant alignment for three of four physical mechanisms across five seeds, against a null re-tuned on every permutation, with a random forest, and with interventional TreeSHAP; a neural network explained by Integrated Gradients or KernelSHAP shows weaker alignment. The tool-wear verdict depends on the SHAP formulation, which we trace mainly to the reference distribution against which attributions are measured. A planted shortcut sensor shows that models can keep high accuracy while relying on a misleading feature, that weak shortcuts escape detection, and that at 300,000 observations only the shortcut statistic still detects a strong one. Predictive accuracy alone therefore cannot establish the physical relevance of explanations.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -79,7 +61,7 @@ physical failure mechanisms
 \section{Introduction} 
 % Prakrit
 %Context and Importance
-Predictive maintenance is a maintenance strategy that uses machine-condition data to help anticipate faults and determine when maintenance should be performed. By identifying developing problems, it can help reduce unplanned downtime \cite{cummins2024survey}. Machine-learning models support this process by analyzing equipment data to predict failures and maintenance needs. These models include decision trees, random forests, gradient-boosted trees, support vector methods, and neural networks \cite{bukhsh2019predictive,jalali2020interpretability}. Complex ensembles and neural networks can be difficult to interpret, making prediction performance alone insufficient for understanding their behavior \cite{lundberg2017shap}. Understanding which sensor readings influence their predictions can help maintenance teams assess an alarm and decide what to investigate \cite{steurtewagen2021adding}. Interpretability approaches used in predictive maintenance include decision trees and local surrogate explanations such as Local Interpretable Model-agnostic Explanations (LIME) \cite{ribeiro2016lime,bukhsh2019predictive}, as well as SHapley Additive exPlanations (SHAP) for interpreting sensor contributions to model predictions \cite{steurtewagen2021adding,gawde2024explainable}. Recent work has also examined how preprocessing and model complexity affect explanation quality in remaining-useful-life prediction \cite{ndao2025improving}.
+Predictive maintenance uses machine-condition data to anticipate faults and schedule maintenance, reducing unplanned downtime \cite{cummins2024survey}. Models range from decision trees to gradient-boosted ensembles and neural networks \cite{bukhsh2019predictive,jalali2020interpretability}, and the more complex ones are difficult to interpret \cite{lundberg2017shap}. Knowing which sensor readings drive a prediction helps maintenance teams assess an alarm \cite{steurtewagen2021adding}, and explanation methods such as LIME \cite{ribeiro2016lime,bukhsh2019predictive} and SHAP \cite{steurtewagen2021adding,gawde2024explainable} are now common in the field, including studies of how preprocessing and model complexity affect explanation quality \cite{ndao2025improving}.
 
 %Specific Problem and its relevance
 High predictive performance can coexist with reliance on shortcuts or correlations unrelated to the intended task \cite{geirhos2020shortcut,lapuschkin2019unmasking}. In predictive maintenance, this raises the question of whether explanations emphasize the expected features for each failure type. SHAP assigns feature contributions to individual predictions \cite{lundberg2017shap}, but these contributions do not by themselves establish the physical relevance of those inputs \cite{janzing2020feature}. Evaluating feature attributions is difficult when a suitable ground-truth reference is unavailable \cite{zhou2022attribute}. Assessing mechanism alignment therefore requires information about which failure mechanism occurred and which features its rule depends on. Label-permutation methods provide a statistical reference for evaluating feature importance when the association between inputs and outcomes is disrupted \cite{altmann2010permutation}. The question is therefore not only which features receive attribution, but whether their attribution is consistent with the recorded mechanism and exceeds that observed under this reference.
@@ -88,41 +70,35 @@ High predictive performance can coexist with reliance on shortcuts or correlatio
 In this work, we use the AI4I 2020 predictive maintenance dataset, a synthetic dataset containing machine operating measurements, an overall failure label, and separate failure-type labels \cite{uci2020ai4i}. Its recorded failure types and documented generation rules provide an external reference for evaluating mechanism alignment. Previous work on this dataset has assessed explanation quality using selected examples \cite{matzka2020explainable}, while subsequent work has used SHAP to interpret feature importance \cite{milling2025shap}. More recently, Obeten and Jimoh have quantitatively compared SHAP and LIME feature rankings on AI4I 2020 \cite{obeten2026agreement}. Agreement between explanation methods, however, does not by itself establish alignment with a failure mechanism. We build on these studies by testing mechanism-level attribution on held-out observations against a reference obtained from models retrained on shuffled labels. We also examine whether the audit detects reliance on a deliberately fabricated feature.
 
 
-% Overview of the proposed approach: SHAP audit, statistical testing, and predictive benchmark.
-Our approach trains a classifier to predict overall machine failure while withholding the individual failure-type labels from its inputs. We use SHAP because it provides individual feature contributions that can be aggregated by failure type and compared with expected trigger features. TreeSHAP supports efficient attribution computation for the XGBoost and Random Forest models audited in this work \cite{lundberg2020treeshap}. We use the recorded failure-type labels to group these explanations by mechanism. From absolute SHAP values, the audit measures three properties: the attribution share assigned to expected trigger features, how much larger that share is for the relevant mechanism than for other failures, and the largest excess attribution share assigned to a feature outside the expected set. Explanations are computed through five-fold cross-fitting, so each audited observation is explained by a model that was not trained on it. For the primary audit, we construct a reference using 1,000 permutations of the overall failure labels, retraining models and recomputing explanations and statistics for each permutation while retaining the recorded mechanism groups. We apply Holm correction across the four physical mechanisms, separately for each statistic.
+% Overview of the proposed approach
+Our audit trains a classifier on the overall failure label only and uses the recorded failure types to group its SHAP explanations by mechanism (\cref{fig:pipeline}). Three statistics measure the attribution share on a mechanism's expected trigger features, how much larger that share is than on other failures, and the largest excess share taken by any other feature. Explanations come from five-fold cross-fitting, so no observation is explained by a model trained on it, and each statistic is compared with pipelines retrained on shuffled labels, with Holm correction across mechanisms.
 
 % Contributions build on the approach, progressing from method to evaluation and findings.
-To extend example-based explanation assessments with a
-statistical evaluation of mechanism alignment, we make
-the following contributions:
-\begin{itemize} 
-    \item We propose a mechanism-level SHAP audit with held-out explanations and statistical testing, showing that a random-subset baseline can misleadingly suggest alignment.
-    \item We assess robustness across data, model, and explainer settings, including a null re-tuned on every permutation and a neural network explained by KernelSHAP and Integrated Gradients. Heat dissipation, power, and overstrain show alignment for tree ensembles, while tool-wear conclusions depend on the reference distribution of the explainer.
-    \item We test fabricated sensors of varying strength, showing that strong predictive performance can conceal shortcut reliance and that weaker shortcuts can escape detection.
-    \item We evaluate detection up to 300,000 observations and runtime up to one million, showing that shortcut flags can coexist with relevant-feature alignment.
-    \item We benchmark seven classifier families with performance confidence intervals and provide code, model artifacts, and reproduction scripts.
-\end{itemize} 
+Our contributions are as follows:
+\begin{itemize}
+    \item A mechanism-level SHAP audit with held-out explanations and a retrained shuffled-label null; we show that a random-subset baseline can approve a model trained on meaningless labels.
+    \item A robustness study across seeds, features, a re-tuned null, two tree ensembles, three explainer families, and the explainer's background, locating the tool-wear disagreement in the reference distribution.
+    \item A planted-shortcut study showing that high accuracy can conceal shortcut reliance and that weak shortcuts escape detection.
+    \item A scaling study up to 300,000 observations (runtime up to one million), showing that only the shortcut statistic catches a strong shortcut at the largest size.
+    \item A benchmark of seven classifiers with confidence intervals, and released code, models, and reproduction scripts.
+\end{itemize}
 
 
 \section{Related Work and Background}
 % Prakrit
 \label{sec:related}
 
-Predictive maintenance studies use decision trees, random forests, and gradient-boosted trees \cite{bukhsh2019predictive}, as well as support vector methods and neural networks \cite{jalali2020interpretability}. Although small decision trees can offer interpretable rules, complex ensembles and neural networks often require additional methods to explain their predictions \cite{lundberg2017shap}. This has motivated the use of explanation methods to help maintenance teams understand model behavior. Cummins et al.~\cite{cummins2024survey} review approaches ranging from inherently interpretable models to post-hoc methods such as surrogate models, LIME, and SHAP. These methods serve different purposes: local explanations help examine individual predictions, while global summaries describe recurring patterns across observations. In maintenance applications, this distinction matters because explaining an individual alarm and understanding a model's general reliance on sensor measurements are related but different tasks.
+Predictive maintenance studies use decision trees, random forests, and gradient-boosted trees \cite{bukhsh2019predictive}, as well as support vector methods and neural networks \cite{jalali2020interpretability}. Complex models require post-hoc explanation, and surveys review approaches ranging from inherently interpretable models to surrogate models, LIME, and SHAP \cite{cummins2024survey,vollert2021interpretable}. Local explanations examine individual predictions, whereas global summaries describe recurring patterns; in maintenance, explaining a single alarm and understanding a model's general reliance on sensor measurements are related but different tasks. Our audit sits between the two: it aggregates local attributions within each recorded failure mechanism.
 
-Several studies have investigated these methods in maintenance settings. Steurtewagen and Van den Poel~\cite{steurtewagen2021adding} combine sensor and report data with an XGBoost model and use Shapley values to support the diagnosis of machinery breakdowns in the petrochemical industry. Their work connects predictive modeling with diagnostic information that can support maintenance and root-cause investigations. Jalali et al.~\cite{jalali2020interpretability} compare LIME, SHAP, and attribute-wise explanations for models trained on the PHM08-CMAPSS sensor dataset, discussing their advantages and limitations for time-series prediction. These studies illustrate both the practical use of explanations and the importance of selecting an explanation method suited to the maintenance task.
+Steurtewagen and Van den Poel~\cite{steurtewagen2021adding} combine sensor and report data with an XGBoost model and use Shapley values to support the diagnosis of machinery breakdowns in the petrochemical industry, and Jalali et al.~\cite{jalali2020interpretability} compare LIME, SHAP, and attribute-wise explanations on the PHM08-CMAPSS data. Closest to our setting, Matzka~\cite{matzka2020explainable} assessed explanation quality on AI4I~2020 against its known failure mechanisms using five examples from each of four physical failure types, a direct precedent for comparing explanations with the features expected to matter. Later work interpreted SHAP rankings on the same data \cite{milling2025shap}, and Obeten and Jimoh measured SHAP--LIME agreement \cite{obeten2026agreement}. We extend this direction from selected examples and method agreement to a statistical test over all held-out observations.
 
-Existing predictive maintenance studies have also evaluated whether explanations agree with known failure mechanisms. Matzka~\cite{matzka2020explainable} assessed explanation quality against known failure mechanisms using selected examples, including five examples from each of four physical failure types. This provides a direct precedent for comparing explanations with the features expected to matter for a failure. Subsequent work has used SHAP to interpret predictions and feature importance on the dataset \cite{milling2025shap}. Our study extends this direction by evaluating aggregated attribution patterns on held-out observations and comparing them with a reference obtained from models retrained on shuffled labels.
+SHAP assigns each feature an additive contribution that, together with a baseline value, reconstructs the explained output \cite{lundberg2017shap}. Covert et al.~\cite{covert2021explaining} organize removal-based explanations by how they handle unavailable features, which model behavior they explain, and how they summarize each feature's influence, showing that the assumption used to represent unavailable features is part of the explanation's definition. Shapley variants accordingly differ, conditioning on the remaining features, marginalizing over a background distribution, or substituting a single baseline \cite{sundararajan2020many}, and recent surveys show that these choices answer different questions about the model and the data \cite{chen2023algorithms,chen2020true}, particularly when inputs are correlated \cite{aas2021explaining,kumar2020problems}. For tree ensembles, path-dependent TreeSHAP weights each path by its training cover, whereas interventional TreeSHAP averages over an explicit background sample \cite{lundberg2020treeshap}. Faster exact algorithms, such as Linear TreeSHAP \cite{yu2022linear} and the quadrature-based Quadrature-TreeSHAP \cite{wettenstein2026quadrature}, accelerate the path-dependent computation while retaining its formulation. The choice matters here because engineered features share information with the measurements they are built from, and \cref{sec:variants} shows that it can decide a mechanism's verdict; agreement with trigger features must therefore be read in light of the explanation formulation, not as proof of physical causation.
 
-SHAP assigns each input feature a contribution to an individual prediction \cite{lundberg2017shap}. Together with a baseline value, these contributions reconstruct the model output being explained. Their signs indicate the direction of their contribution, while their magnitudes indicate its size on the explained output scale. However, ``the'' Shapley value of a prediction is not unique: Shapley variants differ in how they remove a feature, for example by conditioning on the remaining features, marginalizing over a background distribution, or substituting a single baseline \cite{sundararajan2020many,covert2021explaining}. Recent surveys organize Shapley estimators by these removal choices and show that they answer different questions about the model and the data \cite{chen2023algorithms,chen2020true}, and attribution changes with the treatment of feature dependence when inputs are correlated \cite{aas2021explaining,kumar2020problems}. For tree ensembles, path-dependent TreeSHAP weights each path by its training cover, whereas interventional TreeSHAP averages over an explicit background sample \cite{lundberg2020treeshap}; faster exact algorithms such as Linear TreeSHAP \cite{yu2022linear} and Quadrature-TreeSHAP \cite{wettenstein2026quadrature} reduce the cost of the path-dependent variant but do not change what it measures. This issue is relevant when engineered features share information with the measurements from which they were constructed, and \cref{sec:variants} shows that the reference distribution can decide a mechanism's verdict. Agreement with expected trigger features must therefore be interpreted in light of the explanation formulation, rather than treated as proof of physical causation.
+Explanation-evaluation research offers complementary checks. Benchmarks with known ground truth, such as XAI-Bench \cite{liu2021synthetic}, BAM \cite{yang2019bam}, and CLEVR-XAI \cite{arras2022clevr}, test whether attributions recover planted relevance; OpenXAI evaluates faithfulness, stability, and fairness \cite{agarwal2022openxai}; and ROAR \cite{hooker2019roar} and its retraining-free successor ROAD \cite{rong2022road} remove highly attributed inputs and measure the change in performance. Global sensitivity analysis based on the Hilbert--Schmidt independence criterion (HSIC) measures statistical dependence between inputs and outputs without a removal step \cite{daveiga2015global}. These approaches characterize the model or its explainer; assessing agreement with a failure mechanism additionally requires an external reference, such as the documented failure rules that AI4I~2020 provides.
 
-Broader explanation-evaluation research provides complementary ways to assess attribution quality. XAI-Bench uses synthetic data for controlled evaluation \cite{liu2021synthetic}, while OpenXAI evaluates properties including faithfulness, stability, and fairness \cite{agarwal2022openxai}. Perturbation-based approaches such as ROAR remove highly attributed inputs, retrain the model, and measure changes in predictive performance \cite{hooker2019roar}. Dependence-based global sensitivity indices, such as those built on the Hilbert--Schmidt independence criterion (HSIC) \cite{daveiga2015global}, quantify how strongly the output depends on each input without a removal step, and could serve as a model-level corroboration of attribution-based conclusions for correlated features. These studies motivate evaluating explanations beyond visual inspection or feature rankings. A complementary question is whether attributed features agree with external knowledge of the failure mechanism. Evaluating this agreement requires an external reference,
-such as known failure rules, alongside evidence about the
-model's attribution patterns.
+Randomization provides the reference we use. Label-permutation tests assess classifier performance \cite{ojala2010permutation}, and outcome permutations calibrate feature-importance measures \cite{altmann2010permutation}. Some visually convincing saliency methods are insensitive to randomized parameters or labels \cite{adebayo2018sanity} or unreliable under simple input transformations \cite{kindermans2019unreliability}, and post-hoc explanations such as LIME and SHAP can be deliberately manipulated \cite{slack2020fooling}, so explanations need explicit controls. Research on shortcut learning gives a further reason: models can exploit predictive associations that do not represent the intended mechanism \cite{geirhos2020shortcut,lapuschkin2019unmasking}.
 
-Randomization offers a reference for evaluating whether an observed pattern exceeds what would arise without the original input--outcome relationship. Label-permutation tests have been used to assess classifier performance \cite{ojala2010permutation}, and outcome permutations have been used to calibrate feature-importance measures \cite{altmann2010permutation}. Adebayo et al.~\cite{adebayo2018sanity} further showed that some visually convincing saliency methods can remain insensitive to changes in model parameters or training labels. These findings motivate explicit controls when interpreting explanations. Research on shortcut learning provides another reason for such controls: models can exploit predictive associations that do not represent the intended task mechanism \cite{geirhos2020shortcut,lapuschkin2019unmasking}.
-
-Together, these studies motivate evaluating both whether explanations agree with known failure mechanisms and whether they reveal unexpected feature reliance. We address these questions through a mechanism-level audit of held-out SHAP attributions, using recorded failure types and their expected trigger features as an external reference. We assess the attribution statistics against models retrained on shuffled overall failure labels and apply correction for multiple comparisons. A controlled fabricated-sensor experiment examines the audit's ability to detect unexpected reliance and identifies cases it misses. This combines mechanism-based assessment with statistical testing and an explicit evaluation of shortcut-detection capability.
+Together, these studies motivate testing both whether explanations agree with known failure mechanisms and whether they reveal unexpected feature reliance. We address both with a mechanism-level audit of held-out SHAP attributions against documented trigger features, tested against models retrained on shuffled labels with correction for multiple comparisons, and with a planted-shortcut experiment that measures what the audit detects and what it misses.
 
 
 %======================================================================
@@ -133,16 +109,7 @@ Together, these studies motivate evaluating both whether explanations agree with
 \subsection{Problem Definition}
 \label{sec:background}
 
-Predictive maintenance models use sensor measurements and operating
-conditions to predict equipment failures before they occur. However,
-a model may correctly predict a failure without relying on the physical
-conditions that caused it. SHAP (SHapley Additive exPlanations) is an
-explainability method used to identify which features contribute to a
-model's predictions. However, assigning high importance to a feature
-does not necessarily mean that the model's explanation agrees with
-the actual failure mechanism. This raises a key question:
-\emph{When a particular failure occurs, does the model assign greater
-importance to the features involved in that failure's physical rule?}
+A model may predict a failure correctly without relying on the conditions that caused it. We therefore ask: \emph{when a particular failure occurs, does the model attribute more importance to the features in that failure's physical rule?}
 
 Let $\mathcal{D}=\{(x_i,y_i,z_i)\}_{i=1}^{N}$ denote a dataset where
 $x_i\in\mathbb{R}^{d}$ contains the input features, $y_i\in\{0,1\}$
@@ -158,13 +125,7 @@ and $F=\{i:y_i=1\}$ as all observations labeled as failures. Let
 $\phi_j(x_i)$ denote the SHAP attribution of feature $j$ for observation
 $i$.
 
-Our audit evaluates three properties: (i) whether attribution is concentrated
-on the expected trigger features, (ii) whether that concentration is greater
-for the corresponding mechanism than for other failures, and (iii) whether
-unrelated features receive unusually high attribution. These tests
-measure agreement with known failure rules, not whether SHAP establishes
-the physical cause of failure. \Cref{fig:pipeline} summarizes the data
-flow of the audit, detailed in the remainder of this section.
+The audit tests whether attribution concentrates on the expected trigger features, whether that concentration is specific to the mechanism, and whether unrelated features receive unusual attribution (\cref{fig:pipeline}). It measures agreement with known failure rules, not physical causation.
 
 \begin{figure*}[t]
 \centering
@@ -215,18 +176,14 @@ y_i^{\mathrm{OR}}
 \label{eq:failure_or}
 \end{equation}
 
-where $\mathbb{I}(\cdot)$ equals one when at least one mechanism
-is active. Thus, the overall label indicates whether failure occurred,
-while the mechanism indicators describe which failure conditions
-were recorded. \Cref{tab:mechanisms} lists the documented rules and
-the corresponding trigger features used in our audit.
+where $\mathbb{I}(\cdot)$ is the indicator function. \Cref{tab:mechanisms}
+lists the documented rules and the trigger features used in the audit.
 
 \begin{table}[t]
 \centering
 \caption{AI4I~2020 failure mechanisms~\cite{matzka2020explainable},
-their trigger conditions, and expected features $E_m$. Counts are
-from the released dataset. The TWF failure point is random within
-the specified wear interval.}
+their trigger conditions, expected features $E_m$, and number of
+flagged observations $n$. L/M/H are product quality types.}
 \label{tab:mechanisms}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
@@ -250,15 +207,6 @@ RNF & 0.1\% chance, independent of the process
 & -- & 19 \\
 \bottomrule
 \end{tabular}
-\begin{tablenotes}[flushleft]
-\footnotesize
-\item \textit{Note:}
-$E_m$ denotes the expected trigger-feature set for
-mechanism $m$, and $n$ is the number of observations
-with that mechanism.
-L, M, and H denote product quality types.
-RNF has no defined physical trigger features.
-\end{tablenotes}
 \end{table}
 
 \paragraph{Overlapping mechanisms and label discrepancies}
@@ -269,15 +217,7 @@ errors. However, nine observations are labeled as failures without
 any active flag, while 18 of the 19 RNF-flagged observations have
 an overall failure label of zero.
 
-We retain the released overall labels for training rather than
-reconstructing them from the mechanism flags. The primary audit
-includes every observation where the mechanism being evaluated is
-active, including overlapping cases. We also repeat the analysis
-using observations with exactly one active mechanism flag, removing
-ambiguity about which mechanism may explain the attribution.
-Comparing both analyses shows whether overlapping conditions affect
-the conclusions. RNF has no physical trigger features and is
-examined only descriptively.
+We train on the released overall labels. The primary audit includes every observation where the evaluated mechanism is active, and we repeat it on observations with exactly one active flag to remove ambiguity from overlaps. RNF has no trigger features and is examined only descriptively.
 
 \subsection{Feature Construction}
 \label{sec:features}
@@ -293,13 +233,9 @@ and tool wear, respectively. The type-specific limit $L(t)$
 is 11{,}000, 12{,}000, or 13{,}000 for product types
 \texttt{L}, \texttt{M}, and \texttt{H}.
 
-These features explicitly represent the interactions used in the
-HDF, PWF, and OSF rules. They are calculated from process measurements
-and product type, without using failure labels or mechanism flags.
-However, they are correlated with the original measurements and
-encode known parts of the failure rules. We therefore repeat the
-audit using only the original features to determine how much the
-results depend on feature construction (\cref{sec:robust}).
+They encode the interactions in the HDF, PWF, and OSF rules without
+using any labels, but they are correlated with the raw measurements,
+so we repeat the audit on the original features only (\cref{sec:robust}).
 
 \subsection{Explanation Audit Statistics}
 \label{sec:stats}
@@ -348,92 +284,32 @@ s_j(S_m)-s_j(F\setminus S_m)
 \label{eq:shortcut}
 \end{align}
 
-All three are computed on the same matrix of held-out absolute
-SHAP values; only the observation sets and feature sets differ.
+$R_m$ measures how much attribution goes to the trigger features on mechanism $m$'s observations, $D_m$ whether that share is larger than on other failures, and $C_m$ the largest mechanism-specific increase among features outside $E_m$. A large $C_m$ raises concern about reliance on another feature but does not prove the feature causally irrelevant.
 
-The \emph{relevant score} $R_m$ measures how much attribution
-goes to the expected trigger features on mechanism $m$'s
-observations. The \emph{specificity score} $D_m$ asks whether
-those features receive a larger share for this mechanism than
-for other labeled failures. The \emph{shortcut score} $C_m$
-measures the largest mechanism-specific increase in attribution
-among features outside the expected trigger set. A large $C_m$
-raises concern about reliance on another feature, although it
-does not prove that the feature is causally irrelevant.
-
-\begin{table}[t]
-\centering
-\caption{The three audit statistics and their interpretation.}
-\label{tab:stats}
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}L{1.85cm}L{4.1cm}L{1.6cm}@{}}
-\toprule
-Statistic & Question & Desired result \\
-\midrule
-$R_m$, relevant share
-& How much attribution goes to the expected trigger features?
-& High \\
-$D_m$, specificity
-& Is that share higher for this mechanism than for other failures?
-& High \\
-$C_m$, shortcut
-& Does a non-trigger feature gain unusually high attribution?
-& Not high \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-For example, among the 95 PWF observations, the average absolute
-SHAP contributions of power, torque, and rotational speed are
-4.96, 1.93, and 1.33, respectively (\cref{fig:shap}a).
-Their sum is 8.22, compared with 11.82 across all twelve
-inputs, giving $R_{\mathrm{PWF}}=8.22/11.82\approx0.70$.
-Thus, approximately 70\% of the attribution on PWF observations
-goes to features involved in its physical rule. Whether this
-agreement exceeds what could occur by chance is determined
-through statistical testing.
+For example, on the 95 PWF observations, power, torque, and speed
+have mean $|\phi|$ of 4.96, 1.93, and 1.33 (\cref{fig:shap}a), out of
+11.82 over all twelve inputs, so $R_{\mathrm{PWF}}\approx0.70$.
 
 \subsection{Out-of-Sample Explanations}
 \label{sec:oos}
 
-Explanations calculated on training observations may reflect
-patterns the model has fitted particularly closely to those
-observations. We therefore use five-fold cross-fitting
-~\cite{chernozhukov2018double}. The data are divided into
-five stratified folds. In each round, the complete training
-pipeline is fitted on four folds, and SHAP values are calculated
-on the held-out fold. After five rounds, every observation has
-an explanation from a model that was not trained on it.
-We combine these held-out explanations for the audit and
-also examine the effect of using in-sample SHAP values
-(\cref{sec:robust}).
+Explanations of training observations may reflect overfitting, so we use five-fold cross-fitting~\cite{chernozhukov2018double}: the full pipeline is fitted on four stratified folds and explains the fifth, giving every observation an explanation from a model that did not train on it. \Cref{sec:robust} contrasts this with in-sample SHAP.
 
 \subsection{Statistical Significance}
 \label{sec:nulls}
 
-A high attribution score does not necessarily indicate meaningful
-alignment. Mechanism-specific observations often contain extreme
-sensor values, which can receive large SHAP contributions even
-when the model has learned no genuine relationship with failure.
-This makes a simple comparison against randomly selected failure
-observations unreliable (\cref{sec:naive}).
+A high score alone is not evidence of alignment: mechanism observations often have extreme sensor values that receive large SHAP values even when the model has learned nothing, which makes a comparison against random failure observations unreliable (\cref{sec:naive}).
 
-We instead construct a \emph{shuffled-label null}. For each null
-model, we randomly permute the overall failure labels while
-keeping the sensor measurements and mechanism indicators unchanged.
-This preserves the input distribution and failure rate but removes
-the original relationship between inputs and failure outcomes.
-We repeat the full preprocessing, oversampling, training,
-cross-fitting, and explanation procedure, using the hyperparameters
+We instead build a \emph{shuffled-label null}: we permute the
+overall failure labels, keeping sensors and mechanism flags, and
+repeat the full preprocessing, oversampling, training,
+cross-fitting, and explanation procedure with the hyperparameters
 selected on the original data. Because carrying these hyperparameters
 over could itself shape the null, we also rebuild it with the full
 hyperparameter search repeated on every permutation (\cref{sec:robust}).
 
-Repeating this process $K$ times provides a reference distribution
-for each statistic. For an observed value $T$ and null values
-$T^{(1)},\ldots,T^{(K)}$, we calculate the upper-tail
-Monte Carlo $p$-value:
+For an observed value $T$ and null values $T^{(1)},\ldots,T^{(K)}$,
+the upper-tail Monte Carlo $p$-value is
 
 \begin{equation}
 p=
@@ -475,105 +351,15 @@ it has no expected trigger features.
 \subsection{Model Training and Evaluation}
 \label{sec:training}
 
-We split the dataset into stratified training, validation, and
-test sets (70/20/10). Numerical scaling and one-hot encoding
-are fitted on training data only. Because failures account
-for just 3.4\% of observations, we compare SMOTE
-~\cite{chawla2002smote}, Borderline-SMOTE
-~\cite{han2005borderline}, and ADASYN~\cite{he2008adasyn}
-using the validation F1 of a default XGBoost model
-~\cite{chen2016xgboost}. Borderline-SMOTE gives the
-highest validation F1 and is used thereafter.
-
-We compare seven classifiers: logistic regression, an RBF-kernel
-SVM, $k$-NN ($k=7$), a decision tree (depth 10), a random
-forest (300 trees, depth 12), XGBoost (300 trees, depth 6,
-learning rate 0.1), and an MLP with hidden layers of 64
-and 32 units. Other hyperparameters use library defaults
-(scikit-learn 1.9.1, XGBoost 3.4.1, and PyTorch 2.14.0),
-with random seed 42.
-
-XGBoost achieves the highest validation F1. We tune it using
-40 iterations of randomized search with five-fold stratified
-cross-validation, optimizing F1. The search covers tree depth
-3--8, 200--600 trees, learning rate 0.01--0.2, row and
-column subsampling 0.6--1.0, minimum child weight 1--5,
-and $\gamma$ 0--0.3. Borderline-SMOTE is applied within
-each training fold to avoid oversampling leakage. We select
-the failure-probability threshold that maximizes validation F1.
-
-We evaluate predictive performance using failure-class precision,
-recall, F1, ROC-AUC, Brier score, and expected calibration error.
-We report 95\% confidence intervals using exact binomial
-(Clopper--Pearson) intervals for precision and recall and
-5{,}000 stratified bootstrap resamples for other metrics.
-We additionally report five-fold cross-validation results at
-threshold 0.5. Because this evaluation reuses data involved
-in hyperparameter selection, its estimates may be slightly
-optimistic.
+We split the data into stratified training, validation, and test sets (70/20/10), fitting scaling and one-hot encoding on the training data. To handle the 3.4\% failure rate, we compare SMOTE~\cite{chawla2002smote}, Borderline-SMOTE~\cite{han2005borderline}, and ADASYN~\cite{he2008adasyn} by the validation F1 of a default XGBoost~\cite{chen2016xgboost}. We compare seven classifiers: logistic regression, RBF-kernel SVM, $k$-NN ($k=7$), a decision tree (depth 10), a random forest (300 trees, depth 12), XGBoost (300 trees, depth 6, learning rate 0.1), and an MLP (64 and 32 hidden units), with library defaults otherwise (scikit-learn 1.9.1, XGBoost 3.4.1, PyTorch 2.14.0; seed 42). The best model, XGBoost, is tuned by a 40-iteration randomized search with five-fold cross-validation on F1 (depth 3--8, 200--600 trees, learning rate 0.01--0.2, subsampling 0.6--1.0, minimum child weight 1--5, $\gamma$ 0--0.3), with oversampling inside each fold, and its threshold maximizes validation F1. We report failure-class precision, recall, F1, ROC-AUC, Brier score, and expected calibration error, with Clopper--Pearson intervals for precision and recall, 5{,}000 stratified bootstrap resamples otherwise, and five-fold cross-validation at threshold 0.5.
 
 \subsection{Experimental Design}
 \label{sec:setup}
 
-We conduct the experiments in \cref{tab:plan} to examine whether
-the audit detects physical alignment, how stable its results are,
-and whether it identifies misleading attribution. The primary
-audit uses 1{,}000 shuffled-label models and takes approximately
-12 minutes on eight CPU cores.
-
-\begin{table}[t]
-\centering
-\caption{Experimental plan. $K$ is the number of shuffled-label
-models used for each statistical comparison.}
-\label{tab:plan}
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}L{2.55cm}L{3.75cm}r@{}}
-\toprule
-Experiment & Question & $K$ \\
-\midrule
-Primary audit, seed 42
-& Do explanations match known mechanisms? (H1)
-& 1{,}000 \\
-Re-tuned null
-& Does carrying over hyperparameters bias the null?
-& 200 \\
-Seeds 1--4
-& Are results stable across random seeds?
-& 200 \\
-Single-flag rows
-& Do overlapping mechanisms affect the results?
-& 1{,}000 \\
-Raw features only
-& Do engineered features influence alignment?
-& 1{,}000 \\
-In-sample SHAP
-& Does explaining training observations change results?
-& 1{,}000 \\
-Interventional TreeSHAP
-& Does the explanation method or its background affect the audit?
-& 200 \\
-Random forest
-& Does the model family affect alignment?
-& 200 \\
-MLP with KernelSHAP / IG
-& Does the audit extend beyond trees and TreeSHAP?
-& 200 \\
-Shuffled-label model
-& Does the naive null give misleading results? (H3)
-& 200 \\
-Shortcut sweep
-& When is a misleading feature detected? (H2)
-& 500 \\
-Scaling, $10^4$--$3\cdot10^5$ rows
-& How do sensitivity and cost change with size?
-& 200 \\
-\bottomrule
-\end{tabular}
-\end{table}
+The primary audit uses $K=1{,}000$ and takes about 12 minutes on eight CPU cores; variants use $K=200$ unless stated, the shortcut sweep $K=500$.
 
 \paragraph{Robustness checks}
-We repeat the audit across four additional random seeds, on
+We repeat the audit with a null re-tuned on every permutation, across four additional random seeds, on
 single-mechanism observations, without engineered features,
 and using in-sample rather than held-out SHAP values. We also
 compare path-dependent TreeSHAP with interventional TreeSHAP,
@@ -593,8 +379,7 @@ Gradients~\cite{sundararajan2017axiomatic}, a gradient-based method
 (baseline equal to the mean of 100 training observations, 1{,}024
 steps, completeness checked to within 5\%). Both explain the MLP's
 logit, and every null model retrains the MLP on permuted labels and
-is explained in the same way. Each alternative uses a matching shuffled-label
-null procedure.
+is explained in the same way. Every variant uses a matching null.
 
 \paragraph{Controlled shortcut experiment}
 To test whether the audit detects reliance on an unrelated
@@ -607,13 +392,9 @@ s_i=z_{i,\mathrm{HDF}}+\epsilon_i,
 \label{eq:shortcut_sensor}
 \end{equation}
 
-This sensor is a noisy copy of the HDF indicator, created
-only for this controlled experiment. It has no physical role
-in heat dissipation failure and is excluded from
-$E_{\mathrm{HDF}}$. We decrease $\sigma$ from 2 to 0.1;
-smaller values make the artificial sensor more predictive.
-We examine whether the audit detects increasing reliance
-on this shortcut.
+This noisy copy of the HDF flag has no physical role and is
+excluded from $E_{\mathrm{HDF}}$; we decrease $\sigma$ from 2 to 0.1
+to make it increasingly predictive.
 
 \paragraph{Scaling experiment}
 We generate new observations using the documented AI4I~2020
@@ -633,20 +414,7 @@ $K=200$ null models, and the generator is included in
 the released code.
 
 \paragraph{Why simulated data}
-We use AI4I~2020 because its documented failure mechanisms
-provide a reference for evaluating explanation alignment,
-which is rarely available in real maintenance datasets.
-Although the data are generated from known rules, the
-classifier is trained only on overall failure labels and
-may learn alternative predictive relationships. Agreement
-with the physical rules is therefore not automatic.
-
-The shuffled-label, shortcut, and raw-feature experiments
-test whether the audit can distinguish mechanism-consistent
-attribution from chance agreement or reliance on alternative
-features. Nevertheless, the findings establish agreement
-with known simulated failure rules, not causal validity
-in real industrial systems.
+AI4I~2020 documents its failure mechanisms, a reference rarely available in real data. The classifier sees only the overall label and may learn other relationships, so agreement with the rules is not automatic; the shuffled-label, shortcut, and raw-feature experiments test whether the audit distinguishes genuine from chance or shortcut agreement.
 
 %======================================================================
 
@@ -661,16 +429,7 @@ in real industrial systems.
 \subsection{Predictive Performance}
 \label{sec:perf}
 
-We first evaluate the classifiers on the binary failure-prediction
-task. Borderline-SMOTE achieves the highest validation F1 (0.826),
-compared with 0.768 for SMOTE and 0.747 for ADASYN, and is therefore
-used in subsequent experiments.
-
-\Cref{tab:models} compares the seven classifiers. The tuned XGBoost
-model achieves the highest test F1 of 0.89, compared with 0.87 for
-the default XGBoost. Its validation-selected decision threshold
-is 0.978. However, the confidence intervals overlap, so this
-difference does not establish a reliable improvement from tuning.
+Borderline-SMOTE gives the highest validation F1 (0.826, versus 0.768 for SMOTE and 0.747 for ADASYN) and is used throughout. In \cref{tab:models}, tuned XGBoost reaches the highest test F1 (0.89 versus 0.87 untuned, threshold 0.978), although the confidence intervals overlap.
 
 \begin{table}[t]
 \centering
@@ -683,24 +442,12 @@ confidence intervals for F1.}
 \input{tables/models}
 \end{table}
 
-Of the 34 failures in the test set, the tuned model correctly
-identifies 27 and misses seven, without producing a false alarm.
-This gives precision 1.00 (95\% CI: 0.87--1.00) and recall
-0.79 (95\% CI: 0.62--0.91). Its Brier score is 0.0090,
-compared with 0.033 for a constant base-rate predictor,
-and its expected calibration error is 0.008.
-
-Five-fold cross-validation produces a failure-class F1 of
-$0.822\pm0.013$ and macro-F1 of $0.908\pm0.007$.
-Although these results indicate that the model can identify
-failures reasonably well, predictive performance alone does
-not show whether its explanations agree with the corresponding
-failure mechanisms.
+It finds 27 of the 34 test failures with no false alarm: precision 1.00 (95\% CI 0.87--1.00), recall 0.79 (0.62--0.91), Brier score 0.0090 (0.033 for a base-rate predictor), and calibration error 0.008. Five-fold cross-validation gives failure-class F1 $0.822\pm0.013$ and macro-F1 $0.908\pm0.007$. This accuracy alone says nothing about whether the explanations match the failure mechanisms.
 
 \subsection{Alignment with Failure Mechanisms}
 \label{sec:audit-results}
 
-We evaluate the tuned XGBoost model using out-of-sample SHAP values and 1{,}000 shuffled-label models. The audit examines whether attribution is concentrated on the expected trigger features ($R_m$), whether this concentration is specific to the corresponding mechanism ($D_m$), and whether unrelated features receive unusually high attribution ($C_m$). \Cref{fig:overview} compares the observed relevant and specificity scores with their shuffled-label distributions.
+\Cref{fig:overview} and \cref{tab:audit} compare the tuned XGBoost model's out-of-sample statistics with 1{,}000 shuffled-label models.
 
 \begin{figure}[t]
 \centering
@@ -753,23 +500,10 @@ to distinguish from the null.
 \begin{tablenotes}[flushleft]
 \footnotesize
 \item \textit{Note:}
-$R_m$ measures the attribution share assigned to the
-expected trigger features of mechanism $m$;
-$D_m$ measures the difference in that share between
-mechanism-$m$ failures and other failures;
-$C_m$ measures the largest mechanism-specific
-attribution increase among non-trigger features.
-$K$ denotes the number of shuffled-label models.
-Null values are averages across these models;
-$z$ is the observed value minus the null mean, divided
-by the null standard deviation. Brackets give 95\%
-bootstrap intervals over observations with the models
-held fixed.
-Reported $p$-values are Holm-adjusted across the
-four physical mechanisms.
-Significant $R_m$ and $D_m$ ($p<0.05$) indicate
-statistical alignment; significant $C_m$ indicates
-potential shortcut reliance.
+Null: mean over the shuffled-label models; $z$: (observed $-$ null
+mean)/null s.d.; brackets: 95\% bootstrap intervals with the models
+held fixed; $p$: Holm-adjusted over the four physical mechanisms;
+$^{\times}$: non-significant alignment test.
 \end{tablenotes}
 
 \end{threeparttable}
@@ -777,7 +511,7 @@ potential shortcut reliance.
 
 \subsection{Feature Attribution Across Mechanisms}
 
-\Cref{fig:shap} compares SHAP attribution by failure mechanism with the conventional global summary. The mechanism-level heatmap shows higher attribution to rotational speed and temperature difference for HDF, power and torque for PWF, and overstrain-related features for OSF. In contrast, the global SHAP summary ranks features across all observations without distinguishing the failure mechanisms.
+In \cref{fig:shap}, the mechanism-level heatmap shows rotational speed and temperature difference dominating HDF, power and torque PWF, and the overstrain features OSF, whereas the global SHAP summary ranks features over all observations and hides these distinctions. A feature can be important to the classifier without explaining a given mechanism.
 
 \begin{figure*}[t]
 \centering
@@ -785,7 +519,7 @@ potential shortcut reliance.
 \centering
 \includegraphics[
 width=0.93\linewidth,
-height=5.2cm,
+height=4.4cm,
 keepaspectratio
 ]{figures/shap_crosscheck_heatmap.pdf}\\
 \small (a) Mean absolute SHAP by failure mechanism
@@ -795,7 +529,7 @@ keepaspectratio
 \centering
 \includegraphics[
 width=0.93\linewidth,
-height=5.2cm,
+height=4.4cm,
 keepaspectratio
 ]{figures/shap_summary.pdf}\\
 \small (b) Global SHAP summary
@@ -808,20 +542,13 @@ not visible in the global ranking.}
 \label{fig:shap}
 \end{figure*}
 
-These results show why overall feature importance is
-insufficient for evaluating mechanism alignment. A feature
-can be important to the classifier without explaining
-the particular failure mechanism being examined.
 
 
 %======================================================================
 \section{Experimental Analysis}
 \label{sec:analysis}
 
-We next examine how the audit responds to changes in
-the data, model, explanation method, and statistical
-comparison. The results are summarized in
-\cref{tab:robust}.
+\Cref{tab:robust} summarizes how the audit responds to changes in the data, model, explainer, and null.
 
 \begin{table*}[h]
 \centering
@@ -838,16 +565,9 @@ variants and failure mechanisms.}
 \begin{tablenotes}[flushleft]
 \footnotesize
 \item \textit{Note:}
-$K$ denotes the number of shuffled-label models.
-$R$, $D$, and $C$ represent the relevant-share,
-specificity, and shortcut tests, respectively.
-All reported values are Holm-adjusted $p$-values.
-Significant $R$ and $D$ ($p<0.05$) indicate
-alignment; significant $C$ indicates potential
-shortcut reliance.
-The superscript $\times$ marks non-significant
-alignment tests, $^{\dagger}$ marks a significant
-shortcut test, and ``--'' indicates not evaluated.
+Holm-adjusted $p$-values of the $R$, $D$, and $C$ tests;
+$^{\times}$: non-significant alignment test; $^{\dagger}$:
+significant shortcut test; ``--'': not evaluated.
 The minimum attainable adjusted $p$-value is
 $4/(K+1)$.
 Interventional results use background seed 0;
@@ -866,10 +586,7 @@ observations drawn from the stated training subset.
 HDF, PWF, and OSF pass both alignment tests across all
 five random seeds and when the analysis is restricted
 to observations with a single active mechanism.
-TWF fails both tests across the five seeds.
-This suggests that the main findings are not driven
-by a particular random seed or by overlapping
-mechanism indicators.
+TWF fails both tests in every seed.
 
 \paragraph{Re-tuned null}
 Repeating the 40-iteration hyperparameter search on each of
@@ -891,67 +608,31 @@ When explanations are calculated on observations used
 for training, all four mechanisms pass, including TWF
 ($p=0.004$). Its relevant score increases from 0.19
 with out-of-sample SHAP to 0.35 with in-sample SHAP.
-This difference shows that evaluating training
-observations can produce a more favorable alignment
-assessment. We therefore use cross-fitting for
-the primary audit.
+Explaining training observations thus gives an optimistic verdict.
 
 \paragraph{Original features only}
-Removing the engineered features changes the verdict for HDF, which retains significant specificity but no longer passes the relevant-share test. PWF and OSF continue to pass both tests, although OSF specificity is close to the threshold ($p=0.048$). TWF still fails. Thus, alignment for PWF and OSF is not dependent on explicitly providing the derived features, whereas the HDF result is sensitive to feature construction. This is consistent with the difficulty of representing a temperature-difference rule using only separate temperature measurements in a tree model.
+Removing the engineered features changes the verdict for HDF, which retains significant specificity but no longer passes the relevant-share test. PWF and OSF continue to pass both tests, although OSF specificity is close to the threshold ($p=0.048$). TWF still fails. PWF and OSF alignment therefore does not depend on the derived features, whereas HDF's does, consistent with the difficulty of representing a temperature-difference rule with separate temperatures in a tree model.
 
 \subsection{Why the Choice of Null Matters}
 \label{sec:naive}
 
-A statistical comparison should reject a model that has learned no genuine relationship between sensor measurements and failures. Our shuffled-label null satisfies this check: a classifier trained on shuffled failure labels fails the alignment tests. However, when we compare that same classifier against randomly selected failure observations under the same model, all four mechanisms appear significant (adjusted $p=0.002$). The naive comparison therefore approves a model trained on meaningless labels. The likely explanation is that mechanism observations contain unusual sensor values that can receive high SHAP attribution even without meaningful failure learning. This result supports using retrained shuffled-label models rather than relying on differences between observation groups alone.
+An audit should reject a model that learned nothing. A classifier trained on shuffled labels fails our alignment tests, but compared with random failure observations under the same model, all four mechanisms appear significant (adjusted $p=0.002$): the naive comparison approves a model trained on meaningless labels, because mechanism observations have unusual sensor values that receive large attributions regardless. Retraining under shuffled labels is therefore necessary.
 
 \subsection{Can the Audit Detect a Shortcut?}
 \label{sec:sweep}
 
-We introduce a synthetic feature that is correlated with the HDF indicator but has no physical role in heat dissipation failure. By reducing its noise, we make this feature increasingly useful for predicting HDF. \Cref{fig:sweep} shows how attribution shifts from the documented trigger features to the artificial sensor.
+\Cref{fig:sweep} shows attribution shifting from the HDF trigger features to the planted sensor as its noise decreases.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.95\columnwidth]{figures/shortcut_sweep.pdf}
-\caption{Effect of an injected shortcut on HDF attribution.
-As noise decreases, the artificial sensor receives a
-larger attribution share while the expected trigger
-features receive less. Markers indicate settings where
-the relevant-share alignment test fails.}
+\caption{Effect of an injected shortcut on HDF attribution. As noise
+decreases, the artificial sensor takes a larger share and the trigger
+features less. Markers indicate a failed relevant-share test.}
 \label{fig:sweep}
 \end{figure}
 
-The audit responds differently depending on
-the strength of the shortcut.
-
-\begin{itemize}
-\item \textbf{Weak shortcut ($\sigma\geq0.4$):}
-The artificial sensor receives at most 8\% of
-attribution, and HDF continues to pass.
-
-\item \textbf{Moderate shortcut
-($\sigma=0.35$--$0.30$):}
-At 13\% shortcut attribution, the relevant-share
-test still passes ($p=0.044$). When the share
-reaches 21\%, this test fails.
-
-\item \textbf{Strong shortcut ($\sigma\leq0.25$):}
-At approximately 35\% shortcut attribution,
-the shortcut statistic also becomes significant.
-The specificity test fails once the artificial
-sensor receives approximately 42\%.
-\end{itemize}
-
-Throughout the experiment, test F1 remains between
-0.84 and 0.92. Thus, the model can maintain good
-predictive performance while increasingly relying
-on a feature unrelated to the documented mechanism.
-
-PWF and OSF continue to pass across the shortcut
-settings, while the injected feature affects HDF.
-However, the audit does not reliably detect weak
-shortcuts, and the shortcut statistic is less
-sensitive than the relevant-share test at moderate
-strengths.
+For weak shortcuts ($\sigma\geq0.4$, at most 8\% of the attribution), HDF passes. At 13\% ($\sigma=0.35$) the relevant-share test still passes ($p=0.044$), and it fails from 21\% ($\sigma=0.30$). The shortcut statistic becomes significant at about 35\% ($\sigma\leq0.25$), and the specificity test fails at about 42\%. Test F1 stays between 0.84 and 0.92 throughout, so the model keeps good accuracy while increasingly relying on an unrelated feature. PWF and OSF pass in every setting. Weak shortcuts thus go undetected, and the shortcut statistic is less sensitive than the relevant-share test at moderate strengths.
 
 \subsection{Effect of the Model and SHAP Method}
 \label{sec:variants}
@@ -995,64 +676,36 @@ The audit requires $5(K+1)$ model fits because each real and randomized model is
 \subsection{Comparison with Simpler Audit Designs}
 \label{sec:compare}
 
-We compare the proposed audit with four simpler approaches: global SHAP ranking, a same-model random-observation null, in-sample explanations, and the relevant-share statistic alone. We assess whether each design rejects a shuffled-label model, avoids an overly favorable TWF verdict, and detects a strong shortcut at 300{,}000 observations.
+\Cref{tab:compare} checks four simpler designs against three requirements: rejecting a shuffled-label model, avoiding the optimistic in-sample TWF verdict, and detecting the strong shortcut at 300{,}000 observations. Each misses at least one; the full audit meets all three, although it is not guaranteed to detect every misleading attribution.
 
-\begin{table*}[t]
+\begin{table}[t]
 \centering
-\caption{Comparison of audit designs on three checks.
-Each simpler approach omits at least one component
-of the proposed audit.}
+\begin{threeparttable}
+\caption{Simpler audit designs on three checks: rejects a
+shuffled-label model (Shuf.), avoids the in-sample TWF pass (TWF),
+detects the strong shortcut at $3\cdot10^5$ observations (Short.).}
 \label{tab:compare}
 \footnotesize
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}L{5.6cm}L{3.8cm}L{3.6cm}L{3.8cm}@{}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lccc@{}}
 \toprule
-Design
-& Rejects shuffled labels?
-& Avoids optimistic TWF verdict?
-& Detects large-data shortcut? \\
+Design & Shuf. & TWF & Short. \\
 \midrule
-Global SHAP ranking~\cite{milling2025shap}
-& No statistical verdict
-& No statistical verdict
-& No statistical verdict \\
-
-Naive null
-& No: all pass ($p=0.002$)
-& No: TWF passes
-& No: HDF passes \\
-
-In-sample SHAP with shuffled null
-& Yes
-& No: TWF passes ($p=0.004$)
-& No: $p_C=0.06$ \\
-
-Relevant share $R_m$ only
-& Yes
-& Yes: $p=0.201$
-& No: 0 of 1 runs \\
-
-\textbf{Full audit}
-& \textbf{Yes}
-& \textbf{Yes}
-& \textbf{Yes: 1 of 1 runs} \\
+Global SHAP ranking~\cite{milling2025shap} & -- & -- & -- \\
+Naive null & No & No & No \\
+In-sample SHAP, shuffled null & Yes & No & No \\
+Relevant share $R_m$ only & Yes & Yes & No \\
+\textbf{Full audit} & \textbf{Yes} & \textbf{Yes} & \textbf{Yes} \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}[flushleft]
 \footnotesize
-\item \textit{Note:}
-A successful audit should reject alignment for a
-model trained on shuffled labels, avoid declaring
-TWF aligned based only on in-sample explanations,
-and detect the injected shortcut in the
-300{,}000-observation experiment.
-Reported $p$-values refer to the corresponding
-statistical tests; ``0 of 1'' and ``1 of 1''
-denote detection outcomes in a single run.
+\item ``--'': no statistical verdict. The naive null passes all four
+mechanisms ($p=0.002$); in-sample SHAP passes TWF ($p=0.004$) and
+misses the shortcut ($p_C=0.06$).
 \end{tablenotes}
-\end{table*}
-
-\Cref{tab:compare} shows that each simpler design misses at least one of these checks. Global feature ranking does not provide a mechanism-level statistical verdict. The naive null approves a shuffled-label model, while in-sample explanations give an optimistic TWF result. The relevant-share test alone can miss strong shortcuts on larger datasets. Together, the results show the value of combining out-of-sample explanations, mechanism-specific attribution measures, and a retrained null. However, the full audit is not guaranteed to detect every type or strength of misleading attribution.
+\end{threeparttable}
+\end{table}
 
 
 %======================================================================
@@ -1072,6 +725,18 @@ rely on misleading features and that simpler evaluation methods
 may fail to detect them. These findings highlight the need to
 evaluate explanations beyond predictive accuracy to better
 assess their agreement with known failure mechanisms.
+
+For practitioners, our results suggest five rules. Explain only
+observations the model did not train on. Compare statistics with
+models retrained on shuffled labels, not with random subsets of
+failures. State the explainer's reference distribution, and for
+alarms ask why an observation is abnormal by drawing the background
+from normal operation. Report effect sizes and the flagged feature
+alongside $p$-values, and treat a mechanism as aligned only when
+$R_m$ and $D_m$ pass and $C_m$ does not, since at large $n$ a narrow
+null lets $R_m$ pass despite a strong shortcut. Finally, re-tune the
+null models when the budget allows, as carried-over hyperparameters
+give a less conservative reference.
 
 %======================================================================
 \section{Limitations and Future Work}
