@@ -1077,54 +1077,21 @@ assess their agreement with known failure mechanisms.
 \section{Limitations and Future Work}
 \label{sec:limits_future}
 
-\paragraph{Simulated data}
-The audit is evaluated on the simulated AI4I~2020 data and on data
-generated from the same documented process, so it establishes
-agreement with known simulator rules, not verified physical causes
-in real systems. We could not address this within the present study,
-because real maintenance datasets rarely record which mechanism caused
-each failure. The audit also requires predefined trigger features,
-which domain experts must supply for real equipment.
-
-\paragraph{Reference distribution and explainer}
-We traced the TWF disagreement between SHAP formulations mainly to the
-reference distribution (\cref{sec:variants}), but this does not
-resolve which reference is correct: verdicts can change with the
-background, and an oversampled background still leaves a small gap
-to path-dependent TreeSHAP. Results on the MLP depend on the explainer,
-and we could not separate the MLP's weaker fit from KernelSHAP's
-sampling error. LIME was not evaluated, because its surrogate
-coefficients are not an additive decomposition of the prediction,
-which the attribution shares assume.
-
-\paragraph{Shortcut detection}
-The shortcut statistic first flags the planted sensor at 35\% of the
-HDF attribution, whereas the relevant-share test already fails at
-21\%, and no test detects a sensor taking 13\% or less. A studentized variant, which scales each feature's
-excess by its own null spread, was less sensitive still (first flag
-at 42\% rather than 35\% shortcut attribution), because the planted
-sensor already takes a large and variable excess share under the null
-(mean 0.087, s.d.\ 0.060). At large $n$, the statistic also flags
-small excesses (0.03--0.05) on poorly learned mechanisms, so flags
-must be read with their size and feature.
-
-\paragraph{Statistical scope}
-Re-tuning the null models widens the null and leaves OSF's relevant
-share borderline ($p=0.0498$); re-tuning costs about 50 minutes for
-$K=200$, so the primary audit uses carried-over hyperparameters. The
-bootstrap intervals hold the models fixed. TWF, with 46 observations
-and a random failure point, and RNF remain hard to assess.
-
-\paragraph{Future work}
-We plan to apply the audit to real data with recorded failure causes,
-including overlapping faults in the Tennessee Eastman
-Process~\cite{rieth2017tepdata,rieth2018issues}; to develop shortcut
-statistics that are more sensitive without more false flags; and to
-add complementary statistics that use the whole attribution
-distribution, such as rank-based or earth mover's distances to the
-expected feature set, together with dependence-based global
-sensitivity indices~\cite{daveiga2015global} as an attribution-free
-check for correlated features.
+The audit is evaluated only on simulated AI4I~2020 data, so it
+establishes agreement with known simulator rules rather than verified
+physical causes, and it requires expert-defined trigger features. The
+TWF verdict depends on the explainer's reference distribution, and the
+MLP results depend on the explainer; LIME was not evaluated. The
+shortcut statistic misses shortcuts below about a third of the
+attribution, a studentized variant was less sensitive, and at large
+$n$ small excesses can be flagged on poorly learned mechanisms. Under a
+null re-tuned on every permutation, OSF's relevant share is borderline
+($p=0.0498$), and the bootstrap intervals hold the models fixed. Future
+work will apply the audit to real data with recorded failure causes,
+such as the Tennessee Eastman Process~\cite{rieth2017tepdata,rieth2018issues},
+develop more sensitive shortcut statistics, and add rank-based or
+distance-based statistics and dependence-based sensitivity
+indices~\cite{daveiga2015global} as complementary checks.
 %======================================================================
 
 
