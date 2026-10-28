@@ -1,0 +1,42 @@
+{
+  "verified": true,
+  "kaist_load_counts": {
+    "0": 15,
+    "2": 15,
+    "4": 15
+  },
+  "kaist_family_counts": {
+    "BPFI": 9,
+    "BPFO": 9,
+    "Misalign": 9,
+    "Normal": 3,
+    "Unbalance": 15
+  },
+  "kaist_vibration_records": 45,
+  "kaist_vibration_whole_archive_authenticated": false,
+  "kaist_vibration_metadata_bytes": 4636,
+  "kaist_acoustic_records": 5,
+  "kaist_acoustic_loads": [
+    0
+  ],
+  "kaist_acoustic_whole_archive_authenticated": true,
+  "kaist_filename_aliases": 5,
+  "uci_native_profile": {
+    "cycles": 2205,
+    "unique_component_profiles": 144,
+    "stable_cycles": 1449,
+    "fully_normal_cycles": 21,
+    "stable_fully_normal_cycles": 10,
+    "fully_normal_contiguous_episodes": 3
+  },
+  "scope": "Offline native metadata/profile feasibility; no classifier outcomes or field calibration claims",
+  "sha256": {
+    "experiments/91_dataset_feasibility.py": "41fc27b0ac72fa2560e88693f497149a08959e4e4e558c14e1bb5c6a477f1b96",
+    "data/dataset_scout/kaist_vibration_inventory.json": "096afb5f7ef7da68ae2fe29051c3f89869e5b5955c746cd10f566d087e31c6bc",
+    "data/dataset_scout/kaist_acoustic_inventory.json": "e7e3a69b15054f029df5b1db18390f1c4eb1fa7ad8468566f90f589d8c7e9bae",
+    "data/dataset_scout/kaist_load_files.json": "efc37f4d8dd8c258cb0a501081b7cefd9eb4a98a07bd75c45f91d560211c78e4",
+    "data/dataset_scout/profile.txt": "867987ca884b2f0fd607ad3918329eba887d095af2befa21122cea518eaa584a",
+    "data/dataset_scout/description.txt": "a115e362976a4532bc7d28c471caa257514584bb3f4f6f06f760ca1236761a63",
+    "experiments/KAIST_LOAD_PILOT_CONTRACT.json": "7d0f3f46f110eaa524f05fbf136abfd23a9b5a422c5a475168631820b599374a"
+  }
+}

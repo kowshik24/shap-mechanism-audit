@@ -1,0 +1,195 @@
+{
+  "verified": true,
+  "current_runtime": {
+    "python": "3.13.7",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6"
+  },
+  "legacy_runtime": {
+    "python": "3.11.13",
+    "numpy": "1.26.3",
+    "pandas": "2.1.4"
+  },
+  "records": [
+    {
+      "experiment": "validate_hatch_mic",
+      "identical_protocol_text": true,
+      "flag_match": true
+    },
+    {
+      "experiment": "validate_hatch_rpms",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_hatch_pressures",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_pot_1",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_pot_2",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_osr_1",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_osr_2",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_osr_mic",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_osr_in",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_osr_out",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_osr_upwind",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_osr_downwind",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_osr_ambient",
+      "identical_protocol_text": true,
+      "flag_match": true
+    },
+    {
+      "experiment": "validate_osr_intake",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_v_1",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_v_2",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_v_mic",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_v_in",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_v_out",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_load_in",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_load_in_mic",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_load_out",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_load_out_mic",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_res_in",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_res_out",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_load_in_current_out",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_load_out_current_in",
+      "identical_protocol_text": true,
+      "flag_match": false
+    },
+    {
+      "experiment": "validate_load_out_pressure_intake",
+      "identical_protocol_text": true,
+      "flag_match": true
+    }
+  ],
+  "physical_commands_executed": false,
+  "original_author_runtime_known": false,
+  "requirements_url": "https://raw.githubusercontent.com/juangamella/causal-chamber/0c8a77ea14bd4437b1fdd79adc1aa91ac2342569/datasets/wt_validate_v1/generators/requirements.txt",
+  "scope": "Current/NumPy-1.26.3 comparison gives identical protocol text; does not resolve original acquisition provenance",
+  "sha256": {
+    "experiments/74_publisher_runtime_check.py": "094a79e013b250e2aeb740e2bcadcb15159ec64abf36db53e6fd2e415b7dd31d",
+    "data/causal_chamber/wt_validate_v1/source/generators/binary_interventions.py": "36b7cb084d3fe5bf0691a74ff5808575a92a1e89a615ab95d16b853f0486da5b",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/published_requirements.txt": "59b86a963ee638d61a76405ad2eb8060f3fd18b06b18ca3cabfbb119902a6255",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/generator_stdout.txt": "54751c45e0699e3b29864551e21c86427420d1e8abe5d715ce56f8108f877fb7",
+    "experiments/results/publisher_protocol_replay.json": "2c19a97f48a2612ffe7ec4e3a41dcf2475b397fbc6b6dce6ec662c6163d7d673",
+    "experiments/results/chamber_sources.json": "a32d1a1c259e303bc0660d4e721332796d5b2999e70490e7dd6197eb2dd44e42",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_hatch_mic.txt": "17d75bc134bf0cb37dbbb406bc204ab84b6017c151914263d4127d5ad85c021e",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_hatch_rpms.txt": "d574f914fc3ca280f53945ff408709164bc0f787fde601ccf9984932f7588fca",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_hatch_pressures.txt": "6ef97d0a1a46be714d8d64882dbd79a97c54015182ccf40d1dd1bcf823266fd9",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_pot_1.txt": "b5f2755e796b2c50e7381c2259a906fe263c05f1239b9ff03846ee1697c4bc09",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_pot_2.txt": "d72e88506b19848634bbc466a993837d300eda4ec3ea0a0cbbc689354d9524e0",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_osr_1.txt": "7f553e87692912506e177353f27af0a8e6ca9809c4cd2136d511c1e1af45c0c0",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_osr_2.txt": "dbb8f629d2065ae17b8ea7ac4a5b5f6af63235663b9d43c1254fcacec7e42765",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_osr_mic.txt": "f30927818d89f58a2a772ae66a91d28ad1014192794fb0e2f23074af2a8bbbc1",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_osr_in.txt": "17c909c72b9d64d782ffab0b35428dc3ab6152afc268576a6a602f9a6e1aa893",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_osr_out.txt": "40e61b26f0cecc867d03cc37f37e44b583ef3538de4d9f0f446aa4d8aa2d9843",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_osr_upwind.txt": "bac80a0fe2312ea73d5cf6f02bdd971dca8a47c1c5e6db2ffc351fc85a618e02",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_osr_downwind.txt": "eb1736226df33695b624859d33aa24dbbf09df7427e8e267d2d59fb719793f2a",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_osr_ambient.txt": "7d90573a26f959862ebf65b5b104ded3c29483ba375d621cac382457fac25da0",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_osr_intake.txt": "602f052a08044a11b6ee182d7b89ee948644df43e6b33534d2acf1203cfc1eb1",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_v_1.txt": "3dd6483cc35313c078f36f9ada4b9ee3c6f5446f77567a4f582c8db2c7fd3cb8",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_v_2.txt": "d6c7f9390a64791964e89590868a0705f379bfeab8502cebfb8191d3205f9c39",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_v_mic.txt": "7bbc2cd67258d4308405378591126b2be179658a8bb7d70d4d1b402b686d8cf1",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_v_in.txt": "32a3dfd2769232830161d49e1d2dd59e0462c90759d047eea435779c617b86a2",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_v_out.txt": "b1ee884ef38bf83e94d6b317490080898cc1aadcee4cb65213869d9911d26668",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_load_in.txt": "16616af824927d133745b96cf173c1b22dff7be4aca5840b2989b858bb0b9e92",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_load_in_mic.txt": "f4ba15e542b9df111530c4bd6d22fc120c18bbd9203afae3512be221de0ff13f",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_load_out.txt": "63a176a66952fcf95aa0b07882f5875366ba77580c2c96da88a02347e8c308d7",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_load_out_mic.txt": "38ea07f30d9a41351be9c62a5b7d3321bfc0c914d212afa278c70e82ed08dc26",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_res_in.txt": "d329929ea729901091bcdbb6c8c14db7285cc69b08cb797b391c93b1d05f015e",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_res_out.txt": "23635746bca3752724b2f710031795def1aeb64ba81a11ececa1c7a89ef7c673",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_load_in_current_out.txt": "79e71b6e0b3c5800da05a3e1c9fff5c763f51c13e6584fb42d6ef333d6df6c83",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_load_out_current_in.txt": "1861e98362d567c7e235ebc77b05572a5ca47fa27f5bad00c811ecb2cda2d82a",
+    "data/causal_chamber/legacy_numpy126/wt_validate_v1/protocols/validate_load_out_pressure_intake.txt": "621d32d81857b67c86b691a7a8ff45682c1ee497dadf7a78771dfdb6a63d29e5"
+  }
+}

@@ -1,0 +1,46 @@
+\begin{tikzpicture}[font=\footnotesize]
+\tikzset{loadcell/.style={draw=black!45,minimum width=1.25cm,minimum height=.85cm}}
+\begin{scope}[xshift=0cm]
+\node[font=\small] at (1.4,4.15) {Logistic regression};
+\node at (1.4,3.65) {Test load (Nm)};
+\node[rotate=90] at (-1.5,1.25) {Training load (Nm)};
+\node at (0.0,3.17) {0};
+\node at (-.95,2.5) {0};
+\node at (1.4,3.17) {2};
+\node at (-.95,1.4) {2};
+\node at (2.8,3.17) {4};
+\node at (-.95,0.2999999999999998) {4};
+\node[loadcell,fill=black!12] at (0.0,2.5) {\textemdash};
+\node[loadcell,fill=white] at (1.4,2.5) {0.0};
+\node[loadcell,fill=white] at (2.8,2.5) {0.0};
+\node[loadcell,fill=white] at (0.0,1.4) {0.0};
+\node[loadcell,fill=black!12] at (1.4,1.4) {\textemdash};
+\node[loadcell,fill=white] at (2.8,1.4) {0.0};
+\node[loadcell,fill=white] at (0.0,0.2999999999999998) {0.0};
+\node[loadcell,fill=white] at (1.4,0.2999999999999998) {0.0};
+\node[loadcell,fill=black!12] at (2.8,0.2999999999999998) {\textemdash};
+\end{scope}
+\begin{scope}[xshift=6.2cm]
+\node[font=\small] at (1.4,4.15) {Random forest};
+\node at (1.4,3.65) {Test load (Nm)};
+\node[rotate=90] at (-1.5,1.25) {Training load (Nm)};
+\node at (0.0,3.17) {0};
+\node at (-.95,2.5) {0};
+\node at (1.4,3.17) {2};
+\node at (-.95,1.4) {2};
+\node at (2.8,3.17) {4};
+\node at (-.95,0.2999999999999998) {4};
+\node[loadcell,fill=black!12] at (0.0,2.5) {\textemdash};
+\node[loadcell,fill=white] at (1.4,2.5) {0.0};
+\node[loadcell,fill=auditorange!30] at (2.8,2.5) {86.7};
+\node[loadcell,fill=white] at (0.0,1.4) {0.0};
+\node[loadcell,fill=black!12] at (1.4,1.4) {\textemdash};
+\node[loadcell,fill=white] at (2.8,1.4) {0.0};
+\node[loadcell,fill=white] at (0.0,0.2999999999999998) {0.0};
+\node[loadcell,fill=white] at (1.4,0.2999999999999998) {0.0};
+\node[loadcell,fill=black!12] at (2.8,0.2999999999999998) {\textemdash};
+\end{scope}
+\node[align=center,text width=12cm,anchor=north] at (4.5,-.65) {Healthy false-positive rate (\%); diagonal not evaluated.\\
+Values collapse three-class argmax; the highlighted control gives 100\%\\
+under a summed fault-probability threshold of 0.5. One normal record per load.};
+\end{tikzpicture}

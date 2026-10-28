@@ -1,0 +1,66 @@
+{
+  "verified": true,
+  "date": "2026-10-26",
+  "scope": "Fresh Python environment outside checkout; frozen-input diagnostic regeneration, DTU prediction replay, and TeX rebuild. Original Boolean training banks and raw-waveform extraction are not regenerated.",
+  "environment": {
+    "python": "3.13.7 (v3.13.7:bcee1c32211, Aug 14 2025, 19:10:51) [Clang 16.0.0 (clang-1600.0.26.6)]",
+    "executable": "/private/tmp/pdm-submission-audit-20261026-lyyfquk5/venv/bin/python",
+    "package_file": "/private/tmp/pdm-submission-audit-20261026-lyyfquk5/project/src/pdm_audit/__init__.py",
+    "sys_path": [
+      "",
+      "/Library/Frameworks/Python.framework/Versions/3.13/lib/python313.zip",
+      "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13",
+      "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/lib-dynload",
+      "/private/tmp/pdm-submission-audit-20261026-lyyfquk5/venv/lib/python3.13/site-packages",
+      "/private/tmp/pdm-submission-audit-20261026-lyyfquk5/project/src"
+    ],
+    "versions": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.6",
+      "scikit-learn": "1.9.1",
+      "shap": "0.52.0",
+      "matplotlib": "3.11.2",
+      "h5py": "3.16.0",
+      "pytest": "9.1.1"
+    }
+  },
+  "semantic_json_comparisons": 6,
+  "array_files_compared": 3,
+  "arrays_compared": 72,
+  "declared_dependency_hashes_checked": 184,
+  "missing_dependencies": [],
+  "hash_mismatches": [],
+  "isolated_unit_tests_passed": 9,
+  "pdf_pages": 10,
+  "manuscript_figures": 3,
+  "figure_atlas_pages": 6,
+  "plot_coordinates": 1071,
+  "cold_build_fix": "Makefile invokes latexmk for prebuilt figure PDFs so omitted logs are regenerated.",
+  "missing_provenance_fixed": [
+    "data/dtu_tep/metadata.json",
+    "experiments/results/observed_overlap.json"
+  ],
+  "initial_pipeline_failure": "Initial archived PDFs suppressed standalone log generation; numerical stages completed, build/verifiers resumed after the Makefile fix.",
+  "source_sha256": {
+    "experiments/99_submission_readiness.py": "53f80accfa15cf42807d6821e930f53c73991dfde201dd7c86fc5dac9238ba50",
+    "requirements-reproduce.txt": "0e200c543df25fe1918c90500edfa02e777484e8f82159c609ee62f80d2b978e",
+    "IEEE-conference-template-062824/Makefile": "fcb81906e263e678dc19e26b2ba00781b7fae03b23050bebc089bba0c07859e6"
+  },
+  "original_archive_sha256": "c537411031509d06dbc4d9e61df47ad9923212ceeb6bb5b51992fb3358daefd3",
+  "subsequent_editorial_revision": {
+    "date": "2026-10-26",
+    "change": "Introduction, abstract, Methods and Experimental Design revised for clarity, rationale and replication. Existing implementation details were documented; observed counts and selected settings were moved to Results; two primary method references were added. No experimental procedure, scientific code or numerical outcome changed.",
+    "abstract_words": 176,
+    "references_cited": 37,
+    "tex_sha256": "8fbf1d746005953101a772ac2fc3cb984d905b81e3204bcad4937699a995ddce",
+    "refs_bib_sha256": "611964471c6ae2dd565fb6a5846ace2b909c1911bddd651689c8ff149828d3fd",
+    "pdf_sha256": "1471d4fab33249e38f64d8d90986a28c5370492e01975be73dc4d6a85658c99e",
+    "pdf_pages": 10,
+    "verification": [
+      "78_verify_review4.py --enforce-page-limit",
+      "82_verify_publication_figures.py",
+      "87_verify_calibration_scope.py"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+bearing_id,origin,component,diagnosis_class,extent_level,source_table,source_pdf_page
+K001,healthy,none,healthy,,7,8
+K002,healthy,none,healthy,,7,8
+K003,healthy,none,healthy,,7,8
+K004,healthy,none,healthy,,7,8
+K005,healthy,none,healthy,,7,8
+K006,healthy,none,healthy,,7,8
+KA01,artificial,OR,OR,1,4,5
+KA03,artificial,OR,OR,2,4,5
+KA04,accelerated_lifetime,OR,OR,1,5,6
+KA05,artificial,OR,OR,1,4,5
+KA06,artificial,OR,OR,2,4,5
+KA07,artificial,OR,OR,1,4,5
+KA08,artificial,OR,OR,2,4,5
+KA09,artificial,OR,OR,2,4,5
+KA15,accelerated_lifetime,OR,OR,1,5,6
+KA16,accelerated_lifetime,OR,OR,2,5,6
+KA22,accelerated_lifetime,OR,OR,1,5,6
+KA30,accelerated_lifetime,OR,OR,1,5,6
+KB23,accelerated_lifetime,IR (+OR),mixed_or_secondary,2,5,6
+KB24,accelerated_lifetime,IR (+OR),mixed_or_secondary,3,5,6
+KB27,accelerated_lifetime,OR + IR,mixed_or_secondary,1,5,6
+KI01,artificial,IR,IR,1,4,5
+KI03,artificial,IR,IR,1,4,5
+KI04,accelerated_lifetime,IR,IR,1,5,6
+KI05,artificial,IR,IR,1,4,5
+KI07,artificial,IR,IR,2,4,5
+KI08,artificial,IR,IR,2,4,5
+KI14,accelerated_lifetime,IR,IR,1,5,6
+KI16,accelerated_lifetime,IR,IR,3,5,6
+KI17,accelerated_lifetime,IR,IR,1,5,6
+KI18,accelerated_lifetime,IR,IR,2,5,6
+KI21,accelerated_lifetime,IR,IR,1,5,6

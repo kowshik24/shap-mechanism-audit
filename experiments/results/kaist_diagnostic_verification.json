@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "reconstructed_rows": 1260,
+  "cohort_profiles": 18,
+  "seed_model_fits": 40,
+  "seed_load_results": 120,
+  "max_additivity_error": 1.4379233026495797e-08,
+  "top_false_positive_features": [
+    {
+      "feature": "ch4_kurtosis",
+      "mean_signed_fault_probability_contribution": 0.02833333270003399
+    },
+    {
+      "feature": "ch3_log_std",
+      "mean_signed_fault_probability_contribution": 0.023333332817762727
+    },
+    {
+      "feature": "ch2_band_0_500",
+      "mean_signed_fault_probability_contribution": 0.022666666160027202
+    },
+    {
+      "feature": "ch4_band_4000_nyquist",
+      "mean_signed_fault_probability_contribution": 0.021185896968176486
+    },
+    {
+      "feature": "ch3_log_rms",
+      "mean_signed_fault_probability_contribution": 0.019999999552965164
+    }
+  ],
+  "scope": "Single-rig exploratory prediction/explanation replay; no warning calibration or causal identification",
+  "diagnostic_sha256": "79e669d72b60fd5e386d08bc54ecf3b17a4ed1e857db0f982f5b07f09f0b5c19",
+  "arrays_sha256": "9279eca6544ba1aabcd863127bf055ee798d3d3e47fb378a3e217f4b256f9e1b",
+  "seed_predictions_sha256": "70b7127e2a0050db8af83612212e3661439bb3b25b1bb91790f0e0e43eabb7fe"
+}

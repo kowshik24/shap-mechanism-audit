@@ -1,0 +1,13 @@
+{
+  "verified": true,
+  "prefixes": 15,
+  "new_network_bytes": 0,
+  "seed_independence_verified": false,
+  "sha256": {
+    "experiments/results/dtu_preflight.json": "ca939b00d7bc218c14e4d4a8556f12d3d5544d8a7c7f129f0378f7935fc40380",
+    "experiments/results/dtu_prefix_check.json": "eae11135f290f9160c7f4795e2b737c30803ea0678f0166dd0a8b3627587848a",
+    "experiments/results/dtu_prefix_arrays.npz": "1fed0492b795882e6ee43983869112e299da6a9bf8ce0f5da5b07ac17a3f63ff",
+    "experiments/53_verify_dtu_sources.py": "fe4aa62ada017b7a2111acb26b28af4b8d89463e9631e7e406292a4c44473046",
+    "experiments/51_dtu_preflight.py": "9a67f271f7c1a630dc1f061269354c4eb66d7b68d7cd1368848d50b6a1181011"
+  }
+}

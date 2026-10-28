@@ -1,0 +1,762 @@
+{
+  "complete": true,
+  "scope": "Post-review exploratory diagnostics; point estimates only for new warning/permutation comparisons; existing intervals are pointwise, not simultaneous",
+  "full_grid_counts": [
+    {
+      "law": "intact",
+      "family": "all",
+      "cells": 60,
+      "SHAP_point": 47,
+      "flip_point": 13,
+      "SHAP_interval": 24,
+      "flip_interval": 4
+    },
+    {
+      "law": "intact",
+      "family": "tree",
+      "cells": 20,
+      "SHAP_point": 20,
+      "flip_point": 0,
+      "SHAP_interval": 16,
+      "flip_interval": 0
+    },
+    {
+      "law": "intact",
+      "family": "forest",
+      "cells": 20,
+      "SHAP_point": 19,
+      "flip_point": 1,
+      "SHAP_interval": 6,
+      "flip_interval": 0
+    },
+    {
+      "law": "intact",
+      "family": "logistic",
+      "cells": 20,
+      "SHAP_point": 8,
+      "flip_point": 12,
+      "SHAP_interval": 2,
+      "flip_interval": 4
+    },
+    {
+      "law": "independent",
+      "family": "all",
+      "cells": 60,
+      "SHAP_point": 0,
+      "flip_point": 60,
+      "SHAP_interval": 0,
+      "flip_interval": 60
+    },
+    {
+      "law": "independent",
+      "family": "tree",
+      "cells": 20,
+      "SHAP_point": 0,
+      "flip_point": 20,
+      "SHAP_interval": 0,
+      "flip_interval": 20
+    },
+    {
+      "law": "independent",
+      "family": "forest",
+      "cells": 20,
+      "SHAP_point": 0,
+      "flip_point": 20,
+      "SHAP_interval": 0,
+      "flip_interval": 20
+    },
+    {
+      "law": "independent",
+      "family": "logistic",
+      "cells": 20,
+      "SHAP_point": 0,
+      "flip_point": 20,
+      "SHAP_interval": 0,
+      "flip_interval": 20
+    }
+  ],
+  "decision_control": {
+    "comparisons": 3600,
+    "hard_function_identical": true,
+    "max_probability_difference": 0.4868052536426027,
+    "context_SHAP_uniform_background": 0.0,
+    "implication": "For the same audit background and batch law, hard-output scores and transferred thresholds coincide exactly. Log-odds do not inherit this identity."
+  },
+  "warning_and_permutation_diagnostics": [
+    {
+      "n": 1000,
+      "family": "tree",
+      "score": "shap_unknown_context_warning",
+      "law": "intact",
+      "harm_cases": 50,
+      "harmful_below_threshold_rates": [
+        1.0,
+        0.049513138686131386
+      ],
+      "candidate_AUC": 1.0
+    },
+    {
+      "n": 1000,
+      "family": "tree",
+      "score": "shap_unknown_context_warning",
+      "law": "independent",
+      "harm_cases": 50,
+      "harmful_below_threshold_rates": [
+        0.33435766423357666,
+        0.05001654501216545
+      ],
+      "candidate_AUC": 0.9988
+    },
+    {
+      "n": 1000,
+      "family": "tree",
+      "score": "flip_unknown_context_warning",
+      "law": "intact",
+      "harm_cases": 50,
+      "harmful_below_threshold_rates": [
+        0.7502761194029851,
+        0.1547278606965174
+      ],
+      "candidate_AUC": 0.9053333333333333
+    },
+    {
+      "n": 1000,
+      "family": "tree",
+      "score": "flip_unknown_context_warning",
+      "law": "independent",
+      "harm_cases": 50,
+      "harmful_below_threshold_rates": [
+        0.9899373134328358,
+        0.1547278606965174
+      ],
+      "candidate_AUC": 0.9422666666666666
+    },
+    {
+      "n": 1000,
+      "family": "tree",
+      "score": "context_permutation_F1_drop",
+      "law": "intact",
+      "harm_cases": 50,
+      "harmful_below_threshold_rates": [
+        1.0,
+        0.04980579710144928
+      ],
+      "candidate_AUC": 1.0,
+      "intact_mean_context_prevalence": 0.077500275
+    },
+    {
+      "n": 1000,
+      "family": "tree",
+      "score": "context_permutation_F1_drop",
+      "law": "independent",
+      "harm_cases": 50,
+      "harmful_below_threshold_rates": [
+        0.48668840579710143,
+        0.04980579710144928
+      ],
+      "candidate_AUC": 1.0,
+      "intact_mean_context_prevalence": 0.077500275
+    },
+    {
+      "n": 1000,
+      "family": "forest",
+      "score": "shap_unknown_context_warning",
+      "law": "intact",
+      "harm_cases": 95,
+      "harmful_below_threshold_rates": [
+        0.47711627906976745,
+        0.0019461055740125509
+      ],
+      "candidate_AUC": 0.9492731829573935
+    },
+    {
+      "n": 1000,
+      "family": "forest",
+      "score": "shap_unknown_context_warning",
+      "law": "independent",
+      "harm_cases": 95,
+      "harmful_below_threshold_rates": [
+        0.005465116279069767,
+        0.003708010335917313
+      ],
+      "candidate_AUC": 0.5321303258145365
+    },
+    {
+      "n": 1000,
+      "family": "forest",
+      "score": "flip_unknown_context_warning",
+      "law": "intact",
+      "harm_cases": 95,
+      "harmful_below_threshold_rates": [
+        0.45323544368166796,
+        0.2428743961352657
+      ],
+      "candidate_AUC": 0.7673684210526315
+    },
+    {
+      "n": 1000,
+      "family": "forest",
+      "score": "flip_unknown_context_warning",
+      "law": "independent",
+      "harm_cases": 95,
+      "harmful_below_threshold_rates": [
+        0.46842232392575645,
+        0.24367655854612377
+      ],
+      "candidate_AUC": 0.7776942355889724
+    },
+    {
+      "n": 1000,
+      "family": "forest",
+      "score": "context_permutation_F1_drop",
+      "law": "intact",
+      "harm_cases": 95,
+      "harmful_below_threshold_rates": [
+        1.0,
+        0.059353902507748656
+      ],
+      "candidate_AUC": 1.0,
+      "intact_mean_context_prevalence": 0.07740655
+    },
+    {
+      "n": 1000,
+      "family": "forest",
+      "score": "context_permutation_F1_drop",
+      "law": "independent",
+      "harm_cases": 95,
+      "harmful_below_threshold_rates": [
+        0.4842581750233572,
+        0.05397295012679628
+      ],
+      "candidate_AUC": 1.0,
+      "intact_mean_context_prevalence": 0.07740655
+    },
+    {
+      "n": 1000,
+      "family": "logistic",
+      "score": "shap_unknown_context_warning",
+      "law": "intact",
+      "harm_cases": 163,
+      "harmful_below_threshold_rates": [
+        0.05160842157835416,
+        0.000953081794665953
+      ],
+      "candidate_AUC": 0.6132482175426961
+    },
+    {
+      "n": 1000,
+      "family": "logistic",
+      "score": "shap_unknown_context_warning",
+      "law": "independent",
+      "harm_cases": 163,
+      "harmful_below_threshold_rates": [
+        0.003400386050875026,
+        0.0028556774596378556
+      ],
+      "candidate_AUC": 0.49900514010943464
+    },
+    {
+      "n": 1000,
+      "family": "logistic",
+      "score": "flip_unknown_context_warning",
+      "law": "intact",
+      "harm_cases": 163,
+      "harmful_below_threshold_rates": [
+        0.15000860969244015,
+        0.12020265305717179
+      ],
+      "candidate_AUC": 0.5385508207594097
+    },
+    {
+      "n": 1000,
+      "family": "logistic",
+      "score": "flip_unknown_context_warning",
+      "law": "independent",
+      "harm_cases": 163,
+      "harmful_below_threshold_rates": [
+        0.1902170679264164,
+        0.1235129177671426
+      ],
+      "candidate_AUC": 0.6168131321505554
+    },
+    {
+      "n": 1000,
+      "family": "logistic",
+      "score": "context_permutation_F1_drop",
+      "law": "intact",
+      "harm_cases": 163,
+      "harmful_below_threshold_rates": [
+        1.0,
+        0.04705246422893482
+      ],
+      "candidate_AUC": 1.0,
+      "intact_mean_context_prevalence": 0.07718105
+    },
+    {
+      "n": 1000,
+      "family": "logistic",
+      "score": "context_permutation_F1_drop",
+      "law": "independent",
+      "harm_cases": 163,
+      "harmful_below_threshold_rates": [
+        0.4763875857091303,
+        0.04705246422893482
+      ],
+      "candidate_AUC": 1.0,
+      "intact_mean_context_prevalence": 0.07718105
+    },
+    {
+      "n": 10000,
+      "family": "tree",
+      "score": "shap_unknown_context_warning",
+      "law": "intact",
+      "harm_cases": 46,
+      "harmful_below_threshold_rates": [
+        1.0,
+        0.049260287904866217
+      ],
+      "candidate_AUC": 1.0
+    },
+    {
+      "n": 10000,
+      "family": "tree",
+      "score": "shap_unknown_context_warning",
+      "law": "independent",
+      "harm_cases": 46,
+      "harmful_below_threshold_rates": [
+        0.3518137768465165,
+        0.04947915036770459
+      ],
+      "candidate_AUC": 0.980660643704122
+    },
+    {
+      "n": 10000,
+      "family": "tree",
+      "score": "flip_unknown_context_warning",
+      "law": "intact",
+      "harm_cases": 46,
+      "harmful_below_threshold_rates": [
+        0.8371209486166008,
+        0.185371546635183
+      ],
+      "candidate_AUC": 0.8685770750988142
+    },
+    {
+      "n": 10000,
+      "family": "tree",
+      "score": "flip_unknown_context_warning",
+      "law": "independent",
+      "harm_cases": 46,
+      "harmful_below_threshold_rates": [
+        1.0,
+        0.18328606847697756
+      ],
+      "candidate_AUC": 0.9318181818181819
+    },
+    {
+      "n": 10000,
+      "family": "tree",
+      "score": "context_permutation_F1_drop",
+      "law": "intact",
+      "harm_cases": 46,
+      "harmful_below_threshold_rates": [
+        1.0,
+        0.04978265032554577
+      ],
+      "candidate_AUC": 1.0,
+      "intact_mean_context_prevalence": 0.0773000525
+    },
+    {
+      "n": 10000,
+      "family": "tree",
+      "score": "context_permutation_F1_drop",
+      "law": "independent",
+      "harm_cases": 46,
+      "harmful_below_threshold_rates": [
+        0.5033695652173913,
+        0.04978265032554577
+      ],
+      "candidate_AUC": 1.0,
+      "intact_mean_context_prevalence": 0.0773000525
+    },
+    {
+      "n": 10000,
+      "family": "forest",
+      "score": "shap_unknown_context_warning",
+      "law": "intact",
+      "harm_cases": 100,
+      "harmful_below_threshold_rates": [
+        0.587372972972973,
+        0.0030061936936936935
+      ],
+      "candidate_AUC": 0.9067000000000001
+    },
+    {
+      "n": 10000,
+      "family": "forest",
+      "score": "shap_unknown_context_warning",
+      "law": "independent",
+      "harm_cases": 100,
+      "harmful_below_threshold_rates": [
+        0.0033265765765765768,
+        0.005179617117117117
+      ],
+      "candidate_AUC": 0.4688
+    },
+    {
+      "n": 10000,
+      "family": "forest",
+      "score": "flip_unknown_context_warning",
+      "law": "intact",
+      "harm_cases": 100,
+      "harmful_below_threshold_rates": [
+        0.5060830055074744,
+        0.3041359166011015
+      ],
+      "candidate_AUC": 0.72605
+    },
+    {
+      "n": 10000,
+      "family": "forest",
+      "score": "flip_unknown_context_warning",
+      "law": "independent",
+      "harm_cases": 100,
+      "harmful_below_threshold_rates": [
+        0.5084717545239968,
+        0.30347698662470496
+      ],
+      "candidate_AUC": 0.729
+    },
+    {
+      "n": 10000,
+      "family": "forest",
+      "score": "context_permutation_F1_drop",
+      "law": "intact",
+      "harm_cases": 100,
+      "harmful_below_threshold_rates": [
+        1.0,
+        0.05050275229357798
+      ],
+      "candidate_AUC": 0.9999999999999999,
+      "intact_mean_context_prevalence": 0.077444075
+    },
+    {
+      "n": 10000,
+      "family": "forest",
+      "score": "context_permutation_F1_drop",
+      "law": "independent",
+      "harm_cases": 100,
+      "harmful_below_threshold_rates": [
+        0.499577752293578,
+        0.05050275229357798
+      ],
+      "candidate_AUC": 1.0,
+      "intact_mean_context_prevalence": 0.077444075
+    },
+    {
+      "n": 10000,
+      "family": "logistic",
+      "score": "shap_unknown_context_warning",
+      "law": "intact",
+      "harm_cases": 150,
+      "harmful_below_threshold_rates": [
+        0.07923709677419355,
+        0.002108064516129032
+      ],
+      "candidate_AUC": 0.5418000000000001
+    },
+    {
+      "n": 10000,
+      "family": "logistic",
+      "score": "shap_unknown_context_warning",
+      "law": "independent",
+      "harm_cases": 150,
+      "harmful_below_threshold_rates": [
+        0.0017387096774193547,
+        0.003332258064516129
+      ],
+      "candidate_AUC": 0.4936
+    },
+    {
+      "n": 10000,
+      "family": "logistic",
+      "score": "flip_unknown_context_warning",
+      "law": "intact",
+      "harm_cases": 150,
+      "harmful_below_threshold_rates": [
+        0.2144602836879433,
+        0.16298191489361702
+      ],
+      "candidate_AUC": 0.5736
+    },
+    {
+      "n": 10000,
+      "family": "logistic",
+      "score": "flip_unknown_context_warning",
+      "law": "independent",
+      "harm_cases": 150,
+      "harmful_below_threshold_rates": [
+        0.25805212765957447,
+        0.1730308510638298
+      ],
+      "candidate_AUC": 0.6358666666666667
+    },
+    {
+      "n": 10000,
+      "family": "logistic",
+      "score": "context_permutation_F1_drop",
+      "law": "intact",
+      "harm_cases": 150,
+      "harmful_below_threshold_rates": [
+        1.0,
+        0.05063204225352113
+      ],
+      "candidate_AUC": 1.0,
+      "intact_mean_context_prevalence": 0.0774735875
+    },
+    {
+      "n": 10000,
+      "family": "logistic",
+      "score": "context_permutation_F1_drop",
+      "law": "independent",
+      "harm_cases": 150,
+      "harmful_below_threshold_rates": [
+        0.49230410798122065,
+        0.05063204225352113
+      ],
+      "candidate_AUC": 1.0,
+      "intact_mean_context_prevalence": 0.0774735875
+    }
+  ],
+  "boundary_mixtures": [
+    {
+      "n": 1000,
+      "family": "tree",
+      "score": "shap",
+      "partition": "global",
+      "p_boundary": 0.04975124378109453,
+      "boundary_weight": 0.8978102189781022,
+      "null_mass_at_boundary": 0.003425,
+      "null_warning_from_boundary": 0.003075
+    },
+    {
+      "n": 1000,
+      "family": "tree",
+      "score": "flip",
+      "partition": "global",
+      "p_boundary": 0.04975124378109453,
+      "boundary_weight": 0.5373134328358209,
+      "null_mass_at_boundary": 0.005025,
+      "null_warning_from_boundary": 0.0027
+    },
+    {
+      "n": 1000,
+      "family": "forest",
+      "score": "shap",
+      "partition": "global",
+      "p_boundary": 0.04477611940298507,
+      "boundary_weight": 0.8062015503875969,
+      "null_mass_at_boundary": 0.003225,
+      "null_warning_from_boundary": 0.0026
+    },
+    {
+      "n": 1000,
+      "family": "forest",
+      "score": "flip",
+      "partition": "global",
+      "p_boundary": 0.05970149253731343,
+      "boundary_weight": 0.8309178743961353,
+      "null_mass_at_boundary": 0.005175,
+      "null_warning_from_boundary": 0.0043
+    },
+    {
+      "n": 1000,
+      "family": "logistic",
+      "score": "shap",
+      "partition": "global",
+      "p_boundary": 0.04477611940298507,
+      "boundary_weight": 0.6754675467546755,
+      "null_mass_at_boundary": 0.022725,
+      "null_warning_from_boundary": 0.015349999999999999
+    },
+    {
+      "n": 1000,
+      "family": "logistic",
+      "score": "flip",
+      "partition": "global",
+      "p_boundary": 0.04975124378109453,
+      "boundary_weight": 0.7523879500367376,
+      "null_mass_at_boundary": 0.034025,
+      "null_warning_from_boundary": 0.025599999999999998
+    },
+    {
+      "n": 10000,
+      "family": "tree",
+      "score": "shap",
+      "partition": "global",
+      "p_boundary": 0.03980099502487562,
+      "boundary_weight": 0.41566265060240964,
+      "null_mass_at_boundary": 0.00415,
+      "null_warning_from_boundary": 0.001725
+    },
+    {
+      "n": 10000,
+      "family": "tree",
+      "score": "flip",
+      "partition": "global",
+      "p_boundary": 0.03482587064676617,
+      "boundary_weight": 0.4109090909090909,
+      "null_mass_at_boundary": 0.006875,
+      "null_warning_from_boundary": 0.002825
+    },
+    {
+      "n": 10000,
+      "family": "forest",
+      "score": "shap",
+      "partition": "global",
+      "p_boundary": 0.04477611940298507,
+      "boundary_weight": 0.47072072072072074,
+      "null_mass_at_boundary": 0.0111,
+      "null_warning_from_boundary": 0.0052250000000000005
+    },
+    {
+      "n": 10000,
+      "family": "forest",
+      "score": "flip",
+      "partition": "global",
+      "p_boundary": 0.03980099502487562,
+      "boundary_weight": 0.31785995279307633,
+      "null_mass_at_boundary": 0.031775,
+      "null_warning_from_boundary": 0.0101
+    },
+    {
+      "n": 10000,
+      "family": "logistic",
+      "score": "shap",
+      "partition": "global",
+      "p_boundary": 0.05970149253731343,
+      "boundary_weight": 0.08064516129032258,
+      "null_mass_at_boundary": 0.00155,
+      "null_warning_from_boundary": 0.000125
+    },
+    {
+      "n": 10000,
+      "family": "logistic",
+      "score": "flip",
+      "partition": "global",
+      "p_boundary": 0.03482587064676617,
+      "boundary_weight": 0.3723404255319149,
+      "null_mass_at_boundary": 0.00235,
+      "null_warning_from_boundary": 0.000875
+    }
+  ],
+  "healthy_cohort_counterexample": {
+    "fixed_background": [
+      0.007352941176470588,
+      0.014705882352941176,
+      0.022058823529411766,
+      0.029411764705882353,
+      0.03676470588235294,
+      0.04411764705882353,
+      0.051470588235294115,
+      0.058823529411764705,
+      0.0661764705882353,
+      0.07352941176470588,
+      0.08088235294117647,
+      0.08823529411764706,
+      0.09558823529411764,
+      0.10294117647058823,
+      0.11029411764705882,
+      0.11764705882352941
+    ],
+    "original_table": [
+      0.058823529411764705,
+      0.058823529411764705,
+      0.95,
+      0.95,
+      0.9523809523809523,
+      0.9523809523809523,
+      0.975,
+      0.975,
+      0.9454545454545454,
+      0.9454545454545454,
+      0.9428571428571428,
+      0.9428571428571428,
+      0.9344262295081968,
+      0.9344262295081968,
+      0.9636363636363636,
+      0.9636363636363636
+    ],
+    "changed_table": [
+      0.058823529411764705,
+      1.0,
+      0.95,
+      0.95,
+      0.9523809523809523,
+      0.9523809523809523,
+      0.975,
+      0.975,
+      0.9454545454545454,
+      0.9454545454545454,
+      0.9428571428571428,
+      0.9428571428571428,
+      0.9344262295081968,
+      0.9344262295081968,
+      0.9636363636363636,
+      0.9636363636363636
+    ],
+    "failure_predictions_identical": true,
+    "max_failure_attribution_change": 0.15974625144175314,
+    "S_before": [
+      0.0,
+      0.006484275669327744,
+      0.0
+    ],
+    "S_after": [
+      0.0162630862330857,
+      0.09086159898233337,
+      0.03547259499708899
+    ],
+    "implication": "Failure-only averaging does not imply mathematical insensitivity to healthy-state model outputs: interventional SHAP queries hybrid inputs. This does not make the score a healthy-error or harm test."
+  },
+  "dtu_response": {
+    "lost_packets": [
+      142,
+      143,
+      147,
+      148,
+      162,
+      166,
+      167,
+      169,
+      177,
+      178,
+      180,
+      182,
+      187,
+      189,
+      200
+    ],
+    "gained_packets": [],
+    "loss_reasons": {
+      "context_excess_below_cut": 11,
+      "context_not_maximizer": 4
+    },
+    "IDV4_confusion_counts_unchanged": true,
+    "saturation_identifiable_from_saved_aggregate_metrics": false
+  },
+  "baseline_definition": "One uniform marginal context-column permutation per audit batch, represented exactly by multivariate hypergeometric counts; no row expansion. Positive F1 drop is ranked against zero-drop eligible controls with their saved randomized rank ties, then matched to 5% empirical null warnings. This is permutation importance, not a permutation-significance or conditional-independence test. Permutation preserves marginal context prevalence; the original independence shift changes it to 0.5.",
+  "sha256": {
+    "experiments/83_review_audit.py": "2e2d404ae26bb352b5428594174735d76bbd23581953ee003106a44204060c08",
+    "experiments/results/review_audit_draws.npz": "5bbed3e152d0c6bb2dc45cf16661d7604761c3a3d8e7e4240f888ecc8be2eced",
+    "experiments/results/matched_population.json": "7053fd761a7053eb94eb0c3fa5f9c286ca4dac0586787b99ad0d60de25e43170",
+    "experiments/results/matched_population_draws.npz": "760859add12f6d68d4e5ee9105f1681081d169ea37542d23940c346ce4e9a736",
+    "experiments/results/reference_transfer.json": "b2291f8c7ab2c0578e46aaaa77286a83c85b5677b8c6ec76b11b73b35ed3212b",
+    "experiments/results/reference_transfer_draws.npz": "4e0249b31b245d589f69b4808e9bc879710aac07e89b07a63c9f688a45777129",
+    "experiments/results/dtu_dose_response.json": "4003ffaf3afdb49eaad8303e2871d16fd1fb5c9083e5789e8b6d49c0e98fdd3b",
+    "src/pdm_audit/reference_transfer.py": "731d91142ce32819187222c194266826c855dd0a1608b76d15d403ffb53c2843",
+    "src/pdm_audit/population_roc.py": "4b042413cd1ee7ed2a3aa3db9c49abaa0f484263bc946cd766f02389157eba68",
+    "src/pdm_audit/conditional_audit.py": "faa55d573903868817767b675a5685e30aad9cc34ae2484cae1e7efa8cf6fb2e",
+    "src/pdm_audit/exact_oracle.py": "a222cf242f571d2c88769d729da0e864b51b22b86a59ed903a17bebb618df04b"
+  }
+}

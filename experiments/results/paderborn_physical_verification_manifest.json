@@ -1,0 +1,18 @@
+{
+  "verified": true,
+  "raw_files": 160,
+  "physical_bearings": 2,
+  "unique_numerical_payloads": 156,
+  "duplicate_groups": 3,
+  "protected_signals_inspected": false,
+  "official_byte_identity_verified": false,
+  "acquisition_independence_verified": false,
+  "exhaustive_physical_alignment_verified": false,
+  "output_sha256": {
+    "experiments/results/paderborn_physical_acquisition.json": "8f095a488367dfcefcd5a1de82525297605924ed8d326c2d981fd0235128ee3b",
+    "experiments/results/paderborn_capture_metadata.csv": "127db55638f985e30fd27d1d9105a12a50c2cf896817a5fc56c6119e7d2643ce",
+    "experiments/results/paderborn_physical_spectra.csv": "88d3cd59e50250dbc859b3bf610a1602d10ea654983425dfe8b2242a493cb7d8",
+    "experiments/PADERBORN_PHYSICAL_LABEL_OVERLAY.json": "55878fbaf6d527cab4637d97af6a50b2bb8dc0f13431ddc41145183c98543d2e",
+    "IEEE-conference-template-062824/PADERBORN_PHYSICAL_ACQUISITION.md": "a790e1c51c18fb03609bae4dea0d9c4f1835d432c103dd233d8fa3aed6102f81"
+  }
+}

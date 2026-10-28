@@ -1,0 +1,64 @@
+{
+  "status": "physical-document overlay; summary-table split IDs unchanged",
+  "source": "Zenodo mirror of bearing-specific university profiles; original-byte identity unverified",
+  "scope": [
+    "KA04",
+    "KI04"
+  ],
+  "prior_summary_component": {
+    "KA04": "OR",
+    "KI04": "IR"
+  },
+  "profile_components": {
+    "KA04": [
+      "OR"
+    ],
+    "KI04": [
+      "IR",
+      "OR"
+    ]
+  },
+  "pure_IR_interpretation_invalidated": [
+    "KI04"
+  ],
+  "new_training_with_old_pure_labels_permitted": false,
+  "profiles": {
+    "KA04": {
+      "geometry": {
+        "rolling_elements": 8,
+        "ball_diameter_mm": 6.75,
+        "pitch_diameter_mm": 28.55,
+        "contact_angle_degrees": 0.0
+      },
+      "components": [
+        "OR"
+      ],
+      "damage_count": 1,
+      "manufacturer": "FAG",
+      "sample_number": "15-03",
+      "lifetime": "12:01",
+      "load_cycles": 2166300,
+      "source_sha256": "3f66eb5cb2df479c9f3cb16dd07e13bb8f662dab2289d445359a8cc58f824913"
+    },
+    "KI04": {
+      "geometry": {
+        "rolling_elements": 8,
+        "ball_diameter_mm": 6.75,
+        "pitch_diameter_mm": 29.05,
+        "contact_angle_degrees": 0.0
+      },
+      "components": [
+        "IR",
+        "OR"
+      ],
+      "damage_count": 2,
+      "manufacturer": "MTK",
+      "sample_number": "15-02",
+      "lifetime": "12:01",
+      "load_cycles": 2166300,
+      "source_sha256": "89d141542651a64c803c0f989905d2b22ad1a79448ec3485299656b084d5297a"
+    }
+  },
+  "frozen_role_ids_changed": false,
+  "protected_calibration_or_test_signals_inspected": false
+}

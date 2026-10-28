@@ -1,0 +1,30 @@
+{
+  "verified": true,
+  "pdf_pages": 10,
+  "page_limit_enforced": true,
+  "submission_page_limit": 10,
+  "page_limit_met": true,
+  "score_comparisons": 42,
+  "bootstrap_replicates": 400,
+  "dtu_units": 160,
+  "dtu_model_fits": 760,
+  "repository_public": false,
+  "scope": "Local numerical and PDF verification; not IEEE PDF eXpress or external peer review",
+  "sha256": {
+    "experiments/results/score_design.json": "7335e148a4df0b6b6eb8367c9e002053f6348f5db0d5b91017b6b1025f0d8198",
+    "experiments/results/dtu_dose_response.json": "4003ffaf3afdb49eaad8303e2871d16fd1fb5c9083e5789e8b6d49c0e98fdd3b",
+    "experiments/results/dtu_predictive_baselines.json": "04b54c6193ea250fb4c7a2d161534ba59b15d0ea37476d1b5a69de96826df8e4",
+    "IEEE-conference-template-062824/figures/publication_style.tex": "d52059e7b8a3c7731aa5f2412de2a3e91ef9fd3bd996ac70b0826d3b157db291",
+    "IEEE-conference-template-062824/figures/reference_transfer_plot.tex": "656865cbcf65ad8dfa1523f56318b0faffe5fb85a10b2d5775d8e063b238ede7",
+    "IEEE-conference-template-062824/figures/matched_localization_plot.tex": "9219eb035a0c294c41597f71abf637fe02d21d1a855c792161914d81f14a1923",
+    "IEEE-conference-template-062824/tables/harm_screening.tex": "2736bc32d6011d8a887f470a2745e14c5c183bb4fd9001b7b69f31753dfcc9b5",
+    "IEEE-conference-template-062824/figures/measured_load_plot.tex": "c42f4e248e5c11b6c26bef69781c267c83b15b1f2a290cd679552bc07394777a",
+    "IEEE-conference-template-062824/IEEE-conference-template-062824.tex": "543fde73e65b273ab1400b26dc9a237164c4b3b34ea12c4b2d37be3a83c02c1c",
+    "IEEE-conference-template-062824/IEEE-conference-template-062824.pdf": "2557e57a0110c2f9a544d8fb25c574c422c9046d757643b1731b3f49be4d4edb",
+    "IEEE-conference-template-062824/refs.bib": "611964471c6ae2dd565fb6a5846ace2b909c1911bddd651689c8ff149828d3fd",
+    "IEEE-conference-template-062824/submission_metadata.json": "b745efc48709bc6698cca5b92408ba2bedd82766d426427fc1e2b4e59f1b590d",
+    "experiments/78_verify_review4.py": "0d04b4c2ce33e16894b59567f4158b73208abb5896cb40d91c4cabe5bd9ee16a",
+    "experiments/77_review4_assets.py": "c3aa62a021bc96f7d8adb3222beb71da87220470ba03cf97a9eead297c2dc624",
+    "IEEE-conference-template-062824/REVIEW4_EVIDENCE_REPORT.md": "345f4a7a42c52121e7bfbab3480e720f2adc21a2d93a6c4023eba4d78dc34c2c"
+  }
+}

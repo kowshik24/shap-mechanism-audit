@@ -1,0 +1,112 @@
+{
+  "status": "unexecuted diagnosis split; not a valid S-calibration study",
+  "target": "pure healthy/IR/OR diagnosis on previously unseen bearings",
+  "hierarchy": [
+    "bearing_id",
+    "operating_condition",
+    "capture_index",
+    "window"
+  ],
+  "all_captures_and_conditions_follow_bearing": true,
+  "partitions": {
+    "training": [
+      "K001",
+      "K002",
+      "KA01",
+      "KA04",
+      "KA05",
+      "KA06",
+      "KA15",
+      "KI01",
+      "KI04",
+      "KI05",
+      "KI14",
+      "KI16"
+    ],
+    "validation": [
+      "K003",
+      "KA03",
+      "KA16",
+      "KI03",
+      "KI17"
+    ],
+    "reserved_calibration": [
+      "K004",
+      "KA07",
+      "KA22",
+      "KI07",
+      "KI18"
+    ],
+    "test": [
+      "K005",
+      "K006",
+      "KA08",
+      "KA09",
+      "KA30",
+      "KI08",
+      "KI21"
+    ],
+    "mixed_challenge": [
+      "KB23",
+      "KB24",
+      "KB27"
+    ]
+  },
+  "partition_class_counts": {
+    "training": {
+      "healthy": 2,
+      "OR": 5,
+      "IR": 5
+    },
+    "validation": {
+      "healthy": 1,
+      "OR": 2,
+      "IR": 2
+    },
+    "reserved_calibration": {
+      "healthy": 1,
+      "OR": 2,
+      "IR": 2
+    },
+    "test": {
+      "healthy": 2,
+      "OR": 3,
+      "IR": 2
+    },
+    "mixed_challenge": {
+      "mixed_or_secondary": 3
+    }
+  },
+  "operating_conditions": [
+    {
+      "condition": "N09_M07_F10",
+      "speed_rpm": 900,
+      "torque_Nm": 0.7,
+      "radial_force_N": 1000
+    },
+    {
+      "condition": "N15_M01_F10",
+      "speed_rpm": 1500,
+      "torque_Nm": 0.1,
+      "radial_force_N": 1000
+    },
+    {
+      "condition": "N15_M07_F04",
+      "speed_rpm": 1500,
+      "torque_Nm": 0.7,
+      "radial_force_N": 400
+    },
+    {
+      "condition": "N15_M07_F10",
+      "speed_rpm": 1500,
+      "torque_Nm": 0.7,
+      "radial_force_N": 1000
+    }
+  ],
+  "cross_condition_rule": "Fit on each of the four conditions in turn; evaluate each condition only on disjoint reserved/test bearings. All sixteen condition pairs are prespecified.",
+  "selection": "Training and validation bearings in the source/training operating condition only; reserved calibration and test never select features, models, thresholds, regions, or stopping.",
+  "mixed_rule": "Preserve secondary/mixed component labels; do not relabel KB23/KB24/KB27 as pure IR or OR.",
+  "session_and_lifetime_cohort_verified": false,
+  "physical_alignment_reference_verified": false,
+  "new_bearing_five_percent_S_calibration_permitted": false
+}

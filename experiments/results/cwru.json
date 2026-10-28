@@ -1,0 +1,3228 @@
+{
+  "complete": true,
+  "task": "fault location diagnosis among seeded faults",
+  "protocol": "experiments/SCIENTIFIC_GAPS_PROTOCOL.md",
+  "inventory": [
+    {
+      "recording": "IR007_0",
+      "fault": "IR",
+      "diameter_in": 0.007,
+      "load_hp": 0,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/105.mat",
+      "sha256": "f80b0ea04fd06b372a0eaec7c056543ea37e4bb4727a5b173d2a5bacd2aa9cab",
+      "bytes": 2910768,
+      "rpm": 1797.0,
+      "samples": 121265,
+      "mat_keys": [
+        "X105RPM",
+        "X105_BA_time",
+        "X105_DE_time",
+        "X105_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X105_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "B007_0",
+      "fault": "B",
+      "diameter_in": 0.007,
+      "load_hp": 0,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/118.mat",
+      "sha256": "b00628f8dd8d1d930af77fa465d1e5cdb385fe259489053f91f3680bda7f640e",
+      "bytes": 2942112,
+      "rpm": 1796.0,
+      "samples": 122571,
+      "mat_keys": [
+        "X118RPM",
+        "X118_BA_time",
+        "X118_DE_time",
+        "X118_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X118_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "OR007@6_0",
+      "fault": "OR",
+      "diameter_in": 0.007,
+      "load_hp": 0,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/130.mat",
+      "sha256": "35a095307d0971477049b343a1b5981dde465a58fb7f233ad89b035068c1717d",
+      "bytes": 2928192,
+      "rpm": 1796.0,
+      "samples": 121991,
+      "mat_keys": [
+        "X130RPM",
+        "X130_BA_time",
+        "X130_DE_time",
+        "X130_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X130_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "IR007_1",
+      "fault": "IR",
+      "diameter_in": 0.007,
+      "load_hp": 1,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/106.mat",
+      "sha256": "e5cec7cdd138e6cd1deb9ed8634e5aaa9bc1bd7094ddc075bff606580eb6e883",
+      "bytes": 2928192,
+      "rpm": 1772.0,
+      "samples": 121991,
+      "mat_keys": [
+        "X106RPM",
+        "X106_BA_time",
+        "X106_DE_time",
+        "X106_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X106_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "B007_1",
+      "fault": "B",
+      "diameter_in": 0.007,
+      "load_hp": 1,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/119.mat",
+      "sha256": "bc72d9df7668219e004a0f711232b23ec0aed393eb9bd8f9f5483426f6b51330",
+      "bytes": 2914248,
+      "rpm": 1772.0,
+      "samples": 121410,
+      "mat_keys": [
+        "X119RPM",
+        "X119_BA_time",
+        "X119_DE_time",
+        "X119_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X119_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "OR007@6_1",
+      "fault": "OR",
+      "diameter_in": 0.007,
+      "load_hp": 1,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/131.mat",
+      "sha256": "7883f7b83beadc54b2f301767f9145ce07055707182fb0278fdf0a6bb53ce3cb",
+      "bytes": 2938632,
+      "rpm": 1773.0,
+      "samples": 122426,
+      "mat_keys": [
+        "X131RPM",
+        "X131_BA_time",
+        "X131_DE_time",
+        "X131_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X131_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "IR007_2",
+      "fault": "IR",
+      "diameter_in": 0.007,
+      "load_hp": 2,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/107.mat",
+      "sha256": "111ba8996a115684661a13c913bd74d8029a59294492f88aec7b03e175fdd388",
+      "bytes": 2931672,
+      "rpm": 1748.0,
+      "samples": 122136,
+      "mat_keys": [
+        "X107RPM",
+        "X107_BA_time",
+        "X107_DE_time",
+        "X107_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X107_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "B007_2",
+      "fault": "B",
+      "diameter_in": 0.007,
+      "load_hp": 2,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/120.mat",
+      "sha256": "e0b7a584c49af52335ff0904a97d4afcf02d045625c582de63a7c85ce10b489c",
+      "bytes": 2917752,
+      "rpm": 1748.0,
+      "samples": 121556,
+      "mat_keys": [
+        "X120RPM",
+        "X120_BA_time",
+        "X120_DE_time",
+        "X120_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X120_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "OR007@6_2",
+      "fault": "OR",
+      "diameter_in": 0.007,
+      "load_hp": 2,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/132.mat",
+      "sha256": "17a69ed5d2270b42532e678e35bbe2fa04a2cc413cf2bf9e88c7692de8662d18",
+      "bytes": 2914248,
+      "rpm": 1750.0,
+      "samples": 121410,
+      "mat_keys": [
+        "X132RPM",
+        "X132_BA_time",
+        "X132_DE_time",
+        "X132_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X132_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "IR007_3",
+      "fault": "IR",
+      "diameter_in": 0.007,
+      "load_hp": 3,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/108.mat",
+      "sha256": "d415f0e65128bfa0b118c2051c988fb0dc6ce3e4c8aa45fdc5ad1d0967462e7d",
+      "bytes": 2950416,
+      "rpm": 1721.0,
+      "samples": 122917,
+      "mat_keys": [
+        "X108RPM",
+        "X108_BA_time",
+        "X108_DE_time",
+        "X108_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X108_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "B007_3",
+      "fault": "B",
+      "diameter_in": 0.007,
+      "load_hp": 3,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/121.mat",
+      "sha256": "52f686e984ba8e9b04a047a57416271cdb322cee57ee105dce58926a24b966cb",
+      "bytes": 2917752,
+      "rpm": 1722.0,
+      "samples": 121556,
+      "mat_keys": [
+        "X121RPM",
+        "X121_BA_time",
+        "X121_DE_time",
+        "X121_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X121_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "OR007@6_3",
+      "fault": "OR",
+      "diameter_in": 0.007,
+      "load_hp": 3,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/133.mat",
+      "sha256": "53f076cb0d905cf46bffaee7736abce8224ffed777deed03c0c863d762a90c71",
+      "bytes": 2942112,
+      "rpm": 1725.0,
+      "samples": 122571,
+      "mat_keys": [
+        "X133RPM",
+        "X133_BA_time",
+        "X133_DE_time",
+        "X133_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X133_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "IR014_0",
+      "fault": "IR",
+      "diameter_in": 0.014,
+      "load_hp": 0,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/169.mat",
+      "sha256": "f5448673725c4ea2735fe7d3fe4b16ad82b217eac6b62c4bf351c4549b0a5229",
+      "bytes": 2924712,
+      "rpm": 1796.0,
+      "samples": 121846,
+      "mat_keys": [
+        "X169RPM",
+        "X169_BA_time",
+        "X169_DE_time",
+        "X169_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X169_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "B014_0",
+      "fault": "B",
+      "diameter_in": 0.014,
+      "load_hp": 0,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/185.mat",
+      "sha256": "5bea2c60f177215ba3ec4ae287faf745d7e14aed1a12efe9e37b27c27044bafc",
+      "bytes": 2924712,
+      "rpm": 1796.0,
+      "samples": 121846,
+      "mat_keys": [
+        "X185RPM",
+        "X185_BA_time",
+        "X185_DE_time",
+        "X185_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X185_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "OR014@6_0",
+      "fault": "OR",
+      "diameter_in": 0.014,
+      "load_hp": 0,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/197.mat",
+      "sha256": "fa571b47cd942f9514a920b403fb7c053cd442bb2963a360a96d0f61432f03e9",
+      "bytes": 2924712,
+      "rpm": 1796.0,
+      "samples": 121846,
+      "mat_keys": [
+        "X197RPM",
+        "X197_BA_time",
+        "X197_DE_time",
+        "X197_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X197_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "IR014_1",
+      "fault": "IR",
+      "diameter_in": 0.014,
+      "load_hp": 1,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/170.mat",
+      "sha256": "bcb73a5208b67265468232a2e342f53719850901671d0ee28494f3af97621f46",
+      "bytes": 2924712,
+      "rpm": 1774.0,
+      "samples": 121846,
+      "mat_keys": [
+        "X170RPM",
+        "X170_BA_time",
+        "X170_DE_time",
+        "X170_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X170_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "B014_1",
+      "fault": "B",
+      "diameter_in": 0.014,
+      "load_hp": 1,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/186.mat",
+      "sha256": "1b3b6f3ad38e891feaa8026fe957b34f62f9082785089cc74f6878acdfe88ec5",
+      "bytes": 2931672,
+      "rpm": 1772.0,
+      "samples": 122136,
+      "mat_keys": [
+        "X186RPM",
+        "X186_BA_time",
+        "X186_DE_time",
+        "X186_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X186_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "OR014@6_1",
+      "fault": "OR",
+      "diameter_in": 0.014,
+      "load_hp": 1,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/198.mat",
+      "sha256": "dbd58e4585ca8f8332c708b15936987ec0990ca701359fd2483dae2719df5b49",
+      "bytes": 2931672,
+      "rpm": 1772.0,
+      "samples": 122136,
+      "mat_keys": [
+        "X198RPM",
+        "X198_BA_time",
+        "X198_DE_time",
+        "X198_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X198_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "IR014_2",
+      "fault": "IR",
+      "diameter_in": 0.014,
+      "load_hp": 2,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/171.mat",
+      "sha256": "63d0fdc1a68e64610ddfaf56a9c224d6137ab7b5c0d318eea1d542b9e5ffc029",
+      "bytes": 2924712,
+      "rpm": 1752.0,
+      "samples": 121846,
+      "mat_keys": [
+        "X171RPM",
+        "X171_BA_time",
+        "X171_DE_time",
+        "X171_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X171_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "B014_2",
+      "fault": "B",
+      "diameter_in": 0.014,
+      "load_hp": 2,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/187.mat",
+      "sha256": "0f1338cce89beb5c8d8e5e154579bc576354e7c7d1617ebd1759662c6f3100b2",
+      "bytes": 2928192,
+      "rpm": 1749.0,
+      "samples": 121991,
+      "mat_keys": [
+        "X187RPM",
+        "X187_BA_time",
+        "X187_DE_time",
+        "X187_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X187_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "OR014@6_2",
+      "fault": "OR",
+      "diameter_in": 0.014,
+      "load_hp": 2,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/199.mat",
+      "sha256": "ca4e6407fdb68845a6973da6028477911a62d018580063749fe956441be95cf2",
+      "bytes": 2924712,
+      "rpm": 1749.0,
+      "samples": 121846,
+      "mat_keys": [
+        "X199RPM",
+        "X199_BA_time",
+        "X199_DE_time",
+        "X199_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X199_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "IR014_3",
+      "fault": "IR",
+      "diameter_in": 0.014,
+      "load_hp": 3,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/172.mat",
+      "sha256": "f75170ceef70d5da475671de0d2e52a0acd9b3883ad422b6deaf2907d888ba24",
+      "bytes": 2921232,
+      "rpm": 1728.0,
+      "samples": 121701,
+      "mat_keys": [
+        "X172RPM",
+        "X172_BA_time",
+        "X172_DE_time",
+        "X172_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X172_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "B014_3",
+      "fault": "B",
+      "diameter_in": 0.014,
+      "load_hp": 3,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/188.mat",
+      "sha256": "1981614324d653c2522bea68fd4fd87e337495b117d12596db67abd1e10e7443",
+      "bytes": 2931672,
+      "rpm": 1724.0,
+      "samples": 122136,
+      "mat_keys": [
+        "X188RPM",
+        "X188_BA_time",
+        "X188_DE_time",
+        "X188_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X188_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "OR014@6_3",
+      "fault": "OR",
+      "diameter_in": 0.014,
+      "load_hp": 3,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/200.mat",
+      "sha256": "2526483d2701220a700df8e6c9db0c527641b0887225907f4096610dd7120f4b",
+      "bytes": 2928192,
+      "rpm": 1723.0,
+      "samples": 121991,
+      "mat_keys": [
+        "X200RPM",
+        "X200_BA_time",
+        "X200_DE_time",
+        "X200_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X200_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "IR021_0",
+      "fault": "IR",
+      "diameter_in": 0.021,
+      "load_hp": 0,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/209.mat",
+      "sha256": "9f723d6d9d2eba714c6dc50f99321dffa73d8b1e4d3605675b2c2251511eff80",
+      "bytes": 2931672,
+      "rpm": 1797.0,
+      "samples": 122136,
+      "mat_keys": [
+        "X209RPM",
+        "X209_BA_time",
+        "X209_DE_time",
+        "X209_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X209_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "B021_0",
+      "fault": "B",
+      "diameter_in": 0.021,
+      "load_hp": 0,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/222.mat",
+      "sha256": "fcc0ee740fa123b1f4683f555458891719efb2857afd9fdee63e8fde0ed14469",
+      "bytes": 2928192,
+      "rpm": 1796.0,
+      "samples": 121991,
+      "mat_keys": [
+        "X222RPM",
+        "X222_BA_time",
+        "X222_DE_time",
+        "X222_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X222_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "OR021@6_0",
+      "fault": "OR",
+      "diameter_in": 0.021,
+      "load_hp": 0,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/234.mat",
+      "sha256": "ebcbdb96612e8085bbdbf81f0e5e8e8a8d1a693d1ec559c4894f7792771aa9b2",
+      "bytes": 2938632,
+      "rpm": 1796.0,
+      "samples": 122426,
+      "mat_keys": [
+        "X234RPM",
+        "X234_BA_time",
+        "X234_DE_time",
+        "X234_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X234_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "IR021_1",
+      "fault": "IR",
+      "diameter_in": 0.021,
+      "load_hp": 1,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/210.mat",
+      "sha256": "596692397e77e129a00f7b7a61c4c3ffd6c7a59979b89039e7f70a7431cce1c7",
+      "bytes": 2917752,
+      "rpm": 1774.0,
+      "samples": 121556,
+      "mat_keys": [
+        "X210RPM",
+        "X210_BA_time",
+        "X210_DE_time",
+        "X210_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X210_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "B021_1",
+      "fault": "B",
+      "diameter_in": 0.021,
+      "load_hp": 1,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/223.mat",
+      "sha256": "7287410fd2217e3b332c5ab4732a68963be046d7d17bd40efa41cabe6a0514e5",
+      "bytes": 2921232,
+      "rpm": 1774.0,
+      "samples": 121701,
+      "mat_keys": [
+        "X223RPM",
+        "X223_BA_time",
+        "X223_DE_time",
+        "X223_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X223_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "OR021@6_1",
+      "fault": "OR",
+      "diameter_in": 0.021,
+      "load_hp": 1,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/235.mat",
+      "sha256": "667e4bf1f213f92d10dca71d494ad002d8fd22bfd8004b31a4c71ccf0d764b66",
+      "bytes": 2928192,
+      "rpm": 1771.0,
+      "samples": 121991,
+      "mat_keys": [
+        "X235RPM",
+        "X235_BA_time",
+        "X235_DE_time",
+        "X235_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X235_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "IR021_2",
+      "fault": "IR",
+      "diameter_in": 0.021,
+      "load_hp": 2,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/211.mat",
+      "sha256": "8296a02ee489c2d16cbd9fc278ca2e29b22475cec70ebe840558c78b6b743dc1",
+      "bytes": 2924712,
+      "rpm": 1752.0,
+      "samples": 121846,
+      "mat_keys": [
+        "X211RPM",
+        "X211_BA_time",
+        "X211_DE_time",
+        "X211_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X211_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "B021_2",
+      "fault": "B",
+      "diameter_in": 0.021,
+      "load_hp": 2,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/224.mat",
+      "sha256": "8a16894c2ff4d6bcdb9f4c345c0d5f13737b3bd6d15015d6b566c86e7a3ee7b7",
+      "bytes": 2931672,
+      "rpm": 1754.0,
+      "samples": 122136,
+      "mat_keys": [
+        "X224RPM",
+        "X224_BA_time",
+        "X224_DE_time",
+        "X224_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X224_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "OR021@6_2",
+      "fault": "OR",
+      "diameter_in": 0.021,
+      "load_hp": 2,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/236.mat",
+      "sha256": "c411d6d9826cba8073430555dc833e05fcbe4c38535f3eb7f03c525ea6797589",
+      "bytes": 2935152,
+      "rpm": 1748.0,
+      "samples": 122281,
+      "mat_keys": [
+        "X236RPM",
+        "X236_BA_time",
+        "X236_DE_time",
+        "X236_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X236_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "IR021_3",
+      "fault": "IR",
+      "diameter_in": 0.021,
+      "load_hp": 3,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/212.mat",
+      "sha256": "bfe13761f545a26b217db897a12d27e16fec74306aa86ade8dbdc8ebe587c253",
+      "bytes": 2928192,
+      "rpm": 1728.0,
+      "samples": 121991,
+      "mat_keys": [
+        "X212RPM",
+        "X212_BA_time",
+        "X212_DE_time",
+        "X212_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X212_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "B021_3",
+      "fault": "B",
+      "diameter_in": 0.021,
+      "load_hp": 3,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/225.mat",
+      "sha256": "ece92fa141af03473fdfca80d00d9112472a20340224514e79979c6ddc97a6cf",
+      "bytes": 2931672,
+      "rpm": 1729.0,
+      "samples": 122136,
+      "mat_keys": [
+        "X225RPM",
+        "X225_BA_time",
+        "X225_DE_time",
+        "X225_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X225_DE_time",
+      "n_windows": 24
+    },
+    {
+      "recording": "OR021@6_3",
+      "fault": "OR",
+      "diameter_in": 0.021,
+      "load_hp": 3,
+      "fs_hz": 12000,
+      "url": "https://engineering.case.edu/sites/default/files/237.mat",
+      "sha256": "233d1edb2daa963658369119e389e30f02aca551dd7bb028ab33e7ba63edfd20",
+      "bytes": 2928192,
+      "rpm": 1721.0,
+      "samples": 121991,
+      "mat_keys": [
+        "X237RPM",
+        "X237_BA_time",
+        "X237_DE_time",
+        "X237_FE_time",
+        "__globals__",
+        "__header__",
+        "__version__"
+      ],
+      "channel": "X237_DE_time",
+      "n_windows": 24
+    }
+  ],
+  "feature_names": [
+    "raw_IR_1",
+    "raw_IR_2",
+    "raw_B_1",
+    "raw_B_2",
+    "raw_OR_1",
+    "raw_OR_2",
+    "envelope_IR_1",
+    "envelope_IR_2",
+    "envelope_B_1",
+    "envelope_B_2",
+    "envelope_OR_1",
+    "envelope_OR_2",
+    "log_RMS",
+    "kurtosis",
+    "crest",
+    "band_0_1000",
+    "band_1000_2000",
+    "band_2000_4000",
+    "band_4000_6001"
+  ],
+  "expected_features": {
+    "IR": [
+      "raw_IR_1",
+      "raw_IR_2",
+      "envelope_IR_1",
+      "envelope_IR_2"
+    ],
+    "B": [
+      "raw_B_1",
+      "raw_B_2",
+      "envelope_B_1",
+      "envelope_B_2"
+    ],
+    "OR": [
+      "raw_OR_1",
+      "raw_OR_2",
+      "envelope_OR_1",
+      "envelope_OR_2"
+    ]
+  },
+  "conditions": {
+    "original": {
+      "folds": [
+        {
+          "test_load_hp": 0,
+          "selected_depth": 3,
+          "inner_recording_macro_f1": {
+            "3": 1.0,
+            "6": 1.0,
+            "None": 1.0
+          },
+          "train_recordings": [
+            "B007_1",
+            "B007_2",
+            "B007_3",
+            "B014_1",
+            "B014_2",
+            "B014_3",
+            "B021_1",
+            "B021_2",
+            "B021_3",
+            "IR007_1",
+            "IR007_2",
+            "IR007_3",
+            "IR014_1",
+            "IR014_2",
+            "IR014_3",
+            "IR021_1",
+            "IR021_2",
+            "IR021_3",
+            "OR007@6_1",
+            "OR007@6_2",
+            "OR007@6_3",
+            "OR014@6_1",
+            "OR014@6_2",
+            "OR014@6_3",
+            "OR021@6_1",
+            "OR021@6_2",
+            "OR021@6_3"
+          ],
+          "test_recordings": [
+            "B007_0",
+            "B014_0",
+            "B021_0",
+            "IR007_0",
+            "IR014_0",
+            "IR021_0",
+            "OR007@6_0",
+            "OR014@6_0",
+            "OR021@6_0"
+          ]
+        },
+        {
+          "test_load_hp": 1,
+          "selected_depth": 3,
+          "inner_recording_macro_f1": {
+            "3": 1.0,
+            "6": 1.0,
+            "None": 1.0
+          },
+          "train_recordings": [
+            "B007_0",
+            "B007_2",
+            "B007_3",
+            "B014_0",
+            "B014_2",
+            "B014_3",
+            "B021_0",
+            "B021_2",
+            "B021_3",
+            "IR007_0",
+            "IR007_2",
+            "IR007_3",
+            "IR014_0",
+            "IR014_2",
+            "IR014_3",
+            "IR021_0",
+            "IR021_2",
+            "IR021_3",
+            "OR007@6_0",
+            "OR007@6_2",
+            "OR007@6_3",
+            "OR014@6_0",
+            "OR014@6_2",
+            "OR014@6_3",
+            "OR021@6_0",
+            "OR021@6_2",
+            "OR021@6_3"
+          ],
+          "test_recordings": [
+            "B007_1",
+            "B014_1",
+            "B021_1",
+            "IR007_1",
+            "IR014_1",
+            "IR021_1",
+            "OR007@6_1",
+            "OR014@6_1",
+            "OR021@6_1"
+          ]
+        },
+        {
+          "test_load_hp": 2,
+          "selected_depth": 6,
+          "inner_recording_macro_f1": {
+            "3": 0.9619047619047619,
+            "6": 1.0,
+            "None": 1.0
+          },
+          "train_recordings": [
+            "B007_0",
+            "B007_1",
+            "B007_3",
+            "B014_0",
+            "B014_1",
+            "B014_3",
+            "B021_0",
+            "B021_1",
+            "B021_3",
+            "IR007_0",
+            "IR007_1",
+            "IR007_3",
+            "IR014_0",
+            "IR014_1",
+            "IR014_3",
+            "IR021_0",
+            "IR021_1",
+            "IR021_3",
+            "OR007@6_0",
+            "OR007@6_1",
+            "OR007@6_3",
+            "OR014@6_0",
+            "OR014@6_1",
+            "OR014@6_3",
+            "OR021@6_0",
+            "OR021@6_1",
+            "OR021@6_3"
+          ],
+          "test_recordings": [
+            "B007_2",
+            "B014_2",
+            "B021_2",
+            "IR007_2",
+            "IR014_2",
+            "IR021_2",
+            "OR007@6_2",
+            "OR014@6_2",
+            "OR021@6_2"
+          ]
+        },
+        {
+          "test_load_hp": 3,
+          "selected_depth": 3,
+          "inner_recording_macro_f1": {
+            "3": 1.0,
+            "6": 1.0,
+            "None": 1.0
+          },
+          "train_recordings": [
+            "B007_0",
+            "B007_1",
+            "B007_2",
+            "B014_0",
+            "B014_1",
+            "B014_2",
+            "B021_0",
+            "B021_1",
+            "B021_2",
+            "IR007_0",
+            "IR007_1",
+            "IR007_2",
+            "IR014_0",
+            "IR014_1",
+            "IR014_2",
+            "IR021_0",
+            "IR021_1",
+            "IR021_2",
+            "OR007@6_0",
+            "OR007@6_1",
+            "OR007@6_2",
+            "OR014@6_0",
+            "OR014@6_1",
+            "OR014@6_2",
+            "OR021@6_0",
+            "OR021@6_1",
+            "OR021@6_2"
+          ],
+          "test_recordings": [
+            "B007_3",
+            "B014_3",
+            "B021_3",
+            "IR007_3",
+            "IR014_3",
+            "IR021_3",
+            "OR007@6_3",
+            "OR014@6_3",
+            "OR021@6_3"
+          ]
+        }
+      ],
+      "matched": {
+        "window_macro_f1": 0.9953701470942851,
+        "recording_accuracy": 1.0,
+        "recording_macro_f1": 1.0,
+        "confusion": [
+          [
+            12,
+            0,
+            0
+          ],
+          [
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            12
+          ]
+        ],
+        "recordings": [
+          {
+            "id": "B007_0",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8514908501347658,
+              "IR": 0.052816168777992216,
+              "OR": 0.0956929810872418
+            }
+          },
+          {
+            "id": "B007_1",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8177135309983066,
+              "IR": 0.04873078402985397,
+              "OR": 0.13355568497183942
+            }
+          },
+          {
+            "id": "B007_2",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.9440691418048083,
+              "IR": 0.04770736285043766,
+              "OR": 0.00822349534475394
+            }
+          },
+          {
+            "id": "B007_3",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8270534816517494,
+              "IR": 0.1339501883668983,
+              "OR": 0.03899632998135213
+            }
+          },
+          {
+            "id": "B014_0",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.7380686870500454,
+              "IR": 0.09329839245877823,
+              "OR": 0.1686329204911763
+            }
+          },
+          {
+            "id": "B014_1",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8092978083149052,
+              "IR": 0.059825495484840036,
+              "OR": 0.13087669620025474
+            }
+          },
+          {
+            "id": "B014_2",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.9488921431436887,
+              "IR": 0.02871350709792152,
+              "OR": 0.022394349758389682
+            }
+          },
+          {
+            "id": "B014_3",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.824778663722087,
+              "IR": 0.08756345572015599,
+              "OR": 0.08765788055775676
+            }
+          },
+          {
+            "id": "B021_0",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.755434349772111,
+              "IR": 0.11377655318690193,
+              "OR": 0.13078909704098696
+            }
+          },
+          {
+            "id": "B021_1",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8157477025599352,
+              "IR": 0.07218097095173463,
+              "OR": 0.11207132648833007
+            }
+          },
+          {
+            "id": "B021_2",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.9169490271863968,
+              "IR": 0.012093271508190949,
+              "OR": 0.07095770130541221
+            }
+          },
+          {
+            "id": "B021_3",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8477228607307529,
+              "IR": 0.06308414587294868,
+              "OR": 0.08919299339629817
+            }
+          },
+          {
+            "id": "IR007_0",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.05670097428881662,
+              "IR": 0.925966780801332,
+              "OR": 0.017332244909851423
+            }
+          },
+          {
+            "id": "IR007_1",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.08727665027589947,
+              "IR": 0.9072674597326992,
+              "OR": 0.005455889991401518
+            }
+          },
+          {
+            "id": "IR007_2",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.007203282828282827,
+              "IR": 0.992796717171717,
+              "OR": 0.0
+            }
+          },
+          {
+            "id": "IR007_3",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.04278732028762327,
+              "IR": 0.9544225073699347,
+              "OR": 0.002790172342442004
+            }
+          },
+          {
+            "id": "IR014_0",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.1263987574817908,
+              "IR": 0.8371532264684531,
+              "OR": 0.036448016049756164
+            }
+          },
+          {
+            "id": "IR014_1",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.26945465070495495,
+              "IR": 0.6916667588008631,
+              "OR": 0.03887859049418196
+            }
+          },
+          {
+            "id": "IR014_2",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.14588334309513937,
+              "IR": 0.8486580347429157,
+              "OR": 0.005458622161944947
+            }
+          },
+          {
+            "id": "IR014_3",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.12791592740510868,
+              "IR": 0.8577803417968016,
+              "OR": 0.014303730798089708
+            }
+          },
+          {
+            "id": "IR021_0",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.024256257778234508,
+              "IR": 0.9300918761180003,
+              "OR": 0.04565186610376528
+            }
+          },
+          {
+            "id": "IR021_1",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.031899484419770564,
+              "IR": 0.9639845594458577,
+              "OR": 0.00411595613437184
+            }
+          },
+          {
+            "id": "IR021_2",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.0030862193362193365,
+              "IR": 0.9926082251082251,
+              "OR": 0.0043055555555555555
+            }
+          },
+          {
+            "id": "IR021_3",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.015368468422292407,
+              "IR": 0.9821060203181591,
+              "OR": 0.002525511259548617
+            }
+          },
+          {
+            "id": "OR007@6_0",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.005022358217088415,
+              "IR": 0.003915379317469088,
+              "OR": 0.9910622624654425
+            }
+          },
+          {
+            "id": "OR007@6_1",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.019711318860114208,
+              "IR": 0.02270565759739404,
+              "OR": 0.9575830235424917
+            }
+          },
+          {
+            "id": "OR007@6_2",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.001388888888888889,
+              "IR": 0.0014930555555555554,
+              "OR": 0.9971180555555555
+            }
+          },
+          {
+            "id": "OR007@6_3",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.003863494113121839,
+              "IR": 0.0031296404093306266,
+              "OR": 0.9930068654775476
+            }
+          },
+          {
+            "id": "OR014@6_0",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.23155745487629972,
+              "IR": 0.006685484482868642,
+              "OR": 0.7617570606408314
+            }
+          },
+          {
+            "id": "OR014@6_1",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.19856551601086259,
+              "IR": 0.010154531606939271,
+              "OR": 0.791279952382198
+            }
+          },
+          {
+            "id": "OR014@6_2",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.07686206465519846,
+              "IR": 0.001736111111111111,
+              "OR": 0.9214018242336904
+            }
+          },
+          {
+            "id": "OR014@6_3",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.31827955978967465,
+              "IR": 0.018688646416078585,
+              "OR": 0.6630317937942467
+            }
+          },
+          {
+            "id": "OR021@6_0",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.03927303992788395,
+              "IR": 0.009832200752547869,
+              "OR": 0.9508947593195681
+            }
+          },
+          {
+            "id": "OR021@6_1",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.04029355683841388,
+              "IR": 0.006188562935969051,
+              "OR": 0.9535178802256171
+            }
+          },
+          {
+            "id": "OR021@6_2",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.018856176919291524,
+              "IR": 0.0027132616487455193,
+              "OR": 0.9784305614319629
+            }
+          },
+          {
+            "id": "OR021@6_3",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.052138337421019754,
+              "IR": 0.008111127034307794,
+              "OR": 0.9397505355446724
+            }
+          }
+        ]
+      },
+      "gain_removed": {
+        "window_macro_f1": 0.9953701470942851,
+        "recording_accuracy": 1.0,
+        "recording_macro_f1": 1.0,
+        "confusion": [
+          [
+            12,
+            0,
+            0
+          ],
+          [
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            12
+          ]
+        ],
+        "recordings": [
+          {
+            "id": "B007_0",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8514908501347658,
+              "IR": 0.052816168777992216,
+              "OR": 0.0956929810872418
+            }
+          },
+          {
+            "id": "B007_1",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8177135309983066,
+              "IR": 0.04873078402985397,
+              "OR": 0.13355568497183942
+            }
+          },
+          {
+            "id": "B007_2",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.9440691418048083,
+              "IR": 0.04770736285043766,
+              "OR": 0.00822349534475394
+            }
+          },
+          {
+            "id": "B007_3",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8270534816517494,
+              "IR": 0.1339501883668983,
+              "OR": 0.03899632998135213
+            }
+          },
+          {
+            "id": "B014_0",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.7380686870500454,
+              "IR": 0.09329839245877823,
+              "OR": 0.1686329204911763
+            }
+          },
+          {
+            "id": "B014_1",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8092978083149052,
+              "IR": 0.059825495484840036,
+              "OR": 0.13087669620025474
+            }
+          },
+          {
+            "id": "B014_2",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.9488921431436887,
+              "IR": 0.02871350709792152,
+              "OR": 0.022394349758389682
+            }
+          },
+          {
+            "id": "B014_3",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.824778663722087,
+              "IR": 0.08756345572015599,
+              "OR": 0.08765788055775676
+            }
+          },
+          {
+            "id": "B021_0",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.755434349772111,
+              "IR": 0.11377655318690193,
+              "OR": 0.13078909704098696
+            }
+          },
+          {
+            "id": "B021_1",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8157477025599352,
+              "IR": 0.07218097095173463,
+              "OR": 0.11207132648833007
+            }
+          },
+          {
+            "id": "B021_2",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.9169490271863968,
+              "IR": 0.012093271508190949,
+              "OR": 0.07095770130541221
+            }
+          },
+          {
+            "id": "B021_3",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8477228607307529,
+              "IR": 0.06308414587294868,
+              "OR": 0.08919299339629817
+            }
+          },
+          {
+            "id": "IR007_0",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.05670097428881662,
+              "IR": 0.925966780801332,
+              "OR": 0.017332244909851423
+            }
+          },
+          {
+            "id": "IR007_1",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.08727665027589947,
+              "IR": 0.9072674597326992,
+              "OR": 0.005455889991401518
+            }
+          },
+          {
+            "id": "IR007_2",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.007203282828282827,
+              "IR": 0.992796717171717,
+              "OR": 0.0
+            }
+          },
+          {
+            "id": "IR007_3",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.04278732028762327,
+              "IR": 0.9544225073699347,
+              "OR": 0.002790172342442004
+            }
+          },
+          {
+            "id": "IR014_0",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.1263987574817908,
+              "IR": 0.8371532264684531,
+              "OR": 0.036448016049756164
+            }
+          },
+          {
+            "id": "IR014_1",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.26945465070495495,
+              "IR": 0.6916667588008631,
+              "OR": 0.03887859049418196
+            }
+          },
+          {
+            "id": "IR014_2",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.14588334309513937,
+              "IR": 0.8486580347429157,
+              "OR": 0.005458622161944947
+            }
+          },
+          {
+            "id": "IR014_3",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.12791592740510868,
+              "IR": 0.8577803417968016,
+              "OR": 0.014303730798089708
+            }
+          },
+          {
+            "id": "IR021_0",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.024256257778234508,
+              "IR": 0.9300918761180003,
+              "OR": 0.04565186610376528
+            }
+          },
+          {
+            "id": "IR021_1",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.031899484419770564,
+              "IR": 0.9639845594458577,
+              "OR": 0.00411595613437184
+            }
+          },
+          {
+            "id": "IR021_2",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.0030862193362193365,
+              "IR": 0.9926082251082251,
+              "OR": 0.0043055555555555555
+            }
+          },
+          {
+            "id": "IR021_3",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.015368468422292407,
+              "IR": 0.9821060203181591,
+              "OR": 0.002525511259548617
+            }
+          },
+          {
+            "id": "OR007@6_0",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.005022358217088415,
+              "IR": 0.003915379317469088,
+              "OR": 0.9910622624654425
+            }
+          },
+          {
+            "id": "OR007@6_1",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.019711318860114208,
+              "IR": 0.02270565759739404,
+              "OR": 0.9575830235424917
+            }
+          },
+          {
+            "id": "OR007@6_2",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.001388888888888889,
+              "IR": 0.0014930555555555554,
+              "OR": 0.9971180555555555
+            }
+          },
+          {
+            "id": "OR007@6_3",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.003863494113121839,
+              "IR": 0.0031296404093306266,
+              "OR": 0.9930068654775476
+            }
+          },
+          {
+            "id": "OR014@6_0",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.23155745487629972,
+              "IR": 0.006685484482868642,
+              "OR": 0.7617570606408314
+            }
+          },
+          {
+            "id": "OR014@6_1",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.19856551601086259,
+              "IR": 0.010154531606939271,
+              "OR": 0.791279952382198
+            }
+          },
+          {
+            "id": "OR014@6_2",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.07686206465519846,
+              "IR": 0.001736111111111111,
+              "OR": 0.9214018242336904
+            }
+          },
+          {
+            "id": "OR014@6_3",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.31827955978967465,
+              "IR": 0.018688646416078585,
+              "OR": 0.6630317937942467
+            }
+          },
+          {
+            "id": "OR021@6_0",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.03927303992788395,
+              "IR": 0.009832200752547869,
+              "OR": 0.9508947593195681
+            }
+          },
+          {
+            "id": "OR021@6_1",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.04029355683841388,
+              "IR": 0.006188562935969051,
+              "OR": 0.9535178802256171
+            }
+          },
+          {
+            "id": "OR021@6_2",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.018856176919291524,
+              "IR": 0.0027132616487455193,
+              "OR": 0.9784305614319629
+            }
+          },
+          {
+            "id": "OR021@6_3",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.052138337421019754,
+              "IR": 0.008111127034307794,
+              "OR": 0.9397505355446724
+            }
+          }
+        ]
+      },
+      "audit": {
+        "B": {
+          "R": 0.1356530231324426,
+          "D": -0.0071243418808498715,
+          "S": 0.029521513928669446,
+          "S_feature": "raw_OR_2",
+          "gain_share": 0.1204056323481605,
+          "shares": {
+            "raw_IR_1": 0.10837693469768007,
+            "raw_IR_2": 0.00490366239384467,
+            "raw_B_1": 0.057580022898506264,
+            "raw_B_2": 0.051280959828172705,
+            "raw_OR_1": 0.03001941555460096,
+            "raw_OR_2": 0.08072858733664687,
+            "envelope_IR_1": 0.15657367953863363,
+            "envelope_IR_2": 0.028695323698976347,
+            "envelope_B_1": 0.01474507955143965,
+            "envelope_B_2": 0.012046960854323987,
+            "envelope_OR_1": 0.0933733367971629,
+            "envelope_OR_2": 0.047949097401617756,
+            "log_RMS": 0.1204056323481605,
+            "kurtosis": 0.05111820824808446,
+            "crest": 0.019526984109436814,
+            "band_0_1000": 0.042109468456226665,
+            "band_1000_2000": 0.024836997511470626,
+            "band_2000_4000": 0.006793580974080356,
+            "band_4000_6001": 0.048936067800934895
+          },
+          "decoys": {
+            "R": 0.13565302313244257,
+            "set_size": 4,
+            "n_decoys": 1365,
+            "decoy_mean": 0.23049252716468197,
+            "decoy_max": 0.478729583381637,
+            "fraction_decoys_ge_observed": 0.8813186813186813,
+            "observed_minus_decoy_mean": -0.0948395040322394
+          }
+        },
+        "IR": {
+          "R": 0.36116378509614816,
+          "D": 0.01273656102900228,
+          "S": 0.05594780315785121,
+          "S_feature": "envelope_OR_2",
+          "gain_share": 0.09262806835801721,
+          "shares": {
+            "raw_IR_1": 0.027262922584350882,
+            "raw_IR_2": 0.0013369873780057794,
+            "raw_B_1": 0.015103756193060367,
+            "raw_B_2": 0.007577943461864931,
+            "raw_OR_1": 0.14989747364369813,
+            "raw_OR_2": 0.023227051903817218,
+            "envelope_IR_1": 0.3171636145791238,
+            "envelope_IR_2": 0.015400260554667719,
+            "envelope_B_1": 0.024581192742583018,
+            "envelope_B_2": 0.004167325798984506,
+            "envelope_OR_1": 0.05888469679867845,
+            "envelope_OR_2": 0.1668416691443001,
+            "log_RMS": 0.09262806835801721,
+            "kurtosis": 0.03923489724502259,
+            "crest": 0.009708213148300743,
+            "band_0_1000": 0.03464013623951931,
+            "band_1000_2000": 0.0024932858663159925,
+            "band_2000_4000": 0.002713600803951071,
+            "band_4000_6001": 0.007136903555738116
+          },
+          "decoys": {
+            "R": 0.36116378509614816,
+            "set_size": 4,
+            "n_decoys": 1365,
+            "decoy_mean": 0.1703563239743605,
+            "decoy_max": 0.468251907944694,
+            "fraction_decoys_ge_observed": 0.02490842490842491,
+            "observed_minus_decoy_mean": 0.19080746112178765
+          }
+        },
+        "OR": {
+          "R": 0.44696178291721955,
+          "D": 0.020121039626712467,
+          "S": 0.022150167442418087,
+          "S_feature": "log_RMS",
+          "gain_share": 0.08058112298290869,
+          "shares": {
+            "raw_IR_1": 0.11840559739183704,
+            "raw_IR_2": 0.002859061608270222,
+            "raw_B_1": 0.06291165223552772,
+            "raw_B_2": 0.044178781896755136,
+            "raw_OR_1": 0.07648950724266589,
+            "raw_OR_2": 0.06962337497951099,
+            "envelope_IR_1": 0.10082009495888351,
+            "envelope_IR_2": 0.0016078306633915793,
+            "envelope_B_1": 0.00902637741958446,
+            "envelope_B_2": 0.01998101579108876,
+            "envelope_OR_1": 0.20000683180707018,
+            "envelope_OR_2": 0.10084206888797248,
+            "log_RMS": 0.08058112298290869,
+            "kurtosis": 0.014740563462222717,
+            "crest": 0.0018931696933797352,
+            "band_0_1000": 0.01854237201027751,
+            "band_1000_2000": 0.021062273226194504,
+            "band_2000_4000": 0.006288039540848359,
+            "band_4000_6001": 0.0501402642016106
+          },
+          "decoys": {
+            "R": 0.44696178291721955,
+            "set_size": 4,
+            "n_decoys": 1365,
+            "decoy_mean": 0.14747685788874146,
+            "decoy_max": 0.36271846756915693,
+            "fraction_decoys_ge_observed": 0.0,
+            "observed_minus_decoy_mean": 0.2994849250284781
+          }
+        }
+      },
+      "gain_removed_audit": {
+        "B": {
+          "R": 0.1356530231324426,
+          "D": -0.0071243418808498715,
+          "S": 0.029521513928669446,
+          "S_feature": "raw_OR_2",
+          "gain_share": 0.1204056323481605,
+          "shares": {
+            "raw_IR_1": 0.10837693469768007,
+            "raw_IR_2": 0.00490366239384467,
+            "raw_B_1": 0.057580022898506264,
+            "raw_B_2": 0.051280959828172705,
+            "raw_OR_1": 0.03001941555460096,
+            "raw_OR_2": 0.08072858733664687,
+            "envelope_IR_1": 0.15657367953863363,
+            "envelope_IR_2": 0.028695323698976347,
+            "envelope_B_1": 0.01474507955143965,
+            "envelope_B_2": 0.012046960854323987,
+            "envelope_OR_1": 0.0933733367971629,
+            "envelope_OR_2": 0.047949097401617756,
+            "log_RMS": 0.1204056323481605,
+            "kurtosis": 0.05111820824808446,
+            "crest": 0.019526984109436814,
+            "band_0_1000": 0.042109468456226665,
+            "band_1000_2000": 0.024836997511470626,
+            "band_2000_4000": 0.006793580974080356,
+            "band_4000_6001": 0.048936067800934895
+          }
+        },
+        "IR": {
+          "R": 0.36116378509614816,
+          "D": 0.01273656102900228,
+          "S": 0.05594780315785121,
+          "S_feature": "envelope_OR_2",
+          "gain_share": 0.09262806835801721,
+          "shares": {
+            "raw_IR_1": 0.027262922584350882,
+            "raw_IR_2": 0.0013369873780057794,
+            "raw_B_1": 0.015103756193060367,
+            "raw_B_2": 0.007577943461864931,
+            "raw_OR_1": 0.14989747364369813,
+            "raw_OR_2": 0.023227051903817218,
+            "envelope_IR_1": 0.3171636145791238,
+            "envelope_IR_2": 0.015400260554667719,
+            "envelope_B_1": 0.024581192742583018,
+            "envelope_B_2": 0.004167325798984506,
+            "envelope_OR_1": 0.05888469679867845,
+            "envelope_OR_2": 0.1668416691443001,
+            "log_RMS": 0.09262806835801721,
+            "kurtosis": 0.03923489724502259,
+            "crest": 0.009708213148300743,
+            "band_0_1000": 0.03464013623951931,
+            "band_1000_2000": 0.0024932858663159925,
+            "band_2000_4000": 0.002713600803951071,
+            "band_4000_6001": 0.007136903555738116
+          }
+        },
+        "OR": {
+          "R": 0.44696178291721955,
+          "D": 0.020121039626712467,
+          "S": 0.022150167442418087,
+          "S_feature": "log_RMS",
+          "gain_share": 0.08058112298290869,
+          "shares": {
+            "raw_IR_1": 0.11840559739183704,
+            "raw_IR_2": 0.002859061608270222,
+            "raw_B_1": 0.06291165223552772,
+            "raw_B_2": 0.044178781896755136,
+            "raw_OR_1": 0.07648950724266589,
+            "raw_OR_2": 0.06962337497951099,
+            "envelope_IR_1": 0.10082009495888351,
+            "envelope_IR_2": 0.0016078306633915793,
+            "envelope_B_1": 0.00902637741958446,
+            "envelope_B_2": 0.01998101579108876,
+            "envelope_OR_1": 0.20000683180707018,
+            "envelope_OR_2": 0.10084206888797248,
+            "log_RMS": 0.08058112298290869,
+            "kurtosis": 0.014740563462222717,
+            "crest": 0.0018931696933797352,
+            "band_0_1000": 0.01854237201027751,
+            "band_1000_2000": 0.021062273226194504,
+            "band_2000_4000": 0.006288039540848359,
+            "band_4000_6001": 0.0501402642016106
+          }
+        }
+      },
+      "recording_macro_f1_drop_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "gain_correlated": {
+      "folds": [
+        {
+          "test_load_hp": 0,
+          "selected_depth": 3,
+          "inner_recording_macro_f1": {
+            "3": 1.0,
+            "6": 1.0,
+            "None": 1.0
+          },
+          "train_recordings": [
+            "B007_1",
+            "B007_2",
+            "B007_3",
+            "B014_1",
+            "B014_2",
+            "B014_3",
+            "B021_1",
+            "B021_2",
+            "B021_3",
+            "IR007_1",
+            "IR007_2",
+            "IR007_3",
+            "IR014_1",
+            "IR014_2",
+            "IR014_3",
+            "IR021_1",
+            "IR021_2",
+            "IR021_3",
+            "OR007@6_1",
+            "OR007@6_2",
+            "OR007@6_3",
+            "OR014@6_1",
+            "OR014@6_2",
+            "OR014@6_3",
+            "OR021@6_1",
+            "OR021@6_2",
+            "OR021@6_3"
+          ],
+          "test_recordings": [
+            "B007_0",
+            "B014_0",
+            "B021_0",
+            "IR007_0",
+            "IR014_0",
+            "IR021_0",
+            "OR007@6_0",
+            "OR014@6_0",
+            "OR021@6_0"
+          ]
+        },
+        {
+          "test_load_hp": 1,
+          "selected_depth": 3,
+          "inner_recording_macro_f1": {
+            "3": 1.0,
+            "6": 1.0,
+            "None": 1.0
+          },
+          "train_recordings": [
+            "B007_0",
+            "B007_2",
+            "B007_3",
+            "B014_0",
+            "B014_2",
+            "B014_3",
+            "B021_0",
+            "B021_2",
+            "B021_3",
+            "IR007_0",
+            "IR007_2",
+            "IR007_3",
+            "IR014_0",
+            "IR014_2",
+            "IR014_3",
+            "IR021_0",
+            "IR021_2",
+            "IR021_3",
+            "OR007@6_0",
+            "OR007@6_2",
+            "OR007@6_3",
+            "OR014@6_0",
+            "OR014@6_2",
+            "OR014@6_3",
+            "OR021@6_0",
+            "OR021@6_2",
+            "OR021@6_3"
+          ],
+          "test_recordings": [
+            "B007_1",
+            "B014_1",
+            "B021_1",
+            "IR007_1",
+            "IR014_1",
+            "IR021_1",
+            "OR007@6_1",
+            "OR014@6_1",
+            "OR021@6_1"
+          ]
+        },
+        {
+          "test_load_hp": 2,
+          "selected_depth": 3,
+          "inner_recording_macro_f1": {
+            "3": 1.0,
+            "6": 1.0,
+            "None": 1.0
+          },
+          "train_recordings": [
+            "B007_0",
+            "B007_1",
+            "B007_3",
+            "B014_0",
+            "B014_1",
+            "B014_3",
+            "B021_0",
+            "B021_1",
+            "B021_3",
+            "IR007_0",
+            "IR007_1",
+            "IR007_3",
+            "IR014_0",
+            "IR014_1",
+            "IR014_3",
+            "IR021_0",
+            "IR021_1",
+            "IR021_3",
+            "OR007@6_0",
+            "OR007@6_1",
+            "OR007@6_3",
+            "OR014@6_0",
+            "OR014@6_1",
+            "OR014@6_3",
+            "OR021@6_0",
+            "OR021@6_1",
+            "OR021@6_3"
+          ],
+          "test_recordings": [
+            "B007_2",
+            "B014_2",
+            "B021_2",
+            "IR007_2",
+            "IR014_2",
+            "IR021_2",
+            "OR007@6_2",
+            "OR014@6_2",
+            "OR021@6_2"
+          ]
+        },
+        {
+          "test_load_hp": 3,
+          "selected_depth": 3,
+          "inner_recording_macro_f1": {
+            "3": 1.0,
+            "6": 1.0,
+            "None": 1.0
+          },
+          "train_recordings": [
+            "B007_0",
+            "B007_1",
+            "B007_2",
+            "B014_0",
+            "B014_1",
+            "B014_2",
+            "B021_0",
+            "B021_1",
+            "B021_2",
+            "IR007_0",
+            "IR007_1",
+            "IR007_2",
+            "IR014_0",
+            "IR014_1",
+            "IR014_2",
+            "IR021_0",
+            "IR021_1",
+            "IR021_2",
+            "OR007@6_0",
+            "OR007@6_1",
+            "OR007@6_2",
+            "OR014@6_0",
+            "OR014@6_1",
+            "OR014@6_2",
+            "OR021@6_0",
+            "OR021@6_1",
+            "OR021@6_2"
+          ],
+          "test_recordings": [
+            "B007_3",
+            "B014_3",
+            "B021_3",
+            "IR007_3",
+            "IR014_3",
+            "IR021_3",
+            "OR007@6_3",
+            "OR014@6_3",
+            "OR021@6_3"
+          ]
+        }
+      ],
+      "matched": {
+        "window_macro_f1": 1.0,
+        "recording_accuracy": 1.0,
+        "recording_macro_f1": 1.0,
+        "confusion": [
+          [
+            12,
+            0,
+            0
+          ],
+          [
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            12
+          ]
+        ],
+        "recordings": [
+          {
+            "id": "B007_0",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8687822432277647,
+              "IR": 0.053631130407668336,
+              "OR": 0.07758662636456715
+            }
+          },
+          {
+            "id": "B007_1",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.854633450276754,
+              "IR": 0.05773955295606168,
+              "OR": 0.0876269967671845
+            }
+          },
+          {
+            "id": "B007_2",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8563108612757478,
+              "IR": 0.12141238015570056,
+              "OR": 0.022276758568551172
+            }
+          },
+          {
+            "id": "B007_3",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8733220584851872,
+              "IR": 0.09834780527405311,
+              "OR": 0.028330136240759706
+            }
+          },
+          {
+            "id": "B014_0",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.7835404850908607,
+              "IR": 0.10013157480379509,
+              "OR": 0.11632794010534418
+            }
+          },
+          {
+            "id": "B014_1",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8416551380717333,
+              "IR": 0.0719335045616673,
+              "OR": 0.08641135736659938
+            }
+          },
+          {
+            "id": "B014_2",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8552325536813865,
+              "IR": 0.08712256943577164,
+              "OR": 0.057644876882841485
+            }
+          },
+          {
+            "id": "B014_3",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8443133294774667,
+              "IR": 0.08843233959877995,
+              "OR": 0.06725433092375314
+            }
+          },
+          {
+            "id": "B021_0",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.7914935945905679,
+              "IR": 0.1170944337702013,
+              "OR": 0.09141197163923072
+            }
+          },
+          {
+            "id": "B021_1",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8444625193717087,
+              "IR": 0.07862628094704872,
+              "OR": 0.07691119968124259
+            }
+          },
+          {
+            "id": "B021_2",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8639808197005278,
+              "IR": 0.05363920621527323,
+              "OR": 0.08237997408419867
+            }
+          },
+          {
+            "id": "B021_3",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8421914712356199,
+              "IR": 0.08946693031142998,
+              "OR": 0.06834159845295011
+            }
+          },
+          {
+            "id": "IR007_0",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.06275295736535504,
+              "IR": 0.921119696983987,
+              "OR": 0.01612734565065795
+            }
+          },
+          {
+            "id": "IR007_1",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.09758004775408051,
+              "IR": 0.8974161367269652,
+              "OR": 0.005003815518954164
+            }
+          },
+          {
+            "id": "IR007_2",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.022084622115139074,
+              "IR": 0.9776016860605301,
+              "OR": 0.0003136918243307275
+            }
+          },
+          {
+            "id": "IR007_3",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.04658357563625826,
+              "IR": 0.9520667629472244,
+              "OR": 0.0013496614165174623
+            }
+          },
+          {
+            "id": "IR014_0",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.14056283437130865,
+              "IR": 0.8368356541858338,
+              "OR": 0.022601511442857613
+            }
+          },
+          {
+            "id": "IR014_1",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.2689135529985189,
+              "IR": 0.7019121674391992,
+              "OR": 0.029174279562281923
+            }
+          },
+          {
+            "id": "IR014_2",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.20908187694699698,
+              "IR": 0.7822556201321075,
+              "OR": 0.00866250292089555
+            }
+          },
+          {
+            "id": "IR014_3",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.13040981881831804,
+              "IR": 0.8596289938649102,
+              "OR": 0.009961187316771876
+            }
+          },
+          {
+            "id": "IR021_0",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.07718306479748865,
+              "IR": 0.9089261031575462,
+              "OR": 0.013890832044965098
+            }
+          },
+          {
+            "id": "IR021_1",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.07987950789946864,
+              "IR": 0.9168776296602758,
+              "OR": 0.0032428624402555937
+            }
+          },
+          {
+            "id": "IR021_2",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.052382757047659274,
+              "IR": 0.9428356753420147,
+              "OR": 0.0047815676103258745
+            }
+          },
+          {
+            "id": "IR021_3",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.03759635788524639,
+              "IR": 0.9607187589787877,
+              "OR": 0.0016848831359661254
+            }
+          },
+          {
+            "id": "OR007@6_0",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.004342533655684906,
+              "IR": 0.002460075318563694,
+              "OR": 0.9931973910257516
+            }
+          },
+          {
+            "id": "OR007@6_1",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.023770219219080988,
+              "IR": 0.012023570763671951,
+              "OR": 0.964206210017247
+            }
+          },
+          {
+            "id": "OR007@6_2",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.003407537631910434,
+              "IR": 0.0012584491531859954,
+              "OR": 0.9953340132149036
+            }
+          },
+          {
+            "id": "OR007@6_3",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.0034901100851811606,
+              "IR": 0.0017397103743481178,
+              "OR": 0.9947701795404708
+            }
+          },
+          {
+            "id": "OR014@6_0",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.17404545884057732,
+              "IR": 0.006623127960239591,
+              "OR": 0.8193314131991829
+            }
+          },
+          {
+            "id": "OR014@6_1",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.13454040530130687,
+              "IR": 0.008655707130737296,
+              "OR": 0.8568038875679558
+            }
+          },
+          {
+            "id": "OR014@6_2",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.13649705402456155,
+              "IR": 0.00561086443451335,
+              "OR": 0.8578920815409252
+            }
+          },
+          {
+            "id": "OR014@6_3",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.22728678371158276,
+              "IR": 0.012372845805344507,
+              "OR": 0.7603403704830728
+            }
+          },
+          {
+            "id": "OR021@6_0",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.022038938308137395,
+              "IR": 0.004441023650869747,
+              "OR": 0.9735200380409929
+            }
+          },
+          {
+            "id": "OR021@6_1",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.019571195783749395,
+              "IR": 0.0021037228514149274,
+              "OR": 0.9783250813648356
+            }
+          },
+          {
+            "id": "OR021@6_2",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.019808669229655483,
+              "IR": 0.0019926827967173717,
+              "OR": 0.9781986479736271
+            }
+          },
+          {
+            "id": "OR021@6_3",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.03381516228745513,
+              "IR": 0.005690272243737664,
+              "OR": 0.9604945654688072
+            }
+          }
+        ]
+      },
+      "gain_removed": {
+        "window_macro_f1": 0.9410370889418607,
+        "recording_accuracy": 0.9444444444444444,
+        "recording_macro_f1": 0.9440559440559441,
+        "confusion": [
+          [
+            12,
+            0,
+            0
+          ],
+          [
+            0,
+            12,
+            0
+          ],
+          [
+            2,
+            0,
+            10
+          ]
+        ],
+        "recordings": [
+          {
+            "id": "B007_0",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8687822432277647,
+              "IR": 0.053631130407668336,
+              "OR": 0.07758662636456715
+            }
+          },
+          {
+            "id": "B007_1",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.854633450276754,
+              "IR": 0.05773955295606168,
+              "OR": 0.0876269967671845
+            }
+          },
+          {
+            "id": "B007_2",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8563108612757478,
+              "IR": 0.12141238015570056,
+              "OR": 0.022276758568551172
+            }
+          },
+          {
+            "id": "B007_3",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8733220584851872,
+              "IR": 0.09834780527405311,
+              "OR": 0.028330136240759706
+            }
+          },
+          {
+            "id": "B014_0",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.7835404850908607,
+              "IR": 0.10013157480379509,
+              "OR": 0.11632794010534418
+            }
+          },
+          {
+            "id": "B014_1",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8416551380717333,
+              "IR": 0.0719335045616673,
+              "OR": 0.08641135736659938
+            }
+          },
+          {
+            "id": "B014_2",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8552325536813865,
+              "IR": 0.08712256943577164,
+              "OR": 0.057644876882841485
+            }
+          },
+          {
+            "id": "B014_3",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8443133294774667,
+              "IR": 0.08843233959877995,
+              "OR": 0.06725433092375314
+            }
+          },
+          {
+            "id": "B021_0",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.7914935945905679,
+              "IR": 0.1170944337702013,
+              "OR": 0.09141197163923072
+            }
+          },
+          {
+            "id": "B021_1",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8444625193717087,
+              "IR": 0.07862628094704872,
+              "OR": 0.07691119968124259
+            }
+          },
+          {
+            "id": "B021_2",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8639808197005278,
+              "IR": 0.05363920621527323,
+              "OR": 0.08237997408419867
+            }
+          },
+          {
+            "id": "B021_3",
+            "truth": "B",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.8421914712356199,
+              "IR": 0.08946693031142998,
+              "OR": 0.06834159845295011
+            }
+          },
+          {
+            "id": "IR007_0",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.123595509056333,
+              "IR": 0.6635294981833011,
+              "OR": 0.21287499276036584
+            }
+          },
+          {
+            "id": "IR007_1",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.1535468882962467,
+              "IR": 0.6673700236492165,
+              "OR": 0.17908308805453665
+            }
+          },
+          {
+            "id": "IR007_2",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.1139859697078247,
+              "IR": 0.6927428107488347,
+              "OR": 0.1932712195433407
+            }
+          },
+          {
+            "id": "IR007_3",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.13952643346484292,
+              "IR": 0.6743843736754579,
+              "OR": 0.18608919285969924
+            }
+          },
+          {
+            "id": "IR014_0",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.2282110841434528,
+              "IR": 0.7319950410404182,
+              "OR": 0.03979387481612911
+            }
+          },
+          {
+            "id": "IR014_1",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.3466465658323217,
+              "IR": 0.6240284534983852,
+              "OR": 0.029324980669292993
+            }
+          },
+          {
+            "id": "IR014_2",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.31534386722456526,
+              "IR": 0.6701674512971203,
+              "OR": 0.014488681478314445
+            }
+          },
+          {
+            "id": "IR014_3",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.2740160581835479,
+              "IR": 0.7081172764997657,
+              "OR": 0.017866665316686386
+            }
+          },
+          {
+            "id": "IR021_0",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.08806228076115002,
+              "IR": 0.6937271341074651,
+              "OR": 0.21821058513138483
+            }
+          },
+          {
+            "id": "IR021_1",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.11078957043834982,
+              "IR": 0.6942251428789703,
+              "OR": 0.1949852866826798
+            }
+          },
+          {
+            "id": "IR021_2",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.10879167804230404,
+              "IR": 0.6955380232867641,
+              "OR": 0.19567029867093197
+            }
+          },
+          {
+            "id": "IR021_3",
+            "truth": "IR",
+            "prediction": "IR",
+            "probabilities": {
+              "B": 0.1161994233096833,
+              "IR": 0.6983509876719977,
+              "OR": 0.18544958901831907
+            }
+          },
+          {
+            "id": "OR007@6_0",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.004342533655684906,
+              "IR": 0.004855908651897028,
+              "OR": 0.9908015576924182
+            }
+          },
+          {
+            "id": "OR007@6_1",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.030496409695271464,
+              "IR": 0.021964046954148147,
+              "OR": 0.9475395433505803
+            }
+          },
+          {
+            "id": "OR007@6_2",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.01495889488978943,
+              "IR": 0.03429042522864033,
+              "OR": 0.9507506798815702
+            }
+          },
+          {
+            "id": "OR007@6_3",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.0034901100851811606,
+              "IR": 0.0036563770410147846,
+              "OR": 0.9928535128738041
+            }
+          },
+          {
+            "id": "OR014@6_0",
+            "truth": "OR",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.49281879730171413,
+              "IR": 0.022849789499102824,
+              "OR": 0.484331413199183
+            }
+          },
+          {
+            "id": "OR014@6_1",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.4784090751889565,
+              "IR": 0.017870370576420994,
+              "OR": 0.5037205542346226
+            }
+          },
+          {
+            "id": "OR014@6_2",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.484579806969128,
+              "IR": 0.025285412059747336,
+              "OR": 0.49013478097112456
+            }
+          },
+          {
+            "id": "OR014@6_3",
+            "truth": "OR",
+            "prediction": "B",
+            "probabilities": {
+              "B": 0.5663269100312488,
+              "IR": 0.03955330772097263,
+              "OR": 0.39411978224777866
+            }
+          },
+          {
+            "id": "OR021@6_0",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.022038938308137395,
+              "IR": 0.006628523650869747,
+              "OR": 0.9713325380409928
+            }
+          },
+          {
+            "id": "OR021@6_1",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.02629738625993987,
+              "IR": 0.01204419904189112,
+              "OR": 0.961658414698169
+            }
+          },
+          {
+            "id": "OR021@6_2",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.028747017515829854,
+              "IR": 0.026804334510543,
+              "OR": 0.9444486479736272
+            }
+          },
+          {
+            "id": "OR021@6_3",
+            "truth": "OR",
+            "prediction": "OR",
+            "probabilities": {
+              "B": 0.03381516228745513,
+              "IR": 0.013190272243737663,
+              "OR": 0.9529945654688072
+            }
+          }
+        ]
+      },
+      "audit": {
+        "B": {
+          "R": 0.10793286113819787,
+          "D": -0.0132071267452165,
+          "S": 0.03436480303252629,
+          "S_feature": "log_RMS",
+          "gain_share": 0.18441035431453878,
+          "shares": {
+            "raw_IR_1": 0.10565959499161859,
+            "raw_IR_2": 0.002722249096340409,
+            "raw_B_1": 0.057139226380028385,
+            "raw_B_2": 0.0318296633377345,
+            "raw_OR_1": 0.03575968149138835,
+            "raw_OR_2": 0.0725138885978765,
+            "envelope_IR_1": 0.17637167292884784,
+            "envelope_IR_2": 0.019392519518986427,
+            "envelope_B_1": 0.008202504357869893,
+            "envelope_B_2": 0.0107614670625651,
+            "envelope_OR_1": 0.07561044114723277,
+            "envelope_OR_2": 0.05022005737026188,
+            "log_RMS": 0.18441035431453878,
+            "kurtosis": 0.057842851447218825,
+            "crest": 0.020694680144400346,
+            "band_0_1000": 0.04908388486818683,
+            "band_1000_2000": 0.015902156822617933,
+            "band_2000_4000": 0.005865446436422287,
+            "band_4000_6001": 0.020017659685864275
+          },
+          "decoys": {
+            "R": 0.10793286113819787,
+            "set_size": 4,
+            "n_decoys": 1365,
+            "decoy_mean": 0.2378845703631472,
+            "decoy_max": 0.542052063382238,
+            "fraction_decoys_ge_observed": 0.9216117216117216,
+            "observed_minus_decoy_mean": -0.1299517092249493
+          }
+        },
+        "IR": {
+          "R": 0.34615116626203407,
+          "D": 0.004161314423409113,
+          "S": 0.053476876827484074,
+          "S_feature": "envelope_OR_2",
+          "gain_share": 0.11889568598483805,
+          "shares": {
+            "raw_IR_1": 0.03617899831940431,
+            "raw_IR_2": 0.0013876618692446499,
+            "raw_B_1": 0.019350920132379528,
+            "raw_B_2": 0.0048760998428235775,
+            "raw_OR_1": 0.14813917768507642,
+            "raw_OR_2": 0.033805734665584265,
+            "envelope_IR_1": 0.29749434784185486,
+            "envelope_IR_2": 0.01109015823153028,
+            "envelope_B_1": 0.021871794068104335,
+            "envelope_B_2": 0.003137975702151789,
+            "envelope_OR_1": 0.04715900601024409,
+            "envelope_OR_2": 0.15857939052220515,
+            "log_RMS": 0.11889568598483805,
+            "kurtosis": 0.03890409502548643,
+            "crest": 0.011168190489448324,
+            "band_0_1000": 0.036865858432107254,
+            "band_1000_2000": 0.0015991584229200437,
+            "band_2000_4000": 0.001140075037467991,
+            "band_4000_6001": 0.008355671717128586
+          },
+          "decoys": {
+            "R": 0.34615116626203407,
+            "set_size": 4,
+            "n_decoys": 1365,
+            "decoy_mean": 0.17435968899679094,
+            "decoy_max": 0.47277326020236377,
+            "fraction_decoys_ge_observed": 0.040293040293040296,
+            "observed_minus_decoy_mean": 0.17179147726524313
+          }
+        },
+        "OR": {
+          "R": 0.36839835967767404,
+          "D": 0.01644681295507472,
+          "S": 0.014054766863121682,
+          "S_feature": "log_RMS",
+          "gain_share": 0.2713560640792022,
+          "shares": {
+            "raw_IR_1": 0.10195484065413563,
+            "raw_IR_2": 0.002013107700370534,
+            "raw_B_1": 0.04872182769487396,
+            "raw_B_2": 0.031503490664957605,
+            "raw_OR_1": 0.07101769685341008,
+            "raw_OR_2": 0.05622492524738878,
+            "envelope_IR_1": 0.07757679251134122,
+            "envelope_IR_2": 0.0009606558831616391,
+            "envelope_B_1": 0.00827008491988991,
+            "envelope_B_2": 0.018712254445385518,
+            "envelope_OR_1": 0.16440610542741363,
+            "envelope_OR_2": 0.07674963214946155,
+            "log_RMS": 0.2713560640792022,
+            "kurtosis": 0.011825561057998642,
+            "crest": 0.0013821400011545526,
+            "band_0_1000": 0.01363493488962287,
+            "band_1000_2000": 0.014051991245248018,
+            "band_2000_4000": 0.0031978134477388194,
+            "band_4000_6001": 0.026440081127245062
+          },
+          "decoys": {
+            "R": 0.368398359677674,
+            "set_size": 4,
+            "n_decoys": 1365,
+            "decoy_mean": 0.16842710408595366,
+            "decoy_max": 0.499609524939553,
+            "fraction_decoys_ge_observed": 0.09084249084249084,
+            "observed_minus_decoy_mean": 0.19997125559172033
+          }
+        }
+      },
+      "gain_removed_audit": {
+        "B": {
+          "R": 0.10793286113819787,
+          "D": -0.019619739822849994,
+          "S": 0.03508215183782975,
+          "S_feature": "raw_OR_2",
+          "gain_share": 0.18441035431453878,
+          "shares": {
+            "raw_IR_1": 0.10565959499161859,
+            "raw_IR_2": 0.002722249096340409,
+            "raw_B_1": 0.057139226380028385,
+            "raw_B_2": 0.0318296633377345,
+            "raw_OR_1": 0.03575968149138835,
+            "raw_OR_2": 0.0725138885978765,
+            "envelope_IR_1": 0.17637167292884784,
+            "envelope_IR_2": 0.019392519518986427,
+            "envelope_B_1": 0.008202504357869893,
+            "envelope_B_2": 0.0107614670625651,
+            "envelope_OR_1": 0.07561044114723277,
+            "envelope_OR_2": 0.05022005737026188,
+            "log_RMS": 0.18441035431453878,
+            "kurtosis": 0.057842851447218825,
+            "crest": 0.020694680144400346,
+            "band_0_1000": 0.04908388486818683,
+            "band_1000_2000": 0.015902156822617933,
+            "band_2000_4000": 0.005865446436422287,
+            "band_4000_6001": 0.020017659685864275
+          }
+        },
+        "IR": {
+          "R": 0.33768007427602925,
+          "D": -0.01149712035862488,
+          "S": 0.07500152344031252,
+          "S_feature": "log_RMS",
+          "gain_share": 0.15369069734232027,
+          "shares": {
+            "raw_IR_1": 0.030812360694234684,
+            "raw_IR_2": 0.0014359617318568988,
+            "raw_B_1": 0.018272118218967844,
+            "raw_B_2": 0.00501638811351201,
+            "raw_OR_1": 0.13398631550036555,
+            "raw_OR_2": 0.02854009954974735,
+            "envelope_IR_1": 0.29591540099540004,
+            "envelope_IR_2": 0.009516350854537609,
+            "envelope_B_1": 0.024871082784587467,
+            "envelope_B_2": 0.003264668779026443,
+            "envelope_OR_1": 0.047175021730914986,
+            "envelope_OR_2": 0.15361158548965345,
+            "log_RMS": 0.15369069734232027,
+            "kurtosis": 0.038793777510219965,
+            "crest": 0.011003556264779462,
+            "band_0_1000": 0.03263275747625554,
+            "band_1000_2000": 0.0016820295181534468,
+            "band_2000_4000": 0.0011121625076615344,
+            "band_4000_6001": 0.008667664937805348
+          }
+        },
+        "OR": {
+          "R": 0.39494359855680755,
+          "D": 0.05109825115011252,
+          "S": 0.018671787824872332,
+          "S_feature": "raw_IR_1",
+          "gain_share": 0.22944132701564143,
+          "shares": {
+            "raw_IR_1": 0.1085126924399495,
+            "raw_IR_2": 0.0020986395547958506,
+            "raw_B_1": 0.05161914731642255,
+            "raw_B_2": 0.03244620161209317,
+            "raw_OR_1": 0.07471051701454377,
+            "raw_OR_2": 0.05940870492110057,
+            "envelope_IR_1": 0.08066996463963115,
+            "envelope_IR_2": 0.0009017846713415249,
+            "envelope_B_1": 0.008140411294743476,
+            "envelope_B_2": 0.019893873293016142,
+            "envelope_OR_1": 0.1802626577551409,
+            "envelope_OR_2": 0.08056171886602233,
+            "log_RMS": 0.22944132701564143,
+            "kurtosis": 0.00894011263500131,
+            "crest": 0.0008902143328964614,
+            "band_0_1000": 0.013946206961351047,
+            "band_1000_2000": 0.015608609077959181,
+            "band_2000_4000": 0.0034439726197935884,
+            "band_4000_6001": 0.028503243978555956
+          }
+        }
+      },
+      "recording_macro_f1_drop_bootstrap_95": [
+        0.0,
+        0.1451905626134301
+      ]
+    }
+  },
+  "seconds": 31.235262393951416,
+  "limitations": [
+    "Physical bearing identity unknown",
+    "Spectral anchor maps are not exhaustive causal truth",
+    "Four loads on one test rig",
+    "Gain confound is constructed, not discovered",
+    "Bootstrap conditions on fixed recordings"
+  ]
+}

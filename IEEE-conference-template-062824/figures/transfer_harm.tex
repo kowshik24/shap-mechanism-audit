@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=3 by 2,horizontal sep=0.45cm,vertical sep=0.8cm},
+scale only axis,width=0.275\textwidth,height=0.15\textwidth,xmin=0,xmax=1,xtick={0,0.25,0.5,0.75,1},
+tick label style={font=\footnotesize,/pgf/number format/fixed},label style={font=\footnotesize},title style={font=\footnotesize},
+grid=major,grid style={gray!15},legend columns=3,legend style={font=\footnotesize,draw=none},every axis plot/.append style={line width=0.8pt,mark size=1.8pt}]
+\nextgroupplot[title={Tree, $N_H=46$},ymin=0,ymax=1.02,ylabel={Localization on harmful models},xticklabels=\empty,legend to name=harm-legend]
+\addplot+[color=black!80,mark=*,mark options={fill=black!80}] coordinates {(0.01,0.99684782608695643) (0.10000000000000001,0.99684782608695643) (0.25,0.38543478260869574) (0.5,0) (1,0.92673913043478262)};
+\addlegendentry{SHAP excess}
+\addplot+[color=auditblue,mark=square*,mark options={fill=auditblue}] coordinates {(0.01,0.84413043478260863) (0.10000000000000001,0.84413043478260863) (0.25,0.84293478260869559) (0.5,0.095326086956521741) (1,0.063478260869565206)};
+\addlegendentry{Flip excess}
+\addplot+[color=auditorange,mark=triangle*,mark options={fill=auditorange}] coordinates {(0.01,1) (0.10000000000000001,1) (0.25,1) (0.5,1) (1,1)};
+\addlegendentry{Targeted context}
+\nextgroupplot[title={Forest, $N_H=100$},ymin=0,ymax=1.02,yticklabels=\empty,xticklabels=\empty]
+\addplot+[color=black!80,mark=*,mark options={fill=black!80}] coordinates {(0.01,0.62879999999999991) (0.10000000000000001,0.37739999999999996) (0.25,0.0062000000000000006) (0.5,0) (1,0.67730000000000035)};
+\addplot+[color=auditblue,mark=square*,mark options={fill=auditblue}] coordinates {(0.01,0.71465000000000001) (0.10000000000000001,0.71465000000000001) (0.25,0.71465000000000001) (0.5,0.71265000000000012) (1,0.22194999999999998)};
+\addplot+[color=auditorange,mark=triangle*,mark options={fill=auditorange}] coordinates {(0.01,1) (0.10000000000000001,1) (0.25,1) (0.5,1) (1,1)};
+\nextgroupplot[title={Logistic, $N_H=150$},ymin=0,ymax=1.02,yticklabels=\empty,xticklabels=\empty]
+\addplot+[color=black!80,mark=*,mark options={fill=black!80}] coordinates {(0.01,0.38329999999999997) (0.10000000000000001,0.061466666666666669) (0.25,0) (0.5,0) (1,0.39706666666666657)};
+\addplot+[color=auditblue,mark=square*,mark options={fill=auditblue}] coordinates {(0.01,0.47023333333333334) (0.10000000000000001,0.5421999999999999) (0.25,0.56146666666666667) (0.5,0.56216666666666659) (1,0.56216666666666659)};
+\addplot+[color=auditorange,mark=triangle*,mark options={fill=auditorange}] coordinates {(0.01,1) (0.10000000000000001,1) (0.25,1) (0.5,1) (1,1)};
+\nextgroupplot[title={Tree, $N=200$},ymin=0,ymax=0.8,ylabel={Mean F1 loss, all models},xlabel={Context bit-flip probability}]
+\addplot+[color=black!80,mark=*,mark options={fill=black!80}] coordinates {(0.01,0) (0.10000000000000001,0.039986261088843122) (0.25,0.081641904855032366) (0.5,0.12050965307934125) (1,0.15736954445100942)};
+\nextgroupplot[title={Forest, $N=200$},ymin=0,ymax=0.8,yticklabels=\empty,xlabel={Context bit-flip probability}]
+\addplot+[color=black!80,mark=*,mark options={fill=black!80}] coordinates {(0.01,0) (0.10000000000000001,0.086486931113268037) (0.25,0.17645176712867855) (0.5,0.26028364984520097) (1,0.33964327050237142)};
+\nextgroupplot[title={Logistic, $N=200$},ymin=0,ymax=0.8,yticklabels=\empty,xlabel={Context bit-flip probability}]
+\addplot+[color=black!80,mark=*,mark options={fill=black!80}] coordinates {(0.01,0) (0.10000000000000001,0.12955120406185197) (0.25,0.26424326465704007) (0.5,0.3896380302076049) (1,0.50822588460198193)};
+\end{groupplot}
+\node[anchor=north] at ([yshift=-1.1cm]group c2r2.south) {\pgfplotslegendfromname{harm-legend}};
+\end{tikzpicture}

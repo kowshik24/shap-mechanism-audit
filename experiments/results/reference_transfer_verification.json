@@ -1,0 +1,16 @@
+{
+  "verified": true,
+  "algebra_exact_rational": true,
+  "case_pairs": 1200,
+  "cwru_audit_heads": 9,
+  "seconds": 39.97740529105067,
+  "sha256": {
+    "experiments/45_verify_reference_transfer.py": "44ed5eb54127a2e284bf6f194c8feebcdf4a0dae1cbeef33800028e0fff6674d",
+    "experiments/results/reference_transfer.json": "b2291f8c7ab2c0578e46aaaa77286a83c85b5677b8c6ec76b11b73b35ed3212b",
+    "experiments/results/reference_transfer_draws.npz": "4e0249b31b245d589f69b4808e9bc879710aac07e89b07a63c9f688a45777129",
+    "experiments/results/composite_reference.json": "0fe760e91d63e89f43c145ac8ddff3c4019157a353d797fafe1168ac912fc08f",
+    "experiments/results/composite_reference_draws.npz": "7c76ef39f45a0129a5ba6fb111c8428cbe81328c10fa52809ac104571aa18efe",
+    "experiments/results/cwru_attribution_audit.json": "2b3c7c928b3d43d4717229e4865c32d4e67b30bdf1597d0d96413e83d5bb1565",
+    "experiments/results/cwru_attribution_draws.npz": "3a303d5f9c743ab4e879bcf7c7a44cdad8949880f2b234a022b8058bec266e6b"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Reference Design for Mechanism-Level SHAP Audits in Predictive Maintenance",
+  "abstract_latex": "Mechanism-level SHAP audits compare feature attributions with an expected failure-mechanism map. We examine whether their warnings transfer beyond the function used for calibration and whether they identify harmful context dependence. A perfect-predictor example first shows that genuine overlap produces outside-set attribution. Across 1,200 learned reference--candidate pairs, thresholds with approximately 5\\% warning rates on the reference warn on independently fitted, decision-equivalent models at rates up to 14.1\\%. Calibration over independent aligned fits broadens the statistical target to a specified training population, but does not certify arbitrary acceptable models. When a formerly reliable context input becomes independent, mean F1 losses range from 0.121 to 0.390 at 10,000 rows per batch, yet SHAP-excess localization on harm-positive models falls to zero. A prediction-response baseline retains sensitivity at matched empirical acceptable-model warning rates. A prospective continuous-process study calibrates on 100 independently seeded model/run-packet pairs. SHAP gives 0/60 warnings on unaltered evaluation pairs and localizes a constructed acquisition bias in 60/60 pairs; removing that bias lowers mean F1 from 0.965 to 0.665. Measured bearing and mill studies expose incomplete mechanism maps and missing comparison cohorts. These results distinguish reference-relative deviation, input reliance, transfer harm, and comparison support before an explanation warning informs maintenance decisions.",
+  "keywords": [
+    "SHAP",
+    "explanation evaluation",
+    "conformal calibration",
+    "distribution shift",
+    "predictive maintenance",
+    "bearing diagnosis"
+  ],
+  "venue": "2026 IEEE International Conference on Big Data",
+  "session": "Towards an Understanding of Artificial Intelligence: Bridging Theory, Explainability, and Practical Applications",
+  "portal_verified": false,
+  "submission_performed": false
+}

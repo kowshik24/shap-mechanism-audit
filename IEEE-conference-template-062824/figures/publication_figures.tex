@@ -1,0 +1,48 @@
+\documentclass[10pt]{article}
+\usepackage[letterpaper,margin=0.6in]{geometry}
+\usepackage{times,amsmath,amssymb,pgfplots,caption}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{arrows.meta,positioning}
+\pgfplotsset{compat=1.18}
+\definecolor{auditblue}{RGB}{33,113,181}
+\definecolor{auditorange}{RGB}{179,88,6}
+\input{publication_style.tex}
+\pagestyle{empty}
+\begin{document}
+\begin{figure}[!ht]
+\centering
+\input{reference_transfer_plot.tex}
+\caption{\textbf{Probability-audit warning rates increased on decision-equivalent refits.} SHAP excess used fixed overlap bins and $n=10{,}000$; refits used the same learner family. Each learner had 200 evaluated fits with 200 batches each. Whiskers are 95\% fitted-case bootstrap intervals; population-cut intervals condition on the realized calibration bank. The dashed line marks nominal 5\%.}
+\end{figure}
+\clearpage
+\begin{figure}[!ht]
+\centering
+\input{matched_localization_plot.tex}
+\caption{\textbf{Localization differences depend on learner, warning rate, and context law.} All 120 cells show flip-minus-SHAP localization differences in percentage points across two sizes, two partitions, five matched warning rates, and two laws. Blue/negative favors SHAP; orange/positive favors flip. An asterisk marks a pointwise 95\% paired-bootstrap interval excluding zero; these intervals are not multiplicity-adjusted. Fixed bins use target-law knowledge. Matching was retrospective.}
+\end{figure}
+\clearpage
+\begin{figure}[!ht]
+\centering
+\input{harm_specificity_plot.tex}
+\caption{\textbf{Post-shift localization did not consistently separate the harm groups.} Selected score designs used global population ranks at matched 5\% empirical eligible-model warnings and $n=10{,}000$. Filled/hollow points denote $H_i\geq0.05$/$H_i<0.05$; panel counts follow that order. Whiskers are pointwise 95\% paired-bootstrap intervals. Batch SHAP is normalized; frozen raw SHAP changes both background and normalization. Targeted SHAP knows $C$; complete ablations accompany the numerical data.}
+\end{figure}
+\clearpage
+\begin{figure}[!ht]
+\centering
+\input{overlap_profiles.tex}
+\caption{\textbf{Null attribution excess increased with mechanism overlap in every learner.} Curves average within-interval means over 200 references at $n=10{,}000$. Shading spans the 2.5th--97.5th percentiles across those reference means; it is not a confidence band. The ten plotted overlap intervals summarize curves; calibration instead uses the stated global or three-bin rule.}
+\end{figure}
+\clearpage
+\begin{figure}[!ht]
+\centering
+\input{process_dose_plot.tex}
+\caption{\textbf{Bias localization varied with fault cohort; binary decisions were saturated for IDV4.} Top: matched-view context localization in 60 resampled-training DTU fit/packet pairs, with exact 95\% binomial intervals conditional on the frozen rank-96 cut for each score. Horizontal offsets distinguish error bars. Bottom: gray points are paired matched-minus-removed F1 changes; black diamonds are means. Prediction replay found all 48 IDV4 fault rows positive in every matched/removed view at every dose, explaining the zero F1 changes. Horizontal jitter shows coincident packet values. Lines connect tested doses, without a fitted dose-response model. Scores were not retrospectively size-matched.}
+\end{figure}
+\clearpage
+\begin{figure}[!ht]
+\centering
+\input{measured_load_plot.tex}
+\caption{\textbf{Measured healthy-row failure rates varied with training set and decision rule.} (a) Healthy false-positive rates for all six directed forest load pairs at the original seed; every logistic control was zero. Diagonal cells were not evaluated. (b) Each point denotes one of twenty forest seeds on the same 4-Nm normal recording; vertical jitter separates seeds. Labels specify source loads and the binary decision rule. Argmax collapses the three-class prediction; $P_F$ sums fault probabilities. Points are not independent-asset replicates or confidence intervals.}
+\end{figure}
+\clearpage
+\end{document}

@@ -1,0 +1,756 @@
+{
+  "complete": true,
+  "selection": {
+    "config": [
+      64,
+      null,
+      1,
+      null
+    ],
+    "balanced_accuracy": 0.6229166666666666,
+    "F1": 0.8717639540959468
+  },
+  "records": [
+    {
+      "packet": 141,
+      "metrics": {
+        "F1": 0.8703703703703703,
+        "healthy_FPR": 0.8125,
+        "balanced_accuracy": 0.5833333333333333,
+        "TP": 94,
+        "FP": 26,
+        "FN": 2,
+        "TN": 6
+      }
+    },
+    {
+      "packet": 142,
+      "metrics": {
+        "F1": 0.863849765258216,
+        "healthy_FPR": 0.78125,
+        "balanced_accuracy": 0.5885416666666667,
+        "TP": 92,
+        "FP": 25,
+        "FN": 4,
+        "TN": 7
+      }
+    },
+    {
+      "packet": 143,
+      "metrics": {
+        "F1": 0.8785046728971962,
+        "healthy_FPR": 0.75,
+        "balanced_accuracy": 0.6145833333333333,
+        "TP": 94,
+        "FP": 24,
+        "FN": 2,
+        "TN": 8
+      }
+    },
+    {
+      "packet": 144,
+      "metrics": {
+        "F1": 0.8623853211009175,
+        "healthy_FPR": 0.875,
+        "balanced_accuracy": 0.5520833333333333,
+        "TP": 94,
+        "FP": 28,
+        "FN": 2,
+        "TN": 4
+      }
+    },
+    {
+      "packet": 145,
+      "metrics": {
+        "F1": 0.8461538461538461,
+        "healthy_FPR": 0.75,
+        "balanced_accuracy": 0.5833333333333333,
+        "TP": 88,
+        "FP": 24,
+        "FN": 8,
+        "TN": 8
+      }
+    },
+    {
+      "packet": 146,
+      "metrics": {
+        "F1": 0.867579908675799,
+        "healthy_FPR": 0.875,
+        "balanced_accuracy": 0.5572916666666667,
+        "TP": 95,
+        "FP": 28,
+        "FN": 1,
+        "TN": 4
+      }
+    },
+    {
+      "packet": 147,
+      "metrics": {
+        "F1": 0.8761904761904762,
+        "healthy_FPR": 0.6875,
+        "balanced_accuracy": 0.6354166666666667,
+        "TP": 92,
+        "FP": 22,
+        "FN": 4,
+        "TN": 10
+      }
+    },
+    {
+      "packet": 148,
+      "metrics": {
+        "F1": 0.8761904761904762,
+        "healthy_FPR": 0.6875,
+        "balanced_accuracy": 0.6354166666666667,
+        "TP": 92,
+        "FP": 22,
+        "FN": 4,
+        "TN": 10
+      }
+    },
+    {
+      "packet": 149,
+      "metrics": {
+        "F1": 0.8504672897196262,
+        "healthy_FPR": 0.84375,
+        "balanced_accuracy": 0.5520833333333333,
+        "TP": 91,
+        "FP": 27,
+        "FN": 5,
+        "TN": 5
+      }
+    },
+    {
+      "packet": 150,
+      "metrics": {
+        "F1": 0.8768472906403941,
+        "healthy_FPR": 0.5625,
+        "balanced_accuracy": 0.6822916666666667,
+        "TP": 89,
+        "FP": 18,
+        "FN": 7,
+        "TN": 14
+      }
+    },
+    {
+      "packet": 151,
+      "metrics": {
+        "F1": 0.8796296296296297,
+        "healthy_FPR": 0.78125,
+        "balanced_accuracy": 0.6041666666666667,
+        "TP": 95,
+        "FP": 25,
+        "FN": 1,
+        "TN": 7
+      }
+    },
+    {
+      "packet": 152,
+      "metrics": {
+        "F1": 0.8715596330275229,
+        "healthy_FPR": 0.84375,
+        "balanced_accuracy": 0.5729166666666667,
+        "TP": 95,
+        "FP": 27,
+        "FN": 1,
+        "TN": 5
+      }
+    },
+    {
+      "packet": 153,
+      "metrics": {
+        "F1": 0.8691588785046729,
+        "healthy_FPR": 0.78125,
+        "balanced_accuracy": 0.59375,
+        "TP": 93,
+        "FP": 25,
+        "FN": 3,
+        "TN": 7
+      }
+    },
+    {
+      "packet": 154,
+      "metrics": {
+        "F1": 0.8584474885844748,
+        "healthy_FPR": 0.90625,
+        "balanced_accuracy": 0.5364583333333333,
+        "TP": 94,
+        "FP": 29,
+        "FN": 2,
+        "TN": 3
+      }
+    },
+    {
+      "packet": 155,
+      "metrics": {
+        "F1": 0.8761904761904762,
+        "healthy_FPR": 0.6875,
+        "balanced_accuracy": 0.6354166666666667,
+        "TP": 92,
+        "FP": 22,
+        "FN": 4,
+        "TN": 10
+      }
+    },
+    {
+      "packet": 156,
+      "metrics": {
+        "F1": 0.863849765258216,
+        "healthy_FPR": 0.78125,
+        "balanced_accuracy": 0.5885416666666667,
+        "TP": 92,
+        "FP": 25,
+        "FN": 4,
+        "TN": 7
+      }
+    },
+    {
+      "packet": 157,
+      "metrics": {
+        "F1": 0.8518518518518519,
+        "healthy_FPR": 0.875,
+        "balanced_accuracy": 0.5416666666666667,
+        "TP": 92,
+        "FP": 28,
+        "FN": 4,
+        "TN": 4
+      }
+    },
+    {
+      "packet": 158,
+      "metrics": {
+        "F1": 0.8490566037735849,
+        "healthy_FPR": 0.8125,
+        "balanced_accuracy": 0.5625,
+        "TP": 90,
+        "FP": 26,
+        "FN": 6,
+        "TN": 6
+      }
+    },
+    {
+      "packet": 159,
+      "metrics": {
+        "F1": 0.8815165876777251,
+        "healthy_FPR": 0.6875,
+        "balanced_accuracy": 0.640625,
+        "TP": 93,
+        "FP": 22,
+        "FN": 3,
+        "TN": 10
+      }
+    },
+    {
+      "packet": 160,
+      "metrics": {
+        "F1": 0.8504672897196262,
+        "healthy_FPR": 0.84375,
+        "balanced_accuracy": 0.5520833333333333,
+        "TP": 91,
+        "FP": 27,
+        "FN": 5,
+        "TN": 5
+      }
+    },
+    {
+      "packet": 161,
+      "metrics": {
+        "F1": 0.8837209302325582,
+        "healthy_FPR": 0.75,
+        "balanced_accuracy": 0.6197916666666667,
+        "TP": 95,
+        "FP": 24,
+        "FN": 1,
+        "TN": 8
+      }
+    },
+    {
+      "packet": 162,
+      "metrics": {
+        "F1": 0.8598130841121495,
+        "healthy_FPR": 0.8125,
+        "balanced_accuracy": 0.5729166666666667,
+        "TP": 92,
+        "FP": 26,
+        "FN": 4,
+        "TN": 6
+      }
+    },
+    {
+      "packet": 163,
+      "metrics": {
+        "F1": 0.8325358851674641,
+        "healthy_FPR": 0.8125,
+        "balanced_accuracy": 0.546875,
+        "TP": 87,
+        "FP": 26,
+        "FN": 9,
+        "TN": 6
+      }
+    },
+    {
+      "packet": 164,
+      "metrics": {
+        "F1": 0.8571428571428571,
+        "healthy_FPR": 0.75,
+        "balanced_accuracy": 0.59375,
+        "TP": 90,
+        "FP": 24,
+        "FN": 6,
+        "TN": 8
+      }
+    },
+    {
+      "packet": 165,
+      "metrics": {
+        "F1": 0.8504672897196262,
+        "healthy_FPR": 0.84375,
+        "balanced_accuracy": 0.5520833333333333,
+        "TP": 91,
+        "FP": 27,
+        "FN": 5,
+        "TN": 5
+      }
+    },
+    {
+      "packet": 166,
+      "metrics": {
+        "F1": 0.8623853211009175,
+        "healthy_FPR": 0.875,
+        "balanced_accuracy": 0.5520833333333333,
+        "TP": 94,
+        "FP": 28,
+        "FN": 2,
+        "TN": 4
+      }
+    },
+    {
+      "packet": 167,
+      "metrics": {
+        "F1": 0.8611111111111112,
+        "healthy_FPR": 0.84375,
+        "balanced_accuracy": 0.5625,
+        "TP": 93,
+        "FP": 27,
+        "FN": 3,
+        "TN": 5
+      }
+    },
+    {
+      "packet": 168,
+      "metrics": {
+        "F1": 0.8623853211009175,
+        "healthy_FPR": 0.875,
+        "balanced_accuracy": 0.5520833333333333,
+        "TP": 94,
+        "FP": 28,
+        "FN": 2,
+        "TN": 4
+      }
+    },
+    {
+      "packet": 169,
+      "metrics": {
+        "F1": 0.8465116279069768,
+        "healthy_FPR": 0.875,
+        "balanced_accuracy": 0.5364583333333333,
+        "TP": 91,
+        "FP": 28,
+        "FN": 5,
+        "TN": 4
+      }
+    },
+    {
+      "packet": 170,
+      "metrics": {
+        "F1": 0.8785046728971962,
+        "healthy_FPR": 0.75,
+        "balanced_accuracy": 0.6145833333333333,
+        "TP": 94,
+        "FP": 24,
+        "FN": 2,
+        "TN": 8
+      }
+    },
+    {
+      "packet": 171,
+      "metrics": {
+        "F1": 0.8611111111111112,
+        "healthy_FPR": 0.84375,
+        "balanced_accuracy": 0.5625,
+        "TP": 93,
+        "FP": 27,
+        "FN": 3,
+        "TN": 5
+      }
+    },
+    {
+      "packet": 172,
+      "metrics": {
+        "F1": 0.8867924528301887,
+        "healthy_FPR": 0.6875,
+        "balanced_accuracy": 0.6458333333333333,
+        "TP": 94,
+        "FP": 22,
+        "FN": 2,
+        "TN": 10
+      }
+    },
+    {
+      "packet": 173,
+      "metrics": {
+        "F1": 0.8415841584158416,
+        "healthy_FPR": 0.65625,
+        "balanced_accuracy": 0.6145833333333333,
+        "TP": 85,
+        "FP": 21,
+        "FN": 11,
+        "TN": 11
+      }
+    },
+    {
+      "packet": 174,
+      "metrics": {
+        "F1": 0.8301886792452831,
+        "healthy_FPR": 0.875,
+        "balanced_accuracy": 0.5208333333333333,
+        "TP": 88,
+        "FP": 28,
+        "FN": 8,
+        "TN": 4
+      }
+    },
+    {
+      "packet": 175,
+      "metrics": {
+        "F1": 0.8598130841121495,
+        "healthy_FPR": 0.8125,
+        "balanced_accuracy": 0.5729166666666667,
+        "TP": 92,
+        "FP": 26,
+        "FN": 4,
+        "TN": 6
+      }
+    },
+    {
+      "packet": 176,
+      "metrics": {
+        "F1": 0.8767123287671232,
+        "healthy_FPR": 0.84375,
+        "balanced_accuracy": 0.578125,
+        "TP": 96,
+        "FP": 27,
+        "FN": 0,
+        "TN": 5
+      }
+    },
+    {
+      "packet": 177,
+      "metrics": {
+        "F1": 0.8584474885844748,
+        "healthy_FPR": 0.90625,
+        "balanced_accuracy": 0.5364583333333333,
+        "TP": 94,
+        "FP": 29,
+        "FN": 2,
+        "TN": 3
+      }
+    },
+    {
+      "packet": 178,
+      "metrics": {
+        "F1": 0.8651162790697674,
+        "healthy_FPR": 0.8125,
+        "balanced_accuracy": 0.578125,
+        "TP": 93,
+        "FP": 26,
+        "FN": 3,
+        "TN": 6
+      }
+    },
+    {
+      "packet": 179,
+      "metrics": {
+        "F1": 0.8584474885844748,
+        "healthy_FPR": 0.90625,
+        "balanced_accuracy": 0.5364583333333333,
+        "TP": 94,
+        "FP": 29,
+        "FN": 2,
+        "TN": 3
+      }
+    },
+    {
+      "packet": 180,
+      "metrics": {
+        "F1": 0.861244019138756,
+        "healthy_FPR": 0.71875,
+        "balanced_accuracy": 0.609375,
+        "TP": 90,
+        "FP": 23,
+        "FN": 6,
+        "TN": 9
+      }
+    },
+    {
+      "packet": 181,
+      "metrics": {
+        "F1": 0.8584474885844748,
+        "healthy_FPR": 0.90625,
+        "balanced_accuracy": 0.5364583333333333,
+        "TP": 94,
+        "FP": 29,
+        "FN": 2,
+        "TN": 3
+      }
+    },
+    {
+      "packet": 182,
+      "metrics": {
+        "F1": 0.8708133971291866,
+        "healthy_FPR": 0.6875,
+        "balanced_accuracy": 0.6302083333333333,
+        "TP": 91,
+        "FP": 22,
+        "FN": 5,
+        "TN": 10
+      }
+    },
+    {
+      "packet": 183,
+      "metrics": {
+        "F1": 0.8695652173913043,
+        "healthy_FPR": 0.65625,
+        "balanced_accuracy": 0.640625,
+        "TP": 90,
+        "FP": 21,
+        "FN": 6,
+        "TN": 11
+      }
+    },
+    {
+      "packet": 184,
+      "metrics": {
+        "F1": 0.8640776699029126,
+        "healthy_FPR": 0.65625,
+        "balanced_accuracy": 0.6354166666666667,
+        "TP": 89,
+        "FP": 21,
+        "FN": 7,
+        "TN": 11
+      }
+    },
+    {
+      "packet": 185,
+      "metrics": {
+        "F1": 0.8611111111111112,
+        "healthy_FPR": 0.84375,
+        "balanced_accuracy": 0.5625,
+        "TP": 93,
+        "FP": 27,
+        "FN": 3,
+        "TN": 5
+      }
+    },
+    {
+      "packet": 186,
+      "metrics": {
+        "F1": 0.8720379146919431,
+        "healthy_FPR": 0.71875,
+        "balanced_accuracy": 0.6197916666666667,
+        "TP": 92,
+        "FP": 23,
+        "FN": 4,
+        "TN": 9
+      }
+    },
+    {
+      "packet": 187,
+      "metrics": {
+        "F1": 0.8598130841121495,
+        "healthy_FPR": 0.8125,
+        "balanced_accuracy": 0.5729166666666667,
+        "TP": 92,
+        "FP": 26,
+        "FN": 4,
+        "TN": 6
+      }
+    },
+    {
+      "packet": 188,
+      "metrics": {
+        "F1": 0.8792270531400966,
+        "healthy_FPR": 0.625,
+        "balanced_accuracy": 0.6614583333333333,
+        "TP": 91,
+        "FP": 20,
+        "FN": 5,
+        "TN": 12
+      }
+    },
+    {
+      "packet": 189,
+      "metrics": {
+        "F1": 0.8544600938967136,
+        "healthy_FPR": 0.8125,
+        "balanced_accuracy": 0.5677083333333333,
+        "TP": 91,
+        "FP": 26,
+        "FN": 5,
+        "TN": 6
+      }
+    },
+    {
+      "packet": 190,
+      "metrics": {
+        "F1": 0.8585365853658536,
+        "healthy_FPR": 0.65625,
+        "balanced_accuracy": 0.6302083333333333,
+        "TP": 88,
+        "FP": 21,
+        "FN": 8,
+        "TN": 11
+      }
+    },
+    {
+      "packet": 191,
+      "metrics": {
+        "F1": 0.8611111111111112,
+        "healthy_FPR": 0.84375,
+        "balanced_accuracy": 0.5625,
+        "TP": 93,
+        "FP": 27,
+        "FN": 3,
+        "TN": 5
+      }
+    },
+    {
+      "packet": 192,
+      "metrics": {
+        "F1": 0.8598130841121495,
+        "healthy_FPR": 0.8125,
+        "balanced_accuracy": 0.5729166666666667,
+        "TP": 92,
+        "FP": 26,
+        "FN": 4,
+        "TN": 6
+      }
+    },
+    {
+      "packet": 193,
+      "metrics": {
+        "F1": 0.8785046728971962,
+        "healthy_FPR": 0.75,
+        "balanced_accuracy": 0.6145833333333333,
+        "TP": 94,
+        "FP": 24,
+        "FN": 2,
+        "TN": 8
+      }
+    },
+    {
+      "packet": 194,
+      "metrics": {
+        "F1": 0.8623853211009175,
+        "healthy_FPR": 0.875,
+        "balanced_accuracy": 0.5520833333333333,
+        "TP": 94,
+        "FP": 28,
+        "FN": 2,
+        "TN": 4
+      }
+    },
+    {
+      "packet": 195,
+      "metrics": {
+        "F1": 0.8715596330275229,
+        "healthy_FPR": 0.84375,
+        "balanced_accuracy": 0.5729166666666667,
+        "TP": 95,
+        "FP": 27,
+        "FN": 1,
+        "TN": 5
+      }
+    },
+    {
+      "packet": 196,
+      "metrics": {
+        "F1": 0.8785046728971962,
+        "healthy_FPR": 0.75,
+        "balanced_accuracy": 0.6145833333333333,
+        "TP": 94,
+        "FP": 24,
+        "FN": 2,
+        "TN": 8
+      }
+    },
+    {
+      "packet": 197,
+      "metrics": {
+        "F1": 0.8691588785046729,
+        "healthy_FPR": 0.78125,
+        "balanced_accuracy": 0.59375,
+        "TP": 93,
+        "FP": 25,
+        "FN": 3,
+        "TN": 7
+      }
+    },
+    {
+      "packet": 198,
+      "metrics": {
+        "F1": 0.861244019138756,
+        "healthy_FPR": 0.71875,
+        "balanced_accuracy": 0.609375,
+        "TP": 90,
+        "FP": 23,
+        "FN": 6,
+        "TN": 9
+      }
+    },
+    {
+      "packet": 199,
+      "metrics": {
+        "F1": 0.8703703703703703,
+        "healthy_FPR": 0.8125,
+        "balanced_accuracy": 0.5833333333333333,
+        "TP": 94,
+        "FP": 26,
+        "FN": 2,
+        "TN": 6
+      }
+    },
+    {
+      "packet": 200,
+      "metrics": {
+        "F1": 0.8867924528301887,
+        "healthy_FPR": 0.6875,
+        "balanced_accuracy": 0.6458333333333333,
+        "TP": 94,
+        "FP": 22,
+        "FN": 2,
+        "TN": 10
+      }
+    }
+  ],
+  "mean_metrics": {
+    "F1": 0.8643639440513645,
+    "balanced_accuracy": 0.5875000000000001,
+    "healthy_FPR": 0.7854166666666667
+  },
+  "all_positive": {
+    "F1": 0.8571428571428571,
+    "healthy_FPR": 1.0,
+    "balanced_accuracy": 0.5,
+    "TP": 96,
+    "FP": 32,
+    "FN": 0,
+    "TN": 0
+  },
+  "scope": "Unaltered predictive comparator selected only using training-held-out F1; no audit thresholds fitted",
+  "sha256": {
+    "experiments/79_dtu_predictive_baselines.py": "421236ca1d4cefa70e2542f3d577493fda7e21c10d013825e6b07e2d8ad72d41",
+    "experiments/REVIEW4_PREDICTIVE_BASELINE_AMENDMENT.md": "d08121ebd65b6512843aeca2988038f7139866997dbbee9980b8ed32dd7d5ff7",
+    "experiments/results/dtu_dose_response.json": "4003ffaf3afdb49eaad8303e2871d16fd1fb5c9083e5789e8b6d49c0e98fdd3b",
+    "experiments/results/dtu_prospective_data.npz": "247a0fb8f208eab3c0e7195ac123e6b19e513acbf4a5b1403e79c32f432d9a92"
+  }
+}

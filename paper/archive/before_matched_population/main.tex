@@ -1,0 +1,362 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{arrows.meta,positioning}
+\pgfplotsset{compat=1.18}
+\definecolor{auditblue}{RGB}{33,113,181}
+\definecolor{auditorange}{RGB}{179,88,6}
+\usepackage{booktabs,array}
+\usepackage[hidelinks]{hyperref}
+\usepackage[capitalise,nameinlink]{cleveref}
+\crefname{figure}{Fig.}{Figs.}
+\crefname{table}{Table}{Tables}
+\graphicspath{{figures/}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\input{tables/reference_runtime.tex}
+\raggedbottom
+\begin{document}
+\title{Reference Design for Mechanism-Level SHAP Audits in Predictive Maintenance}
+\author{\IEEEauthorblockN{Koshik Debanath, Prakrit Uprety, Vision Rijal, and Peiyu Li}
+\IEEEauthorblockA{Department of Computer Science, South Dakota State University, Brookings, SD, USA\\
+koshik.debanath@jacks.sdstate.edu, prakrit.uprety@jacks.sdstate.edu,\\
+vision.rijal@jacks.sdstate.edu, peiyu.li@sdstate.edu}}
+\hypersetup{pdftitle={Reference Design for Mechanism-Level SHAP Audits in Predictive Maintenance},pdfauthor={Koshik Debanath, Prakrit Uprety, Vision Rijal, Peiyu Li},pdfsubject={Reference transfer, context-shift harm, and mechanism-level attribution audits},pdfkeywords={SHAP, explanation evaluation, conformal calibration, distribution shift, predictive maintenance, bearing diagnosis}}
+\maketitle
+\begin{abstract}
+Mechanism-level SHAP audits compare feature attributions with an expected failure-mechanism map. We examine whether their warnings transfer beyond the function used for calibration and whether they identify harmful context dependence. A perfect-predictor example first shows that genuine overlap produces outside-set attribution. Across 1,200 learned reference--candidate pairs, thresholds with approximately 5\% warning rates on the reference warn on independently fitted, decision-equivalent models at rates up to 14.1\%. Calibration over independent aligned fits broadens the statistical target to a specified training population, but does not certify arbitrary acceptable models. When a formerly reliable context input becomes independent, mean F1 losses range from 0.121 to 0.390 at 10,000 rows per batch, yet SHAP-excess localization on harm-positive models falls to zero. A calibrated prediction-response baseline retains sensitivity, while a targeted context test also warns on models without the specified transfer harm. In a 19-feature bearing study, descriptive TreeSHAP audits identify band-power features as the largest outside-set excess for two of three fault heads under an injected spectral response. These results distinguish reference-relative deviation, input reliance, and transfer harm, and identify the calibration and acquisition evidence required before an explanation warning can support maintenance decisions.
+\end{abstract}
+\begin{IEEEkeywords}
+SHAP, explanation evaluation, conformal calibration, distribution shift, predictive maintenance
+\end{IEEEkeywords}
+
+\section{Introduction}
+\label{sec:introduction}
+\subsection{Problem Statement}
+An explanation for a maintenance prediction should help an engineer decide what to inspect. A classifier may rely on an acquisition condition associated with a fault instead of a signature that transfers across equipment~\cite{geirhos2020shortcut,lapuschkin2019unmasking}. Feature attribution describes the fitted prediction, but an audit needs an additional decision: which attribution patterns justify a warning?
+
+A common starting point is a map from a recorded failure mechanism to expected features. Attribution outside that map may indicate an unintended association, an incomplete map, or another genuine mechanism occurring in the same rows. A redundant measurement creates a further ambiguity: using it may be harmless while its association remains stable and harmful when that association changes. These cases require different evidence.
+
+\subsection{Research Objective}
+We study three questions. Does a threshold calibrated on one aligned predictor control warnings for a different aligned predictor? Does localization of an unlisted input predict or detect transfer harm? Does a SHAP-based score offer a sensitivity advantage over a direct prediction-response score? These questions separate the validity of a rank calculation from the usefulness of the warning it produces.
+
+Our controlled study makes the mechanism map and full model response observable. We compare independently trained acceptable models, stable surrogates, and fixed candidates exposed to weakening or reversed context associations. A measured bearing study then reports the actual attribution audit under a constructed acquisition response. Its purpose is to test whether the explanation points toward the injected spectral information, rather than to present that information as a diagnostic improvement.
+
+\subsection{Contributions}
+The contributions are:
+\begin{itemize}
+\item A reference-design analysis distinguishing a fixed-function null from a population of aligned training outcomes, with an exact overlap counterexample and explicit unit requirements.
+\item A paired evaluation of reference transfer, harm-defined context shifts, direct non-SHAP baselines, and source-derived overlap bins. The evaluation exposes both excess warnings on acceptable models and missed harmful dependence.
+\item A descriptive TreeSHAP audit on measured vibration features, together with finite-inventory uncertainty and data/compute budgets for the audit procedure.
+\end{itemize}
+Conformal ranks and overlap stratification are existing tools. Our contribution is the assessment of their statistical target and failure modes in a mechanism-level explanation audit.
+
+\section{Related Work and Background}
+\label{sec:background}
+\subsection{Explanation Evaluation and Testing}
+SHAP assigns feature contributions to a fitted prediction~\cite{lundberg2017shap}. The choice between interventional and observational value functions changes what the explanation represents~\cite{chen2020true,sundararajan2020many,janzing2020feature}. Neither choice turns attribution into a physical-cause estimate~\cite{kumar2020problems}. Our expected-feature share is related to relevance mass accuracy~\cite{arras2022clevr}; synthetic relevance benchmarks and OpenXAI provide other controlled evaluation settings~\cite{liu2021synthetic,agarwal2022openxai}.
+
+Permutation importance~\cite{altmann2010permutation}, conditional randomization~\cite{candes2018panning}, SHAP-XRT~\cite{teneggi2023shapxrt}, and population Shapley importance~\cite{williamson2020shapley} address reliance or importance through different null hypotheses. SHAP-XRT tests a local conditional-independence target; we test batch-level excess relative to a supplied mechanism map and reference law. Our finite-difference baseline is a direct response comparison, not an implementation of SHAP-XRT or a conditional randomization test. Explanation methods may also miss spurious reliance~\cite{adebayo2022spurious} or be manipulated~\cite{slack2020fooling}. Explanation Shift compares explanation distributions across domains~\cite{mougan2025shift}; our shift experiment instead asks whether a mechanism-specific localization event coincides with measured predictive harm.
+
+\subsection{Conformal References}
+Split-conformal ranks provide marginal control under exchangeability~\cite{angelopoulos2023conformal}. Mondrian methods condition calibration on categories~\cite{vovk2005algorithmic,vovk2012conditional}; conditional conformal methods extend the range of conditional targets~\cite{gibbs2025conditional}, and weighted methods address specified covariate shifts~\cite{tibshirani2019shift}. These results motivate stratification, not a new calibration theorem. We compare fixed overlap bins with bins learned from source covariates, and distinguish marginal control from calibration-conditional uncertainty~\cite{vovk2012conditional,bates2023outliers}.
+
+\subsection{Bearing Diagnosis}
+Maintenance-XAI work motivates mechanism-informed inspection~\cite{matzka2020explainable,vollert2021interpretable}. CWRU benchmarking studies document difficult fault signatures and dependence between operating conditions~\cite{smith2015cwru,hendriks2022benchmarking}. Loads from the same damaged bearing do not provide independent new-bearing tests. We therefore use diameter holdout and retain entire recordings. The task is fault-location diagnosis from vibration-derived features, with no healthy-bearing class.
+
+\subsection{Problem Definition and SHAP}
+\Cref{tab:notation} fixes the terminology. For a scalar model output $h(x)$ and feature subset $J$, our interventional value function is
+\begin{equation}
+ v_h(J;x)=\mathbb E_{X'\sim\widehat P}[h(x_J,X'_{-J})].
+ \label{eq:background}
+\end{equation}
+The selected inputs come from $x$; missing inputs come jointly from one background row. For $d$ inputs, the attribution is
+\begin{align}
+ \phi_j^h(x)&=\sum_{J\subseteq[d]\setminus\{j\}}w_d(J)\,\Delta_j^h(J;x),\label{eq:shap}\\
+ \Delta_j^h(J;x)&=v_h(J\cup\{j\};x)-v_h(J;x),\\
+ w_d(J)&=\frac{|J|!(d-|J|-1)!}{d!}.
+\end{align}
+The coefficient averages the prediction change from adding feature $j$ over feature orders. In the Boolean study, $d=4$ and the empirical audit batch is the background, so all states and subsets are enumerated. The measured study uses interventional TreeSHAP with training-only backgrounds.
+
+\begin{table}[t]
+\centering
+\caption{Terms used throughout the audit. A reference may be a fixed function or a specified distribution of independently trained functions.}
+\label{tab:notation}
+\footnotesize
+\begin{tabular}{L{0.14\columnwidth}L{0.76\columnwidth}}
+\toprule
+Symbol & Meaning \\
+\midrule
+$f$, $g$, $h$ & Reference predictor, candidate predictor, and a generic scalar predictor \\
+$E_m$ & Expected features supplied for mechanism $m$ \\
+$\mathcal I_m$, $\mathcal F$ & Rows with mechanism $m$; all recorded failure rows \\
+$C$ & A supplied context input; use alone does not establish harm \\
+$A_h$, $L_h$ & Maximum excess; excess localizing the specified context \\
+Aligned fit & Mechanism-only model meeting the stated full-state gate \\
+Harm-positive & Candidate with mean F1 loss at least 0.05 under independent context \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Audit Statistics}
+For a nonempty row group $A$, define mean absolute attribution and normalized share as
+\begin{equation}
+ a_j^h(A)=\frac{1}{|A|}\sum_{x\in A}|\phi_j^h(x)|,
+ \qquad s_j^h(A)=\frac{a_j^h(A)}{\sum_k a_k^h(A)}.
+\end{equation}
+The normalization is a ratio of group means, not a mean of per-row ratios. Omitting superscript $h$ when the model is clear, relevant share, specificity, and outside-set excess are
+\begin{align}
+ R_m&=\sum_{j\in E_m}s_j(\mathcal I_m),\\
+ D_m&=R_m-\sum_{j\in E_m}s_j(\mathcal F\setminus\mathcal I_m),\\
+ S_m&=\max_{j\notin E_m}\{s_j(\mathcal I_m)-s_j(\mathcal F\setminus\mathcal I_m)\}.
+ \label{eq:outside}
+\end{align}
+$R_m$ measures correspondence to expected features. $D_m$ measures whether that correspondence is stronger on own-mechanism rows. $S_m$ selects the outside feature with the greatest increase in share. Empty groups or zero attribution make the statistic unavailable.
+
+Let $A_h(X)=\max_m S_m^h(X)$ for batch $X$. For localization, retain $S_m^h$ only when its maximizing outside feature is $C$, then maximize over those mechanisms; call the result $L_h(X)$, or $-\infty$ if none qualifies. Ties use a fixed feature order. Localization is an attribution event pointing to $C$, not a finding of transfer harm.
+
+\subsection{Mechanism Overlap}
+An exact example shows why an outside feature need not be suspect. Let $Z_0=Z_1\sim\operatorname{Bernoulli}(\pi)$ and independent $Z_2\sim\operatorname{Bernoulli}(\rho)$, with perfect predictor $h_\lor=Z_0\lor Z_1\lor Z_2$ and $E_m=\{Z_m\}$. Interventional Shapley values retain dependence among missing inputs. On mechanism-0 rows, exact enumeration gives
+\begin{align}
+ a_0(\mathcal I_0)=a_1(\mathcal I_0)&=(1-\pi)(1-\rho)/2,\\
+ a_2(\mathcal I_0)&=2\rho(1-\pi)(1-\rho)/3.
+\end{align}
+Other failure rows have $Z_0=Z_1=0,Z_2=1$, where
+\begin{align}
+ a_0=a_1&=\pi(1-\rho)/6,\\
+ a_2&=(1-\rho)(3-2\pi)/3.
+\end{align}
+Normalizing yields
+\begin{equation}
+ s_1(\mathcal I_0)=\frac{3}{6+4\rho},\qquad
+ s_1(\mathcal F\setminus\mathcal I_0)=\frac{\pi}{6-2\pi}.
+\end{equation}
+At $\pi=\rho=0.05$, $S_0=0.4754$, maximized by genuine mechanism $Z_1$. This is established credit sharing under dependence~\cite{janzing2020feature,kumar2020problems}; the example identifies its consequence for the warning score. It does not imply that an unlisted redundant input is harmful.
+
+\section{Methodology}
+\label{sec:method}
+\subsection{Reference Choice and Audit Procedure}
+The engineer first specifies the prediction, expected feature map, comparison cohort, and intended decision. Records from one bearing or acquisition remain grouped. A descriptive correspondence audit needs a defined map and nonzero attribution; a calibrated warning additionally needs an explicit reference law and independent calibration units. The final action is investigation or abstention from the unsupported calibrated claim; \cref{tab:reference-scope} states the scope of each reference. \Cref{fig:workflow} shows the fixed-function computation.
+
+\begin{table*}[t]
+\centering
+\caption{Reference choice and scope of the audit. The 19-unit entries give finite 5\% rank resolution; they do not guarantee useful precision. A batch is an independent audit unit, and a fitted-model draw is a separate training outcome.}
+\label{tab:reference-scope}
+\footnotesize
+\begin{tabular}{L{0.18\textwidth}L{0.28\textwidth}L{0.23\textwidth}L{0.21\textwidth}}
+\toprule
+Reference/check & Supported statement & Required units & Scope \\
+\midrule
+Expected-set comparison & Attribution corresponds to the supplied map and cohort & Defined groups and nonzero attribution & Descriptive $R_m,D_m,S_m$ \\
+Fixed-function rank & Warning on a new batch from the reference's score law & At least 19 per base bin and 19 target-calibration batches & One fixed $f$; not another acceptable fit \\
+Training-population rank & Warning on a new eligible fit and batch from the same procedure & One batch per independent fit; at least 19 scores per bin & Specified training law and eligibility gate \\
+Targeted response test & Prediction changes when the known context input is flipped & Defined intervention and calibration ranks & Input reliance; does not establish transfer harm \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{figure*}[t]
+\centering
+\input{figures/audit_workflow.tex}
+\caption{Fixed-function reference audit. SHAP computation uses a common audit-batch background for $f$ and $g$; base and target-calibration batches are independent. A schematic forest illustrates probability estimation. The population-reference experiment replaces this fixed-function calibration with one score per independent aligned training draw.}
+\label{fig:workflow}
+\end{figure*}
+
+\subsection{Fixed-Function Calibration}
+Mechanism flags provide observed overlap
+\begin{equation}
+ O(X)=\frac{\sum_i\mathbf1\{Z_{0i}=1,Z_{1i}=1\}}{\sum_i\mathbf1\{Z_{0i}=1\}}.
+\end{equation}
+A base bank supplies either one global threshold $Q$ or a threshold $Q_b$ within overlap bin $b$. We compare the fixed bins $[0,0.8),[0.8,0.9),[0.9,1]$ with source-only overlap tertiles and quintiles. Fixed-function edges use 1000 source batches per case; composite edges use one source batch per calibration-model pair. The fixed edges reflect the designed high-overlap target; they are not an assumption-free practitioner choice.
+
+Freeze the base reference and define residual score
+\begin{equation}
+ T_h(X)=A_h(X)-Q_{b(O(X))}.
+\end{equation}
+On $M$ independent target scores from the fixed reference $f$, select rank $k=\lceil(M+1)(1-\alpha)\rceil$ and cut $c_\alpha$. Set the cut to $+\infty$ if $k>M$. Warn on $T_g>c_\alpha$; localize context when
+\begin{equation}
+ L_g(X)>Q_{b(O(X))}+c_\alpha.
+ \label{eq:localization}
+\end{equation}
+Exchangeability of reference calibration and future scores gives the standard strict-rank bound
+\begin{equation}
+ \Pr\{T_f(X_{\rm new})>c_\alpha\}\leq\frac{M+1-k}{M+1}\leq\alpha.
+ \label{eq:rank}
+\end{equation}
+This controls a new batch scored by $f$, not a different acceptable function. The approximately 5\% self-warning rates are an implementation check of this target.
+
+Raw unavailable scores are stored as $+\infty$ in base/global rank calculations. Conditional residuals for invalid scores or unsupported bins are $-\infty$; all invalid test units abstain. This distinction matches the implemented handling of missing groups and denominators.
+
+\textit{Constant-offset remark.} For global $Q$, ranking $A_f-Q$ and adding $Q$ back yields the same critical value as ranking $A_f$. Source and target global references therefore coincide after the same target calibration. This algebraic identity is a control for the comparison, not an empirical contribution.
+
+\subsection{Calibration Over Aligned Training Outcomes}
+A broader reference is a distribution of acceptable fitted functions. Within each learner/size stratum, we use 200 independently trained mechanism-only calibration models. Each contributes one score on a separate target batch. None of the 200 evaluated mechanism-only models appears in this bank. Global or within-bin ranks are then applied directly to candidate scores; this experiment has no residual re-calibration stage.
+
+Under joint exchangeability of the eligible training draw and target batch, the rank argument applies to a new fit from that same procedure. Within-bin calibration has the corresponding Mondrian target~\cite{vovk2005algorithmic,vovk2012conditional}. It does not extend to another learner or an arbitrary physical mechanism map. Unlike the fixed-function guarantee, it averages over model fitting as well as target data.
+
+Neither guarantee fixes the conditional warning probability of one realized calibration bank. Standard order-statistic tolerance bounds~\cite{vovk2012conditional} give a 95\% upper bound of 6.89\% for $M=400$ and 7.72\% for $M=200$ at nominal 5\%, under the specified score law. The 200-score value applies to the global composite cut; a within-bin cut uses its own bin count. These are individual bounds, not simultaneous guarantees across all procedures.
+
+\subsection{Direct Prediction-Response Baselines}
+For Boolean feature $j$, define a response without SHAP,
+\begin{equation}
+ h_j^g(x)=|g(x)-g(x^{\lnot j})|,
+\end{equation}
+where $x^{\lnot j}$ flips only $j$. Replace attribution share by the group mean of $h_j^g$ in the outside-set excess formula. The resulting \emph{flip-excess} score uses the same mechanism cohorts, outside-feature maximization, and global or observed-bin calibration as SHAP excess. Independent uniform rank tie breakers handle atoms, including zero response. SHAP uses strict ranks.
+
+A targeted context baseline instead uses $\rho_C=|X|^{-1}\sum_{x\in X}h_C^g(x)$. Every mechanism-only reference has $\rho_C=0$. A positive response rejects context invariance; zero-response ties use independent uniform calibration/test ranks at 5\%. This baseline knows which input is context. It tests that input's use rather than locating an unknown artifact or establishing harm.
+
+\subsection{Experimental Design}
+\subsubsection{Models and Independent Fits}
+The controlled outcome is $Y=Z_0\lor Z_1\lor Z_2$. Training draws have 512 rows, uniform mechanism bits, and 5\% label noise. Each case has a separately generated training set; its reference and candidate share those rows and labels. Context satisfies $C=Z_0\mathbin{\mathrm{XOR}}\operatorname{Bernoulli}(0.01)$. Tree depth equals input count with minimum leaf 5. Forests contain 64 such trees, square-root feature sampling, and bootstrap samples. Logistic regression uses regularization $C_{\rm reg}=1$ and L-BFGS with 1000 iterations.
+
+Each learner/size stratum has 200 evaluated reference--candidate pairs. References use the three mechanism inputs; candidates also receive context. All acceptable reference fits must match the OR decision on all sixteen input states and ignore context. The full-state probability tables vary despite identical decision maps. Disjoint training seeds supply same-family and both other-family mechanism-only controls. Proxy-only controls replace $Z_0$ by $C$ and are reported separately because they violate the supplied mechanism-only contract.
+
+\subsubsection{Batches, Shift, and Harm}
+An audit batch contains $n=1000$ or $10{,}000$ rows. A batch-level regime probability is uniform on $[0.1,0.4]$. Low/high regime mechanism probabilities are independently uniform on $[0.01,0.04]$ and $[0.1,0.3]$. Nesting additionally activates $Z_1$ on $Z_0$ rows with probability $u$. Source batches use $u\sim U(0,1)$ and target batches $u\sim U(0.8,1)$. Each fixed reference has 1000 source-base, 1000 target-base, 400 target-calibration, and 200 untouched test batches. Source quantiles use no target outcomes.
+
+Keep each candidate fixed and change only the test context bit-flip probability to $\epsilon\in\{0.01,0.10,0.25,0.50,1\}$. The intact law uses the saved test counts; shifted laws retain their exact mechanism-state counts with nested context flips. At $\epsilon=0.50$, context is independent of the mechanisms; at 1, its relation to $Z_0$ reverses. Reference scores remain unchanged because the reference ignores context.
+
+Define realized harm for case $i$ by
+\begin{equation}
+ H_i=\overline{\operatorname{F1}}_i(0.01)-\overline{\operatorname{F1}}_i(0.50).
+\end{equation}
+The primary harm-positive denominator is $H_i\geq0.05$. We report localization before and after shift, and mean F1 loss across all candidates. The harm label is computed from the finite evaluation set, so harm-conditioned frequencies are descriptive diagnostics, not independently selected prospective power estimates. Probability-table dependence alone does not define transfer harm.
+
+\subsubsection{Statistical Comparisons}
+The nominal level is 5\%. Intervals resample the 200 independent fitted-case clusters 1000 times, using the same indices across methods and contrasts. For composite calibration these intervals condition on the single realized fit bank. Primary sign tests use each case's localization frequency over all 200 intact batches, with Holm adjustment across two scores and six learner/size strata. Other shift, bin, and attribution analyses are exploratory. The two sizes use different generated training samples; their conditional subsets do not define a controlled sample-size comparison.
+
+\subsubsection{Measured Bearing Study}
+We use 36 official CWRU 12-kHz drive-end recordings~\cite{cwru2026}: three machined fault locations, three diameters, and four loads, with outer-race position fixed at 6 o'clock. Each supplies 24 nonoverlapping 4096-sample windows. Nineteen features include twelve raw/envelope harmonic power ratios, log root mean square (RMS), kurtosis, crest factor, and four broad-band power ratios. The four own-location harmonic powers define a partial expected set.
+
+A constructed class-correlated resonance applies frequency response
+\begin{equation}
+ H_m(\nu)=1+3\exp[-(\nu-c_m)^2/(2\cdot250^2)],
+\end{equation}
+with centers 2500/3500/4500 Hz for ball/inner/outer faults, followed by restoration of centered RMS. The assignment uses known labels in both training and matched test signals: it is an intentional acquisition-information pressure test, not additional diagnostic evidence. Filter removal evaluates the same fitted model on original signals.
+
+Nested diameter holdout selects forest depth 3, 6, or unrestricted by recording macro F1; shallower ties win. Forests use 100 trees, minimum leaf 3, balanced classes, and seed 2026. Window probabilities are averaged per recording. For each fold, interventional TreeSHAP explains each location probability with 96 equally spaced training-window backgrounds, using the same indices for original and confounded conditions. Background values follow each condition's training signals. Signed attributions satisfy probability additivity within $10^{-6}$. $R_m,D_m,S_m$ average absolute attribution within each recording before giving recordings equal weight.
+
+For the paired F1 drop we enumerate all $2^9$ matched/removed swaps over fault-location/diameter groups and all $3^9$ ordered within-location bootstrap configurations. The swap test assumes exchangeability of the two conditions under its null. The bootstrap describes this nine-group inventory; enumeration removes Monte Carlo error, not small-sample or population uncertainty.
+
+\section{Results}
+\label{sec:results}
+\subsection{Warnings on Independently Fitted Models}
+\Cref{tab:transfer-warning} separates self-calibration from transfer to acceptable functions. Fixed-function SHAP thresholds warn on same-family independent fits at 6.0--9.6\% and other-family fits at 3.7--14.1\%, despite self-warning rates near 5\%. Every such fit implements the same OR decisions and ignores context. Probability-table differences alone therefore change the warning distribution. For logistic references at $n=10{,}000$, the same-family rate is 9.62\%, with pointwise case-bootstrap 95\% interval 8.02--11.38\%.
+
+\begin{table*}[t]
+\centering
+\caption{SHAP warning frequency (\%) with fixed overlap bins. Fixed-function columns use one $f$ for calibration. Independent controls are decision-equivalent mechanism-only fits; the cross-family column spans the two other families. Composite calibration uses one batch per independent same-family fit. Each evaluated stratum has 200 models and 200 test batches per model.}
+\label{tab:transfer-warning}
+\footnotesize
+\input{tables/transfer_warning.tex}
+\end{table*}
+
+Composite SHAP rates are 3.4--7.1\% across the six strata, while its global rates are 4.7--6.9\%. These are realized-bank estimates under a broader, explicitly specified null. Their variability is compatible with marginal rather than calibration-conditional 5\% control. The construction supplies a reference-population target; it does not validate an industrial reference population.
+
+Proxy-only controls at $n=10{,}000$ have intact F1 about 0.976 and independent-context F1 about 0.452; SHAP warning/localization is approximately 99.8\%. These are off-contract candidates rather than acceptable-null controls.
+
+The direct flip-excess score also transfers poorly between functions: fixed-bin same-family warning rates range from 10.4\% to 18.7\%. Thus its sensitivity results below must be read together with its reference-transfer cost, rather than as uniformly superior calibrated performance.
+
+\subsection{Localization and Transfer Harm}
+\Cref{tab:transfer-harm,fig:transfer-harm} use harmful models rather than a probability-change gate. Under independent context at $n=10{,}000$, mean F1 loss across all candidates is 0.121 for trees, 0.260 for forests, and 0.390 for logistic models. Nevertheless, post-shift SHAP-excess localization is zero on all harm-positive subsets. Before shift it localizes almost every harmful tree, 62.9\% of harmful forests, and 38.3\% of harmful logistic models with fixed bins.
+
+\begin{table*}[t]
+\centering
+\caption{Localization (\%) on $N_H$ harm-positive candidates before and after independent-context shift ($\epsilon=0.50$). Mean F1 loss averages all 200 candidates. Both excess scores use fixed-function observed-bin calibration; their self-warning rates are near 5\%, but their independent-model rates differ (see text). The targeted context test localizes all harm-positive candidates in these strata.}
+\label{tab:transfer-harm}
+\footnotesize
+\input{tables/transfer_harm.tex}
+\end{table*}
+
+\begin{figure*}[t]
+\centering
+\input{figures/transfer_harm.tex}
+\caption{Fixed-candidate transfer at $n=10{,}000$. Top: localization conditional on realized F1 loss of at least 0.05 under independent context. Bottom: mean F1 loss across all 200 models. The targeted test is given the identity of $C$; the two excess scores must identify it among outside features. Curves use matched nominal fixed-function size, not a guarantee of matched false warnings across different fitted functions.}
+\label{fig:transfer-harm}
+\end{figure*}
+
+The flip-excess baseline retains 9.5\%, 71.3\%, and 56.2\% localization on the corresponding harmful subsets after shift. The targeted context test detects every harmful model but also warns on all no-harm forest and logistic candidates. It therefore separates input use from invariance, not harmless from harmful use. Fixed-bin SHAP also warns before shift on 32.6\% of no-harm forests and 5.6\% of no-harm logistic candidates.
+
+At $n=10{,}000$, composite calibration does not repair the score's target: SHAP localization remains zero after context independence. For forests, composite global SHAP has 64.2\% pre-shift localization on harmful models and 0.4\% on no-harm models; fixed composite bins raise the latter to 33.8\%. Extra sensitivity to context is not necessarily extra specificity to transfer harm.
+
+\subsection{Overlap and Bin Choice}
+\Cref{fig:overlap-score} shows that the null score varies with observed overlap. At $n=10{,}000$, the fixed bins explain 46.9--49.3\% of its target variance, whereas source quintiles explain only 7.5--8.3\%. Source tertiles put target batches in a single populated bin and reduce to the global rule in these runs. \Cref{tab:transfer-bins} shows the corresponding localization differences.
+
+\begin{figure*}[t]
+\centering
+\input{figures/overlap_score.tex}
+\caption{Null score versus observed overlap for the first saved $n=10{,}000$ reference of each learner. Points are means in ten display intervals within $[0.8,1]$, from 1000 target-base batches; these display intervals are not calibration strata. The complete case-level variance analysis uses all 200 references per learner.}
+\label{fig:overlap-score}
+\end{figure*}
+
+\begin{table*}[t]
+\centering
+\caption{Bin sensitivity at $n=10{,}000$. Variance explained is the percentage of target null-score variance explained by the fixed bins. Remaining columns are intact-law SHAP localization (\%) across all 200 candidates, with independent target residual calibration. Source thirds/fifths estimate edges from source overlap only.}
+\label{tab:transfer-bins}
+\footnotesize
+\input{tables/transfer_bins.tex}
+\end{table*}
+
+At $n=10{,}000$, fixed bins improve all-candidate localization by 18.8 percentage points for forests (case-bootstrap 95\% interval 15.2--22.0) and 21.6 for logistic models (18.8--24.4). Case-level sign tests in the twelve-test Holm family give adjusted $p=3.13\times10^{-9}$ and $5.88\times10^{-21}$. Tree localization instead decreases by 0.073 percentage points, a small effect despite adjusted $p=1.67\times10^{-6}$. Harmful tree cases already have almost saturated intact-law localization under the global threshold. Explained null variance alone cannot predict the gain: the alternative scores must also lie near the changed cut. Global all-candidate tree localization is 25.0\% at $n=1000$ and 23.0\% at $n=10{,}000$. The different training draws and harm-positive subsets prevent attributing that difference to audit size alone.
+
+\subsection{Measured Attribution Audit}
+\Cref{tab:cwru-audit} reports the actual descriptive audit. Under resonance, the largest outside-set excess is a broad-band feature for inner- and outer-race heads, but a different mechanism's harmonic for the ball head. Expected-set relevance alone changes little for the inner-race head. Broad-band share nevertheless increases for all three heads, most strongly for outer-race diagnosis. A band feature also maximizes the original inner-race head, so that feature type alone does not identify the injected resonance.
+
+\begin{table*}[t]
+\centering
+\caption{CWRU diameter-held-out interventional TreeSHAP audit. B, IR, and OR denote ball, inner-race, and outer-race faults. Original, resonance, and removed refer to original models/signals, confounded models with their label-assigned response, and those same confounded models after response removal. Band share sums the four broad-band features on own-location recordings. No calibrated mechanism-warning threshold is available.}
+\label{tab:cwru-audit}
+\footnotesize
+\input{tables/cwru_descriptive_audit.tex}
+\end{table*}
+
+Original diagnosis F1 is 0.611. The injected information produces matched F1 0.886, falling to 0.313 when removed. The paired drop is 0.573; exact nine-group label swaps give two-sided $p=0.0625$. Enumerating the empirical group-bootstrap law gives percentiles 0.243--0.867. Only five groups change recording predictions. The limited group count, rather than Monte Carlo resolution, constrains inference. These outcomes support an acquisition-sensitivity investigation, while the ball-head attribution result shows that the outside-feature maximizer need not identify the injected band information.
+
+\section{Experimental Analysis}
+\label{sec:analysis}
+\subsection{Reference Transfer and Error Targets}
+A fixed-reference rank guarantee does not imply low warning rates for another model with the same decisions. Mechanism-only probability tables differ after fitting, and their normalized attribution scores differ accordingly. A composite reference addresses that variation only when a credible model-generating population can be specified. It changes the null from one function to one training population; it does not remove the need to justify alignment.
+
+The composite experiment also illustrates finite-calibration uncertainty. Case-bootstrap intervals quantify variation among held-out fitted models conditional on the realized bank. The order-statistic bound quantifies calibration-bank randomness. Those two uncertainties must not be conflated, and non-rejection of a 5\% frequency is not a validity argument.
+
+\subsection{Why Harm Can Escape Localization}
+The SHAP statistic asks whether an outside feature has unusually concentrated attribution on one mechanism's failure rows. Context independence can remove that concentration while leaving the predictor strongly dependent on context. Moreover, $S_m$ compares only recorded failure groups, whereas F1 loss includes false positives on normal rows. At $n=10{,}000$, aggregate false-positive rates under independent context are 11.5\%, 25.0\%, and 37.5\% for tree, forest, and logistic candidates; false-negative rates stay below 0.4\%. The score misses harm occurring largely outside its comparison cohorts. Localization can reappear under reversal while F1 loss increases (\cref{fig:transfer-harm}); it is not a monotone measure of harm.
+
+A direct response test is therefore an essential comparator. The targeted baseline exposes context use cheaply, including use with no specified harm. The flip-excess baseline preserves some shift sensitivity but inherits reference-transfer problems. The evidence supports neither a general SHAP sensitivity advantage nor a rule that every redundant input should trigger an engineering alarm.
+
+\subsection{Calibration and Compute Requirements}
+For a finite $\alpha$ rank cut, a calibration stratum needs at least
+\begin{equation}
+ B_{\min}(\alpha)=\lceil1/\alpha\rceil-1
+\end{equation}
+independent units. Thus $K$ base strata plus one residual-calibration bank require at least $(K+1)B_{\min}$ units to make every cut finite: 76 at 5\% for three strata, before evaluation. This is only a rank-resolution minimum. Population-reference calibration uses independent fitted-model/batch pairs; repeating batches from one fitted function cannot replace those model draws.
+
+The cached Boolean computation has $2^d$ states and a $d\,2^d\times2^d$ attribution kernel. Applying it to $B$ count batches costs $O(Bd4^d)$ arithmetic once the kernel and counts are available and does not grow with row count $n$. Forming counts from raw Boolean rows additionally requires $O(Bnd)$ input processing. That compression is exponential in $d$ and is not a scalable continuous-feature method. For sampled interventional SHAP, $n$ explained rows, $b$ background rows and $\ell$ coalitions entail roughly $n b\ell$ model evaluations plus the attribution fit. Interventional TreeSHAP exploits tree structure, but cost still grows with background size. In the 19-feature replay, 576 window explanations per fold with 96 backgrounds take \cwruShapRuntime{} seconds on \cwruHardware{} hardware using SHAP \cwruShapVersion{}; all timings and versions are saved. This measured compute cost does not create independent acquisition units.
+
+For $M_{\rm mech}$ mechanisms, stratifying every overlap pair into $K$ categories could create $K^{M_{\rm mech}(M_{\rm mech}-1)/2}$ cells. The present one-pair conditioning rule offers no remedy for that support problem. Fewer prespecified summaries or a conditional method require a new support and calibration assessment.
+
+\subsection{Limitations and Reproducibility}
+The controlled mechanisms and acceptable training population are supplied definitions, not industrial causal truth. Context shifts are constructed, and harm-conditioned summaries use realized evaluation loss. Calibration inference is tied to the stated function or training law. Source-quantile sensitivity shows that the fixed bins exploit useful generator structure rather than a universally transferable partition.
+
+CWRU contains few bearing states on one rig and no healthy-bearing class in this study. Its expected harmonic sets are partial. Label-assigned resonances deliberately inject acquisition information; the matched F1 is not an achieved diagnostic improvement. Neither grouping nor exact finite-inventory enumeration proves independent field acquisitions. The inventory supplies at most two matched or eleven pooled complete calibration batches after a test reservation, before training consumes records, and offers no independently justified aligned reference. A calibrated industrial mechanism-warning claim remains unavailable.
+
+All analyses are exploratory. Dated protocols distinguish settings fixed before follow-up outcomes from subsequent additions. The primary case-level sign-test family has twelve Holm-adjusted comparisons; other analyses are descriptive. Source hashes, signed attributions, probability tables, count vectors and verifier scripts are released. A single command, \texttt{reproduce\_reference\_study.sh}, reproduces the focused studies and paper. The work evaluates tabular explanation audits and their requirements, rather than temporal attribution or a large-scale monitoring system.
+
+\section{Conclusion}
+Reference design determines what a mechanism-level SHAP warning means. Genuine overlap can yield outside-set excess; acceptable refits can exceed a single-function threshold; and harmful context dependence can persist after mechanism-specific localization disappears. Calibration over independent aligned training outcomes supports a broader but still explicit null. Direct response tests and the measured spectral audit show why attribution, reliance and transfer harm must be assessed separately. An engineering audit should report the reference population, its independent units, its comparison cohorts, and the consequence a warning actually supports.
+
+\section{Future Work}
+\subsection{Industrial Validation}
+The next study needs healthy and faulty units, independent acquisition sessions, and inspection-based mechanism information reserved before fitting. A physically justified reference population would permit a direct assessment of transfer-warning rates, rather than inheriting the controlled training-law definition.
+
+\subsection{Harm-Sensitive Scores and Calibration}
+Future scores should include normal-row false positives and relate warnings to a specified maintenance loss. Continuous conditional calibration and more realistic acquisition shifts should be compared with direct response tests under the same reference populations and data budgets. Temporal explanations and large-scale deployment require separate evaluations.
+
+\section*{Acknowledgment}
+AI systems assisted manuscript and analysis-code drafting, including Claude (Anthropic) and Codex (OpenAI). The authors are responsible for the scientific claims and verification. Code, protocols, results, and verification scripts are available at \url{https://github.com/kowshik24/glowing-broccoli}.
+\IEEEtriggeratref{17}
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+\end{document}

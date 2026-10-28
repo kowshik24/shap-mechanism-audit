@@ -1,0 +1,2372 @@
+{
+  "complete": true,
+  "summary": [
+    {
+      "family": "tree",
+      "score": "batch_share_failure",
+      "partition": "global",
+      "harm_cases": 46,
+      "no_harm_cases": 154,
+      "nominal_null_warning": 0.0664,
+      "nominal_localization": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.03980099502487562,
+        0.41566265060240964
+      ]
+    },
+    {
+      "family": "tree",
+      "score": "batch_share_failure",
+      "partition": "fixed3",
+      "harm_cases": 46,
+      "no_harm_cases": 154,
+      "nominal_null_warning": 0.044,
+      "nominal_localization": [
+        [
+          0.9968478260869565,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.00225,
+      "matched_localization": [
+        [
+          0.9968478260869565,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.995640625,
+            0.997875
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.05454545454545454,
+        0.7250755287009063
+      ]
+    },
+    {
+      "family": "tree",
+      "score": "batch_share_healthy",
+      "partition": "global",
+      "harm_cases": 46,
+      "no_harm_cases": 154,
+      "nominal_null_warning": 0.059475,
+      "nominal_localization": [
+        [
+          0.9991304347826087,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.9991304347826087,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.9984135706182643,
+            0.9997828351449275
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.04975124378109453,
+        0.5688282138794084
+      ]
+    },
+    {
+      "family": "tree",
+      "score": "batch_raw_failure",
+      "partition": "global",
+      "harm_cases": 46,
+      "no_harm_cases": 154,
+      "nominal_null_warning": 0.071825,
+      "nominal_localization": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.03482587064676617,
+        0.2222222222222222
+      ]
+    },
+    {
+      "family": "tree",
+      "score": "batch_raw_healthy",
+      "partition": "global",
+      "harm_cases": 46,
+      "no_harm_cases": 154,
+      "nominal_null_warning": 0.08225,
+      "nominal_localization": [
+        [
+          0.7256521739130435,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.6390825507797956,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.5715625792648575,
+            0.7059895744478805
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.024875621890547265,
+        0.7630827783063748
+      ]
+    },
+    {
+      "family": "tree",
+      "score": "batch_targeted_C",
+      "partition": "global",
+      "harm_cases": 46,
+      "no_harm_cases": 154,
+      "nominal_null_warning": 0.0,
+      "nominal_localization": [
+        [
+          1.0,
+          0.5
+        ],
+        [
+          1.0,
+          0.5
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          1.0,
+          0.525
+        ],
+        [
+          1.0,
+          0.525
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            0.4511708575435785,
+            0.5920905930470347
+          ]
+        ],
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            0.4511708575435785,
+            0.5920905930470347
+          ]
+        ]
+      ],
+      "boundary": [
+        1.0,
+        0.05
+      ]
+    },
+    {
+      "family": "tree",
+      "score": "frozen_share_failure",
+      "partition": "global",
+      "harm_cases": 46,
+      "no_harm_cases": 154,
+      "nominal_null_warning": 0.0613,
+      "nominal_localization": [
+        [
+          0.9921739130434782,
+          0.0
+        ],
+        [
+          0.015869565217391305,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.9910415131417343,
+          0.0
+        ],
+        [
+          0.015869565217391305,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.9673534662041418,
+            1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.04902207558941422
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.029850746268656716,
+        0.4651600753295669
+      ]
+    },
+    {
+      "family": "tree",
+      "score": "frozen_share_healthy",
+      "partition": "global",
+      "harm_cases": 46,
+      "no_harm_cases": 154,
+      "nominal_null_warning": 0.082525,
+      "nominal_localization": [
+        [
+          0.4945652173913043,
+          0.007337662337662337
+        ],
+        [
+          0.0,
+          0.004512987012987013
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.38106460788297436,
+          0.002533681271999029
+        ],
+        [
+          0.0,
+          0.0009339725694865881
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.24459235218618253,
+            0.5174174380093532
+          ],
+          [
+            0.0,
+            0.009579641978129806
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.005435506193218438
+          ]
+        ]
+      ],
+      "boundary": [
+        0.029850746268656716,
+        0.9439252336448598
+      ]
+    },
+    {
+      "family": "tree",
+      "score": "frozen_raw_failure",
+      "partition": "global",
+      "harm_cases": 46,
+      "no_harm_cases": 154,
+      "nominal_null_warning": 0.03465,
+      "nominal_localization": [
+        [
+          0.4945652173913043,
+          0.10714285714285714
+        ],
+        [
+          0.05336956521739131,
+          0.10198051948051948
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.5601827568179838,
+          0.13414660489810792
+        ],
+        [
+          0.0655005663500915,
+          0.12423652499804805
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.4576416424631891,
+            0.662887006533768
+          ],
+          [
+            0.07860812537152048,
+            0.1982700746285631
+          ]
+        ],
+        [
+          [
+            0.026878997077571645,
+            0.11956541651852161
+          ],
+          [
+            0.07655899933563395,
+            0.19447519266182992
+          ]
+        ]
+      ],
+      "boundary": [
+        0.06467661691542288,
+        0.8857715430861723
+      ]
+    },
+    {
+      "family": "tree",
+      "score": "frozen_raw_healthy",
+      "partition": "global",
+      "harm_cases": 46,
+      "no_harm_cases": 154,
+      "nominal_null_warning": 0.0,
+      "nominal_localization": [
+        [
+          0.0,
+          0.4935064935064935
+        ],
+        [
+          0.0,
+          0.4996103896103896
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.03334782608695652,
+          0.5188311688311689
+        ],
+        [
+          0.0,
+          0.5246298701298702
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.02664228050595238,
+            0.039143892750744785
+          ],
+          [
+            0.44633221586935956,
+            0.5893758697027198
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.45080728411140053,
+            0.5913810105538632
+          ]
+        ]
+      ],
+      "boundary": [
+        1.0,
+        0.05
+      ]
+    },
+    {
+      "family": "tree",
+      "score": "frozen_targeted_C",
+      "partition": "global",
+      "harm_cases": 46,
+      "no_harm_cases": 154,
+      "nominal_null_warning": 0.0,
+      "nominal_localization": [
+        [
+          1.0,
+          0.5
+        ],
+        [
+          1.0,
+          0.5
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          1.0,
+          0.525
+        ],
+        [
+          1.0,
+          0.525
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            0.4511708575435785,
+            0.5920905930470347
+          ]
+        ],
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            0.4511708575435785,
+            0.5920905930470347
+          ]
+        ]
+      ],
+      "boundary": [
+        1.0,
+        0.05
+      ]
+    },
+    {
+      "family": "tree",
+      "score": "flip_failure",
+      "partition": "global",
+      "harm_cases": 46,
+      "no_harm_cases": 154,
+      "nominal_null_warning": 0.078175,
+      "nominal_localization": [
+        [
+          0.845108695652174,
+          0.20012987012987013
+        ],
+        [
+          0.1082608695652174,
+          0.20012987012987013
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.7809490118577076,
+          0.14777119244391973
+        ],
+        [
+          0.08081857707509882,
+          0.14777119244391973
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.7269248289017265,
+            0.8267567804307585
+          ],
+          [
+            0.09960981133225116,
+            0.20659590780619025
+          ]
+        ],
+        [
+          [
+            0.05249448577079735,
+            0.11838578925318086
+          ],
+          [
+            0.09960981133225116,
+            0.20659590780619025
+          ]
+        ]
+      ],
+      "boundary": [
+        0.03482587064676617,
+        0.4109090909090909
+      ]
+    },
+    {
+      "family": "tree",
+      "score": "flip_failure",
+      "partition": "fixed3",
+      "harm_cases": 46,
+      "no_harm_cases": 154,
+      "nominal_null_warning": 0.05775,
+      "nominal_localization": [
+        [
+          0.7515217391304347,
+          0.2794155844155844
+        ],
+        [
+          0.09010869565217391,
+          0.2794155844155844
+        ]
+      ],
+      "abstention": 0.00225,
+      "matched_localization": [
+        [
+          0.7277215189873417,
+          0.27839635048495803
+        ],
+        [
+          0.0837107870115575,
+          0.27839635048495803
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.6569411206389459,
+            0.7990413834053931
+          ],
+          [
+            0.19565420781797713,
+            0.3266523483147789
+          ]
+        ],
+        [
+          [
+            0.04319292913484412,
+            0.1311803215996447
+          ],
+          [
+            0.19565420781797713,
+            0.3266523483147789
+          ]
+        ]
+      ],
+      "boundary": [
+        0.045454545454545456,
+        0.21518987341772153
+      ]
+    },
+    {
+      "family": "tree",
+      "score": "response_targeted_C",
+      "partition": "global",
+      "harm_cases": 46,
+      "no_harm_cases": 154,
+      "nominal_null_warning": 0.048425,
+      "nominal_localization": [
+        [
+          1.0,
+          0.5239285714285714
+        ],
+        [
+          1.0,
+          0.5239285714285714
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          1.0,
+          0.5246633996030778
+        ],
+        [
+          1.0,
+          0.5246633996030778
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            0.45073644621913644,
+            0.5915152867150548
+          ]
+        ],
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            0.45073644621913644,
+            0.5915152867150548
+          ]
+        ]
+      ],
+      "boundary": [
+        0.05472636815920398,
+        0.16890080428954424
+      ]
+    },
+    {
+      "family": "forest",
+      "score": "batch_share_failure",
+      "partition": "global",
+      "harm_cases": 100,
+      "no_harm_cases": 100,
+      "nominal_null_warning": 0.0605,
+      "nominal_localization": [
+        [
+          0.64245,
+          0.0037
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.587349436936937,
+          0.0014531531531531534
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.5028190304056573,
+            0.6692528801088365
+          ],
+          [
+            0.0,
+            0.004601660013271274
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.04477611940298507,
+        0.47072072072072074
+      ]
+    },
+    {
+      "family": "forest",
+      "score": "batch_share_failure",
+      "partition": "fixed3",
+      "harm_cases": 100,
+      "no_harm_cases": 100,
+      "nominal_null_warning": 0.062775,
+      "nominal_localization": [
+        [
+          0.6722,
+          0.33775
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0022,
+      "matched_localization": [
+        [
+          0.6546950495049505,
+          0.29805
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.5068006035145884,
+            0.7127335905062759
+          ],
+          [
+            0.22468303926684313,
+            0.35857999092558984
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.03076923076923077,
+        0.8316831683168316
+      ]
+    },
+    {
+      "family": "forest",
+      "score": "batch_share_healthy",
+      "partition": "global",
+      "harm_cases": 100,
+      "no_harm_cases": 100,
+      "nominal_null_warning": 0.065425,
+      "nominal_localization": [
+        [
+          0.89235,
+          0.38695
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.8594071698113207,
+          0.3174090566037736
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.8246815599674878,
+            0.8889748729038754
+          ],
+          [
+            0.26892815036070256,
+            0.3598020696313261
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.03980099502487562,
+        0.5339622641509434
+      ]
+    },
+    {
+      "family": "forest",
+      "score": "batch_raw_failure",
+      "partition": "global",
+      "harm_cases": 100,
+      "no_harm_cases": 100,
+      "nominal_null_warning": 0.0532,
+      "nominal_localization": [
+        [
+          0.34135,
+          0.00075
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.32652431192660547,
+          0.0005444954128440367
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.2599865348797408,
+            0.39855257496816227
+          ],
+          [
+            0.0,
+            0.0015543220827653284
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.04975124378109453,
+        0.41284403669724773
+      ]
+    },
+    {
+      "family": "forest",
+      "score": "batch_raw_healthy",
+      "partition": "global",
+      "harm_cases": 100,
+      "no_harm_cases": 100,
+      "nominal_null_warning": 0.07915,
+      "nominal_localization": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.029850746268656716,
+        0.5943877551020408
+      ]
+    },
+    {
+      "family": "forest",
+      "score": "batch_targeted_C",
+      "partition": "global",
+      "harm_cases": 100,
+      "no_harm_cases": 100,
+      "nominal_null_warning": 0.0,
+      "nominal_localization": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      ],
+      "boundary": [
+        1.0,
+        0.05
+      ]
+    },
+    {
+      "family": "forest",
+      "score": "frozen_share_failure",
+      "partition": "global",
+      "harm_cases": 100,
+      "no_harm_cases": 100,
+      "nominal_null_warning": 0.0397,
+      "nominal_localization": [
+        [
+          0.78535,
+          0.1882
+        ],
+        [
+          0.00565,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.8329501818181818,
+          0.239416
+        ],
+        [
+          0.010397272727272727,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.7414752855798379,
+            0.899755388587331
+          ],
+          [
+            0.15843004110610615,
+            0.340330905200446
+          ]
+        ],
+        [
+          [
+            0.00027623890094272493,
+            0.02991989255215746
+          ],
+          [
+            0.0,
+            0.0005944236236522676
+          ]
+        ]
+      ],
+      "boundary": [
+        0.05970149253731343,
+        0.5490909090909091
+      ]
+    },
+    {
+      "family": "forest",
+      "score": "frozen_share_healthy",
+      "partition": "global",
+      "harm_cases": 100,
+      "no_harm_cases": 100,
+      "nominal_null_warning": 0.0867,
+      "nominal_localization": [
+        [
+          0.2103,
+          0.0352
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.1419375,
+          0.001078125
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.0535289507598086,
+            0.21313433422378028
+          ],
+          [
+            0.0,
+            0.01899037730140018
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.029850746268656716,
+        0.9375
+      ]
+    },
+    {
+      "family": "forest",
+      "score": "frozen_raw_failure",
+      "partition": "global",
+      "harm_cases": 100,
+      "no_harm_cases": 100,
+      "nominal_null_warning": 0.05645,
+      "nominal_localization": [
+        [
+          0.3447,
+          0.26345
+        ],
+        [
+          0.33645,
+          0.17695
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.311224025974026,
+          0.22073701298701298
+        ],
+        [
+          0.28580844155844154,
+          0.134937012987013
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.20756923625028975,
+            0.40562872141123985
+          ],
+          [
+            0.11673839807286214,
+            0.34522744075257783
+          ]
+        ],
+        [
+          [
+            0.16854832034982264,
+            0.40753642386894284
+          ],
+          [
+            0.05496796936785177,
+            0.24595630466835045
+          ]
+        ]
+      ],
+      "boundary": [
+        0.04477611940298507,
+        0.7402597402597403
+      ]
+    },
+    {
+      "family": "forest",
+      "score": "frozen_raw_healthy",
+      "partition": "global",
+      "harm_cases": 100,
+      "no_harm_cases": 100,
+      "nominal_null_warning": 0.0,
+      "nominal_localization": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.05,
+          0.05
+        ],
+        [
+          0.033815000000000005,
+          0.05
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.05,
+            0.05
+          ],
+          [
+            0.05,
+            0.05
+          ]
+        ],
+        [
+          [
+            0.029464800420168066,
+            0.038475422241719674
+          ],
+          [
+            0.05,
+            0.05
+          ]
+        ]
+      ],
+      "boundary": [
+        1.0,
+        0.05
+      ]
+    },
+    {
+      "family": "forest",
+      "score": "frozen_targeted_C",
+      "partition": "global",
+      "harm_cases": 100,
+      "no_harm_cases": 100,
+      "nominal_null_warning": 0.0,
+      "nominal_localization": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      ],
+      "boundary": [
+        1.0,
+        0.05
+      ]
+    },
+    {
+      "family": "forest",
+      "score": "flip_failure",
+      "partition": "global",
+      "harm_cases": 100,
+      "no_harm_cases": 100,
+      "nominal_null_warning": 0.081675,
+      "nominal_localization": [
+        [
+          0.6255,
+          0.44235
+        ],
+        [
+          0.62375,
+          0.44235
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.4707720692368214,
+          0.2571669551534225
+        ],
+        [
+          0.4695836742722266,
+          0.2571510621557829
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.36376996698332725,
+            0.5509912064078736
+          ],
+          [
+            0.1713807799123514,
+            0.346457607590804
+          ]
+        ],
+        [
+          [
+            0.36240990788294636,
+            0.5493105089205955
+          ],
+          [
+            0.17138138655088409,
+            0.34641582679126004
+          ]
+        ]
+      ],
+      "boundary": [
+        0.03980099502487562,
+        0.31785995279307633
+      ]
+    },
+    {
+      "family": "forest",
+      "score": "flip_failure",
+      "partition": "fixed3",
+      "harm_cases": 100,
+      "no_harm_cases": 100,
+      "nominal_null_warning": 0.079975,
+      "nominal_localization": [
+        [
+          0.5185,
+          0.42655
+        ],
+        [
+          0.51695,
+          0.4265
+        ]
+      ],
+      "abstention": 0.0022,
+      "matched_localization": [
+        [
+          0.4352375,
+          0.403625
+        ],
+        [
+          0.4341375,
+          0.403575
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.33635789837176744,
+            0.545434480398091
+          ],
+          [
+            0.3070191469458158,
+            0.451861393449853
+          ]
+        ],
+        [
+          [
+            0.33557532799768175,
+            0.543343890377165
+          ],
+          [
+            0.3069787166625914,
+            0.45174948439748924
+          ]
+        ]
+      ],
+      "boundary": [
+        0.03076923076923077,
+        0.75
+      ]
+    },
+    {
+      "family": "forest",
+      "score": "response_targeted_C",
+      "partition": "global",
+      "harm_cases": 100,
+      "no_harm_cases": 100,
+      "nominal_null_warning": 0.065375,
+      "nominal_localization": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.03980099502487562,
+        0.8887614678899083
+      ]
+    },
+    {
+      "family": "logistic",
+      "score": "batch_share_failure",
+      "partition": "global",
+      "harm_cases": 150,
+      "no_harm_cases": 50,
+      "nominal_null_warning": 0.047225,
+      "nominal_localization": [
+        [
+          0.0758,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.0792037634408602,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.044253113228850983,
+            0.1252601629742818
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.05970149253731343,
+        0.08064516129032258
+      ]
+    },
+    {
+      "family": "logistic",
+      "score": "batch_share_failure",
+      "partition": "fixed3",
+      "harm_cases": 150,
+      "no_harm_cases": 50,
+      "nominal_null_warning": 0.0546,
+      "nominal_localization": [
+        [
+          0.3529,
+          0.0164
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0025,
+      "matched_localization": [
+        [
+          0.34903298880275624,
+          0.0164
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.30875168662963137,
+            0.38525042084206507
+          ],
+          [
+            0.00019946428571428575,
+            0.04808168351106566
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.05,
+        0.524547803617571
+      ]
+    },
+    {
+      "family": "logistic",
+      "score": "batch_share_healthy",
+      "partition": "global",
+      "harm_cases": 150,
+      "no_harm_cases": 50,
+      "nominal_null_warning": 0.038525,
+      "nominal_localization": [
+        [
+          0.3363,
+          0.0062
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.37872989417989417,
+          0.011011904761904763
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.33517221125071905,
+            0.4300682109747178
+          ],
+          [
+            0.003909258866751448,
+            0.020482776817594365
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.06965174129353234,
+        0.6746031746031746
+      ]
+    },
+    {
+      "family": "logistic",
+      "score": "batch_raw_failure",
+      "partition": "global",
+      "harm_cases": 150,
+      "no_harm_cases": 50,
+      "nominal_null_warning": 0.03455,
+      "nominal_localization": [
+        [
+          0.13103333333333333,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.17977477477477477,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.1323342151534527,
+            0.23784226427231153
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.05970149253731343,
+        0.44594594594594594
+      ]
+    },
+    {
+      "family": "logistic",
+      "score": "batch_raw_healthy",
+      "partition": "global",
+      "harm_cases": 150,
+      "no_harm_cases": 50,
+      "nominal_null_warning": 0.044975,
+      "nominal_localization": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.05970149253731343,
+        0.44583333333333336
+      ]
+    },
+    {
+      "family": "logistic",
+      "score": "batch_targeted_C",
+      "partition": "global",
+      "harm_cases": 150,
+      "no_harm_cases": 50,
+      "nominal_null_warning": 0.0,
+      "nominal_localization": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      ],
+      "boundary": [
+        1.0,
+        0.05
+      ]
+    },
+    {
+      "family": "logistic",
+      "score": "frozen_share_failure",
+      "partition": "global",
+      "harm_cases": 150,
+      "no_harm_cases": 50,
+      "nominal_null_warning": 0.0318,
+      "nominal_localization": [
+        [
+          0.2483,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.36164330958036417,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.27389804042927657,
+            0.45331998562557846
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.06467661691542288,
+        0.31116389548693585
+      ]
+    },
+    {
+      "family": "logistic",
+      "score": "frozen_share_healthy",
+      "partition": "global",
+      "harm_cases": 150,
+      "no_harm_cases": 50,
+      "nominal_null_warning": 0.067175,
+      "nominal_localization": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.03980099502487562,
+        0.5632911392405063
+      ]
+    },
+    {
+      "family": "logistic",
+      "score": "frozen_raw_failure",
+      "partition": "global",
+      "harm_cases": 150,
+      "no_harm_cases": 50,
+      "nominal_null_warning": 0.03315,
+      "nominal_localization": [
+        [
+          0.08226666666666667,
+          0.0069
+        ],
+        [
+          0.06196666666666667,
+          0.0309
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.13892053872053872,
+          0.02280774410774411
+        ],
+        [
+          0.10624523007856342,
+          0.07194949494949496
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.08459871305175991,
+            0.2183507218319539
+          ],
+          [
+            0.0015212606983378563,
+            0.0734286093478991
+          ]
+        ],
+        [
+          [
+            0.058558526711016225,
+            0.17100600013752132
+          ],
+          [
+            0.020572656786118703,
+            0.1646594211592223
+          ]
+        ]
+      ],
+      "boundary": [
+        0.06467661691542288,
+        0.4107744107744108
+      ]
+    },
+    {
+      "family": "logistic",
+      "score": "frozen_raw_healthy",
+      "partition": "global",
+      "harm_cases": 150,
+      "no_harm_cases": 50,
+      "nominal_null_warning": 0.0,
+      "nominal_localization": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.05,
+          0.05
+        ],
+        [
+          0.03451333333333333,
+          0.05
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.05,
+            0.05
+          ],
+          [
+            0.05,
+            0.05
+          ]
+        ],
+        [
+          [
+            0.031197764900662252,
+            0.03798008838559009
+          ],
+          [
+            0.05,
+            0.05
+          ]
+        ]
+      ],
+      "boundary": [
+        1.0,
+        0.05
+      ]
+    },
+    {
+      "family": "logistic",
+      "score": "frozen_targeted_C",
+      "partition": "global",
+      "harm_cases": 150,
+      "no_harm_cases": 50,
+      "nominal_null_warning": 0.0,
+      "nominal_localization": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      ],
+      "boundary": [
+        1.0,
+        0.05
+      ]
+    },
+    {
+      "family": "logistic",
+      "score": "flip_failure",
+      "partition": "global",
+      "harm_cases": 150,
+      "no_harm_cases": 50,
+      "nominal_null_warning": 0.06455,
+      "nominal_localization": [
+        [
+          0.2356,
+          0.1834
+        ],
+        [
+          0.2811,
+          0.2327
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          0.17086985815602837,
+          0.11496063829787233
+        ],
+        [
+          0.2071609929078014,
+          0.15678404255319148
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.10248675714870488,
+            0.26848170930588006
+          ],
+          [
+            0.04525453258798839,
+            0.24513598765765554
+          ]
+        ],
+        [
+          [
+            0.121983906821285,
+            0.3178080117908288
+          ],
+          [
+            0.06996174326216226,
+            0.3069647599013437
+          ]
+        ]
+      ],
+      "boundary": [
+        0.03482587064676617,
+        0.3723404255319149
+      ]
+    },
+    {
+      "family": "logistic",
+      "score": "flip_failure",
+      "partition": "fixed3",
+      "harm_cases": 150,
+      "no_harm_cases": 50,
+      "nominal_null_warning": 0.063425,
+      "nominal_localization": [
+        [
+          0.2576333333333333,
+          0.241
+        ],
+        [
+          0.30943333333333334,
+          0.2853
+        ]
+      ],
+      "abstention": 0.0025,
+      "matched_localization": [
+        [
+          0.20105,
+          0.1743875
+        ],
+        [
+          0.24337083333333334,
+          0.21525
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            0.10922417042087385,
+            0.3040155358180187
+          ],
+          [
+            0.05969358658019843,
+            0.32877003354197665
+          ]
+        ],
+        [
+          [
+            0.13599874690444796,
+            0.36342424285549985
+          ],
+          [
+            0.08541786459804754,
+            0.3786044030849804
+          ]
+        ]
+      ],
+      "boundary": [
+        0.041666666666666664,
+        0.125
+      ]
+    },
+    {
+      "family": "logistic",
+      "score": "response_targeted_C",
+      "partition": "global",
+      "harm_cases": 150,
+      "no_harm_cases": 50,
+      "nominal_null_warning": 0.061125,
+      "nominal_localization": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "abstention": 0.0,
+      "matched_localization": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "matched_ci95": [
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      ],
+      "boundary": [
+        0.04477611940298507,
+        0.017605633802816902
+      ]
+    }
+  ],
+  "partial_map": [
+    {
+      "family": "tree",
+      "calibration_rank": 191,
+      "cut": 0.24063441099993552,
+      "finite_lower_fraction": 1.0,
+      "null_warning": 0.0,
+      "candidate_warning": 0.23,
+      "candidate_harm_warning": 1.0,
+      "scope": "P_m={Z_m}, N_m={C}; other mechanism features unresolved; Boolean exclusions only"
+    },
+    {
+      "family": "forest",
+      "calibration_rank": 191,
+      "cut": 0.24314750042684458,
+      "finite_lower_fraction": 1.0,
+      "null_warning": 0.0,
+      "candidate_warning": 0.323075,
+      "candidate_harm_warning": 0.64245,
+      "scope": "P_m={Z_m}, N_m={C}; other mechanism features unresolved; Boolean exclusions only"
+    },
+    {
+      "family": "logistic",
+      "calibration_rank": 191,
+      "cut": 0.2757108444517739,
+      "finite_lower_fraction": 1.0,
+      "null_warning": 0.0,
+      "candidate_warning": 0.05685,
+      "candidate_harm_warning": 0.0758,
+      "scope": "P_m={Z_m}, N_m={C}; other mechanism features unresolved; Boolean exclusions only"
+    }
+  ],
+  "axes": {
+    "law": [
+      "intact",
+      "independent"
+    ],
+    "harm": [
+      "positive",
+      "no_harm"
+    ]
+  },
+  "scope": "Exploratory paired bank/case bootstrap; retrospective matched empirical size, not deployment thresholds",
+  "replicates": 400,
+  "seconds": 166.7647292080801,
+  "sha256": {
+    "experiments/75_score_design.py": "16974fc28268d946700e6b4c113b2d3da1adecab94d3839b2ac4382b92ccf1f0",
+    "src/pdm_audit/score_design.py": "421aafb70cd2cd8f2fd6a3c3d30492e69bb3dbb8d99587df153edbdfc08c89e4",
+    "experiments/REVIEW4_PROTOCOL.md": "a3972d17d152940c9f37d11b4da825c7aa436ceb194de2ad38b3e776618b7b71",
+    "experiments/results/reference_transfer.json": "b2291f8c7ab2c0578e46aaaa77286a83c85b5677b8c6ec76b11b73b35ed3212b",
+    "experiments/results/reference_transfer_draws.npz": "4e0249b31b245d589f69b4808e9bc879710aac07e89b07a63c9f688a45777129",
+    "experiments/results/learned_calibration.json": "15b7c3e74a052849adce12dada0b501b24f23b6457ed441740271468f2d45284",
+    "experiments/results/composite_reference.json": "0fe760e91d63e89f43c145ac8ddff3c4019157a353d797fafe1168ac912fc08f",
+    "experiments/results/observed_overlap_draws.npz": "eed878bfc00f3308c455efb940b97f15633d88e8ebd022a0162e236afda947f2",
+    "experiments/results/matched_population_draws.npz": "760859add12f6d68d4e5ee9105f1681081d169ea37542d23940c346ce4e9a736",
+    "experiments/results/score_design_draws.npz": "c36ac946c1b71a059378fae022b06731a7cc82747243fe5a6929017b9a24e31e"
+  }
+}

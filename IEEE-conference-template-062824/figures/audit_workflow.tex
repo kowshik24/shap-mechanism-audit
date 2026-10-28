@@ -1,0 +1,32 @@
+\begin{tikzpicture}[
+  font=\footnotesize,
+  block/.style={draw=black!65,rounded corners=2pt,align=center,text width=3.15cm,minimum height=1.05cm,inner sep=4pt},
+  link/.style={-{Stealth[length=1.8mm]},line width=0.7pt},
+  hint/.style={font=\scriptsize,align=center},
+  dot/.style={circle,fill=auditblue,inner sep=1.25pt}]
+\node[block,fill=gray!7] (data) at (0,0) {\textbf{Audit batch}\\Features and recorded\\mechanism flags};
+\node[block,fill=auditblue!6,minimum height=1.9cm] (model) at (4.15,0) {};
+\node[hint] at (4.15,0.66) {\textbf{Fixed predictors $f$ and $g$}};
+\foreach \x [count=\i] in {3.30,4.15,5.00} {
+  \node[dot] (root\i) at (\x,0.27) {};
+  \node[dot] (left\i) at (\x-0.23,-0.04) {};
+  \node[dot] (right\i) at (\x+0.23,-0.04) {};
+  \draw[black!60] (root\i)--(left\i) (root\i)--(right\i);
+}
+\node[hint] at (4.15,-0.39) {Forest: mean tree probabilities};
+\node[hint] at (4.15,-0.72) {Tree / forest / logistic};
+\node[block,fill=auditblue!6] (shap) at (8.30,0) {\textbf{SHAP values}\\Same batch background\\for $f$ and $g$};
+\node[block,fill=auditorange!7] (scores) at (12.45,0) {\textbf{Mechanism groups}\\Flags and expected $E_m$\\Mean $|\phi_j|$; shares $s_j$\\Outside-set excess $S_m$};
+\node[block,fill=gray!7] (base) at (0,-2.10) {\textbf{Independent base batches}\\Reference scores $A_f$\\and observed overlap $O$};
+\node[block,fill=auditblue!6] (bins) at (4.15,-2.10) {\textbf{Base thresholds}\\Global $Q$ or observed-bin $Q_b$\\Freeze before calibration};
+\node[block,fill=auditblue!6] (cal) at (8.30,-2.10) {\textbf{Target calibration}\\Independent aligned scores\\Rank cut $c_\alpha$ for $A_f-Q_b$};
+\node[block,fill=auditorange!7] (decision) at (12.45,-2.10) {\textbf{Audit decision}\\Compare $A_g$ or $L_g$\\with $Q_b+c_\alpha$};
+\draw[link] (data)--(model);
+\draw[link] (model)--(shap);
+\draw[link] (shap)--(scores);
+\draw[link] (base)--(bins);
+\draw[link] (bins)--(cal);
+\draw[link] (cal)--(decision);
+\draw[link] (scores)--(decision);
+\node[hint] at (6.22,-3.35) {Missing reference, support, or attribution denominator: abstain from the calibrated warning claim.};
+\end{tikzpicture}

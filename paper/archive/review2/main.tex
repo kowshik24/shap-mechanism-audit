@@ -1,0 +1,338 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{arrows.meta,positioning}
+\pgfplotsset{compat=1.18}
+\definecolor{auditblue}{RGB}{33,113,181}
+\definecolor{auditorange}{RGB}{179,88,6}
+\usepackage{booktabs,array}
+\usepackage[hidelinks]{hyperref}
+\usepackage[capitalise,nameinlink]{cleveref}
+\crefname{figure}{Fig.}{Figs.}
+\crefname{table}{Table}{Tables}
+\graphicspath{{figures/}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\raggedbottom
+\begin{document}
+\title{Reference Design for Mechanism-Level SHAP Audits in Predictive Maintenance}
+\author{\IEEEauthorblockN{Koshik Debanath, Prakrit Uprety, Vision Rijal, and Peiyu Li}
+\IEEEauthorblockA{Department of Computer Science, South Dakota State University, Brookings, SD, USA\\
+koshik.debanath@jacks.sdstate.edu, prakrit.uprety@jacks.sdstate.edu,\\
+vision.rijal@jacks.sdstate.edu, peiyu.li@sdstate.edu}}
+\hypersetup{pdftitle={Reference Design for Mechanism-Level SHAP Audits in Predictive Maintenance},pdfauthor={Koshik Debanath, Prakrit Uprety, Vision Rijal, Peiyu Li},pdfsubject={Observed-overlap calibration and an audit decision procedure for maintenance explanations},pdfkeywords={SHAP, explanation evaluation, conformal calibration, predictive maintenance, bearing diagnosis}}
+\maketitle
+\begin{abstract}
+An explanation audit should help a maintenance engineer decide what to inspect, but attribution outside an expected feature set need not indicate a faulty model. We present a procedure that separates feature correspondence, predictive reliance, and warnings relative to a specified reference. A perfect-predictor example shows how overlapping mechanisms produce outside-set attribution without a shortcut. We then calibrate thresholds using overlap observed in recorded mechanism flags and compare localization at comparable false-warning rates. On 1,200 learned reference--candidate pairs, global source and target references yield identical decisions after independent target calibration. Observed-overlap conditioning improves forest localization from 29.0\% to 47.7\% and logistic localization from 8.8\% to 30.9\% at 10,000 rows per audit batch, while warning frequencies remain near 5\%. A proxy-strength study also exposes poor sensitivity to weaker shortcuts. In a measured bearing-diagnosis case, a constructed spectral acquisition response raises diameter-held-out F1 from 0.611 to 0.886; removing it without refitting reduces F1 to 0.313. The procedure therefore supports an acquisition-robustness investigation while withholding a mechanism-warning claim unsupported by the available calibration units. These results establish the value and limits of reference design, rather than a certificate of physical correctness.
+\end{abstract}
+\begin{IEEEkeywords}
+SHAP, explanation evaluation, conformal calibration, predictive maintenance, bearing diagnosis
+\end{IEEEkeywords}
+
+\section{Introduction}
+\label{sec:introduction}
+\subsection{Problem Statement}
+An explanation for a maintenance prediction should help an engineer decide what to inspect. A classifier may predict faults accurately while relying on a sensor or acquisition condition that does not transfer to another machine~\cite{geirhos2020shortcut,lapuschkin2019unmasking}. A ranking of influential features is useful evidence, but it does not by itself distinguish a fault signature from such an association.
+
+The difficulty also runs in the other direction. A feature outside one failure mechanism's expected set may describe another genuine mechanism occurring in the same records. Treating every outside-set attribution as suspicious would then penalize a correct predictor. Before issuing a warning, an audit must specify what reference behavior counts as acceptable and which claim a deviation supports.
+
+\subsection{Research Objective}
+SHapley Additive exPlanations (SHAP) assigns feature contributions to a fitted prediction~\cite{lundberg2017shap}; those contributions do not establish physical causes~\cite{janzing2020feature,kumar2020problems}. A comparison against shuffled-label models tests dependence on the learned label association. A comparison against an expected feature set tests correspondence to that set. Neither alone establishes that the predictor follows the intended physical mechanism.
+
+We ask whether accounting for observed mechanism overlap improves localization of a specified context variable at comparable false-warning rates. Here, \emph{context} means an input associated with the outcome but excluded from the supplied mechanism definition. Localization means that the warning identifies that input, not merely that some audit score exceeds a threshold. This controlled question permits a direct test of reference choice without assuming that real industrial alignment is already known.
+
+We first construct a perfect-predictor example in which genuine overlap produces outside-set attribution. We then compare global thresholds with thresholds conditioned on recorded overlap. All procedures receive separate target calibration and are tested on the same untouched batches. Finally, a bearing-diagnosis case shows what an engineer can conclude when acquisition sensitivity can be tested but a calibrated physical-warning reference is unavailable.
+
+\subsection{Contributions}
+The paper makes three contributions:
+\begin{itemize}
+\item A decision procedure that connects each audit reference to its supported claim, calibration unit, and abstention condition.
+\item An observed-overlap calibration study that separates global threshold effects from changes in score ordering, using paired comparisons and a proxy-strength curve.
+\item A measured bearing-diagnosis case with diameter holdout and a spectral acquisition intervention, demonstrating a useful engineering output despite insufficient support for a calibrated mechanism warning.
+\end{itemize}
+Global source and target references become identical after target calibration. Observed-overlap thresholds improve forest and logistic localization, although sensitivity falls sharply as the context association weakens.
+
+\Cref{sec:background} introduces prior work and the audit quantities. \Cref{sec:method} describes the procedure, calibration, and experimental design. \Cref{sec:results} reports the findings, and \cref{sec:analysis} examines their engineering meaning and limitations.
+
+\section{Related Work and Background}
+\label{sec:background}
+\subsection{Explanation Evaluation} Maintenance-XAI studies motivate interpretable diagnosis~\cite{matzka2020explainable,vollert2021interpretable}, while synthetic benchmarks and OpenXAI provide controlled relevance settings~\cite{liu2021synthetic,agarwal2022openxai}. Our relevant-feature share is related to relevance mass accuracy~\cite{arras2022clevr}; controlled data changes~\cite{zhou2022attribute} and feature-removal evaluations~\cite{hooker2019roar,rong2022road} test other explanation properties. Outcome permutation~\cite{altmann2010permutation} and sanity checks~\cite{adebayo2018sanity} assess dependence on learning. Explanations can nevertheless miss spurious reliance or suggest it incorrectly~\cite{adebayo2022spurious}. These results motivate separating correspondence, reliance, and physical correctness.
+
+\subsection{Conformal Calibration} Split-conformal ranks give marginal guarantees under exchangeability~\cite{angelopoulos2023conformal}. Weighted conformal prediction addresses covariate shift using likelihood ratios~\cite{tibshirani2019shift}; conformal outlier testing distinguishes marginal validity, calibration-conditional properties, and dependence across tests~\cite{bates2023outliers}. We use fixed observed strata and independent target-size tuning. Conditioning on one observable covariate does not automatically remove a latent distribution shift. Our rank argument is standard; the contribution is its audit target and the measured consequences of reference choice. Explanation-score approximation intervals~\cite{alkhatib2023approximating}, calibrated feature rules~\cite{lofstrom2024calibrated}, and prediction-sufficient explanation regions~\cite{alkhatib2026sufficient} address different targets from a mechanism-relative warning.
+
+\subsection{Bearing Diagnosis} Smith and Randall~\cite{smith2015cwru} analyze diagnostic limitations of the Case Western Reserve University (CWRU) data, including difficult ball-fault signatures. Hendriks et al.~\cite{hendriks2022benchmarking} study its use under domain shift. The same damaged bearing is observed across loads, so load holdout is an operating-condition comparison rather than a new-bearing test. We make diameter holdout primary and treat spectral features as partial physical anchors. Our case is tabular explanation auditing of vibration-derived features, not temporal attribution or a new bearing classifier.
+
+\subsection{Problem Definition and SHAP}
+Let $g(x)$ be the scalar prediction to explain, such as a fault probability, and let $d$ be the number of inputs. SHAP averages the change in prediction when feature $j$ is added to a subset of the other features. The choice of background data determines how absent inputs are replaced. Our controlled experiments use
+\begin{equation}
+ v_g(J;x)=\mathbb E_{X'\sim\widehat P}\bigl[g(x_J,X'_{-J})\bigr],
+ \label{eq:background}
+\end{equation}
+where $J$ is a subset of feature indices, $x_J$ retains the explained row's selected inputs, and $X'_{-J}$ supplies the remaining inputs from one background row. The empirical distribution $\widehat P$ is the audit batch. Missing inputs retain their mutual dependence, while the replacement breaks their dependence on the retained inputs. The resulting attribution is
+\begin{align}
+ \phi_j(x)&=\sum_{J\subseteq[d]\setminus\{j\}}w_d(J)\,\Delta_j(J;x),\label{eq:shap}\\
+ \Delta_j(J;x)&=v_g(J\cup\{j\};x)-v_g(J;x),\\
+ w_d(J)&=\frac{|J|!\,(d-|J|-1)!}{d!}.
+\end{align}
+Here $[d]=\{1,\ldots,d\}$. The difference $\Delta_j$ measures the prediction change after adding feature $j$; the weight $w_d$ averages that change over possible orders of inclusion. With four Boolean inputs, all sixteen input states and all feature subsets can be enumerated exactly, avoiding an approximation error in SHAP estimation.
+
+Let $\mathcal F$ contain audit rows with a recorded failure and let $\mathcal I_m\subseteq\mathcal F$ contain those with mechanism $m$. A row may belong to more than one mechanism group. The expected feature set $E_m$ comes from the supplied mechanism definition or external domain information. It is not inferred from the explanation being evaluated. In bearing diagnosis, the corresponding groups are own-location and other faulty recordings, and $g$ is the probability assigned to the location under study.
+
+\subsection{Audit Statistics}
+For a nonempty row group $A$, the mean absolute attribution and its normalized share are
+\begin{align}
+ a_j(A)&=\frac{1}{|A|}\sum_{x\in A}|\phi_j(x)|,\label{eq:mean}\\
+ s_j(A)&=\frac{a_j(A)}{\sum_{k=1}^{d}a_k(A)}.\label{eq:share}
+\end{align}
+Absolute values measure contribution magnitude regardless of direction. Normalization expresses each feature's share of the group's total magnitude. These are ratios of group means, not averages of per-row ratios.
+
+Three summaries describe correspondence to $E_m$:
+\begin{align}
+ R_m&=\sum_{j\in E_m}s_j(\mathcal I_m),\label{eq:relevance}\\
+ D_m&=R_m-\sum_{j\in E_m}s_j(\mathcal F\setminus\mathcal I_m),\label{eq:specificity}\\
+ S_m&=\max_{j\notin E_m}\bigl[s_j(\mathcal I_m)-s_j(\mathcal F\setminus\mathcal I_m)\bigr].\label{eq:outside}
+\end{align}
+$R_m$ is the share assigned to expected features on mechanism-$m$ rows. $D_m$ asks whether that share is greater than on other failure rows. $S_m$ finds the outside feature whose share increases most on mechanism-$m$ rows. Its maximizing feature is an inspection candidate, not an established shortcut. The calibration experiments focus on $S_m$; $R_m$ and $D_m$ provide descriptive context. Empty groups or zero total attribution make the corresponding summary unavailable.
+
+\subsection{Mechanism Overlap}
+A simple example isolates the reference problem from prediction error. Let $Z_0=Z_1\sim\operatorname{Bernoulli}(p)$ and independent $Z_2\sim\operatorname{Bernoulli}(q)$, with binary outcome $Y$ and perfect predictor $f$ given by $Y=f=Z_0\lor Z_1\lor Z_2$ and $E_m=\{Z_m\}$. Exact interventional Shapley values retain the joint distribution of missing inputs. For mechanism 0,
+\begin{equation}
+ s_1(\mathcal I_0)=\frac{3}{6+4q},\qquad
+ s_1(\mathcal F\setminus\mathcal I_0)=\frac{p}{6-2p}.
+\end{equation}
+At $p=q=0.05$, $S_0=0.4754$, maximized by another genuine mechanism. The values follow by enumerating the binary states: first-coordinate mean magnitudes within $Z_0=Z_1=1$ are $(1-q)/2+q/3$, and the third-coordinate mean is $2q(1-q)/3$; normalization gives the first ratio. On $Z_0=Z_1=0,Z_2=1$, the corresponding magnitudes are $p(1-q)/2$ and $(1-q)(3-2p)/3$, yielding the second ratio.
+
+Credit sharing under dependent or duplicated variables is established behavior, not a new Shapley phenomenon~\cite{janzing2020feature,kumar2020problems}. The example shows its consequence for a mechanism-specific warning. The OR function is defined on interventional hybrids even when $Z_0\neq Z_1$. Our experiments next use nondegenerate overlap and full input support, rather than relying on equality of mechanisms.
+
+\section{Methodology}
+\label{sec:method}
+We compare reference designs while keeping the audit score and paired test batches fixed. The procedure first establishes whether a calibrated claim is supported, then constructs an overlap-aware threshold when its assumptions are available. The controlled experiment tests that threshold; the measured case tests how the procedure behaves when those assumptions cannot be established.
+
+\begin{figure*}[t]
+\centering
+\input{figures/audit_workflow.tex}
+\caption{Model explanation and reference calibration in the controlled study. A forest is shown schematically; tree and logistic predictors use the same audit. Attribution shares come from the common audit batch, while base and target-calibration samples are separate. The final threshold supports only the specified reference-relative warning.}
+\label{fig:workflow}
+\end{figure*}
+
+\subsection{Audit Procedure}
+\Cref{fig:workflow,tab:procedure} separate attribution computation from the evidence needed for a warning. First, specify the prediction, expected feature set, comparison cohort, and inspection decision. Second, keep records from the same bearing or acquisition together and check duplicates, labels, and sensor configuration. Third, choose a reference whose permitted mechanism dependence is independently specified. Calibration and future scores must be exchangeable: they must follow the same sampling law. Finally, freeze strata and thresholds on separate data. Missing reference support or an undefined statistic requires abstention from a calibrated warning. A warning prompts independent investigation; its absence does not establish that the model ignores shortcuts.
+
+
+
+\begin{table*}[t]
+\centering
+\caption{Reference choice determines the supported engineering output. $B$ counts independent audit batches, not windows or repeated fits. Nineteen batches are necessary for a finite 5\% rank threshold, not sufficient for alignment or exchangeability.}
+\label{tab:procedure}
+\footnotesize
+\begin{tabular}{L{0.17\textwidth}L{0.27\textwidth}L{0.22\textwidth}L{0.24\textwidth}}
+\toprule
+Reference/check & Supported claim & Unit requirement & Action or abstention \\
+\midrule
+Expected-set/cohort comparison & Attribution corresponds to the specified map/cohort & Defined groups and nonzero attribution; no calibrated warning asserted & Investigate the maximizing outside feature; verify map completeness \\
+Shuffled-label fits & Attribution differs from a model without the learned label association & Independent reference draws; Monte Carlo uncertainty & Evidence of learning, not physical correctness \\
+Grouped holdout or fixed-model acquisition intervention & Predictions generalize across the grouping or depend on the specified acquisition change & Disjoint physical/acquisition groups; pairing retained & Check acquisition robustness before interpreting a ranking as a repair instruction \\
+Aligned-function calibration & Warning relative to the specified reference and population & At least 19 relevant base-bin and 19 target-tuning batches at 5\%, plus independent evaluation & Use observed strata; abstain if reference, support, or exchangeability is unjustified \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Overlap Conditioning}
+A mechanism flag is a binary indicator that the mechanism is recorded in a row. For flags $Z_0,Z_1$, a batch $X$ of $n$ rows provides the observed overlap
+\begin{equation}
+ O=\frac{\sum_i\mathbf1\{Z_{0i}=1,Z_{1i}=1\}}{\sum_i\mathbf1\{Z_{0i}=1\}}.
+\end{equation}
+The numerator counts rows carrying both flags; the denominator counts all rows carrying flag 0. An absent denominator makes the overlap unavailable. We fix bins $[0,0.8)$, $[0.8,0.9)$, and $[0.9,1]$ before evaluation. This frequency differs from the generator's latent nesting parameter because it includes baseline occurrences and sampling noise. The audit algorithm receives flags and counts, not that latent parameter.
+
+Let $f$ be the fixed reference predictor and $g$ the candidate under audit. Define $A_f(X)=\max_m S_m$ as the largest outside-set excess across mechanisms in batch $X$. The null is the score distribution of this specified reference under the target sampling law, not the set of all physically acceptable predictors. A base sample supplies either one global 95th-percentile rank threshold or a threshold $Q_b$ within observed bin $b$. A bin with fewer than 19 units has an infinite 5\% threshold. Same-bin ranks require exchangeability within that bin; merely binning source data does not guarantee validity under a different target law.
+
+\subsection{Target Calibration}
+A false warning occurs when the specified aligned reference exceeds the warning threshold. Its probability is the detector size. To compare detection at a common size, freeze this base reference and form the residual score
+\begin{equation}
+ T_f(X)=A_f(X)-Q_{b(O(X))}.
+\end{equation}
+Here $b(O(X))$ identifies the observed bin and $Q_b$ is its frozen base threshold. Subtracting $Q_b$ removes the baseline associated with that overlap range. Unsupported bins and undefined audit scores map to $-\infty$ and abstain. On $M$ independent aligned target batches, choose order statistic $c_\alpha$ with rank $k=\lceil(M+1)(1-\alpha)\rceil$. If $k>M$, set $c_\alpha=+\infty$ and issue no warning. Otherwise, warn when the candidate score satisfies $T_g(X)>c_\alpha$. At 5\%, at least nineteen calibration scores are needed for a finite rank threshold; the base-bin requirement and the target-tuning requirement concern separate samples. Conditional on the fixed reference function and base sample, exchangeability of target tuning/test scores under the specified null gives
+\begin{equation}
+ \Pr\{T_f(X_{\rm new})>c_\alpha\}\leq\frac{M+1-k}{M+1}\leq\alpha.
+\end{equation}
+The bound follows because the new score has an exchangeable rank among the $M+1$ scores; strict exceedance handles ties conservatively. This is the standard strict-rank bound~\cite{angelopoulos2023conformal}. It is marginal over tuning and future data, not conditional validity for a realized tuning sample. It tests deviation from the specified null; it does not cover every function that might be physically legitimate. A physical-alignment reference and an exchangeable population remain substantive requirements.
+
+\subsubsection{Warning and Localization}
+A warning asks whether a score exceeds its reference threshold. Localization asks whether that exceedance points to the specified context input. For each mechanism, we retain $S_m$ only if its maximizing outside feature is context, then take the maximum over those mechanisms. Call this score $L_g(X)$, or $-\infty$ if none qualifies. A context-localizing warning satisfies
+\begin{equation}
+ L_g(X)>Q_{b(O(X))}+c_\alpha.
+ \label{eq:localization}
+\end{equation}
+Feature-order tie breaking is fixed across methods. The same threshold is used for warning and localization, so localization requires both exceedance and the intended feature identity. Comparing these outcomes on paired batches avoids confusing a change in false-warning rate with a change in localization ability.
+
+\subsection{Matched-Rate Comparison}
+For a global reference, $Q_b=Q$ is constant. Ranking $A_f-Q$ is identical to ranking $A_f$, and adding $Q$ back to its calibrated threshold cancels the offset. The same target calibration sample therefore gives the same critical value of $A_f$ for both global references. The resulting global rules are exactly identical. A lower localization rate at a higher unadjusted threshold therefore cannot establish a special penalty from region matching.
+
+Observed-bin thresholds vary with the audit batch and can change ordering across batches. Their localization can differ even at comparable overall warning rates. We evaluate that difference on untouched paired target batches. This distinguishes conditioning from the generic size--power trade-off and separates target-population calibration from a claim that one observed covariate repairs arbitrary shift.
+
+\subsection{Experimental Design}
+\label{sec:design}
+The controlled study tests warning calibration and context localization with known mechanisms. The measured study tests acquisition sensitivity with physical fault-location labels. They answer different questions and do not share a claimed physical-alignment guarantee.
+
+\begin{table*}[t]
+\centering
+\caption{Experimental settings. Controlled samples are generated separately for each fixed reference--candidate pair. CWRU folds retain entire recordings; windows do not count as independent bearings or calibration batches.}
+\label{tab:design}
+\footnotesize
+\begin{tabular}{L{0.19\textwidth}L{0.38\textwidth}L{0.33\textwidth}}
+\toprule
+Setting & Controlled study & CWRU diagnosis \\
+\midrule
+Training/model & 512 rows; 5\% label noise; 3 mechanism inputs, with context added for candidates & 100-tree forest; minimum leaf 3; balanced classes; seed 2026 \\
+Model selection & Tree depth equals input count, minimum leaf 5; forest: 64 such trees, square-root feature sampling, bootstrap; logistic: $C_{\rm reg}=1$, L-BFGS, 1000 iterations & Outer holdout: diameter; inner holdout: remaining diameter; depth 3, 6, or unrestricted \\
+Evaluation units & 200 fitted pairs per learner/size; $n=1000$ or $10{,}000$ rows per audit batch & 36 recordings; 24 nonoverlapping 4096-sample windows per recording \\
+Reference samples & 1000 source-base and 1000 target-base batches per fixed reference & No validated aligned-function calibration population \\
+Calibration/test & 400 independent target-calibration and 200 untouched target-test batches & Held-out recordings; original and response-filtered signals paired without refitting \\
+Uncertainty & 1000 bootstrap draws over fitted cases; first-batch paired tests & 10,000 bootstrap draws over nine fault/diameter groups, retaining loads \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsubsection{Controlled Data and Models}
+We use three Boolean mechanism inputs, $Y=Z_0\lor Z_1\lor Z_2$, and context $C$ formed by bit-flipping $Z_0$. A decision tree, random forest, and logistic regression are trained on 512 independent examples with uniformly sampled mechanisms and 5\% label noise. A case seed initializes training data and estimator randomness; separate seeded streams generate calibration and test batches. Model settings are listed in \cref{tab:design}; L-BFGS denotes the limited-memory Broyden--Fletcher--Goldfarb--Shanno optimizer. Mechanism-only controls use three inputs. Their probability tables are evaluated on all 16 states with context enumerated but ignored; each must match the true decision and remain invariant to context. Candidate models use all four inputs.
+
+We retain 200 evaluation cases per learner and audit size $n\in\{1000,10000\}$. Each case defines a fixed fitted reference and a paired candidate. All mechanism-only decision maps are the same OR rule; fitted probability tables vary with training. Each learner has 800 distinct rounded probability tables across the larger training/calibration inventory, not 800 different tasks. Fit count is an execution inventory, not evidence of domain diversity.
+
+An audit batch is one independently generated collection of $n$ rows, not one fitted model or one vibration window. For audit batches, a latent regime probability is uniform on $[0.1,0.4]$; the regime-specific mechanism probabilities are independently uniform on $[0.01,0.04]$ and $[0.1,0.3]$. Nesting makes $Z_1$ additionally positive among $Z_0$ rows with probability $u$. Source batches use $u\sim U(0,1)$ and target batches $u\sim U(0.8,1)$, with all other laws fixed. Context has bit-flip probability 0.01. Exact model-agnostic Shapley enumeration uses the empirical joint background on 16 states.
+
+The separate base, calibration, and test samples are summarized in \cref{tab:design}. We compare global/source, global/target, observed-bin/source, and observed-bin/target references. The latter algorithms use only observed overlap. Reference and candidate scores use the same test batches. Counts, thresholds, and every test decision are saved.
+
+\subsubsection{Evaluation Metrics}
+The primary operating point is $\alpha=0.05$; curves also show 0.01, 0.025, 0.10, and 0.20. Intervals resample the 200 case clusters 1,000 times rather than treating within-case batches as independent model replicates. Material context dependence means the complete fitted table has maximum probability change at least 0.05 when only context changes. Conditional localization frequencies report that denominator. Exact paired McNemar tests use only the first test batch per case, with Holm adjustment across two observed-reference contrasts in six learner/size strata. Remaining curves are descriptive; interval inclusion of 5\% is not a validation criterion.
+
+\subsubsection{Shortcut Experiment}
+We fit candidates at context bit-flip probabilities 0, 0.01, 0.05, 0.10, 0.20, 0.30, and 0.50, holding each case's mechanism examples, label noise, random uniforms, and estimator settings fixed. The 0.01 candidate reproduces the saved probability table exactly. Test mechanism counts are shared, with nested context-error counts across strengths. Context permutation preserves its total count. We report all-candidate localization, material-dependence counts, and F1 before/after permutation. We do not infer a universal minimum detectable shortcut from this finite grid.
+
+\subsubsection{CWRU Case Study}
+CWRU supplies 36 official 12-kHz drive-end recordings: inner-race, ball, and outer-race faults, three diameters (0.007/0.014/0.021 inches), and four loads, with outer race fixed at 6 o'clock~\cite{cwru2026}. Labels describe machined fault locations rather than rules computed from model inputs. There are no normal recordings; this is location diagnosis among faulty bearings. Every recording supplies 24 nonoverlapping 4096-sample windows.
+
+Nineteen features comprise raw/envelope relative spectral power at the first two harmonics of three documented fault orders, log RMS, kurtosis, crest factor, and four relative broad-band powers. RMS denotes root mean square amplitude. Each binary diagnostic head estimates one location against the other two. The four own-location harmonic powers form a partial expected set. Positive scalar gain leaves these normalized anchors unchanged by definition; this property is not empirical validation. Replacing all four inputs of a restricted head by constants is also not a reliance experiment. We instead retain three inputs while masking one anchor at a time using training medians.
+
+To test sensitivity to acquisition conditions, we construct a class-correlated response that changes spectral shape. For ball/inner/outer classes, multiply the raw-window Fourier transform by
+\begin{equation}
+ H_m(\nu)=1+3\exp\!\left[-\frac{(\nu-c_m)^2}{2(250)^2}\right],
+\end{equation}
+where $\nu$ is frequency, $c_m$ is the class-specific center, and 250 is the bandwidth parameter, all in hertz. The centers are 2500/3500/4500 Hz for ball/inner/outer classes. The response multiplies the raw-window Fourier coefficients and is followed by an inverse transform; we normalize to the original centered root mean square (RMS) amplitude. Log RMS is thus unchanged by design while spectral features vary. This specifies a class-correlated sensor resonance; it is not discovery of a natural artifact. We remove the transfer function at held-out evaluation without refitting.
+
+Recording-level probabilities are obtained by averaging window probabilities; macro F1 averages the three class-specific F1 scores, giving each location equal weight. The CWRU model settings and nested diameter split are in \cref{tab:design}; depth selection maximizes recording macro F1 and favors shallower ties. Entire recordings stay together. Intervals resample nine fault-location/diameter groups within location, retaining all four loads, for 10,000 draws. They describe the fixed inventory conditional on fitted models, not a new-machine population. The cluster analysis was added after the point outcomes; the initial recording-bootstrap intervals are retained in the archive.
+
+\section{Results}
+\label{sec:results}
+\subsection{Attribution Example}
+\Cref{fig:attribution} shows exact SHAP shares for the first saved forest evaluation case at $n=10{,}000$ (seed 410000), using its first untouched test batch. The reference assigns substantial share to mechanism $Z_1$ on $Z_0$ rows, illustrating genuine overlap. The paired candidate additionally assigns 23.4\% to context $C$ on those rows, versus 1.0\% on other failure rows. The resulting context excess is 0.224. These are descriptive group shares from one fixed case; the warning rule still uses the calibrated maximum across mechanisms.
+
+\begin{figure*}[t]
+\centering
+\input{figures/attribution_example.tex}
+\caption{Exact absolute-attribution shares for a saved forest pair on the same audit batch. The expected set for mechanism 0 is $E_0=\{Z_0\}$. The reference ignores $C$ by construction but shares attribution with other genuine mechanisms. The candidate assigns additional share to $C$. Selection uses record order, not warning outcomes; this illustration does not estimate a detection rate.}
+\label{fig:attribution}
+\end{figure*}
+
+\subsection{Calibration and Localization}
+At the unadjusted 5\% operating point, global source calibration warns on approximately 24--25\% of aligned target batches, whereas target calibration is near 5\%. Those are different detector sizes. After independent target-size tuning, the two global rules agree on every warning and localization decision, as predicted by constant-offset cancellation. Global region matching alone therefore does not establish a localization penalty.
+
+\begin{table*}[t]
+\centering
+\caption{Primary matched-size comparison, in percent. FW is null warning frequency averaged across 200 cases, each with 200 untouched batches. Localization is conditional on $N_C$ materially context-dependent candidates. Bin uses observed-overlap/target calibration. Global source and target rules are exactly identical after size tuning. Case-bootstrap intervals and all method/curve rows are saved with the result tables.}
+\label{tab:matched}
+\footnotesize
+\input{tables/review2_matched}
+\end{table*}
+
+\Cref{tab:matched,fig:size-power} show improved forest and logistic localization at comparable warning rates. At $n=10{,}000$, forest localization rises from 29.0\% to 47.7\% with observed-target bins; logistic localization rises from 8.8\% to 30.9\%. Case-bootstrap 95\% intervals are 23.3--35.1\% versus 44.3--51.3\% for forests and 5.3--12.8\% versus 27.4--34.3\% for logistic models. The same pattern holds at $n=1000$, while tree localization changes little. \Cref{tab:matched} reports all warning frequencies and material-case denominators.
+
+The first-batch paired comparisons in \cref{tab:paired} support the forest and logistic differences after adjustment across twelve tests. Tree comparisons have no discordant pairs. The tests concern the specified functional alternatives, not industrial mechanism correctness.
+
+\begin{figure*}[t]
+\centering
+\input{figures/review2_size_power.tex}
+\caption{Localization versus realized null warning frequency on untouched target batches, after independent size tuning. Larger markers show nominal 5\%. Each point averages case-level frequencies; material-context denominators are in \cref{tab:matched}. Global source/target curves coincide exactly. Observed-bin source and target references differ from that shared global rule.}
+\label{fig:size-power}
+\end{figure*}
+
+Conditioning source data on observed overlap alone is not a complete shift correction. Before target-size tuning, observed-source warning rates reach 6.6--7.4\% at $n=1000$, despite the fixed 5\% base rank. Observed-target rates are 4.7--5.0\% there. With target-size tuning, warning frequencies across procedures/strata range from 4.66\% to 5.22\%. Their case-bootstrap intervals quantify experimental precision; the formal bound comes from the specified exchangeability assumptions, not non-rejection. Rare unsupported target bins produce at most 0.25\% abstention in the reported matched runs.
+
+\subsection{Shortcut Sensitivity}
+\Cref{fig:proxy-power} reports the full proxy-strength grid. Conditional calibration improves strong-proxy localization but does not solve weak sensitivity. At $n=10{,}000$ and bit-flip probability 0.05, observed-target localization across all fits is 14.8\% for forests, 3.7\% for logistic models, and 3.9\% for trees. At probability 0.10, it is at most 1.1\%. Material-dependence counts and F1 changes are retained for every strength; maximum functional probability change is not the same as average deployment harm. Failure to warn must therefore not be used as evidence that a model ignores context.
+
+\begin{figure*}[t]
+\centering
+\input{figures/review2_proxy_power.tex}
+\caption{Context-localization frequency across all 200 fitted candidates at each proxy strength, using the size-tuned 5\% global and observed-target rules. Larger bit-flip probability weakens the context association. Unlike \cref{tab:matched}, these denominators include all candidates and do not change with the material-dependence gate. This is a sensitivity curve, not a universal minimum-detectable-strength guarantee.}
+\label{fig:proxy-power}
+\end{figure*}
+
+\subsection{Acquisition Shift}
+\Cref{tab:spectral} applies the procedure to fault-location diagnosis. The original-signal diameter-held-out F1 is 0.611, versus 1.000 under load holdout on the same recorded bearing states. Load separation would therefore give an optimistic view of generalization. Ball anchors are also incomplete diagnostic representations, consistent with the benchmark literature~\cite{smith2015cwru}.
+
+\begin{table}[t]
+\centering
+\caption{Primary diameter-held-out recording macro F1. Filter removal evaluates the same fitted model on original held-out signals. The acquisition response preserves centered RMS and changes spectral shape.}
+\label{tab:spectral}
+\footnotesize
+\input{tables/review2_spectral}
+\end{table}
+
+The resonance-confounded model reaches F1 0.886 in its matched acquisition setting but only 0.313 without the transfer function. The paired drop is 0.573, with nine-group bootstrap interval 0.243--0.867. This controlled intervention establishes sensitivity to the specified acquisition response. It does not show that an unknown natural sensor artifact has been found.
+
+\section{Experimental Analysis}
+\label{sec:analysis}
+\subsection{Reference Comparison}
+\begin{table}[t]
+\centering
+\caption{Paired localization comparisons: observed-target bins versus the global rule, using the first test batch per material case. Counts show detections unique to each rule. Exact McNemar $p$-values are Holm-adjusted across twelve primary contrasts, including observed-source comparisons.}
+\label{tab:paired}
+\footnotesize
+\input{tables/review2_paired}
+\end{table}
+
+The global comparison provides a control for interpretation. When only a constant threshold changes, fewer false warnings normally come with fewer detections. That comparison cannot isolate a benefit or cost of using operating-region information. Independent target calibration removes this difference: the two global rules coincide exactly.
+
+Observed-bin references do more than move one threshold. Two batches with the same outside-set score can receive different decisions because their observed overlap differs. The forest and logistic results show that this change in ordering can improve localization at comparable overall warning rates. The tree results show that it need not help every learner. These are measured properties of the supplied reference functions and alternatives, not a guarantee for another dataset.
+
+Source-bin conditioning alone still leaves excess target warnings. Overlap is observable, but it is not a sufficient description of every distributional change in the generator. Independent target scores are therefore part of the evaluated procedure. If an engineer cannot obtain aligned target calibration units, source binning does not substitute for them.
+
+\subsection{Detection Limits}
+The proxy-strength curve limits the practical claim. A fitted predictor may depend on context without producing enough excess attribution to cross the calibrated threshold. Material dependence is defined by a maximum change in its probability table; that condition need not imply a large effect on typical target rows. Accordingly, a low warning frequency cannot be translated into either physical correctness or negligible operational harm. Predictive perturbation and independent mechanism information remain necessary for those questions.
+
+\subsection{Engineering Interpretation}
+The audit output separates three engineering decisions. First, inspect acquisition configuration and transfer robustness before using the ranking as a fault-inspection instruction: class-correlated spectral transfer can dominate apparent diagnostic success. Second, retain harmonic attribution as descriptive correspondence, because the expected set is partial. Single-anchor masks retain varying probability outputs in all 84 replayed cases; diameter-pooled binary F1 ranges from 0.452 to 0.727 for ball heads, 0 to 0.800 for inner-race heads, and 0 to 0.500 for outer-race heads. These are model sensitivities, not physical repairs.
+
+Third, abstain from a calibrated mechanism-warning claim. A batch containing all three locations at one load/diameter supplies only three non-overlapping inventory batches per load; reserving a test leaves at most two matched calibration batches, or eleven pooled, before training consumes records. Neither reaches the required nineteen, and neither establishes independent acquisitions or a correct reference function. The practical output is an acquisition-robustness investigation with an explicit warning limitation, rather than either automatic fault repair or blanket rejection of all diagnostic information.
+
+\subsection{Limitations}
+The calibration experiments use supplied Boolean mechanisms and a specified reference function. Their full decision maps and functional context dependence are known; those properties do not provide industrial causal ground truth. The target mixture and bins are controlled, and target-size tuning consumes additional aligned data. Weighted or finer conditional methods require their own assumptions and sample support. No finite-data result justifies extrapolation to arbitrary overlap shifts or all physically legitimate models.
+
+The measured case uses machined fault-location labels independent of its extracted inputs, but one rig, few bearing states, and no healthy population. Diameter holdout is more informative than load holdout, yet it is not a field-maintenance validation. The spectral response is constructed and labels its acquisition condition; single-anchor masking may produce feature combinations absent from the measured signals. We evaluate tabular explanations and diagnostics from vibration features, not temporal-attribution algorithms or a Big Data systems contribution.
+
+\subsection{Reproducibility}
+The review-driven protocol fixes the reported bins, strengths, and transfer function before their outcomes; the cluster-bootstrap amendment is separately dated. The primary paired-test family is Holm-adjusted across twelve contrasts. Other curves, partial perturbations, and the engineering example are descriptive. Numerical values, full count vectors, fitted probability tables, raw-data hashes, and independent verification scripts are released. Earlier chronological, scaling, and provenance studies remain a repository archive and are not additional evidence for the main claims or an appended submission.
+
+
+The released \texttt{reproduce\_review2.sh} pipeline reruns the calibration, proxy-strength, and spectral-transfer studies and builds the paper. Independent verification scripts reconstruct thresholds, decisions, paired tests, and bootstrap intervals from saved records, then check manuscript values and raw-data hashes. The reported results require no unfinished scale run or appended supplementary analysis.
+
+\section{Conclusion}
+A mechanism-level explanation audit needs a reference matched to the claim an engineer wants to make. Overlapping genuine mechanisms can produce outside-set attribution even for a perfect predictor. Global reference changes then alter the warning threshold, so their localization differences must be assessed at comparable false-warning rates.
+
+After independent target calibration, global source and target rules are identical in our study. Conditioning on observed overlap improves forest and logistic localization, but weaker context associations frequently escape detection. The bearing case provides a complementary outcome: a fixed-model spectral intervention exposes acquisition sensitivity, while the available data do not support a calibrated mechanism warning. The contribution is a procedure for reaching these distinct decisions with explicit evidence requirements.
+
+\section{Future Work}
+\subsection{Industrial Validation}
+The next validation should include healthy and faulty bearings, multiple physical units, and independently documented acquisition sessions. Calibration units should be reserved at the bearing or acquisition level before model fitting. A complete mechanism map would require inspection or intervention evidence separate from the model inputs; adding recordings without that evidence would not establish physical alignment.
+
+\subsection{Detection and Calibration}
+Further work should relate detection sensitivity to deployment-relevant performance loss, rather than only a maximum probability-table change. Broader acquisition interventions and naturally occurring confounds would test whether the observed sensitivity limits persist. Weighted or finer conditional calibration is another option when its sampling assumptions and support can be justified. Temporal explanation methods and computational scaling require separate evaluations before extending the present claims to time-series attribution or large monitoring systems.
+
+\section*{Acknowledgment}
+AI systems assisted manuscript and analysis-code drafting: Claude (Anthropic) in earlier work and Codex (OpenAI) in this revision. The authors are responsible for verifying the scientific claims and results. Code, protocols, results, and verification scripts are available at \url{https://github.com/kowshik24/glowing-broccoli}.
+\IEEEtriggeratref{19}
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+\end{document}

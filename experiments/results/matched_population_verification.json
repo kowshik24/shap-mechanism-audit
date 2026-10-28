@@ -1,0 +1,11 @@
+{
+  "verified": true,
+  "replicates": 400,
+  "strata": 6,
+  "scope": "All raw scores, fit roles, paired bank/case resamples, matched boundaries, curves and intervals",
+  "sha256": {
+    "experiments/results/matched_population.json": "7053fd761a7053eb94eb0c3fa5f9c286ca4dac0586787b99ad0d60de25e43170",
+    "experiments/results/matched_population_draws.npz": "760859add12f6d68d4e5ee9105f1681081d169ea37542d23940c346ce4e9a736",
+    "experiments/49_verify_matched_population.py": "eaf09e82094a63cc4fee2e71047e24295ff90eb6c806d1f949ee57fc8d3e2eb0"
+  }
+}

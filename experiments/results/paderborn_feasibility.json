@@ -1,0 +1,412 @@
+{
+  "audit_complete": true,
+  "audited_at_utc": "2026-10-24T18:17:59.051696+00:00",
+  "scope": "documentation-only source audit; raw inspection is a separate follow-up",
+  "summary_classes_certify_physical_purity": false,
+  "physical_followup": "experiments/results/paderborn_physical_acquisition.json",
+  "study_status": "NO_GO for independent-new-bearing 5% S-calibration",
+  "documentation_sources": {
+    "original_benchmark.pdf": "https://mb.uni-paderborn.de/fileadmin-mb/kat/PDF/Veroeffentlichungen/20160703_PHME16_CM_bearing.pdf",
+    "dataset.html": "https://mb.uni-paderborn.de/en/kat/research/bearing-datacenter/data-sets-and-download",
+    "conditions.html": "https://mb.uni-paderborn.de/en/kat/research/bearing-datacenter/operating-conditions",
+    "damage.html": "https://mb.uni-paderborn.de/en/kat/research/bearing-datacenter/bearing-damage"
+  },
+  "bearing_counts": {
+    "healthy": 6,
+    "OR": 12,
+    "mixed_or_secondary": 3,
+    "IR": 11
+  },
+  "origin_counts": {
+    "healthy": 6,
+    "artificial": 12,
+    "accelerated_lifetime": 14
+  },
+  "bearings": [
+    {
+      "bearing_id": "K001",
+      "origin": "healthy",
+      "component": "none",
+      "diagnosis_class": "healthy",
+      "extent_level": null,
+      "source_table": 7,
+      "source_pdf_page": 8
+    },
+    {
+      "bearing_id": "K002",
+      "origin": "healthy",
+      "component": "none",
+      "diagnosis_class": "healthy",
+      "extent_level": null,
+      "source_table": 7,
+      "source_pdf_page": 8
+    },
+    {
+      "bearing_id": "K003",
+      "origin": "healthy",
+      "component": "none",
+      "diagnosis_class": "healthy",
+      "extent_level": null,
+      "source_table": 7,
+      "source_pdf_page": 8
+    },
+    {
+      "bearing_id": "K004",
+      "origin": "healthy",
+      "component": "none",
+      "diagnosis_class": "healthy",
+      "extent_level": null,
+      "source_table": 7,
+      "source_pdf_page": 8
+    },
+    {
+      "bearing_id": "K005",
+      "origin": "healthy",
+      "component": "none",
+      "diagnosis_class": "healthy",
+      "extent_level": null,
+      "source_table": 7,
+      "source_pdf_page": 8
+    },
+    {
+      "bearing_id": "K006",
+      "origin": "healthy",
+      "component": "none",
+      "diagnosis_class": "healthy",
+      "extent_level": null,
+      "source_table": 7,
+      "source_pdf_page": 8
+    },
+    {
+      "bearing_id": "KA01",
+      "origin": "artificial",
+      "component": "OR",
+      "diagnosis_class": "OR",
+      "extent_level": 1,
+      "source_table": 4,
+      "source_pdf_page": 5
+    },
+    {
+      "bearing_id": "KA03",
+      "origin": "artificial",
+      "component": "OR",
+      "diagnosis_class": "OR",
+      "extent_level": 2,
+      "source_table": 4,
+      "source_pdf_page": 5
+    },
+    {
+      "bearing_id": "KA04",
+      "origin": "accelerated_lifetime",
+      "component": "OR",
+      "diagnosis_class": "OR",
+      "extent_level": 1,
+      "source_table": 5,
+      "source_pdf_page": 6
+    },
+    {
+      "bearing_id": "KA05",
+      "origin": "artificial",
+      "component": "OR",
+      "diagnosis_class": "OR",
+      "extent_level": 1,
+      "source_table": 4,
+      "source_pdf_page": 5
+    },
+    {
+      "bearing_id": "KA06",
+      "origin": "artificial",
+      "component": "OR",
+      "diagnosis_class": "OR",
+      "extent_level": 2,
+      "source_table": 4,
+      "source_pdf_page": 5
+    },
+    {
+      "bearing_id": "KA07",
+      "origin": "artificial",
+      "component": "OR",
+      "diagnosis_class": "OR",
+      "extent_level": 1,
+      "source_table": 4,
+      "source_pdf_page": 5
+    },
+    {
+      "bearing_id": "KA08",
+      "origin": "artificial",
+      "component": "OR",
+      "diagnosis_class": "OR",
+      "extent_level": 2,
+      "source_table": 4,
+      "source_pdf_page": 5
+    },
+    {
+      "bearing_id": "KA09",
+      "origin": "artificial",
+      "component": "OR",
+      "diagnosis_class": "OR",
+      "extent_level": 2,
+      "source_table": 4,
+      "source_pdf_page": 5
+    },
+    {
+      "bearing_id": "KA15",
+      "origin": "accelerated_lifetime",
+      "component": "OR",
+      "diagnosis_class": "OR",
+      "extent_level": 1,
+      "source_table": 5,
+      "source_pdf_page": 6
+    },
+    {
+      "bearing_id": "KA16",
+      "origin": "accelerated_lifetime",
+      "component": "OR",
+      "diagnosis_class": "OR",
+      "extent_level": 2,
+      "source_table": 5,
+      "source_pdf_page": 6
+    },
+    {
+      "bearing_id": "KA22",
+      "origin": "accelerated_lifetime",
+      "component": "OR",
+      "diagnosis_class": "OR",
+      "extent_level": 1,
+      "source_table": 5,
+      "source_pdf_page": 6
+    },
+    {
+      "bearing_id": "KA30",
+      "origin": "accelerated_lifetime",
+      "component": "OR",
+      "diagnosis_class": "OR",
+      "extent_level": 1,
+      "source_table": 5,
+      "source_pdf_page": 6
+    },
+    {
+      "bearing_id": "KB23",
+      "origin": "accelerated_lifetime",
+      "component": "IR (+OR)",
+      "diagnosis_class": "mixed_or_secondary",
+      "extent_level": 2,
+      "source_table": 5,
+      "source_pdf_page": 6
+    },
+    {
+      "bearing_id": "KB24",
+      "origin": "accelerated_lifetime",
+      "component": "IR (+OR)",
+      "diagnosis_class": "mixed_or_secondary",
+      "extent_level": 3,
+      "source_table": 5,
+      "source_pdf_page": 6
+    },
+    {
+      "bearing_id": "KB27",
+      "origin": "accelerated_lifetime",
+      "component": "OR + IR",
+      "diagnosis_class": "mixed_or_secondary",
+      "extent_level": 1,
+      "source_table": 5,
+      "source_pdf_page": 6
+    },
+    {
+      "bearing_id": "KI01",
+      "origin": "artificial",
+      "component": "IR",
+      "diagnosis_class": "IR",
+      "extent_level": 1,
+      "source_table": 4,
+      "source_pdf_page": 5
+    },
+    {
+      "bearing_id": "KI03",
+      "origin": "artificial",
+      "component": "IR",
+      "diagnosis_class": "IR",
+      "extent_level": 1,
+      "source_table": 4,
+      "source_pdf_page": 5
+    },
+    {
+      "bearing_id": "KI04",
+      "origin": "accelerated_lifetime",
+      "component": "IR",
+      "diagnosis_class": "IR",
+      "extent_level": 1,
+      "source_table": 5,
+      "source_pdf_page": 6
+    },
+    {
+      "bearing_id": "KI05",
+      "origin": "artificial",
+      "component": "IR",
+      "diagnosis_class": "IR",
+      "extent_level": 1,
+      "source_table": 4,
+      "source_pdf_page": 5
+    },
+    {
+      "bearing_id": "KI07",
+      "origin": "artificial",
+      "component": "IR",
+      "diagnosis_class": "IR",
+      "extent_level": 2,
+      "source_table": 4,
+      "source_pdf_page": 5
+    },
+    {
+      "bearing_id": "KI08",
+      "origin": "artificial",
+      "component": "IR",
+      "diagnosis_class": "IR",
+      "extent_level": 2,
+      "source_table": 4,
+      "source_pdf_page": 5
+    },
+    {
+      "bearing_id": "KI14",
+      "origin": "accelerated_lifetime",
+      "component": "IR",
+      "diagnosis_class": "IR",
+      "extent_level": 1,
+      "source_table": 5,
+      "source_pdf_page": 6
+    },
+    {
+      "bearing_id": "KI16",
+      "origin": "accelerated_lifetime",
+      "component": "IR",
+      "diagnosis_class": "IR",
+      "extent_level": 3,
+      "source_table": 5,
+      "source_pdf_page": 6
+    },
+    {
+      "bearing_id": "KI17",
+      "origin": "accelerated_lifetime",
+      "component": "IR",
+      "diagnosis_class": "IR",
+      "extent_level": 1,
+      "source_table": 5,
+      "source_pdf_page": 6
+    },
+    {
+      "bearing_id": "KI18",
+      "origin": "accelerated_lifetime",
+      "component": "IR",
+      "diagnosis_class": "IR",
+      "extent_level": 2,
+      "source_table": 5,
+      "source_pdf_page": 6
+    },
+    {
+      "bearing_id": "KI21",
+      "origin": "accelerated_lifetime",
+      "component": "IR",
+      "diagnosis_class": "IR",
+      "extent_level": 1,
+      "source_table": 5,
+      "source_pdf_page": 6
+    }
+  ],
+  "conditions": [
+    {
+      "condition": "N09_M07_F10",
+      "speed_rpm": 900,
+      "torque_Nm": 0.7,
+      "radial_force_N": 1000
+    },
+    {
+      "condition": "N15_M01_F10",
+      "speed_rpm": 1500,
+      "torque_Nm": 0.1,
+      "radial_force_N": 1000
+    },
+    {
+      "condition": "N15_M07_F04",
+      "speed_rpm": 1500,
+      "torque_Nm": 0.7,
+      "radial_force_N": 400
+    },
+    {
+      "condition": "N15_M07_F10",
+      "speed_rpm": 1500,
+      "torque_Nm": 0.7,
+      "radial_force_N": 1000
+    }
+  ],
+  "advertised_expected_signal_files": 2560,
+  "expected_inventory_is_observed": false,
+  "verified_signal_files": 0,
+  "raw_archives_inspected": false,
+  "acquisition_sessions_verified": false,
+  "lifetime_cohorts_verified": false,
+  "physical_alignment_reference_verified": false,
+  "source_inconsistencies": [
+    {
+      "source_pdf_page": 9,
+      "section": 6,
+      "issue": "Narrative interchanges the KA04 and KI18 inner/outer component descriptions.",
+      "resolution": "Tables and corresponding spectrum figures take precedence; raw fact sheets remain unverified."
+    }
+  ],
+  "fitted_models": 0,
+  "calibration_experiment_executed": false,
+  "capacity": {
+    "target": "new-bearing mechanism-versus-other-mechanisms S batch",
+    "alpha": 0.05,
+    "damaged_bearings": 26,
+    "optimistic_all_damaged_batches_before_training_or_test": 13,
+    "optimistic_after_one_test": {
+      "calibration_batches": 12,
+      "alpha": 0.05,
+      "rank": 13,
+      "finite_threshold_available": false,
+      "minimum_tail_resolution": 0.07692307692307693,
+      "threshold_if_unavailable": "infinity; abstain"
+    },
+    "pure_IR_OR_batches_before_training_or_test": 11,
+    "pure_IR_OR_after_one_test": {
+      "calibration_batches": 10,
+      "alpha": 0.05,
+      "rank": 11,
+      "finite_threshold_available": false,
+      "minimum_tail_resolution": 0.09090909090909091,
+      "threshold_if_unavailable": "infinity; abstain"
+    },
+    "three_class_diagnosis_triples_before_training_or_test": 6,
+    "minimum_calibration_batches": 19,
+    "minimum_damaged_bearings_for_calibration_plus_one_test_before_training": 40,
+    "finite_five_percent_S_gate_passes": false,
+    "independence_is_verified": false,
+    "bound_scope": "non-overlapping bearing clusters; exchangeability not established",
+    "frozen_reserved_calibration_pure_pairs": 2
+  },
+  "gates": {
+    "documented_bearing_and_region_ids": "PASS at documentation level",
+    "raw_metadata_and_capture_headers": "UNVERIFIED; original archive access failed from this environment",
+    "independence_and_exchangeability": "UNVERIFIED; bearing IDs alone do not prove either",
+    "finite_five_percent_new_bearing_S_capacity": "FAIL even under optimistic cluster counts",
+    "independent_physical_alignment_reference": "NOT ESTABLISHED; physical anchors are partial"
+  },
+  "sha256": {
+    "data/paderborn/original_benchmark.pdf": "c1f75c79cfbcbcbfd24b32bf034cebb76d1c3ff7864827575d37387bb0955f84",
+    "data/paderborn/dataset.html": "13bf9b5915612357f5d077778e1d4deb9452a68cdacc41b269035f01578ff041",
+    "data/paderborn/conditions.html": "559a0c3231339a9ccbac5106e7198db765a92bcccb0ce172fa383fd629abe2bf",
+    "data/paderborn/damage.html": "567c0601136978cf34c35100ec2892ce24b30b6092c58b15fc1ad0316cfda9f0",
+    "data/paderborn/bearings.csv": "2cee08d153baa1f2baec5239fd83e0ae8e1b7847ae463c417e964e195b25b21d",
+    "data/paderborn/conditions.csv": "195550203fd3662ca1e34565ffe3c159136b984fcfbdbaf4964cf3c3ad89c213",
+    "data/paderborn/expected_recordings.csv": "e06df063486a615bfb7ce7823c63838c9611b99ffba795aceb880bf1e11906ff",
+    "experiments/PADERBORN_SPLIT_CONTRACT.json": "ea1098d3bab18188d60354411249bd50db93679c4750957ded34bef165bbde81",
+    "experiments/PADERBORN_FEASIBILITY_PROTOCOL.md": "dd704ec1ff9cf75a26b5d85a5b4bf9bceb7e8ce97d12a4eefa3d8c91814eadb1",
+    "experiments/31_paderborn_feasibility.py": "9b3ae34126752a917c2f7d39fb35c9443f66e752db433bd9664548941d0957d7",
+    "src/pdm_audit/paderborn.py": "e439e2afeb9fc3ead0b7b13da12036f38b466d4220d7f12c55a59777f98f8b22",
+    "src/pdm_audit/industrial.py": "943e2e10e7b077edbc5a7cf97080edd86d8009dbd475451544810de147795ad5",
+    "experiments/32_verify_paderborn.py": "25da9cd0be73533c6cb8d429957b280931b7e28e14ea48b92343d3af79eb9fd1",
+    "tests/test_paderborn.py": "29626f9ebbc06ddda260d76425a0c7c9d6336dae58e094101e901964a5dee492",
+    "IEEE-conference-template-062824/PADERBORN_FEASIBILITY.md": "6ada88aa74b3d883a03dba3b8f1112c28f23460f45750cc04246420f66aee8de"
+  }
+}

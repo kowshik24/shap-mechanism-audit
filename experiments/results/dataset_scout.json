@@ -1,0 +1,271 @@
+{
+  "sources": [
+    {
+      "name": "kaist_load",
+      "url": "https://data.mendeley.com/datasets/ztmf3m7h5x/6",
+      "bytes": 131257,
+      "sha256": "d2f6ec511f6565b2ec0cf1eeccd38ae5f40ef90936cd1ec87f6a0cf10d638735",
+      "status": "downloaded",
+      "links": [
+        "https://static.data.mendeley.com/favicon.ico",
+        "/datasets/app.css?8533f74fd5ffa7f3d44f",
+        "/datasets/ztmf3m7h5x/6#main",
+        "/",
+        "/faq",
+        "/faq",
+        "https://plu.mx/plum/a/?doi=10.17632/ztmf3m7h5x",
+        "/",
+        "/about",
+        "/accessibility",
+        "/archive-process",
+        "/file-formats",
+        "/api/docs",
+        "/oai?verb=Identify",
+        "/mission",
+        "https://digitalcommons.elsevier.com/status",
+        "https://www.mendeley.com/terms/",
+        "https://www.elsevier.com/legal/privacy-policy"
+      ],
+      "file_listing_url": "https://data.mendeley.com/public-api/datasets/ztmf3m7h5x/files?folder_id=root&version=6",
+      "file_listing_bytes": 2186
+    },
+    {
+      "name": "ottawa_speed",
+      "url": "https://data.mendeley.com/datasets/v43hmbwxpm/2",
+      "bytes": 124542,
+      "sha256": "5440bb8b5e4a3d9035d2d45fb5599f8aacda3a777d9d927e01d70aaa4a2d6145",
+      "status": "downloaded",
+      "links": [
+        "https://static.data.mendeley.com/favicon.ico",
+        "/datasets/app.css?8533f74fd5ffa7f3d44f",
+        "/datasets/v43hmbwxpm/2#main",
+        "/",
+        "/faq",
+        "/faq",
+        "http://dx.doi.org/10.1016/j.dib.2018.11.019",
+        "https://plu.mx/plum/a/?doi=10.17632/v43hmbwxpm",
+        "/",
+        "/about",
+        "/accessibility",
+        "/archive-process",
+        "/file-formats",
+        "/api/docs",
+        "/oai?verb=Identify",
+        "/mission",
+        "https://digitalcommons.elsevier.com/status",
+        "https://www.mendeley.com/terms/",
+        "https://www.elsevier.com/legal/privacy-policy"
+      ],
+      "file_listing_url": "https://data.mendeley.com/public-api/datasets/v43hmbwxpm/files?folder_id=root&version=2",
+      "file_listing_bytes": 2,
+      "file_listing_error": "HTTP Error 404: Not Found"
+    },
+    {
+      "name": "uci_hydraulic",
+      "url": "https://archive.ics.uci.edu/dataset/447/condition+monitoring+of+hydraulic+systems",
+      "bytes": 84168,
+      "sha256": "b3b9a5dbc66322018a19f0d99f04dfbf6d904acbeb5bf854aad3dfd2f823eb47",
+      "status": "downloaded",
+      "links": [
+        "/favicon.ico",
+        "/apple-touch-icon.png",
+        "/manifest.json",
+        "../../_app/immutable/assets/0.ab4ca364.css",
+        "../../_app/immutable/assets/Autocomplete.3d8e18c6.css",
+        "../../_app/immutable/assets/DropdownText.035f3ed6.css",
+        "../../_app/immutable/assets/JsonDiff.b38ce334.css",
+        "../../_app/immutable/assets/Variables.ad52176b.css",
+        "/",
+        "/datasets",
+        "/contribute/donation",
+        "/contribute/donation",
+        "/contribute/linking",
+        "/about",
+        "/about",
+        "/citation",
+        "/contact",
+        "/auth/login",
+        "/static/public/447/condition+monitoring+of+hydraulic+systems.zip",
+        "https://github.com/uci-ml-repo/ucimlrepo",
+        "https://doi.org/10.24432/C5CW21",
+        "https://creativecommons.org/licenses/by/4.0/legalcode",
+        "/privacy",
+        "/",
+        "/about",
+        "https://cml.ics.uci.edu",
+        "https://www.nsf.gov",
+        "/",
+        "/datasets",
+        "/contribute/donation",
+        "/contact",
+        "/privacy",
+        "https://github.com/uci-ml-repo/ucimlrepo-feedback/issues/new/choose",
+        "/datasets",
+        "/contribute/donation",
+        "/contribute/linking",
+        "/about",
+        "/citation",
+        "/contact",
+        "/auth/login"
+      ]
+    },
+    {
+      "name": "mafaulda",
+      "url": "https://www02.smt.ufrj.br/~offshore/mfs/page_01.html",
+      "bytes": 25980,
+      "sha256": "617692b4b9b45b80761701d47bd6151ef33357a9a095c4be70ee062d97b973be",
+      "status": "downloaded",
+      "links": [
+        "figs/www/page_01.png",
+        "css/mfs.css",
+        "index.html#TOC1",
+        "mailto:felipe.ribeiro@smt.ufrj.br",
+        "database/mafaulda/full.tgz",
+        "database/mafaulda/full.zip",
+        "database/mafaulda/normal.tgz",
+        "database/mafaulda/normal.zip",
+        "database/mafaulda/horizontal-misalignment.tgz",
+        "database/mafaulda/horizontal-misalignment.zip",
+        "database/mafaulda/vertical-misalignment.tgz",
+        "database/mafaulda/vertical-misalignment.zip",
+        "database/mafaulda/imbalance.tgz",
+        "database/mafaulda/imbalance.zip",
+        "database/mafaulda/underhang.tgz",
+        "database/mafaulda/underhang.zip",
+        "database/mafaulda/overhang.tgz",
+        "database/mafaulda/overhang.zip",
+        "index.html#TOC1",
+        "http://www.smt.ufrj.br",
+        "http://www.ufrj.br"
+      ]
+    }
+  ],
+  "scope": "Metadata feasibility only; no new model fitting or paper results",
+  "uci_archive": {
+    "url": "https://archive.ics.uci.edu/static/public/447/condition+monitoring+of+hydraulic+systems.zip",
+    "sha256": "24128aad2ee45eea7e6b63ebbd9992cdf25d0483a2cebefbfc13bc69079af1f2",
+    "bytes": 76601704,
+    "members": [
+      {
+        "name": "CE.txt",
+        "bytes": 911516,
+        "compressed": 220629,
+        "crc": 2052641160
+      },
+      {
+        "name": "CP.txt",
+        "bytes": 779343,
+        "compressed": 139340,
+        "crc": 2525430905
+      },
+      {
+        "name": "description.txt",
+        "bytes": 4044,
+        "compressed": 1752,
+        "crc": 649927169
+      },
+      {
+        "name": "EPS1.txt",
+        "bytes": 87411594,
+        "compressed": 5963787,
+        "crc": 2113107188
+      },
+      {
+        "name": "FS1.txt",
+        "bytes": 7581926,
+        "compressed": 1822302,
+        "crc": 1100718821
+      },
+      {
+        "name": "FS2.txt",
+        "bytes": 8271923,
+        "compressed": 1353203,
+        "crc": 3778132480
+      },
+      {
+        "name": "profile.txt",
+        "bytes": 31196,
+        "compressed": 562,
+        "crc": 4140950149
+      },
+      {
+        "name": "PS1.txt",
+        "bytes": 91391892,
+        "compressed": 13958273,
+        "crc": 224205924
+      },
+      {
+        "name": "PS2.txt",
+        "bytes": 82373611,
+        "compressed": 13268963,
+        "crc": 3777446615
+      },
+      {
+        "name": "PS3.txt",
+        "bytes": 69916801,
+        "compressed": 10282091,
+        "crc": 1134355471
+      },
+      {
+        "name": "PS4.txt",
+        "bytes": 46698180,
+        "compressed": 5031431,
+        "crc": 3876646838
+      },
+      {
+        "name": "PS5.txt",
+        "bytes": 77776429,
+        "compressed": 11765046,
+        "crc": 769051529
+      },
+      {
+        "name": "PS6.txt",
+        "bytes": 77875407,
+        "compressed": 11962951,
+        "crc": 1795330865
+      },
+      {
+        "name": "SE.txt",
+        "bytes": 824838,
+        "compressed": 164145,
+        "crc": 56425202
+      },
+      {
+        "name": "TS1.txt",
+        "bytes": 904586,
+        "compressed": 138072,
+        "crc": 2966138643
+      },
+      {
+        "name": "TS2.txt",
+        "bytes": 910594,
+        "compressed": 142687,
+        "crc": 3205193556
+      },
+      {
+        "name": "TS3.txt",
+        "bytes": 908805,
+        "compressed": 121394,
+        "crc": 2182737718
+      },
+      {
+        "name": "TS4.txt",
+        "bytes": 910127,
+        "compressed": 117953,
+        "crc": 273780249
+      },
+      {
+        "name": "VS1.txt",
+        "bytes": 778499,
+        "compressed": 142586,
+        "crc": 1116162816
+      },
+      {
+        "name": "documentation.txt",
+        "bytes": 4719,
+        "compressed": 1991,
+        "crc": 37068681
+      }
+    ]
+  }
+}

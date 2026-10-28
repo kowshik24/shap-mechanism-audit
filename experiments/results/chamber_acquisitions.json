@@ -1,0 +1,2339 @@
+[
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_red",
+    "target": "red",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_red.csv",
+    "rows": 50,
+    "treatment_counts": [
+      22,
+      28
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      45952.790483791,
+      45983.829628697
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      42,
+      40
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "ddc5417c3c1407f048bf4a79d4c6ce0d75923a42ad4dc3a8fd688e070d089b76",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_green",
+    "target": "green",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_green.csv",
+    "rows": 50,
+    "treatment_counts": [
+      25,
+      25
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      45991.020557052,
+      46019.481064895
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      43,
+      16
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "87608a520b3fb61247c144c50339f334e6b408f7ad63191bb6dfd66c8f3ff355",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_blue",
+    "target": "blue",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_blue.csv",
+    "rows": 50,
+    "treatment_counts": [
+      27,
+      23
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      46027.154486638,
+      46057.838587847
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      43,
+      54
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "a76e59c4894eca51a3dd1fe8c54c5777bdaa89b2997226968a3596aaa90c39e1",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_osr_c",
+    "target": "osr_c",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_osr_c.csv",
+    "rows": 1000,
+    "treatment_counts": [
+      538,
+      462
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      42693.09130027,
+      43325.619226162
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      58,
+      22
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "393cf58828323409d06bd1a26cffebb15bf964b62a67f6ff731917a93604c329",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_v_c",
+    "target": "v_c",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_v_c.csv",
+    "rows": 50,
+    "treatment_counts": [
+      27,
+      23
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      46065.620861014,
+      46093.816679723
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      44,
+      30
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "dc6f2f8a4191bb021eee71c06b5fd5d8826020b0b69248857b2c49f54b56e198",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_pol_1",
+    "target": "pol_1",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_pol_1.csv",
+    "rows": 50,
+    "treatment_counts": [
+      21,
+      29
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      46102.107925557,
+      46148.492197791
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      45,
+      24
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "52901856bb85673abc041e33dc52eae7f033dcfafd379ba140dade4dcd66d415",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_pol_2",
+    "target": "pol_2",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_pol_2.csv",
+    "rows": 50,
+    "treatment_counts": [
+      31,
+      19
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      46156.403895726,
+      46211.615567804
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      46,
+      28
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "be575ba64073304f95494444a7478c4e9eaf126e35973a0203ec59dbb3e38a25",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_osr_angle_1",
+    "target": "osr_angle_1",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_osr_angle_1.csv",
+    "rows": 1000,
+    "treatment_counts": [
+      477,
+      523
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      41444.781901745,
+      42067.651453038
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      37,
+      24
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "860b431ef7fd56b1ba2b6a07998fbb716f90b6824d782579e8086ee056394149",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_osr_angle_2",
+    "target": "osr_angle_2",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_osr_angle_2.csv",
+    "rows": 1000,
+    "treatment_counts": [
+      496,
+      504
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      42075.666145493,
+      42685.360281287
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      47,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "ad76f05ac28e1798f31485bcb12b06d0d605565fbda457a01fe6a8e673bfb592",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_v_angle_1",
+    "target": "v_angle_1",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_v_angle_1.csv",
+    "rows": 50,
+    "treatment_counts": [
+      26,
+      24
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      40662.442231996,
+      40694.018329832
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      14,
+      30
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "07e9d9e5b103dd46e208060daacc67a4dfd6c9889f04a744582e3c953c8a688b",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_v_angle_2",
+    "target": "v_angle_2",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_v_angle_2.csv",
+    "rows": 50,
+    "treatment_counts": [
+      22,
+      28
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      40704.401182963,
+      40730.450349132
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      15,
+      6
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "5ab57f8d593965d778b3cef89a1a91a3b55dda3a2a3c52a44bcd49966e739417",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_l_11",
+    "target": "l_11",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_11.csv",
+    "rows": 50,
+    "treatment_counts": [
+      26,
+      24
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      40739.944608418,
+      40771.861548215
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      15,
+      48
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "a722b3cf96aa1a0e438c7c9c0d3f7063ebe8ba63d6e9ab77b2792ef221dfdb61",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_l_12",
+    "target": "l_12",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_12.csv",
+    "rows": 50,
+    "treatment_counts": [
+      28,
+      22
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      40779.224767272,
+      40809.030085848
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      16,
+      24
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "b82079d0fa627f1eaa63fd6a00ed1546f5cac5079c670f81d77ccf7d54532daf",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_l_21",
+    "target": "l_21",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_21.csv",
+    "rows": 50,
+    "treatment_counts": [
+      30,
+      20
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      40816.522265676,
+      40850.180143655
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      17,
+      6
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "7014858f77fb2419690a2cee38b5e72f279ea0f65ea79b22d930bb2453bb596f",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_l_22",
+    "target": "l_22",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_22.csv",
+    "rows": 50,
+    "treatment_counts": [
+      31,
+      19
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      40857.815049832,
+      40890.863648639
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      17,
+      46
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "368c91273dc544fb9e0488471d872e1c2aa00336905117587acad217ede8325e",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_l_31",
+    "target": "l_31",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_31.csv",
+    "rows": 50,
+    "treatment_counts": [
+      28,
+      22
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      40898.875051923,
+      40929.061031321
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      18,
+      24
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "feebf62c90f607edeac9974bc9f7b87062966b75fb1529a94cf01ee21345e62b",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_l_32",
+    "target": "l_32",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_32.csv",
+    "rows": 50,
+    "treatment_counts": [
+      30,
+      20
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      40936.552462381,
+      40965.06679647
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      19,
+      0
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "20d2ba3f31acd45a7bc37537ea1a2663f83f79ebe25e0815949a27bb7a35e669",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_diode_ir_1",
+    "target": "diode_ir_1",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_ir_1.csv",
+    "rows": 50,
+    "treatment_counts": [
+      21,
+      29
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      40972.526562095,
+      41003.425687548
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      19,
+      40
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "0b89aee23be2f8d081a90264d188f32aebcbb7719df266acfb6950ba9b39a21c",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_diode_ir_2",
+    "target": "diode_ir_2",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_ir_2.csv",
+    "rows": 50,
+    "treatment_counts": [
+      26,
+      24
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      41010.695880794,
+      41045.370894298
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      20,
+      22
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "558b166f3ec94a74baff654c2726b0de27fee267f68e13d6dbdc26c2d3c04847",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_diode_ir_3",
+    "target": "diode_ir_3",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_ir_3.csv",
+    "rows": 50,
+    "treatment_counts": [
+      20,
+      30
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      41052.698386737,
+      41084.969278975
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      21,
+      0
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "932e51a4c2346a3d1614f59de640ea1aab5cbe44499dc71f8c402dee42eac12b",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_diode_vis_1",
+    "target": "diode_vis_1",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_vis_1.csv",
+    "rows": 50,
+    "treatment_counts": [
+      23,
+      27
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      41092.603127129,
+      41127.04908819
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "399369db116e22d4ec90b449c9d8dca0b694d831382492f1114277f14f7d861d",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_diode_vis_2",
+    "target": "diode_vis_2",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_vis_2.csv",
+    "rows": 50,
+    "treatment_counts": [
+      15,
+      35
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      41134.47435195,
+      41164.787829179
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      22,
+      20
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "99fd7d08703fafbb25862d9f25fb66138ede76f6c72f86306dfaa551eba491da",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_diode_vis_3",
+    "target": "diode_vis_3",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_vis_3.csv",
+    "rows": 50,
+    "treatment_counts": [
+      22,
+      28
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      41172.164351684,
+      41200.939998986
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      22,
+      56
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "e9cb23a90b819325330fed1c221dcbd116570dc9f4f5ef705c39d6915f9b1ee6",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_t_ir_1",
+    "target": "t_ir_1",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_ir_1.csv",
+    "rows": 50,
+    "treatment_counts": [
+      23,
+      27
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      41208.90779379,
+      41238.663748765
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      23,
+      34
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "4d4b657eccb147da06eace3de82f5c5807fed5f40ce906386035fc8db3f80e29",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_t_ir_2",
+    "target": "t_ir_2",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_ir_2.csv",
+    "rows": 50,
+    "treatment_counts": [
+      27,
+      23
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      41246.631556457,
+      41275.603183296
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      24,
+      12
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "405035b13489f45988f997b16968aa1888768284d49d9b963ab5144376253434",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_t_ir_3",
+    "target": "t_ir_3",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_ir_3.csv",
+    "rows": 50,
+    "treatment_counts": [
+      22,
+      28
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      41283.484082064,
+      41314.116416333
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      24,
+      50
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "d593c4c9ea1b22c51880aecaba92ad10574043cf88dc1f07da8a0d6591ac8071",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_t_vis_1",
+    "target": "t_vis_1",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_vis_1.csv",
+    "rows": 50,
+    "treatment_counts": [
+      23,
+      27
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      41321.749230841,
+      41353.593252515
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      25,
+      30
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "103e9ca4d69403b21ada0f2ae305b8b8466d4eb43069d640ef961eb79c0cf62b",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_t_vis_2",
+    "target": "t_vis_2",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_vis_2.csv",
+    "rows": 50,
+    "treatment_counts": [
+      24,
+      26
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      41361.218064023,
+      41394.703585356
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      26,
+      10
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "c25644d5d54af7427e7b786d2cd4db19940f5a582aa3452ffe8079f3c012ad97",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lt_validate_v1",
+    "experiment": "validate_t_vis_3",
+    "target": "t_vis_3",
+    "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_vis_3.csv",
+    "rows": 50,
+    "treatment_counts": [
+      23,
+      27
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      41402.768227736,
+      41437.036832647
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      21,
+      26,
+      52
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "3abb9e7b6426caf89bf06b7337f1465e67e129a96377759e583f88fc4bdf56a3",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_hatch_mic",
+    "target": "hatch",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_hatch_mic.csv",
+    "rows": 4000,
+    "treatment_counts": [
+      1990,
+      2010
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      3948.472992109,
+      8048.485340254
+    ],
+    "zip_modified_unverified": [
+      2024,
+      4,
+      16,
+      15,
+      2,
+      10
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "95f56a7c07a9108571cfe2a46487a040cd8a2b6c64ffb2f18dd4ed47e039efc4",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_hatch_rpms",
+    "target": "hatch",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_hatch_rpms.csv",
+    "rows": 200,
+    "treatment_counts": [
+      117,
+      83
+    ],
+    "source_settling_wait_ms": 10000,
+    "clock_range": [
+      432114.752078515,
+      434437.210328825
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "6ddee9f87e9c1b8d43e333ce5ab836034b168603b188d3359ee72d32a4851365",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_hatch_pressures",
+    "target": "hatch",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_hatch_pressures.csv",
+    "rows": 50,
+    "treatment_counts": [
+      21,
+      29
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      425552.986941592,
+      425600.871115907
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      40
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "0606afb11a83f95f254c5d4dc74a24ee8e2ad5e56384917c1660b58249c319e4",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_pot_1",
+    "target": "pot_1",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_pot_1.csv",
+    "rows": 200,
+    "treatment_counts": [
+      99,
+      101
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      425619.306335094,
+      425776.724542843
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      40
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "685ea14a729c2d932f6ed31c7924e88032f91fde173b3c21f1fccfc32eb9da5a",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_pot_2",
+    "target": "pot_2",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_pot_2.csv",
+    "rows": 200,
+    "treatment_counts": [
+      100,
+      100
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      425813.017591042,
+      425973.054473534
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      40
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "4a855f7560d6fccdbe2b3a3d82d3606813b3f7daa07ffbdc74d8cf467250dfbd",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_osr_1",
+    "target": "osr_1",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_1.csv",
+    "rows": 500,
+    "treatment_counts": [
+      236,
+      264
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      425990.858057789,
+      426385.209186804
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      40
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "61da6350a12d22d7264afedfa8391da755a6797202112ddca466e30bb3e793e3",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_osr_2",
+    "target": "osr_2",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_2.csv",
+    "rows": 500,
+    "treatment_counts": [
+      258,
+      242
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      426403.230156131,
+      426802.811625906
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      40
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "fdd21f626d1566e1943df520d6a4bab89f4b977edab5451c9506bdf7d826becb",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_osr_mic",
+    "target": "osr_mic",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_mic.csv",
+    "rows": 500,
+    "treatment_counts": [
+      259,
+      241
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      426820.771686839,
+      427218.069382936
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      40
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "a0bc57ce5746b7ba58bfec39b39093bdf03ac72f2eea2e946e7a37f62ea1b977",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_osr_in",
+    "target": "osr_in",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_in.csv",
+    "rows": 1000,
+    "treatment_counts": [
+      489,
+      511
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      427236.173504183,
+      428041.465802019
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "ca4cfcf50033c60d30d1cb011db120327a64e62c7a36d8d0726c1d6ef2e33174",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_osr_out",
+    "target": "osr_out",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_out.csv",
+    "rows": 1000,
+    "treatment_counts": [
+      487,
+      513
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      428078.021082244,
+      428881.319128112
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "37ab40c62a01e7e38114c4d29d7369f0ec058657d861369fbec736f90f94bf71",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_osr_upwind",
+    "target": "osr_upwind",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_upwind.csv",
+    "rows": 200,
+    "treatment_counts": [
+      100,
+      100
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      428900.205222958,
+      429052.80162894
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "c8905eb56df945d62643c70de09506fb5d73ceecaf8aa06237b7def97a54b48b",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_osr_downwind",
+    "target": "osr_downwind",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_downwind.csv",
+    "rows": 200,
+    "treatment_counts": [
+      99,
+      101
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      429071.081207864,
+      429215.441228818
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "abd60d43f2838793bbaf08a67e7a3f207127ca303449f133374544d89488968c",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_osr_ambient",
+    "target": "osr_ambient",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_ambient.csv",
+    "rows": 8000,
+    "treatment_counts": [
+      4045,
+      3955
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      151058.635001934,
+      157142.575593464
+    ],
+    "zip_modified_unverified": [
+      2024,
+      4,
+      17,
+      6,
+      54,
+      58
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "f2b763e34eabedaa8d6f36d498bc96dfa8ad0c3dc2e784b9f9a32f9ae8c28548",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_osr_intake",
+    "target": "osr_intake",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_intake.csv",
+    "rows": 200,
+    "treatment_counts": [
+      108,
+      92
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      429405.239753645,
+      429560.154221637
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "aaa468b8b2ecc5409c82ba5a7c564642ba16cee781f15e30366fd2c27f94fbc6",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_v_1",
+    "target": "v_1",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_1.csv",
+    "rows": 200,
+    "treatment_counts": [
+      105,
+      95
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      429578.450718811,
+      429732.263929861
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "ad52c0bfd96822c905d3588b7d9a66293d160ed581d0c4e29e9e725b6c6c4677",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_v_2",
+    "target": "v_2",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_2.csv",
+    "rows": 200,
+    "treatment_counts": [
+      110,
+      90
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      429750.948889193,
+      429896.922687098
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "5e5534ab767ccbddc7427ec44ec7be9381491e01ad0ddafa0c58442f2ef831d6",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_v_mic",
+    "target": "v_mic",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_mic.csv",
+    "rows": 200,
+    "treatment_counts": [
+      108,
+      92
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      429915.267865243,
+      430067.393573049
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "9c5aaaca914cae8d275551fcf451771605718f280d9d227f7b431ebcc66fcc48",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_v_in",
+    "target": "v_in",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_in.csv",
+    "rows": 200,
+    "treatment_counts": [
+      95,
+      105
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      430085.169345141,
+      430245.011625265
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "40e5b55a1970b951f46dd3255a947fe0f19e9ff6750c0ea9974f5afc93ce83b4",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_v_out",
+    "target": "v_out",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_out.csv",
+    "rows": 200,
+    "treatment_counts": [
+      109,
+      91
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      430262.873385929,
+      430413.57797397
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "eabcc4fb5889ff993d40ddaf7478a20bf6751e8d04fa88e3c91b93384b969408",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_load_in",
+    "target": "load_in",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_in.csv",
+    "rows": 50,
+    "treatment_counts": [
+      25,
+      25
+    ],
+    "source_settling_wait_ms": 10000,
+    "clock_range": [
+      434465.769315335,
+      434998.573938989
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "9cc3ec93369ad9c1215b486946d97ce5c1b977e9ab6eb12ab3f82cdc3ad90087",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_load_in_mic",
+    "target": "load_in",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_in_mic.csv",
+    "rows": 200,
+    "treatment_counts": [
+      93,
+      107
+    ],
+    "source_settling_wait_ms": 10000,
+    "clock_range": [
+      435026.499666023,
+      437411.682022747
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "8403711f99ddea53a383ca86a31a8aab9efa72ff1e9a1b31f5a4ee15e0d04e96",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_load_out",
+    "target": "load_out",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_out.csv",
+    "rows": 49,
+    "treatment_counts": [
+      23,
+      26
+    ],
+    "source_settling_wait_ms": 10000,
+    "clock_range": [
+      437439.713331268,
+      438017.853554533
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "245b19ed0c67d613bf1e07f8b189e23bb1c703cd60804d8be35326baceb2c214",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": false,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_load_out_mic",
+    "target": "load_out",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_out_mic.csv",
+    "rows": 200,
+    "treatment_counts": [
+      95,
+      105
+    ],
+    "source_settling_wait_ms": 10000,
+    "clock_range": [
+      39990.117854566,
+      42216.199836636
+    ],
+    "zip_modified_unverified": [
+      2024,
+      4,
+      15,
+      22,
+      59,
+      30
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "3e67478a56b84d53718d292c84eb55862c6b0932f94b2fbb11c2939e7c64c075",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_res_in",
+    "target": "res_in",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_res_in.csv",
+    "rows": 1000,
+    "treatment_counts": [
+      501,
+      499
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      430431.640321997,
+      431253.701774564
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "d793eb00dfebe230e26369037bd060be02158b3972b41cff3dfa4fe9c74ff9f0",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_res_out",
+    "target": "res_out",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_res_out.csv",
+    "rows": 1000,
+    "treatment_counts": [
+      514,
+      486
+    ],
+    "source_settling_wait_ms": 0,
+    "clock_range": [
+      431271.54300767,
+      432086.371459628
+    ],
+    "zip_modified_unverified": [
+      2024,
+      1,
+      27,
+      22,
+      21,
+      42
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "d3a53e05acf016d43adf22225f0329861b1832aa14b739eaa38485248eaf92b3",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_load_in_current_out",
+    "target": "load_in",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_in_current_out.csv",
+    "rows": 100,
+    "treatment_counts": [
+      39,
+      61
+    ],
+    "source_settling_wait_ms": 5000,
+    "clock_range": [
+      87175.062579836,
+      87752.981810384
+    ],
+    "zip_modified_unverified": [
+      2024,
+      4,
+      16,
+      11,
+      38,
+      28
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "08ea101a3d7ff253973108c54fb289a5bc823f48008483cb843e905d5615fd2d",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_load_out_current_in",
+    "target": "load_out",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_out_current_in.csv",
+    "rows": 100,
+    "treatment_counts": [
+      51,
+      49
+    ],
+    "source_settling_wait_ms": 5000,
+    "clock_range": [
+      87776.291772321,
+      88352.491310017
+    ],
+    "zip_modified_unverified": [
+      2024,
+      4,
+      16,
+      11,
+      48,
+      28
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "4bef1d90f9a80629913e6cff99202c911075bba852c393779d16bda3daf496d6",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": false,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": false
+  },
+  {
+    "dataset": "wt_validate_v1",
+    "experiment": "validate_load_out_pressure_intake",
+    "target": "load_out",
+    "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_out_pressure_intake.csv",
+    "rows": 3000,
+    "treatment_counts": [
+      1490,
+      1510
+    ],
+    "source_settling_wait_ms": 8000,
+    "clock_range": [
+      124456.5371265,
+      151040.14405273
+    ],
+    "zip_modified_unverified": [
+      2024,
+      4,
+      17,
+      5,
+      13,
+      14
+    ],
+    "clock_reference_verified": false,
+    "device_serial_or_session_id_available": false,
+    "numerical_payload_sha256": "6cf2757bd67b031264e8d4a28407f801a7e02f2d42025689448b3bee4516a5f2",
+    "duplicate_of": null,
+    "checks": {
+      "row_count": true,
+      "counter": true,
+      "treatment_replay": true,
+      "target_setting": true,
+      "clock_increases": true,
+      "configuration": true,
+      "finite_features": true,
+      "fixed_controls": true,
+      "after_set": true,
+      "camera_disabled_when_applicable": true
+    },
+    "passed": true
+  }
+]

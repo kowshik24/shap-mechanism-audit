@@ -1,0 +1,16 @@
+\begin{tabular}{lrrrrrl}
+\toprule
+Offset cohort & IQR & SHAP, match & Resp., match & SHAP, removed & Resp., removed & F1 match/removed \\
+\midrule
+All faults & 0.1 & 1 & 0 & 1 & 0 & 0.803/0.802 \\
+All faults & 0.25 & 11 & 13 & 11 & 15 & 0.810/0.797 \\
+All faults & 0.5 & 45 & 55 & 52 & 54 & 0.841/0.775 \\
+All faults & 1 & 58 & 59 & 60 & 60 & 0.898/0.724 \\
+All faults & 2 & 60 & 44 & 60 & 60 & 0.970/0.682 \\
+IDV4 only & 0.1 & 0 & 0 & 0 & 0 & 0.803/0.803 \\
+IDV4 only & 0.25 & 0 & 0 & 0 & 0 & 0.801/0.801 \\
+IDV4 only & 0.5 & 0 & 0 & 1 & 0 & 0.799/0.799 \\
+IDV4 only & 1 & 13 & 38 & 0 & 1 & 0.793/0.793 \\
+IDV4 only & 2 & 57 & 60 & 4 & 0 & 0.781/0.781 \\
+\bottomrule
+\end{tabular}

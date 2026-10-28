@@ -1,0 +1,433 @@
+{
+  "passed": true,
+  "outer_model_results": 6,
+  "source_validation_replays": 36,
+  "native_records": 21,
+  "windows": 630,
+  "feature_count": 40,
+  "creation_dates_by_family": {
+    "BPFI": [
+      "2021/06/28"
+    ],
+    "BPFO": [
+      "2021/06/30"
+    ],
+    "Normal": [
+      "2021/06/25"
+    ]
+  },
+  "creation_date_scope": "Native function creation timestamps; not authenticated acquisition dates or asset IDs",
+  "directed_controls": [
+    {
+      "family": "logistic",
+      "parameter": 0.1,
+      "training_load": 2,
+      "validation_load": 4,
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "family": "logistic",
+      "parameter": 0.1,
+      "training_load": 4,
+      "validation_load": 2,
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "family": "forest",
+      "parameter": 4,
+      "training_load": 2,
+      "validation_load": 4,
+      "metrics": {
+        "macro_F1": 0.9888858016115588,
+        "balanced_accuracy": 0.9888888888888889,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          0.9666666666666668
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.033333333333333326,
+            0.9666666666666668
+          ]
+        ]
+      }
+    },
+    {
+      "family": "forest",
+      "parameter": 4,
+      "training_load": 4,
+      "validation_load": 2,
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "family": "logistic",
+      "parameter": 0.1,
+      "training_load": 0,
+      "validation_load": 4,
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "family": "logistic",
+      "parameter": 0.1,
+      "training_load": 4,
+      "validation_load": 0,
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "family": "forest",
+      "parameter": 4,
+      "training_load": 0,
+      "validation_load": 4,
+      "metrics": {
+        "macro_F1": 0.6331965818943818,
+        "balanced_accuracy": 0.6962962962962962,
+        "binary_balanced_accuracy": 0.5666666666666667,
+        "healthy_FPR": 0.8666666666666668,
+        "per_class_recall": [
+          0.13333333333333328,
+          1.0,
+          0.9555555555555555
+        ],
+        "confusion": [
+          [
+            0.13333333333333328,
+            0.8666666666666667,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.044444444444444425,
+            0.9555555555555555
+          ]
+        ]
+      }
+    },
+    {
+      "family": "forest",
+      "parameter": 4,
+      "training_load": 4,
+      "validation_load": 0,
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "family": "logistic",
+      "parameter": 0.1,
+      "training_load": 0,
+      "validation_load": 2,
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "family": "logistic",
+      "parameter": 0.1,
+      "training_load": 2,
+      "validation_load": 0,
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "family": "forest",
+      "parameter": 4,
+      "training_load": 0,
+      "validation_load": 2,
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "family": "forest",
+      "parameter": 4,
+      "training_load": 2,
+      "validation_load": 0,
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    }
+  ],
+  "independent_warning_sensitivity_validation": false,
+  "observed_single_source_healthy_errors": true,
+  "source_sha256": "0b1f66c41400aa95b98b43bc07dc791dfc07d9f2f4d3a49c5d1fbc6f5dbd9463"
+}

@@ -1,0 +1,1749 @@
+{
+  "scope": "Within-rig measured-load transfer; no independent-bearing confidence or conformal claim",
+  "classes": [
+    "Normal",
+    "BPFI",
+    "BPFO"
+  ],
+  "seed": 20261026,
+  "features": [
+    "ch1_log_rms",
+    "ch1_log_std",
+    "ch1_kurtosis",
+    "ch1_skewness",
+    "ch1_crest",
+    "ch1_band_0_500",
+    "ch1_band_500_1000",
+    "ch1_band_1000_2000",
+    "ch1_band_2000_4000",
+    "ch1_band_4000_nyquist",
+    "ch2_log_rms",
+    "ch2_log_std",
+    "ch2_kurtosis",
+    "ch2_skewness",
+    "ch2_crest",
+    "ch2_band_0_500",
+    "ch2_band_500_1000",
+    "ch2_band_1000_2000",
+    "ch2_band_2000_4000",
+    "ch2_band_4000_nyquist",
+    "ch3_log_rms",
+    "ch3_log_std",
+    "ch3_kurtosis",
+    "ch3_skewness",
+    "ch3_crest",
+    "ch3_band_0_500",
+    "ch3_band_500_1000",
+    "ch3_band_1000_2000",
+    "ch3_band_2000_4000",
+    "ch3_band_4000_nyquist",
+    "ch4_log_rms",
+    "ch4_log_std",
+    "ch4_kurtosis",
+    "ch4_skewness",
+    "ch4_crest",
+    "ch4_band_0_500",
+    "ch4_band_500_1000",
+    "ch4_band_1000_2000",
+    "ch4_band_2000_4000",
+    "ch4_band_4000_nyquist"
+  ],
+  "results": [
+    {
+      "target_load_Nm": 0,
+      "source_loads_Nm": [
+        2,
+        4
+      ],
+      "family": "logistic",
+      "selected_parameter": 0.1,
+      "source_validation": [
+        {
+          "parameter": 0.1,
+          "mean_macro_F1": 1.0,
+          "directed": [
+            {
+              "training_load": 2,
+              "validation_load": 4,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 4,
+              "validation_load": 2,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "parameter": 1.0,
+          "mean_macro_F1": 1.0,
+          "directed": [
+            {
+              "training_load": 2,
+              "validation_load": 4,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 4,
+              "validation_load": 2,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "parameter": 10.0,
+          "mean_macro_F1": 1.0,
+          "directed": [
+            {
+              "training_load": 2,
+              "validation_load": 4,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 4,
+              "validation_load": 2,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "record_vote_metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "training_records": 14,
+      "target_records": 7,
+      "training_windows": 420,
+      "target_windows": 210
+    },
+    {
+      "target_load_Nm": 0,
+      "source_loads_Nm": [
+        2,
+        4
+      ],
+      "family": "forest",
+      "selected_parameter": 4,
+      "source_validation": [
+        {
+          "parameter": 4,
+          "mean_macro_F1": 0.9944429008057794,
+          "directed": [
+            {
+              "training_load": 2,
+              "validation_load": 4,
+              "metrics": {
+                "macro_F1": 0.9888858016115588,
+                "balanced_accuracy": 0.9888888888888889,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  0.9666666666666668
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.033333333333333326,
+                    0.9666666666666668
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 4,
+              "validation_load": 2,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "parameter": 8,
+          "mean_macro_F1": 0.9944429008057794,
+          "directed": [
+            {
+              "training_load": 2,
+              "validation_load": 4,
+              "metrics": {
+                "macro_F1": 0.9888858016115588,
+                "balanced_accuracy": 0.9888888888888889,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  0.9666666666666668
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.033333333333333326,
+                    0.9666666666666668
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 4,
+              "validation_load": 2,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "parameter": null,
+          "mean_macro_F1": 0.9944429008057794,
+          "directed": [
+            {
+              "training_load": 2,
+              "validation_load": 4,
+              "metrics": {
+                "macro_F1": 0.9888858016115588,
+                "balanced_accuracy": 0.9888888888888889,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  0.9666666666666668
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.033333333333333326,
+                    0.9666666666666668
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 4,
+              "validation_load": 2,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "record_vote_metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "training_records": 14,
+      "target_records": 7,
+      "training_windows": 420,
+      "target_windows": 210
+    },
+    {
+      "target_load_Nm": 2,
+      "source_loads_Nm": [
+        0,
+        4
+      ],
+      "family": "logistic",
+      "selected_parameter": 0.1,
+      "source_validation": [
+        {
+          "parameter": 0.1,
+          "mean_macro_F1": 1.0,
+          "directed": [
+            {
+              "training_load": 0,
+              "validation_load": 4,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 4,
+              "validation_load": 0,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "parameter": 1.0,
+          "mean_macro_F1": 1.0,
+          "directed": [
+            {
+              "training_load": 0,
+              "validation_load": 4,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 4,
+              "validation_load": 0,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "parameter": 10.0,
+          "mean_macro_F1": 1.0,
+          "directed": [
+            {
+              "training_load": 0,
+              "validation_load": 4,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 4,
+              "validation_load": 0,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "record_vote_metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "training_records": 14,
+      "target_records": 7,
+      "training_windows": 420,
+      "target_windows": 210
+    },
+    {
+      "target_load_Nm": 2,
+      "source_loads_Nm": [
+        0,
+        4
+      ],
+      "family": "forest",
+      "selected_parameter": 4,
+      "source_validation": [
+        {
+          "parameter": 4,
+          "mean_macro_F1": 0.8165982909471909,
+          "directed": [
+            {
+              "training_load": 0,
+              "validation_load": 4,
+              "metrics": {
+                "macro_F1": 0.6331965818943818,
+                "balanced_accuracy": 0.6962962962962962,
+                "binary_balanced_accuracy": 0.5666666666666667,
+                "healthy_FPR": 0.8666666666666668,
+                "per_class_recall": [
+                  0.13333333333333328,
+                  1.0,
+                  0.9555555555555555
+                ],
+                "confusion": [
+                  [
+                    0.13333333333333328,
+                    0.8666666666666667,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.044444444444444425,
+                    0.9555555555555555
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 4,
+              "validation_load": 0,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "parameter": 8,
+          "mean_macro_F1": 0.8165982909471909,
+          "directed": [
+            {
+              "training_load": 0,
+              "validation_load": 4,
+              "metrics": {
+                "macro_F1": 0.6331965818943818,
+                "balanced_accuracy": 0.6962962962962962,
+                "binary_balanced_accuracy": 0.5666666666666667,
+                "healthy_FPR": 0.8666666666666668,
+                "per_class_recall": [
+                  0.13333333333333328,
+                  1.0,
+                  0.9555555555555555
+                ],
+                "confusion": [
+                  [
+                    0.13333333333333328,
+                    0.8666666666666667,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.044444444444444425,
+                    0.9555555555555555
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 4,
+              "validation_load": 0,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "parameter": null,
+          "mean_macro_F1": 0.8165982909471909,
+          "directed": [
+            {
+              "training_load": 0,
+              "validation_load": 4,
+              "metrics": {
+                "macro_F1": 0.6331965818943818,
+                "balanced_accuracy": 0.6962962962962962,
+                "binary_balanced_accuracy": 0.5666666666666667,
+                "healthy_FPR": 0.8666666666666668,
+                "per_class_recall": [
+                  0.13333333333333328,
+                  1.0,
+                  0.9555555555555555
+                ],
+                "confusion": [
+                  [
+                    0.13333333333333328,
+                    0.8666666666666667,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.044444444444444425,
+                    0.9555555555555555
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 4,
+              "validation_load": 0,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "record_vote_metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "training_records": 14,
+      "target_records": 7,
+      "training_windows": 420,
+      "target_windows": 210
+    },
+    {
+      "target_load_Nm": 4,
+      "source_loads_Nm": [
+        0,
+        2
+      ],
+      "family": "logistic",
+      "selected_parameter": 0.1,
+      "source_validation": [
+        {
+          "parameter": 0.1,
+          "mean_macro_F1": 1.0,
+          "directed": [
+            {
+              "training_load": 0,
+              "validation_load": 2,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 2,
+              "validation_load": 0,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "parameter": 1.0,
+          "mean_macro_F1": 1.0,
+          "directed": [
+            {
+              "training_load": 0,
+              "validation_load": 2,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 2,
+              "validation_load": 0,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "parameter": 10.0,
+          "mean_macro_F1": 1.0,
+          "directed": [
+            {
+              "training_load": 0,
+              "validation_load": 2,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 2,
+              "validation_load": 0,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "record_vote_metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "training_records": 14,
+      "target_records": 7,
+      "training_windows": 420,
+      "target_windows": 210
+    },
+    {
+      "target_load_Nm": 4,
+      "source_loads_Nm": [
+        0,
+        2
+      ],
+      "family": "forest",
+      "selected_parameter": 4,
+      "source_validation": [
+        {
+          "parameter": 4,
+          "mean_macro_F1": 1.0,
+          "directed": [
+            {
+              "training_load": 0,
+              "validation_load": 2,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 2,
+              "validation_load": 0,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "parameter": 8,
+          "mean_macro_F1": 1.0,
+          "directed": [
+            {
+              "training_load": 0,
+              "validation_load": 2,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 2,
+              "validation_load": 0,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "parameter": null,
+          "mean_macro_F1": 1.0,
+          "directed": [
+            {
+              "training_load": 0,
+              "validation_load": 2,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            },
+            {
+              "training_load": 2,
+              "validation_load": 0,
+              "metrics": {
+                "macro_F1": 1.0,
+                "balanced_accuracy": 1.0,
+                "binary_balanced_accuracy": 1.0,
+                "healthy_FPR": 0.0,
+                "per_class_recall": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "confusion": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "macro_F1": 0.9851778656126484,
+        "balanced_accuracy": 0.9851851851851853,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          0.9555555555555555
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.044444444444444425,
+            0.9555555555555555
+          ]
+        ]
+      },
+      "record_vote_metrics": {
+        "macro_F1": 1.0,
+        "balanced_accuracy": 1.0,
+        "binary_balanced_accuracy": 1.0,
+        "healthy_FPR": 0.0,
+        "per_class_recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "confusion": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "training_records": 14,
+      "target_records": 7,
+      "training_windows": 420,
+      "target_windows": 210
+    }
+  ],
+  "input_sha256": {
+    "experiments/KAIST_PREDICTIVE_PROTOCOL.md": "cafe654f2b344fef705ff4565cd2b148f32c65af2b7aa7050387f5399389fb2c",
+    "experiments/KAIST_LOAD_PILOT_CONTRACT.json": "7d0f3f46f110eaa524f05fbf136abfd23a9b5a422c5a475168631820b599374a",
+    "experiments/94_kaist_predictive.py": "4bc8dac8ff9f07b8cf524eb6c39dfa020c98c72f7bad7e6d918588a70a0eb8fb",
+    "experiments/93_kaist_features.py": "a6850b7cc731d58c7836a0824a4882c6a88a342730cc0eb74cc2295a2c29f140",
+    "src/pdm_audit/kaist.py": "2342cd463a3176ac798530915f5574bce5dda9d67bb50fff00982d5dd7751a63",
+    "experiments/results/kaist_features.csv": "1e46341908633aa1288ecba42d7b8d798f464c9560ecb7814e36c01868b121a5",
+    "experiments/results/kaist_signal_inventory.json": "77493f45bc4ea319de0fdf16727f91f41374de04caf46f646ce645cbe0d5d5f4",
+    "experiments/results/kaist_predictions.csv": "132541343d9c8efce155df876703d1c42c585fa1c2d46ee7194a26595bcb96ea"
+  }
+}

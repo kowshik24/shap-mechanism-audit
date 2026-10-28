@@ -1,0 +1,8 @@
+{
+  "verified": true,
+  "trajectories": 400,
+  "packets": 200,
+  "unique_pre_fault_prefixes": 400,
+  "cross_role_equal_pre_fault_prefixes": 0,
+  "independent_rng_streams_proven": false
+}

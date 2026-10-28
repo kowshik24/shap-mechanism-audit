@@ -1,0 +1,9 @@
+{
+  "verified_inputs": true,
+  "sha256": {
+    "experiments/69_chamber_report.py": "754631161db586360d9d943e380b425a8128aeac060f80cadefe6bd21bdf02c5",
+    "experiments/results/chamber_verification.json": "68b4c69ce32b515c8346380ac89529187280dd3d8a6f7287a860f74c2147ba8b",
+    "IEEE-conference-template-062824/PHYSICAL_CAUSAL_MAP_REPORT.md": "f8542516959ac1beeaf9f22bd534aa7906ed56d6c19ae7cbfb1b1b27c6908c8d",
+    "IEEE-conference-template-062824/PHYSICAL_ACQUISITION_PLAN.md": "50b956598713c298108f38af9f402f8cae8e46cc5d826f6cb839238e176f2d10"
+  }
+}

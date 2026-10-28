@@ -1,0 +1,361 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs,array}
+\usepackage{flushend}
+\usepackage[hidelinks]{hyperref}
+\usepackage[capitalise,nameinlink]{cleveref}
+\crefname{figure}{Fig.}{Figs.}
+\Crefname{figure}{Fig.}{Figs.}
+\crefname{table}{Table}{Tables}
+\crefname{section}{Section}{Sections}
+\graphicspath{{figures/}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\raggedbottom
+
+\input{tables/review_numbers}
+\begin{document}
+\title{Reference Design for Mechanism-Level SHAP Audits in Predictive Maintenance}
+\author{\IEEEauthorblockN{Koshik Debanath, Prakrit Uprety, Vision Rijal, and Peiyu Li}
+\IEEEauthorblockA{Department of Computer Science, South Dakota State University, Brookings, SD, USA\\
+koshik.debanath@jacks.sdstate.edu, prakrit.uprety@jacks.sdstate.edu,\\
+vision.rijal@jacks.sdstate.edu, peiyu.li@sdstate.edu}}
+
+\hypersetup{pdftitle={Reference Design for Mechanism-Level SHAP Audits in Predictive Maintenance},
+ pdfauthor={Koshik Debanath, Prakrit Uprety, Vision Rijal, Peiyu Li},
+ pdfsubject={Reference sensitivity and finite-sample uncertainty in mechanism-level explanation audits},
+ pdfkeywords={SHAP, predictive maintenance, explanation evaluation, reference design}}
+\maketitle
+\begin{abstract}
+An attribution audit needs a reference that separates learning from agreement with a mechanism. We study this distinction using maintenance classifiers, known-function controls, and measured bearing signals. An analytic counterexample gives outside-set excess $S=0.475$ for a perfect OR predictor using genuine, overlapping mechanisms. We extend the analysis to 7,200 trained classifiers from three learning procedures, requiring mechanism-only controls to match the true decision and ignore context on all 16 input states. On fresh high-overlap batches, unmatched references warn on 22.5--28.5\% of these eligible controls. Oracle region-matched references reduce warnings to 4--7.5\% with 200 batches per reference, yet sharply reduce context localization for forests and logistic models. Thus improved warning control need not preserve shortcut sensitivity. On 36 Case Western Reserve University (CWRU) recordings, nested diagnosis macro F1 is 1.000 across held-out loads but 0.611 across held-out fault diameters; a 42-forest follow-up verifies feature invariance without robust diagnosis. Load-matched acquisitions provide too few batches for a finite 5\% calibration threshold. A raw-recording audit finds omitted secondary damage and copied acquisitions. Chronological evaluation does not improve tool-wear recall, and five-seed scaling separates replicated effects from uncertain reference tails. The contribution is a reference-design analysis with explicit conditioning targets. Oracle region metadata and finite-world guarantees do not certify correctness on new machinery.
+\end{abstract}
+\begin{IEEEkeywords}
+predictive maintenance, SHAP, explanation evaluation, mechanism overlap, calibration, shortcut learning
+\end{IEEEkeywords}
+
+\section{Introduction}
+\label{sec:intro}
+A maintenance alarm helps decide when to inspect equipment. An explanation should also help decide what to inspect. A classifier may predict failure accurately using an associated measurement that does not identify its failure mechanism. Shortcut learning makes this distinction consequential even when held-out predictive performance is high~\cite{geirhos2020shortcut,lapuschkin2019unmasking}.
+
+SHapley Additive exPlanations (SHAP) assigns contributions to model predictions~\cite{lundberg2017shap}. In maintenance, these contributions offer a way to examine which process variables influence an alarm~\cite{matzka2020explainable,vollert2021interpretable}. However, a plausible ranking does not establish agreement with a recorded failure mechanism. Shapley values depend on the definition of missing features and do not identify physical causes by themselves~\cite{janzing2020feature,kumar2020problems}.
+
+Mechanism-level evaluation adds a second dependence: the reference used to judge an attribution. A shuffled-label classifier controls for learning the outcome association. Random subsets of failures instead control for subgroup correspondence under a fixed predictive model. Neither supplies examples of how a mechanism-correct predictor should be explained. In addition, a measurement outside one mechanism's feature set may describe another genuine, overlapping mechanism. Treating every such contribution as a shortcut changes the scientific question without acknowledging it.
+
+We examine these problems on AI4I~2020, which records individual failure flags separately from its aggregate label~\cite{uci2020ai4i}, and extend the analysis in three directions. First, exact Shapley values and exhaustive checks on trained finite-state classifiers separate known functional dependence from an assumed mechanism match. Second, recorded Case Western Reserve University (CWRU) vibration measurements test a recording-preserving protocol and a deliberately constructed acquisition-gain confound. A Paderborn source audit additionally checks whether detailed damage labels and acquisition files justify independent references. Third, whole-cycle chronological evaluation and five-seed effect replication examine dependence and scale.
+
+We ask what distinguishes a learning control from a mechanism-correct reference (\textbf{Q1}), when dependence or representation changes warning decisions (\textbf{Q2}), and whether attribution changes coincide with test-time reliance (\textbf{Q3}). These require different evidence: more rows or a smaller shuffled-label probability cannot repair an inappropriate correctness reference.
+
+The contributions are:
+\begin{itemize}
+\item An analytic overlap counterexample: an exactly specified, perfect aggregate predictor has substantial outside-set excess without a shortcut.
+\item A reproducible separation of learning, feature-set correspondence, pooled learner calibration, per-fitted-function calibration, and held-out reliance. The learned-control study includes 7,200 fits and explicit transfer stress tests.
+\item Empirical tests on AI4I and measured vibration signals, with nested grouped evaluation, past-only temporal features, five-seed scaling, and finite-reference uncertainty. Negative and inconclusive outcomes remain part of the evidence.
+\end{itemize}
+
+\section{Related Work}
+\label{sec:related}
+\textit{Maintenance explanations.} Matzka~\cite{matzka2020explainable} studies explainable AI4I prediction; Vollert et al.~\cite{vollert2021interpretable} review maintenance explanations. Dhande et al.~\cite{causalbenchmark2026} model mechanisms causally, excluding random failures and assigning mechanisms to detected failures. We instead retain the released target and study diagnostic references.
+
+\textit{Attribution evaluation.} Synthetic benchmarks~\cite{liu2021synthetic} and OpenXAI~\cite{agarwal2022openxai} supply known-relevance settings. Our group-level absolute-attribution share parallels relevance mass accuracy~\cite{arras2022clevr}; Zhou et al.~\cite{zhou2022attribute} induce relevance through dataset changes. ROAR~\cite{hooker2019roar} and ROAD~\cite{rong2022road} assess removal-based reliance. These target complementary explanation properties, not the mechanism-reference choice tested here.
+
+\textit{Learning and shortcut controls.} Outcome permutation~\cite{altmann2010permutation} and sanity checks~\cite{adebayo2018sanity} motivate learning controls. Explanations can miss spurious reliance or suggest it incorrectly~\cite{adebayo2022spurious}. Our predefined interventions test reliance on a specified shortcut; predictive-but-misaligned controls separately test the diagnostic target.
+
+\textit{Dependence and calibration targets.} Missing-feature definitions~\cite{janzing2020feature,aas2021explaining} and model-versus-data fidelity~\cite{chen2020true} constrain interpretation. Exact TreeSHAP~\cite{lundberg2020treeshap} does not certify physical correctness. Our finite-world enumeration and standard conformal ranks~\cite{angelopoulos2023conformal} isolate reference effects; neither is a new attribution algorithm or calibration theorem.
+
+Alkhatib et al.~\cite{alkhatib2023approximating} calibrate explanation-score approximation intervals. Calibrated Explanations~\cite{lofstrom2024calibrated} combines probability calibration with uncertainty-aware feature rules; Alkhatib and Lowry~\cite{alkhatib2026sufficient} obtain prediction-sufficient regions without explanation ground truth. We instead target a batch-level mechanism-warning event, requiring an eligible alignment reference, without a superiority claim on those other targets.
+
+\section{Problem Setting and Audit Statistics}
+\label{sec:background}
+In the primary AI4I task, an observation contains inputs $x_i$, an aggregate outcome $y_i$, and mechanism flags $z_{i,m}$. Unless explicitly constructing a shortcut, its classifier receives inputs and aggregate training labels, with mechanism flags reserved for evaluation. Write $\mathcal I_m=\{i:z_{i,m}=1\}$ and $\mathcal F=\{i:y_i=1\}$. A prespecified set $E_m$ identifies features associated with mechanism $m$. Multiple mechanisms may occur together; $E_m$ need not exhaust all legitimate causes of the aggregate outcome. The oracle controls instead input their stipulated mechanism variables. CWRU supervises fault location and explains the corresponding class-probability output, with $\mathcal F$ containing all faulty recordings. These extensions test reference behavior and diagnostic shifts; they do not replicate learning hidden mechanisms from an aggregate label.
+
+For explained output $g$, SHAP satisfies $g(x)=\phi_0+\sum_j\phi_j(x)$. XGBoost explanations use its margin; random-forest explanations use class probabilities. We normalize within each output, without comparing absolute magnitudes between model families. Define
+\begin{align}
+ a_j(A)&=|A|^{-1}\sum_{i\in A}|\phi_j(x_i)|,\\
+ s_j(A)&=a_j(A)/\sum_k a_k(A),\quad r_m(A)=\sum_{j\in E_m}s_j(A).
+\end{align}
+These are ratios of group means, with nonzero denominator in the reported runs, not means of row-wise ratios. Absolute values discard direction. The three summaries are
+\begin{align}
+ R_m&=r_m(\mathcal I_m),\label{eq:share}\\
+ D_m&=r_m(\mathcal I_m)-r_m(\mathcal F\setminus\mathcal I_m),\label{eq:spec}\\
+ S_m&=\max_{j\notin E_m}\{s_j(\mathcal I_m)-s_j(\mathcal F\setminus\mathcal I_m)\}.\label{eq:shortcut}
+\end{align}
+$R$ measures expected-feature concentration, $D$ its specificity to the mechanism group, and $S$ the largest outside-set excess. A high $S$ motivates inspection of its maximizing feature. It is not, by definition, proof of a shortcut.
+
+\subsection{AI4I Mechanism Map}
+AI4I contains 10{,}000 simulated rows, five numerical measurements, product type L/M/H, and 339 aggregate failures. It records tool wear failure (TWF), heat dissipation failure (HDF), power failure (PWF), overstrain failure (OSF), and random failure (RNF). \Cref{tab:mechanisms} gives released counts and the historical audit map. RNF is descriptive because no process feature triggers it. Power, temperature difference, overstrain, and type-normalized overstrain ratio augment the raw inputs. These rule-derived features deliberately favor mechanism correspondence; agreement is not independent confirmation of the rules.
+
+\begin{table}[t]
+\centering
+\caption{AI4I mechanism rules and historical expected sets. Temperature difference is process minus air temperature. Power converts rpm to rad/s. Counts include overlapping flags.}
+\label{tab:mechanisms}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lL{2.8cm}L{2.7cm}r@{}}
+\toprule
+Mode & Rule & Expected features & $n$ \\
+\midrule
+TWF & Failure/replacement at 200--240 min wear & Wear & 46 \\
+HDF & Difference $<8.6$ K; speed $<1380$ rpm & Temperatures, difference, speed & 115 \\
+PWF & Power outside [3500,9000] W & Torque, speed, power & 95 \\
+OSF & Wear$\times$torque above type limit & Wear, torque, overstrain, ratio & 98 \\
+RNF & Random event & None & 19 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The released target is not exactly the OR of its flags: nine aggregate failures have no recorded mechanism, and 18 of 19 RNF flags occur outside aggregate failures. We retain the released target and report RNF descriptively. The OSF limits are 11{,}000/12{,}000/13{,}000 min$\cdot$Nm for L/M/H. Its historical set includes type through the ratio but omits the one-hot type inputs. Thus an outside-set feature may be relevant even before considering overlap. We retain the historical map for reproducibility and separately include type in a sensitivity analysis. A raw-feature variant removes all four derived inputs.
+
+\section{Reference Design}
+\label{sec:method}
+\begin{table*}[t]
+\centering
+\caption{Reference targets used in this study. A favorable comparison supports the stated claim only within its specified model, population, and evaluation protocol.}
+\label{tab:reference-targets}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}L{2.9cm}L{4.4cm}L{9.2cm}@{}}
+\toprule
+Design & What changes & Supported statement \\
+\midrule
+Outcome permutation & Aggregate labels and fitted classifier & Attribution differs from the specified reference without the learned label association. \\
+Feature-set/flag controls & Assigned map or subgroup; predictions fixed & This model exhibits correspondence to the specified feature set or selected subgroup. \\
+Aligned-function calibration & Independent calibration datasets; known function fixed & The dataset-level warning probability has a marginal rank bound under the stated exchangeability target. \\
+Context removal & Held-out context input; fitted model fixed & Prediction depends on that context under the specified test intervention. \\
+Grouped outer holdout & Held-out load or fault diameter & Performance generalizes across that grouping on the stated recording inventory. \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The reference must match the intended claim (\cref{tab:reference-targets}). We first distinguish learning and correspondence, then show why an aligned-function reference is needed even when prediction is perfect. Test interventions and grouped shifts supply separate evidence about reliance and generalization.
+
+\subsection{Learning and Correspondence References}
+Five original-label-stratified folds provide held-out explanations; each fits preprocessing and borderline synthetic minority oversampling (Borderline-SMOTE) on training rows only. Primary TreeSHAP is path-dependent. Interventional variants average over training backgrounds and break dependence between present and replaced features; neither formulation implements a physical intervention.
+
+A shuffled-label reference globally permutes aggregate labels and repeats the same procedure $K$ times, fixing original-label folds, groups, features, settings, and explainer. Resampling uses permuted training labels; model selection is not repeated. For an observed statistic $T$,
+\begin{equation}
+ p_T=\frac{1+\sum_{k=1}^K\mathbf 1\{T^{(k)}\geq T\}}{K+1}.
+\end{equation}
+Holm adjustment~\cite{holm1979simple} covers four mechanisms separately within each statistic. We call a mechanism reference-supported when adjusted $p_R,p_D<0.05$, and issue an outside-set warning when adjusted $p_S<0.05$. These are diagnostic conventions. Original-label folds, selected settings, and three separate families prevent an asserted end-to-end error guarantee; a guarantee for Holm requires valid component tests.
+
+Prediction-preserving references ask different questions. We enumerate equal-size feature sets disjoint from $E_m$ and compare their shares using unchanged attributions. We also permute the joint flag vector among failures 2{,}000 times, preserving overlap and counts. Marginally this equals a same-size failure-subset reference; retaining joint overlap does not eliminate subgroup-selection bias. A fixed shuffled-label classifier tests whether such subgroup comparisons distinguish learning at all.
+
+For representation-sensitive effects we report $R_m-\bar R_m^{\rm ref}$ and headroom lift
+\begin{equation}
+ L_m=(R_m-\bar R_m^{\rm ref})/(1-\bar R_m^{\rm ref}).
+\end{equation}
+Positive lift permits substantial outside-set attribution. Neither normalization nor a disjoint decoy validates the expected map.
+
+For $b$ exceedances in $K$ independent draws, exact binomial intervals quantify the limiting reference-tail probability. We use error probability $0.05/4$ per mechanism and propagate both endpoints through monotone Holm adjustment. A decision is Monte Carlo-sensitive when its adjusted interval crosses 0.05. These bounds cover reference sampling, not causal validity, selection, or all exploratory comparisons.
+
+\subsection{A Perfect-Predictor Overlap Counterexample}
+\label{sec:counterexample}
+\textbf{Proposition.} An outside-set excess score need not identify a shortcut, even for a perfect aggregate predictor with an exact mechanism feature map.
+
+For $p,q\in(0,1)$, let $Z_0=Z_1\sim\operatorname{Bernoulli}(p)$ and independently $Z_2\sim\operatorname{Bernoulli}(q)$. The known predictor and outcome are $f(Z)=Y=Z_0\lor Z_1\lor Z_2$, and $E_m=\{Z_m\}$. The flags describe genuine, overlapping inputs to the specified OR function. Compute interventional Shapley values with the joint input distribution as background, retaining dependence among absent coordinates. For mechanism 0, direct enumeration gives
+\begin{equation}
+ s_1(\mathcal I_0)=\frac{3}{6+4q},\qquad
+ s_1(\mathcal F\setminus\mathcal I_0)=\frac{p}{6-2p}.
+\end{equation}
+At $p=q=0.05$, their difference is 0.4754, which is $S_0$. The maximizing outside feature is another genuine mechanism, $Z_1$, rather than a nonphysical proxy.
+
+\textit{Proof.} On $Z_0=Z_1=1$, averaging absolute contributions over $Z_2$ gives $(1-p)(1-q)/2$ for each of the first two coordinates and $2q(1-p)(1-q)/3$ for the third. Other failures have $Z_0=Z_1=0,Z_2=1$: their first-coordinate magnitudes are $p(1-q)/6$, and the third is $(1-q)(3-2p)/3$. Normalizing yields the displayed shares. Exhaustive coalition enumeration and an analytic unit check reproduce them. An unused fourth coordinate contributes zero.\hfill$\square$
+
+This is a counterexample to interpreting $S$ as a shortcut-specific label, not a new causal-identification theorem. Its interventional coalitions include $Z_0\ne Z_1$ states, on which the OR function is explicitly defined; the result concerns that stated missing-feature semantics. A mechanism-specific set can be exact for its own input while omitting legitimate overlapping inputs to the aggregate function. Grouping mechanisms changes the question and requires an explicitly revised reference.
+
+\subsection{Known-Function Calibration Target}
+\label{sec:calibration}
+A correctness reference must define what is known correct. We use four Boolean inputs: three mechanism variables and context $C$ copying $Z_0$ with independent 0.01 bit-flip probability. The aligned oracle is $f=\operatorname{OR}(Z_0,Z_1,Z_2)$; a deliberately misaligned oracle is $g=\operatorname{OR}(C,Z_1,Z_2)$. Functional dependence is explicit, rather than inferred from training accuracy. Exact model-agnostic interventional Shapley values enumerate all 16 states, coalitions, and the empirical joint background. This favorable control does not certify a learned classifier.
+
+For each sample size, independent aligned datasets calibrate the maximum score $A=\max_m S_m$. With $B=200$ calibration scores, let $Q$ be order statistic $k=\lceil(B+1)(1-0.05)\rceil=191$. Warn only if a new score strictly exceeds $Q$. For well-defined, exchangeable scores from calibration and future datasets with the same aligned function, the rank argument gives
+\begin{equation}
+ \Pr(A_{\rm new}>Q)\leq\frac{B+1-k}{B+1}=\frac{10}{201}<0.05.
+\end{equation}
+This is the standard split-conformal guarantee~\cite{angelopoulos2023conformal}, applied to a dataset-level maximum. It covers any mechanism warning marginally over calibration and evaluation datasets. It is not conditional validity for a realized calibration set, a validation of shuffled-label $p$ values, or a transfer guarantee for AI4I/CWRU. Its premise requires known-aligned reference functions and an exchangeable target population, which are generally unavailable for real machinery.
+
+The calibrated unit also matters for learned predictors. Pooling independent learner/audit pairs makes the rank bound marginal over training randomness. Holding one eligible fitted function fixed while drawing calibration batches instead makes the bound conditional on that function, but still marginal over calibration and future audit data. Neither statement conditions on a realized calibration set. Changing the fitted-function family or operating population requires checking the exchangeability premise again.
+
+\section{Experimental Setup}
+\label{sec:setup}
+\subsection{AI4I Fits and Review Controls}
+The historical benchmark uses stratified seed-42 splits of 7{,}000/2{,}000/1{,}000 training/validation/test rows. Training-fitted scaling and type encoding precede resampling. Validation selects Borderline-SMOTE~\cite{han2005borderline} over SMOTE~\cite{chawla2002smote} and adaptive synthetic sampling~\cite{he2008adasyn}, then XGBoost~\cite{chen2016xgboost}. A 40-configuration discrete search selects 200 trees, depth 8, learning rate 0.1, row/column fractions 0.8, minimum child weight 1, and $\gamma=0$; validation selects threshold 0.977884. Scaling precedes the inner search and historical cross-validation reuses settings, so it is non-nested. The code retains complete grids and artifacts.
+
+The primary, raw-feature, and in-sample audits use $K=1{,}000$; historical seeds 1--4 and model/explainer variants use $K=200$. The second model is a 300-tree forest with depth 12. Interventional TreeSHAP uses training backgrounds of 100/500/1{,}000 rows; stored maximum additivity error is $4.72\times10^{-6}$. Model/fold, generation, label-permutation, and background streams are separately recorded.
+
+A leakage control adds $z_{\mathrm{HDF}}+\mathcal N(0,\sigma^2)$ outside every expected set. Eleven noise levels 2.0--0.1 use $K=500$, shared standardized noise, and refitted models/validation thresholds. Independent test-context permutation then holds model and threshold fixed. We additionally fit 100 independent label controls against an archived 1{,}000-draw reference, and ten generated datasets (seeds 10--19), each uninjected and with $\sigma=0.25$, each with a fresh 200-draw reference. Added protocols follow historical inspection and are internal plans, not external preregistrations.
+
+\subsection{Known-Function Sampling}
+For each dataset, a latent regime has probability drawn uniformly from [0.1,0.4]. Conditional mechanism probabilities are independently uniform on [0.01,0.04] in regime 0 and [0.10,0.30] in regime 1. An initial weak-dependence control gives zero aligned maximum scores throughout; we retain this degenerate sanity result. A separately planned follow-up introduces overlap: draw $u\sim U(0,1)$, then set $Z_1=1$ on each $Z_0$-positive row with probability $u$. This tests known-correct functions with genuine outside-set co-occurrence.
+
+At each $n\in\{1{,}000,10{,}000,30{,}000\}$, 200 calibration datasets (seeds 100{,}000--100{,}199) and 200 fresh evaluation datasets (200{,}000--200{,}199) use independent streams. Both functions are evaluated on each evaluation dataset. We report the predeclared fixed rule $\max S>0.05$, the separately calibrated rule, and exact binomial frequency intervals. Independently permuting context at evaluation measures predictive reliance of $g$. The overlap follow-up was planned after the degenerate result, before its own outcomes; it is labelled accordingly rather than retroactively presented as the initial plan.
+
+\subsection{Learned Controls and Calibration Transfer}
+We train decision trees (depth equal to input count, minimum leaf 5), random forests (64 trees, the same depth/leaf rule, square-root feature sampling), and logistic regression ($C=1$, L-BFGS, at most 1{,}000 iterations). Each fit uses 512 examples with uniform Boolean mechanism inputs and independently flipped training labels at rate 0.05. Audit labels remain the true OR outcome. Context copies $Z_0$ with 0.01 flips. Each procedure fits three views of the same data: mechanism-only $(Z_0,Z_1,Z_2)$, proxy replacement $(C,Z_1,Z_2)$, and unrestricted $(Z_0,Z_1,Z_2,C)$. Parameters and probability threshold 0.5 are fixed.
+
+A mechanism-only control is eligible only if its thresholded decision equals the true outcome on all 16 states and its maximum context probability difference is at most $10^{-12}$. Restriction establishes context invariance structurally; enumeration checks both properties. This contract does not certify exact Bayes probabilities. The audit population has full Boolean input support. We retain every gate failure without replacement. At each audit size 1{,}000/10{,}000, each procedure has 200 independent calibration pairs and 200 evaluation pairs (seeds 310{,}000--310{,}199 and 410{,}000--410{,}199), giving 7{,}200 fitted functions across the three views. Training and audit streams are separate; algorithms share each case's data for paired descriptions.
+
+Pooled calibration uses eligible mechanism-only pairs within each learner/size stratum. A separately planned follow-up holds each eligible evaluation function fixed and samples 200 fresh calibration batches, represented by multinomial counts from the same 16-state law. In each regime this law replaces $p_1$ by $p_1+(1-p_1)uZ_0$ after overlap; context probability is $0.01+0.98Z_0$. Combining signed Shapley values linearly in the background distribution before taking absolute values gives exact batched scores. We save all count vectors and use rank 191 without tuning. Alternatives reuse their paired mechanism-only function's threshold.
+
+Transfer tests apply the older OR-oracle threshold and the decision-tree threshold to other learners without recalibration. A paired overlap intervention changes $u$ to $0.8+0.2u$, retaining base draws, nested uniforms, and context noise: only additional $Z_1$ flags on already $Z_0$-positive rows change, so aggregate outcomes stay fixed. No model or threshold is refitted. For alternatives, material context dependence means $\max_Z|g(Z,1)-g(Z,0)|\geq0.05$. Correct localization requires an above-threshold $S_m$ with context as its maximizing outside feature. We distinguish this from any warning and report its material-effect denominator explicitly.
+
+An oracle-region follow-up tests whether matching the operating population repairs warnings. A preliminary bank-filtered reference leaves only 23--61 high-region batches; we retain it as a smaller-budget sensitivity. The primary confirmation instead draws a fresh 200-batch uniform-overlap bank, a separate 200-batch high-overlap bank, and one fresh high-overlap test for each fixed function. High means $u\geq0.8$, with $u$ sampled uniformly on [0.8,1] in the targeted bank and test. Both compared thresholds use rank 191. They share the same test and alternative functions. Conditional exchangeability now holds for the matched reference given the fitted function and oracle high-region label. This assumes region-targeted sampling and known metadata; it is not a field estimator or a claim of equal data-acquisition cost.
+
+\subsection{Measured Bearing Studies}
+\label{sec:cwru-setup}
+CWRU~\cite{cwru2026} provides 36 official 12-kHz drive-end recordings: inner-race/ball/outer-race (IR/B/OR) faults, outer race at 6 o'clock, diameters 0.007/0.014/0.021 inches, and loads 0--3 HP. Hashes, channels, RPM, and labels are retained. The task is fault-location diagnosis, not future failure prediction; unknown physical identities preclude a held-out-bearing claim.
+
+Each recording supplies its first 24 nonoverlapping 4096-sample windows. Nineteen features comprise relative spectral power around the first two harmonics of each location's documented shaft-order multiplier (5.4152 inner, 4.7135 ball, 3.5848 outer), measured in both raw acceleration and its 2--5-kHz bandpass Hilbert envelope; log root mean square (RMS), kurtosis, crest factor; and four broadband relative powers. Harmonic bands have half-width 0.15 orders, converted using recorded RPM. The four corresponding harmonic features form $E_m$. These are justified spectral anchors, not exhaustive causal relevance: sidebands and propagation can legitimately support other features.
+
+Outer folds hold out each load. Inner leave-one-load-out selection chooses forest depth 3, 6, or unrestricted, using recording macro F1 and favoring shallower ties. Forests use 100 trees, minimum leaf 3, balanced classes, and seed 2026. Whole recordings stay together; each supplies equal windows. Class-specific TreeSHAP explains each location's probability consistently on own and other recordings. Attribution is averaged within recordings before giving recordings equal weight.
+
+A constructed acquisition confound multiplies inner/ball/outer acceleration by 0.25/1/4 in training and matched evaluation. Positive gain changes only log RMS; adding log gain implements the transformation, with signal-level invariance checked on all recordings. Test-time gain removal holds models fixed. This is a label-assigned artifact, not unknown-shortcut discovery. A 10{,}000-draw paired recording bootstrap describes the fixed inventory, not independent bearings.
+
+A follow-up planned before its own fits compares all 19 inputs, 12 harmonic anchors, seven broad features, and log RMS alone, under original/gain-correlated training. It also holds out diameter with nested remaining-diameter selection. All 16 conditions reuse this inventory; no view is selected on outer performance. Original load results and harmonic gain invariance must reproduce.
+
+A separately specified measured-alignment study trains 42 binary one-versus-rest forests: each location, both grouping axes, and either all inputs or its four own anchors. It reuses the estimator and nested group selection, now scoring recording binary F1 at threshold 0.5. Every tree's splitting features are inspected. Held-out gain factors 0.25/4 and joint replacement of own anchors by training medians test functional reliance without refitting; median masking is not a physical repair. A separate parser verifies each manifest entry against its official table row and checks recorded versus approximate RPM. Models, predictions, and every intervention are retained.
+
+A separate Paderborn audit~\cite{lessmeier2016benchmark} inspects 160 captures from training bearings KA04/KI04 across four conditions. Two Zenodo archives~\cite{vandenhoogen2025paderborn} match their mirror MD5 values; inaccessible university originals are not byte-authenticated. Profiles, logs, native metadata, all seven sensor channels, and time axes are checked. No model is fitted or protected signal opened. A fixed Hilbert-envelope/Hann spectrum uses a 2--10-kHz bandpass and three bearing-specific ball-pass harmonics: peaks within $\pm0.15h$ shaft orders are compared with median power in $0.30h$--$0.60h$ flanks for harmonic $h$. Two of three must exceed 3 dB. Nominal-64-kHz and timestamp-interpolated variants retain nominal RPM because native unit fields are empty.
+
+\subsection{Chronological and Scale Extensions}
+Wear decreases define whole reset groups. The first 60\% train, next 20\% select a threshold, and final 20\% test. Within training, three expanding chronological folds select depth 3/6/8; other XGBoost settings remain fixed. We compare current inputs with previous wear, torque, temperature difference, samples since reset, and mean of up to five past torques. Missing history uses current measurements or zero previous wear; no future reset or label is read. We evaluate the released sequence and ten generated 30{,}000-row sequences (seeds 20--29), using 3{,}000 paired cycle-bootstrap draws. Released resets are provisional groups, not documented physical IDs or timestamps.
+
+The approximate generator retains published failure thresholds but replaces temperature walks with iid marginals and a release-fitted inverse-speed relation. Types have probabilities 0.6/0.3/0.1; wear increments by 2/3/5 minutes for a uniform 200--240-minute life, with failure probability 0.4 before reset and random-failure probability 0.001. Complete distribution parameters are fixed in the released simulator. This generator is a scaling stress test, not an independent physical system.
+
+A separate descriptive rerun uses sizes 10{,}000/30{,}000/100{,}000/300{,}000, generation seeds 0--4, and one fixed model/fold seed 42, both without injection and with $\sigma=0.25$ (40 fits-and-audits). Within each held-out fold, independently permuting the shortcut tests reliance at fixed threshold 0.5. These runs replicate effects without reference-tail claims. Historical scale audits use $K=200$ and only one 300{,}000-row seed. Incomplete higher-resolution reference extensions are excluded from manuscript results.
+
+\section{Results and Discussion}
+\label{sec:results}
+\subsection{Learning, Correspondence, and Recall}
+The historical tuned predictor reaches test F1 0.89 (fixed-prediction 95\% interval 0.79--0.95), with 27 true positives, no false positives, and seven misses. Its validation-selected threshold differs from other benchmark rows; predictive superiority is not the contribution. \Cref{tab:audit} shows HDF/PWF/OSF enrichment above every shuffled-label draw on $R,D$, while TWF meets neither criterion. Raw-feature HDF lacks relevant-share support ($p_R=0.190$), showing that rule-derived representation matters.
+
+\begin{table*}[t]
+\centering
+\caption{Historical primary audit: five-fold held-out XGBoost explanations, seed 42, $K=1{,}000$. Ref.: shuffled-label means. Holm adjustment is separate for each statistic across four mechanisms. A cross marks unsupported $R$ or $D$. RNF has no mechanism-correctness test.}
+\label{tab:audit}
+\footnotesize
+\input{tables/audit_physical}
+\end{table*}
+
+TWF wear share is 0.193 versus reference mean 0.152 ($p_R=0.201$), with $D=0.129$ versus 0.070 ($p_D=0.077$). Nevertheless, its expected set outranks all equal-size disjoint decoys, and within-failure flag permutations support all four mechanisms on $R,D$ (adjusted $p=0.002$). The same-model subgroup reference also supports every mechanism for the shuffled-label classifier. Thus correspondence to a subgroup/map does not establish learning, much less correctness.
+
+Cross-fitted recalls at threshold 0.5 are 3/46 TWF, 113/115 HDF, 90/95 PWF, and 98/98 OSF. TWF's largest single attribution and decoy ranking coexist with poor detection. Its stochastic failure/replacement process also limits predictability, so poor recall is not proof of a wrong feature ranking. Headroom lifts are 0.049/0.347/0.534/0.499 for TWF/HDF/PWF/OSF; raw mass depends on expected-set size and reference baseline.
+
+TWF conclusions change with representations and comparison groups. Grouping wear, overstrain, and its ratio increases $R$ to 0.346 but reduces historical-cohort $D$ to 0.061. Excluding OSF removes 95 comparison rows and increases grouped $D$ to 0.221. Strictly single-flag cohorts on both sides give $D=0.138$. Changed statistics do not inherit old $p$ values. Including type in the OSF map changes $R$ from 0.672 to 0.687 and $D$ from 0.424 to 0.415; a larger set also leaves too few disjoint features for equal-size decoys.
+
+In-sample TWF explanations raise $R$ to 0.35 with support. Interventional TreeSHAP gives $R=0.45$--0.47 with support across backgrounds; a second forest gives 0.13 without support. Correlation with overstrain transforms is weaker within TWF than globally, so it does not isolate the cause. Model, explainer, cohort, and representation remain distinct sensitivities.
+
+\subsection{Known-Function References Change Warning Meaning}
+\Cref{sec:counterexample} establishes a failure without learning error or reference sampling. In the overlapping-oracle study, the fixed $S>0.05$ rule warns on 43/200, 49/200, and 26/200 perfectly aligned datasets at increasing sizes. Separate calibration reduces these to 14/200, 11/200, and 4/200; every exact interval includes 5\%. All 200 proxy replacements per size warn. Their mean F1 is 0.974--0.976, falling to 0.770--0.780 after context permutation. The initial weak-dependence control remains a degenerate sanity result with zero aligned scores, rather than broad calibration evidence.
+
+\subsection{Learned References and Transfer}
+All 2{,}400 mechanism-only controls pass the exhaustive decision/invariance gate. Each learner/size stratum has 400 distinct fitted probability tables: these are estimated functions under label noise, rather than copies of the hard OR output. Pooled calibration gives 2.5--7.5\% evaluation warnings. Per-fitted-function calibration uses 240{,}000 count-represented batches across 1{,}200 evaluation functions and gives 4.5--6.5\% warnings; all six archived intervals include 5\%. These are realized frequencies with different conditioning targets, not conditional validity for the realized calibration samples.
+
+\begin{table*}[t]
+\centering
+\caption{Reference controls and fresh equal-count high-region tests. Base is the earlier matched-population warning count. High columns use the same fresh tests, with 200 references from all overlap values or the oracle high region; intervals are for the region-matched warning rate. Each warning denominator is 200 eligible fits. Full $C$ reports context-localizing warnings with all-region and high-region references, respectively, among materially context-dependent unrestricted fits.}
+\label{tab:learned-calibration}
+\footnotesize
+\input{tables/learned_calibration}
+\end{table*}
+
+Increased overlap raises fixed-fit warnings to 22--25.5\% without changing functions, aggregate outcomes, or correct decisions. Unlike the limiting counterexample, this needs neither exact mechanism equality nor zero-support inputs. Function-family transfer also fails: the hard-OR threshold warns on 18/200 and 15/200 eligible logistic fits, versus 13/200 and 5/200 under that learner's pooled reference. These contrasts establish reference sensitivity, not universally superior calibration.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.97\textwidth]{learned_calibration.pdf}
+\caption{Fresh high-overlap tests with equal effective reference count (200 batches per threshold). Both panels share reference choices and test data. (a) Oracle high-region matching reduces warnings on eligible fits. (b) Correct context localization in materially context-dependent unrestricted fits can fall sharply; denominators appear in \cref{tab:learned-calibration}. Intervals are exact-binomial 95\% intervals across independent evaluation functions. Region labels are simulator knowledge.}
+\label{fig:learned-calibration}
+\end{figure*}
+
+The fresh equal-count confirmation gives 22.5--28.5\% eligible-fit warnings with unmatched references versus 4--7.5\% with oracle region matching (\cref{tab:learned-calibration,fig:learned-calibration}). All six matched intervals include 5\%; they do not imply conditional validity for a realized bank. Matching suppresses localization: forest counts fall from 133/200 to 48/200 at 1k rows and 136/200 to 62/200 at 10k; logistic counts fall from 75/199 to 6/199 and 75/195 to 17/195. Tree localization is unchanged. Predictions are identical across references, and context permutation still lowers F1. Equal reference count therefore does not remove the effect; this is not an impossibility theorem.
+
+All proxy-only controls localize context. Unrestricted learners reach only 62.2--85.5\% localization among materially context-dependent fits. Across all unrestricted fits, mean F1 is 0.981--0.995 before context permutation and 0.875--0.951 afterward. This intervention and exhaustive probability-dependence check establish functional reliance even when localization fails.
+
+\subsection{Measured Signals and Acquisition Gain}
+CWRU original and gain-correlated models both classify all 36 recordings correctly in nested load-held-out evaluation. Removing gain from evaluation changes two recording predictions and reduces macro F1 from 1.000 to 0.944. The paired inventory-bootstrap interval for the F1 drop is 0--0.145, so this experiment does not establish a population-level degradation. It supplies a realistic type of constructed confound and a direct fixed-model shift test, with a limited effect in this inventory.
+
+\begin{table}[t]
+\centering
+\caption{Measured alignment controls: pooled recording binary F1 for full and own-anchor heads; Mask replaces own anchors by training medians in restricted heads. $\Delta_g$ is the maximum full-head window-probability change under gain 0.25/4; it is zero for every restricted head. Rows share recordings.}
+\label{tab:industrial-alignment}
+\footnotesize
+\setlength{\tabcolsep}{2pt}
+\input{tables/industrial_alignment}
+\end{table}
+
+Gain changes outer-race log-RMS share from 0.081 to 0.271 and anchor share from 0.447 to 0.368. Ball anchor share is only 0.136 despite perfect diagnosis. Because these anchors are partial, low share does not establish an explanation error. The known gain is also not always the maximizing outside feature; classification accuracy neither validates the map nor guarantees shortcut discovery.
+
+\begin{table*}[t]
+\centering
+\caption{CWRU diagnostic follow-up: all axis/view results, with nested selection inside each outer training split. F1 is recording macro F1 over the same 36-recording inventory. Original uses unmodified signals; Gain uses matched gain-correlated signals; Gain removed evaluates those fixed models without gain. Counts refer to the last column's predictions. These descriptive results are dependent across rows and do not imply population-level significance.}
+\label{tab:cwru-followup}
+\footnotesize
+\input{tables/cwru_followup}
+\end{table*}
+
+Full-feature original-signal macro F1 falls from 1.000 across held-out loads to 0.611 across diameters (\cref{tab:cwru-followup}); harmonic-only F1 is 0.656 and broad-only 0.133. Load separation therefore does not establish defect-size robustness; random windows would also allow shared recordings.
+
+Harmonic-only predictions are gain-invariant. Held-out-load broad-feature F1 falls from 1.000 to 0.679 after gain removal; RMS-only falls from 0.886 to 0.440, versus 0.972 without injected gain. These different fits do not replace the full model's smaller effect. Its two changed predictions are outer-race 0.014-inch faults at 0 and 3 HP, reassigned to ball. All 16 conditions are reported.
+
+Structural support differs from diagnostic correctness (\cref{tab:industrial-alignment}). All 21 restricted heads exclude outside coordinates across 2,100 trees and are gain-invariant, yet diameter-held-out binary F1 is 0.611/0.800/0.500 for ball/inner/outer faults. All 21 full heads split outside their own anchors; this is not necessarily spurious. Anchor masking reduces restricted F1 but is off-manifold functional reliance, not physical validation.
+
+All 36 official metadata entries agree; measured versus approximate RPM differs by at most 9. An all-location $S$ batch at one load/diameter permits only three non-overlapping batches per load. A reserved test leaves at most two matched calibration batches, or eleven pooled, before training consumes records. Neither reaches the 19 needed for a finite 5\% rank threshold. Honest sparse-reference action is abstention; these optimistic inventory counts do not verify independent bearings or exchangeable severities.
+
+\subsection{Recorded Labels and Acquisition Units}
+The two-bearing Paderborn audit exposes failures before reference calibration. KI04's detailed profile records inner-ring pitting and outer-ring indentations, although its summary component is IR. It therefore cannot serve as a pure-IR control; an outer-ring contribution need not be spurious. Bearing-specific pitch diameters are 28.55 mm for KA04 and 29.05 mm for KI04, so an example geometry is not an exact common anchor.
+
+KA04 contains 76 distinct numerical payloads in 80 filenames; KI04 contains 80. Three duplicate groups match every sensor and time array, giving 156 distinct payloads from two bearings. KA04's log documents replacing capture 17 by a copy of 18 in the 900-rpm condition. Additional copies are observed in this mirror, without a claim about inaccessible original bytes. Distinct payloads or dates do not establish independent acquisitions. The spectral screen passes both IR and OR candidates in all 160 captures under both timing variants; it is nonspecific, not an alignment certificate. Summary labels, harmonic peaks, and file counts therefore cannot independently justify a physical-alignment reference or a new-bearing warning guarantee.
+
+\subsection{Chronological Wear-Cycle Evaluation}
+\begin{table}[t]
+\centering
+\caption{Nested chronological evaluation. TWF columns count detected/total flagged test rows. Generated F1 averages ten seeds; pooled counts are descriptive, not independent-row intervals. Paired cycle-bootstrap intervals are saved per sequence.}
+\label{tab:temporal}
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\input{tables/temporal}
+\end{table}
+
+The released-order test detects 1/9 TWF events under either representation; past context reduces F1 from 0.844 to 0.812. Across ten generated seeds, mean F1 changes by +0.0074, but TWF detections decrease from 44/298 to 42/298 (\cref{tab:temporal}); eight paired cycle-bootstrap intervals include zero. Lag features do not resolve wear detection here. Grouped nested evaluation addresses leakage and tuning, not deployment validity: generated temperature is iid, and released rows lack physical tool IDs or timestamps.
+
+\subsection{Shortcut Reliance and Sample Size}
+On the release, decreasing proxy noise moves attribution from HDF inputs to the injected sensor. At $\sigma=0.35$, sensor share is 12.6\% with relevant-share support; at 0.30 it is 20.9\% without support but no significant $S$ warning. At 0.25, sensor share is 35.0\% and $p_S=0.008$. A fixed-model test permutation changes F1 from \ShortcutOriginalFone{} to \ShortcutShiftedFone{} and HDF recall from 8/12 to 2/12. Loss of $R$ support is not a positive shortcut detection; test-time intervention supplies separate reliance evidence.
+
+
+
+\begin{table}[t]
+\centering
+\caption{Controlled five-seed effect replication with sigma-0.25 injection and fixed model/fold seed 42. Columns average held-out quantities across generation seeds. Shift F1 independently permutes the proxy within held-out folds, without refitting. No new $p$ values are inferred.}
+\label{tab:effect-replication}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\input{tables/effect_replication}
+\end{table}
+
+\Cref{tab:effect-replication} reports 40 observed audits, with uninjected counterparts, five generation seeds per size, and fixed selected settings. No new reference-tail claims follow from these effects. Mean injected HDF expected share rises from 0.304 at 10{,}000 rows to 0.487 at 300{,}000, while proxy share remains 0.246 (seed range 0.216--0.274). Every largest-size ensemble loses F1 after held-out proxy permutation; the mean changes from 0.784 to 0.688. Matched F1 also declines with size under the reused settings and fixed threshold. Recovery of expected-feature mass therefore coexists with proxy reliance, without establishing an optimally retuned learning curve.
+
+In the historical single-seed 300{,}000-row case, 27.1\% sensor share coexists with supported $R_{\rm HDF}=0.472$. Its HDF warning has adjusted $p_S=0.0398$ from one exceedance in 200 draws; TWF also warns at $p_S=0.0448$, with process temperature excess 0.0263. Both are Monte Carlo-sensitive. Historical uninjected runs include three TWF process-temperature warnings, and TWF specificity crosses 0.05 in several settings. Absence of an injection does not certify an ordinary fitted model, so these remain uninjected warnings, not established false positives.
+
+\subsection{Repeated Controls and Monte Carlo Resolution}
+Across 100 independent permuted-label fits against one archived reference, any-mechanism joint $R,D$ support and any $S$ warning each occur 6/100 times (exact 95\% interval 0.022--0.126); mechanism warning counts are 1/2/4/0 for TWF/HDF/PWF/OSF. This conditions on one dataset/reference, not mechanism correctness. Ten new paired generated datasets give zero uninjected $S$ warnings and 8/10 injected HDF warnings (0.444--0.975); nine HDF decisions have Monte Carlo bounds crossing 0.05. Neither small sample establishes an operational rate.
+
+The primary HDF/PWF/OSF $R,D$ decisions survive simultaneous Monte Carlo upper bounds of 0.0202. Raw-feature OSF specificity does not: point estimate 0.048 has bounds 0.0257--0.0754. Four tied zero-exceedance tests at $K=200$ have adjusted point value 0.0199 but simultaneous upper bound about 0.100. More observed rows cannot resolve either this computational uncertainty or an inappropriate mechanism reference. A full audit costs $5(K+1)$ fits and explanations; saved single-core times for one cross-fitted procedure are 1.29/30.53/115.35 seconds at 10{,}000/300{,}000/one million rows. Parallel reference fitting remains substantial; the million-row case is timing only.
+
+\section{Limitations and Reproducibility}
+The finite-world gate certifies true class decisions and context invariance, not exact probabilities or industrial causal correctness. Pooled validity averages over training; fixed-fit validity conditions on the function but averages over calibration and future draws. Overlap shift breaks exchangeability; oracle region matching requires population information unavailable in our measured studies. Both references require a defensible alignment standard. Missing mechanism groups or zero attribution require abstention; the rank bound presumes well-defined scores. The material-effect criterion is maximum probability change, not mean deployment loss.
+
+CWRU is one seeded-fault rig with unknown bearing identities and partial spectral anchors. The full-model gain effect changes two predictions and its interval includes zero. Paderborn evidence covers only two training-bearing mirror archives, not an independent-bearing benchmark or authenticated original-host inventory. Neither establishes exhaustive physical alignment. Chronological groups address selected dependence concerns, but simulator temperature is iid and row order is not deployment time. Cycle-bootstrap intervals condition on fitted models and omit model-selection uncertainty.
+
+Historical label references condition on data-selected settings and original-label folds; adjustment is within each statistic, not the entire study. Mechanism maps, deterministic transforms, oversampling, and missing-feature definitions alter interpretation. Weak shortcuts remain undetected; attribution magnitudes also discard direction and cannot guarantee individual explanations. Further validation needs new physical systems with independently justified mechanism maps and acquisition groups, plus validated calibration references for industrial learned predictors. Higher-resolution large-scale reference runs must complete before any precision or multi-seed tail claim.
+
+The repository supplies source hashes, pinned requirements, settings, result JSONs, protocols, tests, and assets. Numbered stages disclose follow-up timing and preserve historical results. The runner checks raw payloads, saved models, and manuscript bindings; incomplete studies are rejected. Optional runs retain checkpoints.
+
+\section{Conclusion}
+A learning reference is not a correctness reference. Exact explanations of perfect predictors can have large outside-set scores; learned-control calibration fails under mechanism-overlap shift, while oracle matching can suppress localization. Measured audits expose incomplete component maps, copied acquisitions, and scarce calibration units. These findings bound mechanism-level warnings by their reference, representation, and sampling assumptions.
+
+\section*{Acknowledgment}
+AI systems assisted manuscript and analysis-code drafting: Claude (Anthropic) in earlier work and Codex (OpenAI) in this revision. Code, saved outputs, and manuscript sources are available at \url{https://github.com/kowshik24/glowing-broccoli}.
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+\end{document}

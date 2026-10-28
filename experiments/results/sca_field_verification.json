@@ -1,0 +1,15 @@
+{
+  "verified": true,
+  "native_measurements": 6644,
+  "retained": 6446,
+  "files": 22,
+  "cases": 11,
+  "independent_sessions_verified": false,
+  "physical_alignment_verified": false,
+  "sha256": {
+    "experiments/results/sca_field.json": "ec755e11d443823ea453a4aaccde2e7db4d1ee009fb6e096d60d0b52ad95d098",
+    "experiments/results/sca_field_arrays.npz": "26d79070a6802fcefdbcd1260ed8921df6359cc4308d328591e8567a67dc506a",
+    "experiments/results/sca_features.csv": "b5246bd07347ba64c69549e19243205094adba9ff5f227f64b054b4438be39cc",
+    "experiments/56_verify_sca_field.py": "249fb970d58b5624c6023494f49be4141dcad60e854ebbce1fd5a57188ded738"
+  }
+}

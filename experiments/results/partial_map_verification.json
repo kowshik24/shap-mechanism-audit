@@ -1,0 +1,13 @@
+{
+  "verified": true,
+  "identified_ranges": 715,
+  "exact_map_completions_enumerated": 2002176,
+  "rank_event_permutations": 120,
+  "scope": "Identification arithmetic and conservative event inclusion; no field acquisition/causal certificate",
+  "sha256": {
+    "experiments/71_verify_partial_map.py": "18c49d0f2c5a2ce87cc8b781530874548154723d8882bffa78354c2d6ef11fed",
+    "experiments/results/partial_map.json": "f3dbc1f170a48778d038a78c71fef156475d48500f7cd83cce29df1a9952d1aa",
+    "experiments/results/partial_map_draws.npz": "49f5e8264f0d7edb0aa537f78670db3eabcb98b67b84b56af4495fe6a3ec159a",
+    "experiments/results/partial_map_ranges.csv": "c311c43d3c07b834d3cb0d676eff1677b74cba574aae20dddf9f361eeeb21839"
+  }
+}

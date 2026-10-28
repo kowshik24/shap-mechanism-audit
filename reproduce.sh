@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Reproduce every number, table and figure in the paper from the raw dataset.
-#   ./reproduce.sh          full run (about 45 minutes on 8 cores)
-#   ./reproduce.sh --quick  smoke test of the audit stages with tiny K (a few minutes)
+# Recompute scientific results, tables, and figures; measured runtimes vary by run.
+#   ./reproduce.sh          full run (several hours; scaling alone can take about 7 h)
+#   ./reproduce.sh --quick  reduced audit counts; benchmark still runs in full
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -14,16 +14,21 @@ python experiments/03_shortcut_sweep.py "$@"
 python experiments/06_explainers.py "$@"
 python experiments/07_scale.py "$@"
 python experiments/08_compare.py "$@"
+python experiments/09_review_validation.py "$@"
 
 if [[ "${1:-}" != "--quick" ]]; then
   python experiments/04_tables.py
   python experiments/05_figures.py
-  (cd paper/ieee_bigdata && pdflatex -interaction=nonstopmode main.tex >/dev/null \
-     && bibtex main >/dev/null && pdflatex -interaction=nonstopmode main.tex >/dev/null \
-     && pdflatex -interaction=nonstopmode main.tex >/dev/null)
-  python paper/sync_arxiv.py
-  (cd paper && pdflatex -interaction=nonstopmode main.tex >/dev/null \
-     && bibtex main >/dev/null && pdflatex -interaction=nonstopmode main.tex >/dev/null \
-     && pdflatex -interaction=nonstopmode main.tex >/dev/null)
-  echo "paper: paper/ieee_bigdata/main.pdf (IEEE), paper/main.pdf (single-column preprint)"
+  python - <<'PY'
+from pathlib import Path
+import shutil
+target = Path('IEEE-conference-template-062824')
+for source in Path('paper/ieee_bigdata/tables').glob('*.tex'):
+    shutil.copy2(source, target / 'tables' / source.name)
+for name in ['audit_overview.pdf', 'shap_crosscheck_heatmap.pdf']:
+    shutil.copy2(Path('paper/figures') / name, target / 'figures' / name)
+PY
+  python experiments/10_review_assets.py
+  bash reproduce_scientific.sh
+  echo "Revised paper: IEEE-conference-template-062824/IEEE-conference-template-062824.pdf"
 fi

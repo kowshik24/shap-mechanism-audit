@@ -1,0 +1,17 @@
+{
+  "verified": true,
+  "source_acquisitions": 57,
+  "source_replays_passed": 32,
+  "measurement_rows": 27749,
+  "assessed_pairs": 627,
+  "endpoints": 1254,
+  "empirically_supported_pairs": 70,
+  "scope": "Offline reconstruction verifies evidence and failures; no new-machine or exhaustive causal-truth certificate",
+  "sha256": {
+    "experiments/68_verify_chamber.py": "69416c3680565ba5bf472492bb42c07a48bd6a60baebab3d478a477f01ead738",
+    "experiments/results/chamber_sources.json": "a32d1a1c259e303bc0660d4e721332796d5b2999e70490e7dd6197eb2dd44e42",
+    "experiments/results/chamber_physical_map.json": "262caff47a360277bbd865286e7fc7636f9cfcd46c1b9adf9437c7ec24cf5dec",
+    "experiments/results/chamber_acquisitions.json": "ea4e6064a61f055b0b3e4f3baf5d311a24aa3dd6f59b221ec6dd8e32716974a5",
+    "experiments/results/chamber_physical_map.csv": "19886875494a10d81e1834690952138819fe4aa75c16875a3648344e26e35246"
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "files": [
+    {
+      "id": 26003087,
+      "name": "TEP_Mode1.h5",
+      "size": 23924710848,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/26003087",
+      "supplied_md5": "c79ecc6d12a5ccb49caffcd8f531feae",
+      "computed_md5": "c79ecc6d12a5ccb49caffcd8f531feae",
+      "mimetype": "undefined"
+    },
+    {
+      "id": 26003162,
+      "name": "TEP_Mode2.h5",
+      "size": 23897125720,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/26003162",
+      "supplied_md5": "72ee75fdf6da8e59327f04fd4fd49662",
+      "computed_md5": "72ee75fdf6da8e59327f04fd4fd49662",
+      "mimetype": "undefined"
+    },
+    {
+      "id": 26003492,
+      "name": "TEP_Mode3.h5",
+      "size": 23921551744,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/26003492",
+      "supplied_md5": "5f4bf0d87e7f9ff81ee632f84f2d9050",
+      "computed_md5": "5f4bf0d87e7f9ff81ee632f84f2d9050",
+      "mimetype": "undefined"
+    },
+    {
+      "id": 26024015,
+      "name": "TEP_Mode4.h5",
+      "size": 23219369960,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/26024015",
+      "supplied_md5": "c1e76a74022230450dc14fe904451236",
+      "computed_md5": "c1e76a74022230450dc14fe904451236",
+      "mimetype": "undefined"
+    },
+    {
+      "id": 26028068,
+      "name": "TEP_Mode5.h5",
+      "size": 23890304712,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/26028068",
+      "supplied_md5": "8f3c1a1ebeb80ad78089f82a7d521fda",
+      "computed_md5": "8f3c1a1ebeb80ad78089f82a7d521fda",
+      "mimetype": "undefined"
+    },
+    {
+      "id": 26034659,
+      "name": "TEP_Mode6.h5",
+      "size": 23907566544,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/26034659",
+      "supplied_md5": "d01e032a1f3ff9ca3afaa1f74c52e1a6",
+      "computed_md5": "d01e032a1f3ff9ca3afaa1f74c52e1a6",
+      "mimetype": "undefined"
+    },
+    {
+      "id": 26775368,
+      "name": "Readme.html",
+      "size": 8493,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/26775368",
+      "supplied_md5": "963359b135036c0b19951929798a8b46",
+      "computed_md5": "963359b135036c0b19951929798a8b46",
+      "mimetype": "text/html"
+    }
+  ],
+  "folder_structure": {},
+  "authors": [
+    {
+      "id": 6233192,
+      "full_name": "Christopher Clarc Reinartz",
+      "first_name": "Christopher Clarc",
+      "last_name": "Reinartz",
+      "is_active": false,
+      "url_name": "Christopher_Clarc_Reinartz",
+      "orcid_id": "0000-0002-0447-2035"
+    },
+    {
+      "id": 6215240,
+      "full_name": "Murat Kulahci",
+      "first_name": "Murat",
+      "last_name": "Kulahci",
+      "is_active": true,
+      "url_name": "Murat_Kulahci",
+      "orcid_id": ""
+    },
+    {
+      "id": 6212420,
+      "full_name": "Ole Ravn",
+      "first_name": "Ole",
+      "last_name": "Ravn",
+      "is_active": true,
+      "url_name": "Ole_Ravn",
+      "orcid_id": ""
+    }
+  ],
+  "custom_fields": [
+    {
+      "name": "ORCID for corresponding depositor",
+      "value": [],
+      "settings": {
+        "placeholder": "Add ORCID - e.g. https://orcid.org/0000-0001-9264-7669",
+        "is_multiple": false
+      },
+      "field_type": "url",
+      "order": null,
+      "is_mandatory": false
+    }
+  ],
+  "figshare_url": "https://data.dtu.dk/articles/dataset/Tennessee_Eastman_Reference_Data_for_Fault-Detection_and_Decision_Support_Systems/13385936",
+  "download_disabled": false,
+  "description": "<div>Extended Tennessee Eastman Reference Data as presented in Reinartz et al. (2021). <br></div><div><br></div><div>The data contains simulations of 28 process faults for 6 different operating modes. Each fault is simulated 500 times with different seeds for the random number generator. <br></div><div>Additional simulations feature setpoint changes and mode transitions between the 6 operating modes. <br></div><div>All simulations have a duration of 100 hours with a sampling rate of 3 minutes.</div><div> <br></div><div>Please refer to the Readme and publication for detailed information. <br></div>",
+  "funding": null,
+  "funding_list": [],
+  "version": 1,
+  "status": "public",
+  "size": 142760638021,
+  "created_date": "2021-03-12T09:00:37Z",
+  "modified_date": "2023-07-12T10:39:21Z",
+  "is_public": true,
+  "is_confidential": false,
+  "is_metadata_record": false,
+  "confidential_reason": "",
+  "metadata_reason": "",
+  "license": {
+    "value": 2,
+    "name": "CC0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "tags": [
+    "Statistical Process Monitoring",
+    "Fault Diagnosis",
+    "Decision Support",
+    "Tennessee Eastman Process",
+    "Process data",
+    "Chemical Engineering not elsewhere classified"
+  ],
+  "keywords": [
+    "Statistical Process Monitoring",
+    "Fault Diagnosis",
+    "Decision Support",
+    "Tennessee Eastman Process",
+    "Process data",
+    "Chemical Engineering not elsewhere classified"
+  ],
+  "categories": [
+    {
+      "id": 26338,
+      "title": "Chemical engineering not elsewhere classified",
+      "parent_id": 26302,
+      "path": "/26212/26302/26338",
+      "source_id": "400499",
+      "taxonomy_id": 100
+    }
+  ],
+  "references": [
+    "https://doi.org/10.1016/j.compchemeng.2021.107281"
+  ],
+  "has_linked_file": false,
+  "citation": "Reinartz, Christopher Clarc; Kulahci, Murat; Ravn, Ole (2021). Tennessee Eastman Reference Data for Fault-Detection and Decision Support Systems. Technical University of Denmark. Dataset. https://doi.org/10.11583/DTU.13385936.v1",
+  "related_materials": [
+    {
+      "id": 74478873,
+      "identifier": "10.1016/j.compchemeng.2021.107281",
+      "title": "An extended Tennessee Eastman simulation dataset for fault-detection and decision support systems",
+      "relation": "IsSupplementTo",
+      "identifier_type": "DOI",
+      "is_linkout": true,
+      "link": "https://doi.org/10.1016/j.compchemeng.2021.107281"
+    }
+  ],
+  "is_embargoed": false,
+  "embargo_date": null,
+  "embargo_type": "file",
+  "embargo_title": "",
+  "embargo_reason": "",
+  "embargo_options": [],
+  "id": 13385936,
+  "title": "Tennessee Eastman Reference Data for Fault-Detection and Decision Support Systems",
+  "doi": "10.11583/DTU.13385936.v1",
+  "handle": "",
+  "url": "https://api.figshare.com/v2/articles/13385936",
+  "published_date": "2021-03-12T09:00:37Z",
+  "thumb": "",
+  "defined_type": 3,
+  "defined_type_name": "dataset",
+  "group_id": 18044,
+  "url_private_api": "https://api.figshare.com/v2/account/articles/13385936",
+  "url_public_api": "https://api.figshare.com/v2/articles/13385936",
+  "url_private_html": "https://figshare.com/account/articles/13385936",
+  "url_public_html": "https://data.dtu.dk/articles/dataset/Tennessee_Eastman_Reference_Data_for_Fault-Detection_and_Decision_Support_Systems/13385936",
+  "timeline": {
+    "posted": "2021-03-12T09:00:37",
+    "firstOnline": "2021-03-12"
+  },
+  "resource_title": "An extended Tennessee Eastman simulation dataset for fault-detection and decision support systems",
+  "resource_doi": "10.1016/j.compchemeng.2021.107281"
+}

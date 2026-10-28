@@ -1,0 +1,43 @@
+\begin{tikzpicture}
+\begin{axis}[auditaxis,width=0.66\textwidth,height=3.2cm,
+xmin=0,xmax=13,xtick={0,2,4,6,8,10,12},ymin=0.45,ymax=3.55,
+ytick={1,2,3},yticklabels={Logistic,Forest,Tree},
+xlabel={Eligible-model warning frequency (\%)},
+legend columns=3,legend style={at={(0.5,1.22)},anchor=south}]
+\addplot[dashed,color=black!45,line width=0.6pt,forget plot] coordinates {(5,0.45000000000000001) (5,3.5499999999999998)};
+\addplot[no marks,color=black!50,line width=0.65pt,forget plot] coordinates {(4.5750000000000002,2.8300000000000001) (5.1100000000000003,2.8300000000000001)};
+\addplot[only marks,color=black!50,mark=|,mark size=2pt,forget plot] coordinates {(4.5750000000000002,2.8300000000000001) (5.1100000000000003,2.8300000000000001)};
+\addplot[only marks,color=black!50,mark=*,mark size=2.3pt,mark options={fill=black!50,line width=0.8pt},forget plot] coordinates {(4.8450000000000006,2.8300000000000001)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(5.6400000000000006,3) (7.2900625000000012,3)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(5.6400000000000006,3) (7.2900625000000012,3)};
+\addplot[only marks,color=auditorange,mark=square*,mark size=2.3pt,mark options={fill=auditorange,line width=0.8pt},forget plot] coordinates {(6.4450000000000003,3)};
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(4,3.1699999999999999) (4.832562499999999,3.1699999999999999)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(4,3.1699999999999999) (4.832562499999999,3.1699999999999999)};
+\addplot[only marks,color=auditblue,mark=triangle*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(4.4000000000000004,3.1699999999999999)};
+\addplot[no marks,color=black!50,line width=0.65pt,forget plot] coordinates {(4.5249375000000009,1.8300000000000001) (5.0351875000000001,1.8300000000000001)};
+\addplot[only marks,color=black!50,mark=|,mark size=2pt,forget plot] coordinates {(4.5249375000000009,1.8300000000000001) (5.0351875000000001,1.8300000000000001)};
+\addplot[only marks,color=black!50,mark=*,mark size=2.3pt,mark options={fill=black!50,line width=0.8pt},forget plot] coordinates {(4.7725,1.8300000000000001)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(5.6646875000000003,2) (7.2025000000000006,2)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(5.6646875000000003,2) (7.2025000000000006,2)};
+\addplot[only marks,color=auditorange,mark=square*,mark size=2.3pt,mark options={fill=auditorange,line width=0.8pt},forget plot] coordinates {(6.3850000000000007,2)};
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(5.7800000000000002,2.1699999999999999) (6.8102500000000008,2.1699999999999999)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(5.7800000000000002,2.1699999999999999) (6.8102500000000008,2.1699999999999999)};
+\addplot[only marks,color=auditblue,mark=triangle*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(6.2775000000000007,2.1699999999999999)};
+\addplot[no marks,color=black!50,line width=0.65pt,forget plot] coordinates {(4.8349375000000014,0.82999999999999996) (5.415,0.82999999999999996)};
+\addplot[only marks,color=black!50,mark=|,mark size=2pt,forget plot] coordinates {(4.8349375000000014,0.82999999999999996) (5.415,0.82999999999999996)};
+\addplot[only marks,color=black!50,mark=*,mark size=2.3pt,mark options={fill=black!50,line width=0.8pt},forget plot] coordinates {(5.125,0.82999999999999996)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(8.0173125000000027,1) (11.3835,1)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(8.0173125000000027,1) (11.3835,1)};
+\addplot[only marks,color=auditorange,mark=square*,mark size=2.3pt,mark options={fill=auditorange,line width=0.8pt},forget plot] coordinates {(9.6174999999999997,1)};
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(4.4596250000000008,1.1699999999999999) (6.5975625000000013,1.1699999999999999)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(4.4596250000000008,1.1699999999999999) (6.5975625000000013,1.1699999999999999)};
+\addplot[only marks,color=auditblue,mark=triangle*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(5.4600000000000009,1.1699999999999999)};
+\addlegendimage{only marks,color=black!50,mark=*,mark options={fill=black!50}}
+\addlegendentry{Fixed model: new batches}
+\addlegendimage{only marks,color=auditorange,mark=square*,mark options={fill=auditorange}}
+\addlegendentry{Fixed cut: new fits}
+\addlegendimage{only marks,color=auditblue,mark=triangle*,mark options={fill=auditblue}}
+\addlegendentry{Population cut: new fits}
+\node[anchor=west,font=\footnotesize,text=black!65] at (axis cs:5.15,0.65) {Nominal 5\%};
+\end{axis}
+\end{tikzpicture}

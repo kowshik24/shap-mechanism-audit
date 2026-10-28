@@ -1,0 +1,33 @@
+\begin{tikzpicture}
+\begin{groupplot}[
+group style={group size=3 by 2,horizontal sep=0.40cm,vertical sep=0.85cm},
+scale only axis,width=0.278\textwidth,height=0.17\textwidth,
+tick label style={font=\footnotesize,/pgf/number format/fixed,/pgf/number format/precision=2},label style={font=\footnotesize},
+title style={font=\footnotesize},grid=major,grid style={gray!18},
+ymin=0,ymax=1.02,ytick={0,0.2,0.4,0.6,0.8,1},
+legend style={font=\footnotesize,draw=none,/tikz/every even column/.append style={column sep=7pt}},
+legend columns=-1,
+every axis plot/.append style={mark size=1.6pt,line width=0.8pt}]
+\nextgroupplot[title={Tree, $n=1,000$},legend to name=legend-proxy_power,xmin=0,xmax=0.5,xtick={0,0.1,0.2,0.3,0.4,0.5},xticklabels=\empty,ylabel={Localization across all fits}]
+\addplot+[color=black!75,mark=*,mark options={solid,fill=black!75,draw=black!75}] coordinates {(0,0.47999999999999998) (0.01,0.25) (0.050000000000000003,0.039975000000000004) (0.10000000000000001,0.00017500000000000003) (0.20000000000000001,0) (0.29999999999999999,0) (0.5,0)};
+\addlegendentry{Global}
+\addplot+[color=auditorange,mark=triangle*,mark options={solid,fill=auditorange,draw=auditorange}] coordinates {(0,0.47999999999999998) (0.01,0.25) (0.050000000000000003,0.042450000000000002) (0.10000000000000001,0.0023250000000000002) (0.20000000000000001,0) (0.29999999999999999,0) (0.5,0)};
+\addlegendentry{Observed/target}
+\nextgroupplot[title={Forest, $n=1,000$},xmin=0,xmax=0.5,xtick={0,0.1,0.2,0.3,0.4,0.5},xticklabels=\empty,yticklabels=\empty]
+\addplot+[color=black!75,mark=*,mark options={solid,fill=black!75,draw=black!75}] coordinates {(0,0.31045) (0.01,0.230325) (0.050000000000000003,0.018875000000000003) (0.10000000000000001,0) (0.20000000000000001,0) (0.29999999999999999,0) (0.5,0)};
+\addplot+[color=auditorange,mark=triangle*,mark options={solid,fill=auditorange,draw=auditorange}] coordinates {(0,0.44730000000000003) (0.01,0.42259999999999998) (0.050000000000000003,0.13262499999999999) (0.10000000000000001,0.024225000000000003) (0.20000000000000001,7.4999999999999993e-05) (0.29999999999999999,0) (0.5,0)};
+\nextgroupplot[title={Logistic, $n=1,000$},xmin=0,xmax=0.5,xtick={0,0.1,0.2,0.3,0.4,0.5},xticklabels=\empty,yticklabels=\empty]
+\addplot+[color=black!75,mark=*,mark options={solid,fill=black!75,draw=black!75}] coordinates {(0,0.026600000000000002) (0.01,0.049325000000000001) (0.050000000000000003,0.0029250000000000005) (0.10000000000000001,0) (0.20000000000000001,0) (0.29999999999999999,0) (0.5,0)};
+\addplot+[color=auditorange,mark=triangle*,mark options={solid,fill=auditorange,draw=auditorange}] coordinates {(0,0.38345000000000001) (0.01,0.2823) (0.050000000000000003,0.048750000000000002) (0.10000000000000001,0.0034250000000000001) (0.20000000000000001,0) (0.29999999999999999,0) (0.5,0)};
+\nextgroupplot[title={Tree, $n=10,000$},xmin=0,xmax=0.5,xtick={0,0.1,0.2,0.3,0.4,0.5},xlabel={Context bit-flip probability},ylabel={Localization across all fits}]
+\addplot+[color=black!75,mark=*,mark options={solid,fill=black!75,draw=black!75}] coordinates {(0,0.42999999999999999) (0.01,0.23000000000000001) (0.050000000000000003,0.038374999999999999) (0.10000000000000001,0) (0.20000000000000001,0) (0.29999999999999999,0) (0.5,0)};
+\addplot+[color=auditorange,mark=triangle*,mark options={solid,fill=auditorange,draw=auditorange}] coordinates {(0,0.42887500000000001) (0.01,0.22927500000000001) (0.050000000000000003,0.039425000000000002) (0.10000000000000001,0) (0.20000000000000001,0) (0.29999999999999999,0) (0.5,0)};
+\nextgroupplot[title={Forest, $n=10,000$},xmin=0,xmax=0.5,xtick={0,0.1,0.2,0.3,0.4,0.5},xlabel={Context bit-flip probability},yticklabels=\empty]
+\addplot+[color=black!75,mark=*,mark options={solid,fill=black!75,draw=black!75}] coordinates {(0,0.45105000000000006) (0.01,0.28962500000000002) (0.050000000000000003,0.040975000000000004) (0.10000000000000001,0) (0.20000000000000001,0) (0.29999999999999999,0) (0.5,0)};
+\addplot+[color=auditorange,mark=triangle*,mark options={solid,fill=auditorange,draw=auditorange}] coordinates {(0,0.54807500000000009) (0.01,0.47735) (0.050000000000000003,0.14837499999999998) (0.10000000000000001,0.011299999999999999) (0.20000000000000001,0) (0.29999999999999999,0) (0.5,0)};
+\nextgroupplot[title={Logistic, $n=10,000$},xmin=0,xmax=0.5,xtick={0,0.1,0.2,0.3,0.4,0.5},xlabel={Context bit-flip probability},yticklabels=\empty]
+\addplot+[color=black!75,mark=*,mark options={solid,fill=black!75,draw=black!75}] coordinates {(0,0.068325000000000011) (0.01,0.085425000000000001) (0.050000000000000003,0.0063750000000000005) (0.10000000000000001,0) (0.20000000000000001,0) (0.29999999999999999,0) (0.5,0)};
+\addplot+[color=auditorange,mark=triangle*,mark options={solid,fill=auditorange,draw=auditorange}] coordinates {(0,0.40807500000000002) (0.01,0.30147499999999999) (0.050000000000000003,0.037150000000000002) (0.10000000000000001,7.4999999999999993e-05) (0.20000000000000001,0) (0.29999999999999999,0) (0.5,0)};
+\end{groupplot}
+\node[anchor=north] at ([yshift=-1.20cm]group c2r2.south) {\pgfplotslegendfromname{legend-proxy_power}};
+\end{tikzpicture}

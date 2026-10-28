@@ -30,3 +30,62 @@ DS_Store
 .*bst.gz
 .*bst.gz.1
 .*bst.gz.1.1
+
+# Regenerable review-validation checkpoints and smoke outputs
+experiments/results/review_validation*_checkpoints/
+experiments/results/review_validation_quick.json
+
+# Official CWRU recordings are downloaded with checksums, not redistributed.
+data/cwru/*.mat
+experiments/results/scale_replication_checkpoints/
+experiments/results/effect_replication_checkpoints/
+experiments/results/learned_calibration*_checkpoints/
+experiments/results/learned_calibration_quick.json
+
+# Paderborn documentation and expected metadata are retained; raw archives are not.
+data/paderborn/*.rar
+data/paderborn/raw/
+data/paderborn/**/*.mat
+
+# Original field signals and DTU range caches are reproducible downloads.
+data/sca/**/*.mat
+data/sca/**/*.partial
+data/dtu_tep/mode1_ranges*/
+data/dtu_tep/prospective_runs/
+data/care/range_cache/
+
+# LaTeX build by-products (main PDF and .bbl stay tracked)
+*.aux
+*.fls
+*.fdb_latexmk
+*.blg
+*.brf
+*.synctex.gz
+IEEE-conference-template-062824/*.log
+IEEE-conference-template-062824/*.out
+IEEE-conference-template-062824/figures/*.log
+IEEE-conference-template-062824/figures/*_standalone.pdf
+IEEE-conference-template-062824/figures/publication_figures.pdf
+
+# Scratch renders, logs and one-off scripts
+tmp/
+
+# Local tool caches and third-party example collections
+.codegraph/
+tikz-examples/
+
+# Internal revision notes, review rounds and submission-portal material
+IEEE-conference-template-062824/*.md
+IEEE-conference-template-062824/*.tex.txt
+experiments/reviews/
+artifacts/submission/
+artifacts/*.zip
+
+# Large regenerable experiment outputs (observed_overlap_draws.npz > 100 MB)
+experiments/results/*_draws.npz
+experiments/results/*_models/
+
+# Downloaded datasets and scouting pages (reproducible downloads)
+data/dataset_scout/
+data/causal_chamber/*.zip
+data/causal_chamber/*/members/

@@ -1,0 +1,58 @@
+\begin{tikzpicture}
+\begin{groupplot}[
+group style={group size=3 by 2,horizontal sep=0.40cm,vertical sep=0.85cm},
+scale only axis,width=0.278\textwidth,height=0.17\textwidth,
+tick label style={font=\footnotesize,/pgf/number format/fixed,/pgf/number format/precision=2},label style={font=\footnotesize},
+title style={font=\footnotesize},grid=major,grid style={gray!18},
+ymin=0,ymax=1.02,ytick={0,0.2,0.4,0.6,0.8,1},
+legend style={font=\footnotesize,draw=none,/tikz/every even column/.append style={column sep=7pt}},
+legend columns=-1,
+every axis plot/.append style={mark size=1.6pt,line width=0.8pt}]
+\nextgroupplot[title={Tree, $n=1,000$},legend to name=legend-size_power,xmin=0,xmax=0.21,xtick={0,0.05,0.10,0.15,0.20},xticklabels=\empty,ylabel={Context localization}]
+\addplot+[color=black!75,mark=*,mark options={solid,fill=black!75,draw=black!75}] coordinates {(0.0097000000000000003,0.80645161290322576) (0.025150000000000002,0.80645161290322576) (0.052225000000000001,0.80645161290322576) (0.10122500000000001,0.80645161290322576) (0.20170000000000002,0.80645161290322576)};
+\addlegendentry{Global}
+\addplot[only marks,forget plot,color=black!75,mark=*,mark size=2.8pt] coordinates {(0.052225000000000001,0.80645161290322576)};
+\addplot+[color=auditblue,mark=square*,mark options={solid,fill=auditblue,draw=auditblue}] coordinates {(0.0088750000000000009,0.80645161290322576) (0.023375000000000003,0.80717741935483878) (0.047575000000000006,0.8087903225806452) (0.097525000000000014,0.8100806451612903) (0.19747500000000001,0.81346774193548388)};
+\addlegendentry{Observed/source}
+\addplot[only marks,forget plot,color=auditblue,mark=square*,mark size=2.8pt] coordinates {(0.047575000000000006,0.8087903225806452)};
+\addplot+[color=auditorange,mark=triangle*,mark options={solid,fill=auditorange,draw=auditorange}] coordinates {(0.0094500000000000001,0.80645161290322576) (0.024075000000000003,0.80645161290322576) (0.049125000000000002,0.80645161290322576) (0.099224999999999994,0.80645161290322576) (0.19880000000000003,0.80717741935483878)};
+\addlegendentry{Observed/target}
+\addplot[only marks,forget plot,color=auditorange,mark=triangle*,mark size=2.8pt] coordinates {(0.049125000000000002,0.80645161290322576)};
+\nextgroupplot[title={Forest, $n=1,000$},xmin=0,xmax=0.21,xtick={0,0.05,0.10,0.15,0.20},xticklabels=\empty,yticklabels=\empty]
+\addplot+[color=black!75,mark=*,mark options={solid,fill=black!75,draw=black!75}] coordinates {(0.0095249999999999987,0.081799999999999998) (0.025025000000000006,0.14707499999999998) (0.049225000000000005,0.230325) (0.097724999999999992,0.35552500000000004) (0.19810000000000003,0.55127499999999996)};
+\addplot[only marks,forget plot,color=black!75,mark=*,mark size=2.8pt] coordinates {(0.049225000000000005,0.230325)};
+\addplot+[color=auditblue,mark=square*,mark options={solid,fill=auditblue,draw=auditblue}] coordinates {(0.0095500000000000012,0.2515) (0.025525000000000003,0.332625) (0.049675000000000004,0.39734999999999998) (0.09907500000000001,0.455625) (0.19699999999999998,0.55320000000000003)};
+\addplot[only marks,forget plot,color=auditblue,mark=square*,mark size=2.8pt] coordinates {(0.049675000000000004,0.39734999999999998)};
+\addplot+[color=auditorange,mark=triangle*,mark options={solid,fill=auditorange,draw=auditorange}] coordinates {(0.0093250000000000017,0.2974) (0.023950000000000006,0.37137500000000001) (0.049850000000000012,0.42259999999999998) (0.098750000000000004,0.49454999999999999) (0.19674999999999998,0.59599999999999997)};
+\addplot[only marks,forget plot,color=auditorange,mark=triangle*,mark size=2.8pt] coordinates {(0.049850000000000012,0.42259999999999998)};
+\nextgroupplot[title={Logistic, $n=1,000$},xmin=0,xmax=0.21,xtick={0,0.05,0.10,0.15,0.20},xticklabels=\empty,yticklabels=\empty]
+\addplot+[color=black!75,mark=*,mark options={solid,fill=black!75,draw=black!75}] coordinates {(0.010650000000000001,0.017185929648241206) (0.024750000000000005,0.024673366834170856) (0.049325000000000001,0.049572864321608033) (0.10015,0.10997487437185928) (0.19852499999999998,0.29339195979899496)};
+\addplot[only marks,forget plot,color=black!75,mark=*,mark size=2.8pt] coordinates {(0.049325000000000001,0.049572864321608033)};
+\addplot+[color=auditblue,mark=square*,mark options={solid,fill=auditblue,draw=auditblue}] coordinates {(0.010074999999999999,0.16273869346733671) (0.025750000000000002,0.22271356783919599) (0.050275000000000007,0.27344221105527644) (0.1007,0.32140703517587937) (0.20157499999999998,0.3822361809045226)};
+\addplot[only marks,forget plot,color=auditblue,mark=square*,mark size=2.8pt] coordinates {(0.050275000000000007,0.27344221105527644)};
+\addplot+[color=auditorange,mark=triangle*,mark options={solid,fill=auditorange,draw=auditorange}] coordinates {(0.010950000000000001,0.1921356783919598) (0.025400000000000006,0.24040201005025125) (0.050875000000000004,0.2837185929648241) (0.10112499999999999,0.32613065326633167) (0.200825,0.39319095477386939)};
+\addplot[only marks,forget plot,color=auditorange,mark=triangle*,mark size=2.8pt] coordinates {(0.050875000000000004,0.2837185929648241)};
+\nextgroupplot[title={Tree, $n=10,000$},xmin=0,xmax=0.21,xtick={0,0.05,0.10,0.15,0.20},xlabel={Null warning frequency},ylabel={Context localization}]
+\addplot+[color=black!75,mark=*,mark options={solid,fill=black!75,draw=black!75}] coordinates {(0.0097249999999999993,0.6216216216216216) (0.024225000000000003,0.6216216216216216) (0.047774999999999998,0.6216216216216216) (0.095650000000000013,0.6216216216216216) (0.19730000000000003,0.6216216216216216)};
+\addplot[only marks,forget plot,color=black!75,mark=*,mark size=2.8pt] coordinates {(0.047774999999999998,0.6216216216216216)};
+\addplot+[color=auditblue,mark=square*,mark options={solid,fill=auditblue,draw=auditblue}] coordinates {(0.0095999999999999992,0.62175675675675668) (0.025200000000000004,0.62182432432432433) (0.048575,0.62202702702702706) (0.09605000000000001,0.62229729729729721) (0.19695000000000001,0.6224324324324324)};
+\addplot[only marks,forget plot,color=auditblue,mark=square*,mark size=2.8pt] coordinates {(0.048575,0.62202702702702706)};
+\addplot+[color=auditorange,mark=triangle*,mark options={solid,fill=auditorange,draw=auditorange}] coordinates {(0.0097750000000000007,0.61966216216216208) (0.02495,0.61966216216216208) (0.048450000000000007,0.61966216216216208) (0.097250000000000017,0.61966216216216208) (0.19515000000000002,0.61966216216216208)};
+\addplot[only marks,forget plot,color=auditorange,mark=triangle*,mark size=2.8pt] coordinates {(0.048450000000000007,0.61966216216216208)};
+\nextgroupplot[title={Forest, $n=10,000$},xmin=0,xmax=0.21,xtick={0,0.05,0.10,0.15,0.20},xlabel={Null warning frequency},yticklabels=\empty]
+\addplot+[color=black!75,mark=*,mark options={solid,fill=black!75,draw=black!75}] coordinates {(0.009725000000000001,0.127525) (0.024500000000000001,0.20432499999999998) (0.046575000000000005,0.28962500000000002) (0.097174999999999997,0.40895000000000004) (0.19364999999999999,0.59542500000000009)};
+\addplot[only marks,forget plot,color=black!75,mark=*,mark size=2.8pt] coordinates {(0.046575000000000005,0.28962500000000002)};
+\addplot+[color=auditblue,mark=square*,mark options={solid,fill=auditblue,draw=auditblue}] coordinates {(0.0095000000000000015,0.34465000000000001) (0.024050000000000002,0.41745000000000004) (0.047625000000000001,0.47032499999999999) (0.095174999999999982,0.53437500000000004) (0.19517500000000002,0.62162500000000009)};
+\addplot[only marks,forget plot,color=auditblue,mark=square*,mark size=2.8pt] coordinates {(0.047625000000000001,0.47032499999999999)};
+\addplot+[color=auditorange,mark=triangle*,mark options={solid,fill=auditorange,draw=auditorange}] coordinates {(0.0094750000000000008,0.34584999999999994) (0.023300000000000001,0.41785000000000005) (0.047724999999999997,0.47735) (0.095599999999999991,0.54494999999999993) (0.19617499999999999,0.629)};
+\addplot[only marks,forget plot,color=auditorange,mark=triangle*,mark size=2.8pt] coordinates {(0.047724999999999997,0.47735)};
+\nextgroupplot[title={Logistic, $n=10,000$},xmin=0,xmax=0.21,xtick={0,0.05,0.10,0.15,0.20},xlabel={Null warning frequency},yticklabels=\empty]
+\addplot+[color=black!75,mark=*,mark options={solid,fill=black!75,draw=black!75}] coordinates {(0.0097500000000000017,0.047512820512820512) (0.025475000000000005,0.064282051282051278) (0.051675000000000006,0.087615384615384623) (0.101525,0.14738461538461536) (0.20100000000000001,0.34276923076923077)};
+\addplot[only marks,forget plot,color=black!75,mark=*,mark size=2.8pt] coordinates {(0.051675000000000006,0.087615384615384623)};
+\addplot+[color=auditblue,mark=square*,mark options={solid,fill=auditblue,draw=auditblue}] coordinates {(0.010749999999999999,0.2238205128205128) (0.025150000000000006,0.26958974358974358) (0.050875000000000004,0.31643589743589745) (0.102425,0.35935897435897429) (0.20162500000000003,0.40384615384615385)};
+\addplot[only marks,forget plot,color=auditblue,mark=square*,mark size=2.8pt] coordinates {(0.050875000000000004,0.31643589743589745)};
+\addplot+[color=auditorange,mark=triangle*,mark options={solid,fill=auditorange,draw=auditorange}] coordinates {(0.0103,0.21848717948717949) (0.025200000000000004,0.26615384615384613) (0.051249999999999997,0.30920512820512819) (0.10227499999999999,0.35599999999999998) (0.20280000000000001,0.4113846153846154)};
+\addplot[only marks,forget plot,color=auditorange,mark=triangle*,mark size=2.8pt] coordinates {(0.051249999999999997,0.30920512820512819)};
+\end{groupplot}
+\node[anchor=north] at ([yshift=-1.20cm]group c2r2.south) {\pgfplotslegendfromname{legend-size_power}};
+\end{tikzpicture}

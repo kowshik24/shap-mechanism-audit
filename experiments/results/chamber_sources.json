@@ -1,0 +1,910 @@
+{
+  "complete": true,
+  "retrieved_utc": "2026-10-25T17:55:19.018641+00:00",
+  "data_commit": "0c8a77ea14bd4437b1fdd79adc1aa91ac2342569",
+  "graph_commit": "9fb5d82e391bb91a89a64f2e1c9b6ae8e7aed6d6",
+  "physical_systems": [
+    "Light tunnel Mk1",
+    "Wind tunnel Mk1"
+  ],
+  "datasets": [
+    {
+      "dataset": "lt_validate_v1",
+      "configuration": "lt_validation_configs.csv",
+      "download_url": "https://causalchamber.s3.eu-central-1.amazonaws.com/downloadables/lt_validate_v1.zip",
+      "archive": "data/causal_chamber/lt_validate_v1.zip",
+      "published_md5": "0ef64de36bf8fdfff3df539cadf460ab",
+      "bytes": 119326,
+      "members": [
+        {
+          "member": "lt_validate_v1/validate_pol_2.csv",
+          "bytes": 12211,
+          "CRC": 1609385019,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            46,
+            28
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_pol_2.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_pol_1.csv",
+          "bytes": 12249,
+          "CRC": 3479071550,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            45,
+            24
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_pol_1.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_v_c.csv",
+          "bytes": 11411,
+          "CRC": 2704544623,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            44,
+            30
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_v_c.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_blue.csv",
+          "bytes": 12219,
+          "CRC": 2294003217,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            43,
+            54
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_blue.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_green.csv",
+          "bytes": 12229,
+          "CRC": 568741924,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            43,
+            16
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_green.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_red.csv",
+          "bytes": 12282,
+          "CRC": 1109049549,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            42,
+            40
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_red.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_osr_c.csv",
+          "bytes": 230692,
+          "CRC": 309756444,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            58,
+            22
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_osr_c.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_osr_angle_2.csv",
+          "bytes": 214769,
+          "CRC": 2577558419,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            47,
+            42
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_osr_angle_2.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_osr_angle_1.csv",
+          "bytes": 214741,
+          "CRC": 3268243013,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            37,
+            24
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_osr_angle_1.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_t_vis_3.csv",
+          "bytes": 12771,
+          "CRC": 4014850552,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            26,
+            52
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_vis_3.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_t_vis_2.csv",
+          "bytes": 12773,
+          "CRC": 4235178695,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            26,
+            10
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_vis_2.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_t_vis_1.csv",
+          "bytes": 12784,
+          "CRC": 2453025233,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            25,
+            30
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_vis_1.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_t_ir_3.csv",
+          "bytes": 12766,
+          "CRC": 1242273594,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            24,
+            50
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_ir_3.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_t_ir_2.csv",
+          "bytes": 12773,
+          "CRC": 76407331,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            24,
+            12
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_ir_2.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_t_ir_1.csv",
+          "bytes": 12765,
+          "CRC": 1754170852,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            23,
+            34
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_ir_1.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_diode_vis_3.csv",
+          "bytes": 12797,
+          "CRC": 1669443459,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            22,
+            56
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_vis_3.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_diode_vis_2.csv",
+          "bytes": 12782,
+          "CRC": 1565318494,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            22,
+            20
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_vis_2.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_diode_vis_1.csv",
+          "bytes": 12787,
+          "CRC": 3837457073,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_vis_1.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_diode_ir_3.csv",
+          "bytes": 12784,
+          "CRC": 3569083638,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            21,
+            0
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_ir_3.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_diode_ir_2.csv",
+          "bytes": 12799,
+          "CRC": 2310072326,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            20,
+            22
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_ir_2.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_diode_ir_1.csv",
+          "bytes": 12799,
+          "CRC": 2341208170,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            19,
+            40
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_ir_1.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_l_32.csv",
+          "bytes": 11040,
+          "CRC": 4092213282,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            19,
+            0
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_32.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_l_31.csv",
+          "bytes": 11064,
+          "CRC": 1779584908,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            18,
+            24
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_31.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_l_22.csv",
+          "bytes": 11045,
+          "CRC": 2724012956,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            17,
+            46
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_22.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_l_21.csv",
+          "bytes": 11061,
+          "CRC": 669397293,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            17,
+            6
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_21.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_l_12.csv",
+          "bytes": 11082,
+          "CRC": 1544208725,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            16,
+            24
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_12.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_l_11.csv",
+          "bytes": 11091,
+          "CRC": 3928288648,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            15,
+            48
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_11.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_v_angle_2.csv",
+          "bytes": 11461,
+          "CRC": 1809061639,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            15,
+            6
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_v_angle_2.csv"
+        },
+        {
+          "member": "lt_validate_v1/validate_v_angle_1.csv",
+          "bytes": 11523,
+          "CRC": 1479431197,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            21,
+            14,
+            30
+          ],
+          "path": "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_v_angle_1.csv"
+        }
+      ]
+    },
+    {
+      "dataset": "wt_validate_v1",
+      "configuration": "wt_standard_validation_configs.csv",
+      "download_url": "https://causalchamber.s3.eu-central-1.amazonaws.com/downloadables/wt_validate_v1.zip",
+      "archive": "data/causal_chamber/wt_validate_v1.zip",
+      "published_md5": "bde214eb50abc801307bf7d4aadcafc9",
+      "bytes": 890221,
+      "members": [
+        {
+          "member": "wt_validate_v1/validate_hatch_pressures.csv",
+          "bytes": 14685,
+          "CRC": 1713278079,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            40
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_hatch_pressures.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_pot_1.csv",
+          "bytes": 62403,
+          "CRC": 3319864900,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            40
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_pot_1.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_pot_2.csv",
+          "bytes": 62644,
+          "CRC": 1962797009,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            40
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_pot_2.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_osr_1.csv",
+          "bytes": 156887,
+          "CRC": 1592911960,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            40
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_1.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_osr_2.csv",
+          "bytes": 156738,
+          "CRC": 3833416085,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            40
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_2.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_osr_mic.csv",
+          "bytes": 157110,
+          "CRC": 1630065852,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            40
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_mic.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_osr_in.csv",
+          "bytes": 287176,
+          "CRC": 2293760003,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_in.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_osr_out.csv",
+          "bytes": 285548,
+          "CRC": 3481474457,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_out.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_osr_upwind.csv",
+          "bytes": 54575,
+          "CRC": 3181966236,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_upwind.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_osr_downwind.csv",
+          "bytes": 54535,
+          "CRC": 843496092,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_downwind.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_osr_intake.csv",
+          "bytes": 54489,
+          "CRC": 4112150726,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_intake.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_v_1.csv",
+          "bytes": 62983,
+          "CRC": 2090889439,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_1.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_v_2.csv",
+          "bytes": 63016,
+          "CRC": 2306587748,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_2.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_v_mic.csv",
+          "bytes": 62870,
+          "CRC": 88132728,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_mic.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_v_in.csv",
+          "bytes": 59777,
+          "CRC": 865379489,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_in.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_v_out.csv",
+          "bytes": 60080,
+          "CRC": 3900367164,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_out.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_res_in.csv",
+          "bytes": 266246,
+          "CRC": 3955289774,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_res_in.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_res_out.csv",
+          "bytes": 267172,
+          "CRC": 1039861513,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_res_out.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_hatch_rpms.csv",
+          "bytes": 57303,
+          "CRC": 2152921704,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_hatch_rpms.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_load_in.csv",
+          "bytes": 15080,
+          "CRC": 358802048,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_in.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_load_in_mic.csv",
+          "bytes": 59368,
+          "CRC": 2686708420,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_in_mic.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_load_out.csv",
+          "bytes": 14723,
+          "CRC": 3017579096,
+          "zip_modified_unverified": [
+            2024,
+            1,
+            27,
+            22,
+            21,
+            42
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_out.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_load_out_mic.csv",
+          "bytes": 59556,
+          "CRC": 2897481555,
+          "zip_modified_unverified": [
+            2024,
+            4,
+            15,
+            22,
+            59,
+            30
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_out_mic.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_load_in_current_out.csv",
+          "bytes": 27686,
+          "CRC": 1741017289,
+          "zip_modified_unverified": [
+            2024,
+            4,
+            16,
+            11,
+            38,
+            28
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_in_current_out.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_load_out_current_in.csv",
+          "bytes": 27961,
+          "CRC": 1001808237,
+          "zip_modified_unverified": [
+            2024,
+            4,
+            16,
+            11,
+            48,
+            28
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_out_current_in.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_hatch_mic.csv",
+          "bytes": 1146626,
+          "CRC": 85406370,
+          "zip_modified_unverified": [
+            2024,
+            4,
+            16,
+            15,
+            2,
+            10
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_hatch_mic.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_load_out_pressure_intake.csv",
+          "bytes": 892448,
+          "CRC": 4165593009,
+          "zip_modified_unverified": [
+            2024,
+            4,
+            17,
+            5,
+            13,
+            14
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_out_pressure_intake.csv"
+        },
+        {
+          "member": "wt_validate_v1/validate_osr_ambient.csv",
+          "bytes": 2182839,
+          "CRC": 864839354,
+          "zip_modified_unverified": [
+            2024,
+            4,
+            17,
+            6,
+            54,
+            58
+          ],
+          "path": "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_ambient.csv"
+        }
+      ]
+    }
+  ],
+  "physical_acquisition_provenance": "Author-hosted measurements authenticated against pinned published archive MD5s",
+  "new_machine_independence_verified": false,
+  "causal_map_exhaustive_verified": false,
+  "sha256": {
+    "data/causal_chamber/lt_validate_v1/source/README.md": "94883cf9fffaef4917ffa6f8cccad58b5bf13062065a0ad52a5d10747f6bc33c",
+    "data/causal_chamber/lt_validate_v1/source/variables.csv": "49dd226bc7318d390f2e76283d70f2d08fde58b1a831864080d3f5bc7376622d",
+    "data/causal_chamber/lt_validate_v1/source/lt_validation_configs.csv": "62165ab5ae61862bb0c9deaadef08220901fef871117ff26dc577207152ad535",
+    "data/causal_chamber/lt_validate_v1/source/generators/binary_interventions.py": "6b5266d54662c7b44226c7698b7ef6d23f1e58d27211cbef9f5698b562721834",
+    "data/causal_chamber/lt_validate_v1/source/LICENSE_DATASETS.txt": "9e5f1b3c610b9c2da5c313bf81d577a7d1acec686bdb0384edefa6df0f90cd94",
+    "data/causal_chamber/lt_validate_v1/source/LICENSE_SOFTWARE.txt": "673c8e566a15dac9543adc614c8edf8baab4a025fb37d525ade75abfde8150ce",
+    "data/causal_chamber/lt_validate_v1.zip": "a1eb99a53a4c6a29283ee40f8b6bd1409be339944790a342910207425038b19f",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_pol_2.csv": "2adf43ff18cb4ca8819f05fd9be5035bff6919cf7796d90cd1cc2286ff6d2761",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_pol_1.csv": "45698e8ece65c93ba8e56164f06b60b8c922fdb4dde2c9b13a9955301b150b71",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_v_c.csv": "7c265fbaebd6cf9108d58c1f32be69fcc3ad0b420d78f8412ccd6426a4b1dbc5",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_blue.csv": "9f5b8b1191cf5f1556cc3935da4ab66cef5007ec571af6da7737d08216f83387",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_green.csv": "c52e16cac869523e7cf9fa7cea25ea39b1997bc3d9a3a9e74f9cd6ba1bb5d0be",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_red.csv": "53347ecb64da49df6c43ff75cdc3e99aab4e8271a5a14f0be7aa522c5a9b1aaa",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_osr_c.csv": "750177db01ab0580ed7060a6c9a792035a484f22df8040125aebbb2fb1dca46d",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_osr_angle_2.csv": "4fb08cd050e89541cd572b3a2a5f8d827eaebdb6e1754ecf328a2e644c28cb9a",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_osr_angle_1.csv": "b2ab7fb9133c278728dbb80220322310a9a22ca860715d9d895776b338c074ad",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_vis_3.csv": "a8e2d69a0982e5bdae2647fa11714afdfbaf8ac51216eb7d9c6f7d721dc9e206",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_vis_2.csv": "f21c06214897377be645c65f5de875513be4a0f1e17db947540e652302430551",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_vis_1.csv": "289927c19519771287771de2538cb7ca03b61dc02ac0bc0a9b1df54b786b5c96",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_ir_3.csv": "25731f0192d622cad4ba0e39d6777fd3906416352b9372c5fb0b439ece236a9c",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_ir_2.csv": "73f191fd6291585628cb2d9600f81474cfd9e06ab29e3b6a99f1898144801d58",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_t_ir_1.csv": "0f763e4d0714dd5b5afc63e7a68b0be9f3ea3c3d0857bd01782f6c5898f878ed",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_vis_3.csv": "3ec035804ae3e51953178d92e95a98992a47a65af51e937a50a8fc0fd78a230c",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_vis_2.csv": "1589439f4ebd095dbebe92944f4aaed5730c1a3d419b2623b9ed63ba28dc9995",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_vis_1.csv": "68ae0c2f24f337389130a86c6dd0e67720a4ce685e5740ecdbaf44c0ee24be9f",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_ir_3.csv": "e259466e5350deabd5dc092f6c63b09ca9412237de28a1a058d8bb751db00ab5",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_ir_2.csv": "b731635ddd304cea6010a79e9bd3133a359d499e40aeea5eed7fcec017258087",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_diode_ir_1.csv": "586f0eee1a2e21f24be4ea84103f0e3976239038172cfb8558e47b0317f45279",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_32.csv": "b152c7ebee691b18ca8b00f0b16a9e7f71e85eb804a54dc6630bb2fd8e2a6ea5",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_31.csv": "f992cc48162a7512b99e9e4139068bdc3bb0b25c59e3fe0d2fd839f0a6d3047f",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_22.csv": "a19cd204809cbe8f3a1f2b0d6c131f5b3a3483ec8073c44479255361095b0c54",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_21.csv": "6573a423e97aa0a5746850879081cb9225d427dc29fc4fab2f12b4261b25ee37",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_12.csv": "737a7998c99c004ec5960974b9e2c19e715020752f211b3ad867eae526a04793",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_l_11.csv": "35fc550ec87212788c99abc529ea739c8c36288ea8a89877e66f1af4c9f08a61",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_v_angle_2.csv": "0624916af5e636be475ca5a0c91425e80c5ebeb064bd1f95789ab785366f361e",
+    "data/causal_chamber/lt_validate_v1/members/lt_validate_v1/validate_v_angle_1.csv": "f339a14ad4eb446950e84b79f9f935739e222282e2f06cecebf627f87dfad09c",
+    "data/causal_chamber/lt_validate_v1/source/adjacency_lt_standard.csv": "753c1376140cbab550b395c05b84dca152e7118a2b9a2587616dd12292bcee22",
+    "data/causal_chamber/wt_validate_v1/source/README.md": "db9e8ead696a267334914da0cc7725ec0b338ed843c1c15fd553b9c5f12f1ec3",
+    "data/causal_chamber/wt_validate_v1/source/variables.csv": "c390a658ec50f4cd66062d7e0d4990b74b22faca197a8cd80c95cb17dde5904e",
+    "data/causal_chamber/wt_validate_v1/source/wt_standard_validation_configs.csv": "fc0319d9bf9fd676d838c5ad0ba52c4acedfe179cf18458b033ebdf22c49bb0e",
+    "data/causal_chamber/wt_validate_v1/source/generators/binary_interventions.py": "36b7cb084d3fe5bf0691a74ff5808575a92a1e89a615ab95d16b853f0486da5b",
+    "data/causal_chamber/wt_validate_v1/source/LICENSE_DATASETS.txt": "9e5f1b3c610b9c2da5c313bf81d577a7d1acec686bdb0384edefa6df0f90cd94",
+    "data/causal_chamber/wt_validate_v1/source/LICENSE_SOFTWARE.txt": "673c8e566a15dac9543adc614c8edf8baab4a025fb37d525ade75abfde8150ce",
+    "data/causal_chamber/wt_validate_v1.zip": "7dcb885b1bf69ae0a15a3652fec9707234d5b06a57a37d924a3c9839bb745c72",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_hatch_pressures.csv": "a0dcb684c23f16e9ccde530e54ff1fd80c62c619f17cf1ad6ebc37963682746a",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_pot_1.csv": "6069849b9768fce4dcea1c7835a85ecffe9afd26d0a73f3f6eb76602f309347a",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_pot_2.csv": "b312424d4e66e8acebc4d2b3d3e3a05a6e7fa3ac2b2e39eb13e11a5680c383c4",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_1.csv": "a72881123fc13b451566c7f457910f56bb57ec71f35103d1e4d7fd13f73a81bc",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_2.csv": "59e30dfc22927244e011f90a41be65c09d6c398b95a45417bf66f1169111177c",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_mic.csv": "0655e8112745f1622eb0ef8800239380790ee15d4b83dac4141fa95e0f02c2d8",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_in.csv": "f5ec25799b5997c54b345677b36f34e33b6046173e7b1cc9c99e2c1af8636560",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_out.csv": "1bdfe0193f685c7027e1cdbeefc9844ed83149622780fb8562cc4839ef217fc0",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_upwind.csv": "689f678f3425b0e88269b002b22d91a593a51cebfe4aa22d62ca8388f3080cd8",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_downwind.csv": "357b906fe3b7bb90cdec685e247db26df7bc12d1b9be3b81b3dea245de82f37d",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_intake.csv": "0935398fb12b38be1e3355cff056c23991d96f36da91804d48caca68d4f3aa05",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_1.csv": "4341cf192417ff8830bfc2178e52e6236b08af08ffeb6ff46040573b4f93e722",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_2.csv": "dbd0c599a7625fc7d4a5747f0dd5efe9f071f6154e424dc2a8ae95a4d0c0ece5",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_mic.csv": "2e68dce7c96a7cc33acf463e453238403ca86bdb627f28bd30b6e8d21d803140",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_in.csv": "0270b9ff9a4c7cc2e9bf7c3136467015030cdc842492a0273009465920da720a",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_v_out.csv": "4ab41cc03ee6939225ade565cdc1822f41440377c310ec63097723241ab41e5c",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_res_in.csv": "ce61036295b16e5fe3e0e87d05cab0bb938e42c402bc7f332c9464feb2c0d4bc",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_res_out.csv": "de765b81fab641daced51fb02d598cb6f73a8e05850a1b2ab489b766d943e201",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_hatch_rpms.csv": "62797d9e98540d6bc53f1113364e36fa2054ef2d71ceb27b523016bb765b5cca",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_in.csv": "ea0c19d18579b1f125f9be2d609ddf7f400a678f0210d8d10d6df7c0d7a6bf3e",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_in_mic.csv": "a48ee43b14b1db6359b70b293f8d9407349a13536f134236c39eea3e507c53cc",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_out.csv": "e22bb54f26e56f665498d9cb75fa83f843d20bf802ca5f7afbe1a2135f243dd7",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_out_mic.csv": "e7f46c874d1654bd4ec9c5dfbd6f3e69963e09eb6900f889072c3439d99c4037",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_in_current_out.csv": "6c05b84b559de76affbc85fad42dcc194e0c7d9ab44f14499d92b08efb152f69",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_out_current_in.csv": "31191011f68ac36b5f1e7565167399abf748bb18783975121c9d2563d7773da7",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_hatch_mic.csv": "5e64b5e341be24464495c4a5ea3d90c4e982b16e4e56d3684720370877363fd1",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_load_out_pressure_intake.csv": "b00e342324bb4ccd8a4ad9a5a33799157df07a41751ad4ed1881f401ae9a662a",
+    "data/causal_chamber/wt_validate_v1/members/wt_validate_v1/validate_osr_ambient.csv": "28a6c0c8959f1a0300be0ca53127a4f74ba308f6005f305fbd6a6e05e7eccd18",
+    "data/causal_chamber/wt_validate_v1/source/adjacency_wt_standard.csv": "05088000010c094b9f6a29bcb62d67b154507395e54441ee7748eaf5ecd5024d",
+    "experiments/66_chamber_sources.py": "0f8bcf41cff7b26b46dbdc385c9c4a4c3f0b02485fbac530fd1aee38a0a3ddd3",
+    "experiments/PHYSICAL_INTERVENTION_PROTOCOL.md": "bfeee19491e4d875881952d156514fc1161115253a2e012f87db7bf52d3ef41f"
+  }
+}

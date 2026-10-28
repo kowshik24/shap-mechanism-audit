@@ -1,0 +1,14 @@
+{
+  "verified": true,
+  "source_trajectories": 400,
+  "calibration_fit_packet_pairs": 100,
+  "prospective_fit_packet_pairs": 60,
+  "models": 220,
+  "scope": "Conditional training-recipe and simulation-replicate experiment; not a physical field certificate",
+  "sha256": {
+    "experiments/results/dtu_prospective.json": "875f298a7adc9ec17c81e15e2d21ffb769a1067bce89c7fc5a417ad34ab4c84d",
+    "experiments/results/dtu_prospective_draws.npz": "ac317638d74c6a02028f027413f0e43e169b354714a8a2741fcb0528c741cef7",
+    "experiments/results/dtu_prospective_source_gate.json": "3c5b2dae71fe3ea4a81e2ed864fafc633fc4458356de2700de90fcb3a7dc4372",
+    "experiments/61_verify_dtu_prospective.py": "2e8603bf8ff7fc25e62f2bd9556258dad7679941bc065bd63abb081438519faf"
+  }
+}

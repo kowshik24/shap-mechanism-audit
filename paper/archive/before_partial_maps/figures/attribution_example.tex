@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 1,horizontal sep=1.2cm},
+scale only axis,width=0.37\textwidth,height=0.13\textwidth,
+ybar,/pgf/bar width=8pt,ymin=0,ymax=0.68,ytick={0,0.2,0.4,0.6},
+xtick={0,1,2,3},xticklabels={$Z_0$,$Z_1$,$Z_2$,$C$},
+tick label style={font=\footnotesize},title style={font=\footnotesize},label style={font=\footnotesize},
+grid=major,grid style={gray!15},enlarge x limits=0.18,
+legend columns=2,legend style={font=\footnotesize,draw=none,cells={anchor=west},/tikz/column sep=8pt}]
+\nextgroupplot[title={Reference $f$},ylabel={Absolute-attribution share},legend to name=attribution-legend]
+\addplot+[draw=auditblue,fill=auditblue!65] coordinates {(0,0.49455087975120188) (1,0.41799203860543283) (2,0.08745708164336545) (3,0)};
+\addlegendentry{Mechanism 0 ($\mathcal I_0$)}
+\addplot+[draw=auditorange,fill=auditorange!65] coordinates {(0,0.0095845986281597479) (1,0.39589169491373982) (2,0.59452370645810049) (3,0)};
+\addlegendentry{Other failures ($\mathcal F\setminus\mathcal I_0$)}
+\nextgroupplot[title={Candidate $g$},yticklabels=\empty]
+\addplot+[draw=auditblue,fill=auditblue!65] coordinates {(0,0.27229708222168808) (1,0.40818028017624919) (2,0.085551790040767517) (3,0.23397084756129527)};
+\addplot+[draw=auditorange,fill=auditorange!65] coordinates {(0,0.0069636002420704517) (1,0.39324438834481007) (2,0.59025035513285506) (3,0.0095416562802644756)};
+\end{groupplot}
+\node[anchor=north] at ([yshift=-0.65cm]group c1r1.south east) {\pgfplotslegendfromname{attribution-legend}};
+\end{tikzpicture}

@@ -1,0 +1,11 @@
+{
+  "verified_inputs": true,
+  "sha256": {
+    "experiments/72_partial_map_report.py": "028265194bdd599fbc456f161c9ab1d392ac32620c2fdc6d93129144a65c926e",
+    "IEEE-conference-template-062824/PARTIAL_MAP_REPORT.md": "8fc6173183e4d7c6ad0d2a57d95fac04756fab1ec6a51cf121f455fe564b6168",
+    "IEEE-conference-template-062824/PHYSICAL_PROVENANCE_REQUEST.md": "229ad75cfd022622a45edaff901018a14de5cea56a0b8fb3575c33efc8e04fbe",
+    "experiments/results/partial_map_verification.json": "dd2b0afe676d991dfa37df85370e27c024e2d66220b9bf54b19bc0c4d653549f",
+    "experiments/results/publisher_protocol_replay.json": "2c19a97f48a2612ffe7ec4e3a41dcf2475b397fbc6b6dce6ec662c6163d7d673",
+    "experiments/results/publisher_runtime_check.json": "19859ebbac281d253137cce8f495463d45a366ccbb86fd2ef16e3e53e2d71b02"
+  }
+}

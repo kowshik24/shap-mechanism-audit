@@ -1,0 +1,280 @@
+{
+  "archive": "data/dataset_scout/kaist_vibration.zip",
+  "bytes": 2659778162,
+  "sha256": "df73fa80371a2ad3c983825044447b7772fcefd1db2ac409b2b298b533e4659f",
+  "expected_sha256": "df73fa80371a2ad3c983825044447b7772fcefd1db2ac409b2b298b533e4659f",
+  "source": "https://data.mendeley.com/public-files/datasets/ztmf3m7h5x/files/ee98c5d9-1052-4448-84b2-ed57711b658d/file_downloaded",
+  "entries": [
+    {
+      "filename": "0Nm_BPFI_03.mat",
+      "bytes": 49163640,
+      "crc": 3669330071,
+      "compression": 8
+    },
+    {
+      "filename": "0Nm_BPFI_10.mat",
+      "bytes": 49163640,
+      "crc": 1722087814,
+      "compression": 8
+    },
+    {
+      "filename": "0Nm_BPFI_30.mat",
+      "bytes": 49163640,
+      "crc": 2429445591,
+      "compression": 8
+    },
+    {
+      "filename": "0Nm_BPFO_03.mat",
+      "bytes": 49163640,
+      "crc": 3731683489,
+      "compression": 8
+    },
+    {
+      "filename": "0Nm_BPFO_10.mat",
+      "bytes": 49163640,
+      "crc": 2167422266,
+      "compression": 8
+    },
+    {
+      "filename": "0Nm_BPFO_30.mat",
+      "bytes": 49163640,
+      "crc": 4206236451,
+      "compression": 8
+    },
+    {
+      "filename": "0Nm_Misalign_01.mat",
+      "bytes": 98315704,
+      "crc": 2107858721,
+      "compression": 8
+    },
+    {
+      "filename": "0Nm_Misalign_03.mat",
+      "bytes": 98315704,
+      "crc": 1457124588,
+      "compression": 8
+    },
+    {
+      "filename": "0Nm_Misalign_05.mat",
+      "bytes": 98315704,
+      "crc": 2757818644,
+      "compression": 8
+    },
+    {
+      "filename": "0Nm_Normal.mat",
+      "bytes": 245771640,
+      "crc": 3870018250,
+      "compression": 8
+    },
+    {
+      "filename": "0Nm_Unbalance_0583mg.mat",
+      "bytes": 98315640,
+      "crc": 1074302279,
+      "compression": 8
+    },
+    {
+      "filename": "0Nm_Unbalance_1169mg.mat",
+      "bytes": 98315672,
+      "crc": 3007954116,
+      "compression": 8
+    },
+    {
+      "filename": "0Nm_Unbalance_1751mg.mat",
+      "bytes": 98315704,
+      "crc": 838632384,
+      "compression": 8
+    },
+    {
+      "filename": "0Nm_Unbalance_2239mg.mat",
+      "bytes": 98315672,
+      "crc": 1112590649,
+      "compression": 8
+    },
+    {
+      "filename": "0Nm_Unbalance_3318mg.mat",
+      "bytes": 98315672,
+      "crc": 3631588518,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_BPFI_03.mat",
+      "bytes": 49163704,
+      "crc": 1578334464,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_BPFI_10.mat",
+      "bytes": 49163704,
+      "crc": 1176305639,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_BPFI_30.mat",
+      "bytes": 49163704,
+      "crc": 976887251,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_BPFO_03.mat",
+      "bytes": 49163704,
+      "crc": 2366476590,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_BPFO_10.mat",
+      "bytes": 49163704,
+      "crc": 351523757,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_BPFO_30.mat",
+      "bytes": 49163704,
+      "crc": 986254198,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_Misalign_01.mat",
+      "bytes": 98315736,
+      "crc": 150923931,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_Misalign_03.mat",
+      "bytes": 98315736,
+      "crc": 529979094,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_Misalign_05.mat",
+      "bytes": 98315736,
+      "crc": 888218595,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_Normal.mat",
+      "bytes": 98315640,
+      "crc": 1788751393,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_Unbalalnce_0583mg.mat",
+      "bytes": 98315640,
+      "crc": 3253740335,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_Unbalalnce_1169mg.mat",
+      "bytes": 98315672,
+      "crc": 2183059445,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_Unbalalnce_1751mg.mat",
+      "bytes": 98315672,
+      "crc": 3062121733,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_Unbalalnce_2239mg.mat",
+      "bytes": 98315672,
+      "crc": 664552942,
+      "compression": 8
+    },
+    {
+      "filename": "2Nm_Unbalalnce_3318mg.mat",
+      "bytes": 98315672,
+      "crc": 844428332,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_BPFI_03.mat",
+      "bytes": 49163704,
+      "crc": 3608220279,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_BPFI_10.mat",
+      "bytes": 49163704,
+      "crc": 3793646128,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_BPFI_30.mat",
+      "bytes": 49163704,
+      "crc": 2098130424,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_BPFO_03.mat",
+      "bytes": 49163704,
+      "crc": 4037737300,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_BPFO_10.mat",
+      "bytes": 49163704,
+      "crc": 1361569386,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_BPFO_30.mat",
+      "bytes": 49163704,
+      "crc": 2548878359,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_Misalign_01.mat",
+      "bytes": 98315704,
+      "crc": 4282778646,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_Misalign_03.mat",
+      "bytes": 98315768,
+      "crc": 2038899996,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_Misalign_05.mat",
+      "bytes": 98315736,
+      "crc": 4268361097,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_Normal.mat",
+      "bytes": 98315640,
+      "crc": 1650119552,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_Unbalance_0583mg.mat",
+      "bytes": 98315640,
+      "crc": 4100651475,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_Unbalance_1169mg.mat",
+      "bytes": 98315672,
+      "crc": 1245625672,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_Unbalance_1751mg.mat",
+      "bytes": 98315672,
+      "crc": 873670919,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_Unbalance_2239mg.mat",
+      "bytes": 98315672,
+      "crc": 1542594152,
+      "compression": 8
+    },
+    {
+      "filename": "4Nm_Unbalance_3318mg.mat",
+      "bytes": 98315672,
+      "crc": 3507197643,
+      "compression": 8
+    }
+  ],
+  "scope": "Full archive authenticated against publisher SHA-256; no outcomes fitted"
+}

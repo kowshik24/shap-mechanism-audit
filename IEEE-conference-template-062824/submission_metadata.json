@@ -1,0 +1,36 @@
+{
+  "title": "Calibration Scope in Mechanism-Level SHAP Audits: A Controlled Study",
+  "abstract_latex": "Predictive maintenance requires reliable fault predictions and understandable model behavior. Mechanism-level audits use Shapley additive explanations (SHAP) to compare feature contributions with expected fault signatures. The practical question is how their warning thresholds transfer across refitted models and whether attribution warnings identify predictive harm when operating conditions change. Here we show that warning interpretation depends on the prediction output and calibration population, using split-conformal ranks and 1,200 controlled model pairs with exact interventional SHAP. At nominal 5\\% calibration on one model, same-family refits with identical decisions but different probabilities produced warning rates up to 9.6\\%; hard-output score laws agreed under the same background and batch law. At matched empirical 5\\% eligible-model warning rates, pre-shift localization varied by learner and score design, while a performance screen using the known context input and labels matched or exceeded attribution-warning detection. Process replays exposed saturated decisions, while measured vibration under load transfer revealed healthy-row failures sensitive to the binary decision rule. These exploratory findings support specifying the audited output and calibration population, then assessing predictive harm separately from attribution concentration.",
+  "keywords": [
+    "SHAP",
+    "explanation evaluation",
+    "conformal calibration",
+    "distribution shift",
+    "model multiplicity"
+  ],
+  "venue": "2026 IEEE International Conference on Big Data",
+  "session": "Towards an Understanding of Artificial Intelligence: Bridging Theory, Explainability, and Practical Applications",
+  "portal_verified": true,
+  "submission_performed": false,
+  "cfp_verified": {
+    "url": "https://bigdataieee.org/BigData2026/calls/papers/",
+    "regular_page_limit": 10,
+    "references_included": true,
+    "appendix_allowed": false,
+    "review": "single-blind"
+  },
+  "session_details_source": "Official session CFP, verified October 25, 2026: https://bigdataieee.org/BigData2026/calls/special-tuai/",
+  "session_submission_deadline": "2026-10-30",
+  "repository_private_verified": true,
+  "draft_stage": "Ten-page submission-length draft; local scientific, PDF and sensitivity checks",
+  "page_limit_enforced": true,
+  "portal_verified_date": "2026-10-26",
+  "portal_subarea": "SP11",
+  "portal_submission_url": "https://wi-lab.com/cyberchair/2026/bigdata26/scripts/submit.php?subarea=SP11",
+  "session_portal_deadline_text": "Oct 31, 2026, 11.59pm Anywhere on Earth (AoE)",
+  "deadline_conflict": "Official session CFP lists Oct 30; portal lists Oct 31 AoE. Plan for earlier Oct 30 unless clarified.",
+  "repository_private_verified_date": "2026-10-26",
+  "portal_verification_scope": "Public SP11 entry and blank submission form inspected; no existing paper record or submitted metadata verified.",
+  "artifact_upload_field_present": false,
+  "portal_pdf_upload_limit_text": "320M"
+}

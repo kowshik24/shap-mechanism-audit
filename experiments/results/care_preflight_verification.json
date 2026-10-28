@@ -1,0 +1,621 @@
+{
+  "verified": true,
+  "farms": [
+    {
+      "farm": "Wind Farm A",
+      "event_datasets": 22,
+      "assets": 5,
+      "native_asset_column": "asset",
+      "labels": {
+        "anomaly": 12,
+        "normal": 10
+      }
+    },
+    {
+      "farm": "Wind Farm B",
+      "event_datasets": 15,
+      "assets": 9,
+      "native_asset_column": "asset_id",
+      "labels": {
+        "anomaly": 6,
+        "normal": 9
+      }
+    },
+    {
+      "farm": "Wind Farm C",
+      "event_datasets": 58,
+      "assets": 22,
+      "native_asset_column": "asset_id",
+      "labels": {
+        "anomaly": 27,
+        "normal": 31
+      }
+    }
+  ],
+  "events": [
+    {
+      "farm": "Wind Farm A",
+      "asset": "11",
+      "event_id": 68,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "21",
+      "event_id": 22,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "21",
+      "event_id": 72,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "0",
+      "event_id": 73,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "0",
+      "event_id": 0,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "0",
+      "event_id": 26,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "10",
+      "event_id": 40,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "10",
+      "event_id": 42,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "10",
+      "event_id": 10,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "13",
+      "event_id": 45,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "13",
+      "event_id": 84,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "11",
+      "event_id": 25,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "11",
+      "event_id": 69,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "21",
+      "event_id": 13,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "0",
+      "event_id": 24,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "10",
+      "event_id": 3,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "10",
+      "event_id": 17,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "13",
+      "event_id": 38,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "0",
+      "event_id": 71,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "13",
+      "event_id": 14,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "11",
+      "event_id": 92,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm A",
+      "asset": "21",
+      "event_id": 51,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "14",
+      "event_id": 34,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "13",
+      "event_id": 7,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "6",
+      "event_id": 53,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "7",
+      "event_id": 27,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "11",
+      "event_id": 19,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "12",
+      "event_id": 77,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "2",
+      "event_id": 83,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "14",
+      "event_id": 52,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "0",
+      "event_id": 21,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "13",
+      "event_id": 2,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "6",
+      "event_id": 23,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "7",
+      "event_id": 87,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "11",
+      "event_id": 74,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "12",
+      "event_id": 86,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm B",
+      "asset": "5",
+      "event_id": 82,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "50",
+      "event_id": 55,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "38",
+      "event_id": 81,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "21",
+      "event_id": 47,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "2",
+      "event_id": 12,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "34",
+      "event_id": 4,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "34",
+      "event_id": 18,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "52",
+      "event_id": 28,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "52",
+      "event_id": 39,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "12",
+      "event_id": 66,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "12",
+      "event_id": 15,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "15",
+      "event_id": 78,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "16",
+      "event_id": 79,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "16",
+      "event_id": 30,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "43",
+      "event_id": 33,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "43",
+      "event_id": 11,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "44",
+      "event_id": 44,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "33",
+      "event_id": 49,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "35",
+      "event_id": 31,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "35",
+      "event_id": 67,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "55",
+      "event_id": 9,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "42",
+      "event_id": 91,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "32",
+      "event_id": 5,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "56",
+      "event_id": 90,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "23",
+      "event_id": 70,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "53",
+      "event_id": 35,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "53",
+      "event_id": 16,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "53",
+      "event_id": 76,
+      "label": "anomaly"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "50",
+      "event_id": 8,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "14",
+      "event_id": 85,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "38",
+      "event_id": 6,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "21",
+      "event_id": 62,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "2",
+      "event_id": 36,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "34",
+      "event_id": 56,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "34",
+      "event_id": 94,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "52",
+      "event_id": 54,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "52",
+      "event_id": 43,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "12",
+      "event_id": 50,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "15",
+      "event_id": 64,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "16",
+      "event_id": 46,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "16",
+      "event_id": 65,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "43",
+      "event_id": 61,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "43",
+      "event_id": 93,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "44",
+      "event_id": 75,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "33",
+      "event_id": 41,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "35",
+      "event_id": 58,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "35",
+      "event_id": 48,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "55",
+      "event_id": 88,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "55",
+      "event_id": 57,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "42",
+      "event_id": 32,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "5",
+      "event_id": 89,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "32",
+      "event_id": 59,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "56",
+      "event_id": 63,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "23",
+      "event_id": 80,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "23",
+      "event_id": 37,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "13",
+      "event_id": 29,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "53",
+      "event_id": 1,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "53",
+      "event_id": 20,
+      "label": "normal"
+    },
+    {
+      "farm": "Wind Farm C",
+      "asset": "53",
+      "event_id": 60,
+      "label": "normal"
+    }
+  ],
+  "event_datasets": 95,
+  "assets": 36,
+  "labels": {
+    "anomaly": 45,
+    "normal": 50
+  },
+  "full_zip_checksum_verified": false,
+  "mechanism_alignment_verified": false,
+  "asset_exchangeability_verified": false,
+  "scope": "Pinned version-6 metadata and asset-count audit; no waveform or fitted-model evaluation",
+  "sha256": {
+    "experiments/results/care_preflight.json": "cbf1e8347cd1a132d9ae84797afa498ed0f0dbc1d31f97f25fd48f0b51900be5",
+    "experiments/62_verify_care_preflight.py": "f00da225a0014148e95d8c6a91cd4ad0585392f8f47eee36ec5935170a9101cf"
+  }
+}

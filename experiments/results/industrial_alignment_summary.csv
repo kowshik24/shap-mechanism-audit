@@ -1,0 +1,13 @@
+axis,fault,view,pooled_recording_F1,sensitivity,specificity,masked_F1,coordinate_invariant_fits,fits,max_gain_probability_change
+load_hp,B,own_anchors,0.8571428571428571,1.0,0.8333333333333334,0.5,4,4,0.0
+load_hp,B,all,1.0,1.0,1.0,1.0,0,4,0.34080676033263524
+load_hp,IR,own_anchors,1.0,1.0,1.0,0.0,4,4,0.0
+load_hp,IR,all,1.0,1.0,1.0,0.6666666666666666,0,4,0.2671731223526361
+load_hp,OR,own_anchors,1.0,1.0,1.0,0.0,4,4,0.0
+load_hp,OR,all,1.0,1.0,1.0,0.5,0,4,0.16758091309836332
+diameter_in,B,own_anchors,0.6111111111111112,0.9166666666666666,0.4583333333333333,0.4444444444444444,3,3,0.0
+diameter_in,B,all,0.5,0.6666666666666666,0.5,0.5,0,3,0.4347619047619047
+diameter_in,IR,own_anchors,0.8,0.6666666666666666,1.0,0.0,3,3,0.0
+diameter_in,IR,all,0.8,0.6666666666666666,1.0,0.0,0,3,0.18143265762591176
+diameter_in,OR,own_anchors,0.5,0.3333333333333333,1.0,0.0,3,3,0.0
+diameter_in,OR,all,0.5,0.3333333333333333,1.0,0.0,0,3,0.11288574532376422

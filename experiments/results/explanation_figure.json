@@ -1,0 +1,83 @@
+{
+  "selection": "First n=10000 forest evaluation case in saved record order; first untouched test batch",
+  "array_index": 601,
+  "case_seed": 410000,
+  "batch_index": 0,
+  "n": 10000,
+  "expected_set": [
+    "Z0"
+  ],
+  "counts": [
+    7943,
+    72,
+    628,
+    6,
+    388,
+    3,
+    142,
+    5,
+    1,
+    34,
+    0,
+    4,
+    3,
+    594,
+    2,
+    175
+  ],
+  "records": [
+    {
+      "view": "mechanism_only",
+      "shares": [
+        [
+          0.4945508797512019,
+          0.4179920386054328,
+          0.08745708164336545,
+          0.0
+        ],
+        [
+          0.009584598628159748,
+          0.3958916949137398,
+          0.5945237064581005,
+          0.0
+        ]
+      ],
+      "mechanism_0": {
+        "R": 0.4945508797512019,
+        "D": 0.48496628112304213,
+        "S": 0.022100343691692947,
+        "S_feature": 1
+      }
+    },
+    {
+      "view": "unrestricted",
+      "shares": [
+        [
+          0.2722970822216881,
+          0.4081802801762492,
+          0.08555179004076752,
+          0.23397084756129527
+        ],
+        [
+          0.006963600242070452,
+          0.39324438834481007,
+          0.5902503551328551,
+          0.009541656280264476
+        ]
+      ],
+      "mechanism_0": {
+        "R": 0.272297082221688,
+        "D": 0.2653334819796176,
+        "S": 0.22442919128103075,
+        "S_feature": 3
+      }
+    }
+  ],
+  "sha256": {
+    "experiments/42_explanation_figure.py": "631d74ffc55ff689e4dc4139bceb7af364d78c3fedbfc7a3c7e108f64a3a6956",
+    "experiments/results/observed_overlap.json": "b6f8d00c4c942af4f4112350ec98958dcc3b452d499919badb5349c6593e7bcf",
+    "experiments/results/learned_calibration.json": "15b7c3e74a052849adce12dada0b501b24f23b6457ed441740271468f2d45284",
+    "experiments/results/observed_overlap_draws.npz": "eed878bfc00f3308c455efb940b97f15633d88e8ebd022a0162e236afda947f2",
+    "src/pdm_audit/exact_oracle.py": "a222cf242f571d2c88769d729da0e864b51b22b86a59ed903a17bebb618df04b"
+  }
+}

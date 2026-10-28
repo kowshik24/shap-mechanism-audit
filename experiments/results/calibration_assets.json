@@ -1,0 +1,12 @@
+{
+  "complete": true,
+  "rows": 360,
+  "contrasts": 120,
+  "sha256": {
+    "experiments/86_calibration_assets.py": "407c58b1b52b0f693ac259d507616b00eca633c549ce0c61ad0c1469b8ae85c3",
+    "experiments/results/harm_screening.json": "f7a6bb6d22757f7221cdbcfab4f09a17ff758996067017e23dc7fce2269c5d39",
+    "IEEE-conference-template-062824/tables/harm_screening.tex": "2736bc32d6011d8a887f470a2745e14c5c183bb4fd9001b7b69f31753dfcc9b5",
+    "experiments/results/harm_screening_rates.csv": "c17ac32c144ac23ce106ee2c03ff704c8eb716cc156e08519262f02a62d001d8",
+    "experiments/results/harm_screening_contrasts.csv": "85bb12bc50813175b2c1de1c38cb22375e6a2835ba9e08fd0973c74a42853246"
+  }
+}

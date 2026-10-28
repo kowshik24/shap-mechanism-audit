@@ -1,0 +1,651 @@
+{
+  "stage": "Metadata-ready; vibration values, acquisition independence and predictive outcomes not validated",
+  "source": "https://data.mendeley.com/datasets/ztmf3m7h5x/6",
+  "primary_task": "Within-rig diagnosis under held-out measured torque load",
+  "native_subset": [
+    {
+      "native_filename": "0Nm_BPFI_03.mat",
+      "load_Nm": 0,
+      "case": "BPFI_03",
+      "family": "BPFI",
+      "bytes": 49163640,
+      "crc": 3669330071,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_BPFI_10.mat",
+      "load_Nm": 0,
+      "case": "BPFI_10",
+      "family": "BPFI",
+      "bytes": 49163640,
+      "crc": 1722087814,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_BPFI_30.mat",
+      "load_Nm": 0,
+      "case": "BPFI_30",
+      "family": "BPFI",
+      "bytes": 49163640,
+      "crc": 2429445591,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_BPFO_03.mat",
+      "load_Nm": 0,
+      "case": "BPFO_03",
+      "family": "BPFO",
+      "bytes": 49163640,
+      "crc": 3731683489,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_BPFO_10.mat",
+      "load_Nm": 0,
+      "case": "BPFO_10",
+      "family": "BPFO",
+      "bytes": 49163640,
+      "crc": 2167422266,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_BPFO_30.mat",
+      "load_Nm": 0,
+      "case": "BPFO_30",
+      "family": "BPFO",
+      "bytes": 49163640,
+      "crc": 4206236451,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_Normal.mat",
+      "load_Nm": 0,
+      "case": "Normal",
+      "family": "Normal",
+      "bytes": 245771640,
+      "crc": 3870018250,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_BPFI_03.mat",
+      "load_Nm": 2,
+      "case": "BPFI_03",
+      "family": "BPFI",
+      "bytes": 49163704,
+      "crc": 1578334464,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_BPFI_10.mat",
+      "load_Nm": 2,
+      "case": "BPFI_10",
+      "family": "BPFI",
+      "bytes": 49163704,
+      "crc": 1176305639,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_BPFI_30.mat",
+      "load_Nm": 2,
+      "case": "BPFI_30",
+      "family": "BPFI",
+      "bytes": 49163704,
+      "crc": 976887251,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_BPFO_03.mat",
+      "load_Nm": 2,
+      "case": "BPFO_03",
+      "family": "BPFO",
+      "bytes": 49163704,
+      "crc": 2366476590,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_BPFO_10.mat",
+      "load_Nm": 2,
+      "case": "BPFO_10",
+      "family": "BPFO",
+      "bytes": 49163704,
+      "crc": 351523757,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_BPFO_30.mat",
+      "load_Nm": 2,
+      "case": "BPFO_30",
+      "family": "BPFO",
+      "bytes": 49163704,
+      "crc": 986254198,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_Normal.mat",
+      "load_Nm": 2,
+      "case": "Normal",
+      "family": "Normal",
+      "bytes": 98315640,
+      "crc": 1788751393,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_BPFI_03.mat",
+      "load_Nm": 4,
+      "case": "BPFI_03",
+      "family": "BPFI",
+      "bytes": 49163704,
+      "crc": 3608220279,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_BPFI_10.mat",
+      "load_Nm": 4,
+      "case": "BPFI_10",
+      "family": "BPFI",
+      "bytes": 49163704,
+      "crc": 3793646128,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_BPFI_30.mat",
+      "load_Nm": 4,
+      "case": "BPFI_30",
+      "family": "BPFI",
+      "bytes": 49163704,
+      "crc": 2098130424,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_BPFO_03.mat",
+      "load_Nm": 4,
+      "case": "BPFO_03",
+      "family": "BPFO",
+      "bytes": 49163704,
+      "crc": 4037737300,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_BPFO_10.mat",
+      "load_Nm": 4,
+      "case": "BPFO_10",
+      "family": "BPFO",
+      "bytes": 49163704,
+      "crc": 1361569386,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_BPFO_30.mat",
+      "load_Nm": 4,
+      "case": "BPFO_30",
+      "family": "BPFO",
+      "bytes": 49163704,
+      "crc": 2548878359,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_Normal.mat",
+      "load_Nm": 4,
+      "case": "Normal",
+      "family": "Normal",
+      "bytes": 98315640,
+      "crc": 1650119552,
+      "filename_alias_applied": false
+    }
+  ],
+  "all_vibration_records": [
+    {
+      "native_filename": "0Nm_BPFI_03.mat",
+      "load_Nm": 0,
+      "case": "BPFI_03",
+      "family": "BPFI",
+      "bytes": 49163640,
+      "crc": 3669330071,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_BPFI_10.mat",
+      "load_Nm": 0,
+      "case": "BPFI_10",
+      "family": "BPFI",
+      "bytes": 49163640,
+      "crc": 1722087814,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_BPFI_30.mat",
+      "load_Nm": 0,
+      "case": "BPFI_30",
+      "family": "BPFI",
+      "bytes": 49163640,
+      "crc": 2429445591,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_BPFO_03.mat",
+      "load_Nm": 0,
+      "case": "BPFO_03",
+      "family": "BPFO",
+      "bytes": 49163640,
+      "crc": 3731683489,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_BPFO_10.mat",
+      "load_Nm": 0,
+      "case": "BPFO_10",
+      "family": "BPFO",
+      "bytes": 49163640,
+      "crc": 2167422266,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_BPFO_30.mat",
+      "load_Nm": 0,
+      "case": "BPFO_30",
+      "family": "BPFO",
+      "bytes": 49163640,
+      "crc": 4206236451,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_Misalign_01.mat",
+      "load_Nm": 0,
+      "case": "Misalign_01",
+      "family": "Misalign",
+      "bytes": 98315704,
+      "crc": 2107858721,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_Misalign_03.mat",
+      "load_Nm": 0,
+      "case": "Misalign_03",
+      "family": "Misalign",
+      "bytes": 98315704,
+      "crc": 1457124588,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_Misalign_05.mat",
+      "load_Nm": 0,
+      "case": "Misalign_05",
+      "family": "Misalign",
+      "bytes": 98315704,
+      "crc": 2757818644,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_Normal.mat",
+      "load_Nm": 0,
+      "case": "Normal",
+      "family": "Normal",
+      "bytes": 245771640,
+      "crc": 3870018250,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_Unbalance_0583mg.mat",
+      "load_Nm": 0,
+      "case": "Unbalance_0583mg",
+      "family": "Unbalance",
+      "bytes": 98315640,
+      "crc": 1074302279,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_Unbalance_1169mg.mat",
+      "load_Nm": 0,
+      "case": "Unbalance_1169mg",
+      "family": "Unbalance",
+      "bytes": 98315672,
+      "crc": 3007954116,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_Unbalance_1751mg.mat",
+      "load_Nm": 0,
+      "case": "Unbalance_1751mg",
+      "family": "Unbalance",
+      "bytes": 98315704,
+      "crc": 838632384,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_Unbalance_2239mg.mat",
+      "load_Nm": 0,
+      "case": "Unbalance_2239mg",
+      "family": "Unbalance",
+      "bytes": 98315672,
+      "crc": 1112590649,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "0Nm_Unbalance_3318mg.mat",
+      "load_Nm": 0,
+      "case": "Unbalance_3318mg",
+      "family": "Unbalance",
+      "bytes": 98315672,
+      "crc": 3631588518,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_BPFI_03.mat",
+      "load_Nm": 2,
+      "case": "BPFI_03",
+      "family": "BPFI",
+      "bytes": 49163704,
+      "crc": 1578334464,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_BPFI_10.mat",
+      "load_Nm": 2,
+      "case": "BPFI_10",
+      "family": "BPFI",
+      "bytes": 49163704,
+      "crc": 1176305639,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_BPFI_30.mat",
+      "load_Nm": 2,
+      "case": "BPFI_30",
+      "family": "BPFI",
+      "bytes": 49163704,
+      "crc": 976887251,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_BPFO_03.mat",
+      "load_Nm": 2,
+      "case": "BPFO_03",
+      "family": "BPFO",
+      "bytes": 49163704,
+      "crc": 2366476590,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_BPFO_10.mat",
+      "load_Nm": 2,
+      "case": "BPFO_10",
+      "family": "BPFO",
+      "bytes": 49163704,
+      "crc": 351523757,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_BPFO_30.mat",
+      "load_Nm": 2,
+      "case": "BPFO_30",
+      "family": "BPFO",
+      "bytes": 49163704,
+      "crc": 986254198,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_Misalign_01.mat",
+      "load_Nm": 2,
+      "case": "Misalign_01",
+      "family": "Misalign",
+      "bytes": 98315736,
+      "crc": 150923931,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_Misalign_03.mat",
+      "load_Nm": 2,
+      "case": "Misalign_03",
+      "family": "Misalign",
+      "bytes": 98315736,
+      "crc": 529979094,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_Misalign_05.mat",
+      "load_Nm": 2,
+      "case": "Misalign_05",
+      "family": "Misalign",
+      "bytes": 98315736,
+      "crc": 888218595,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_Normal.mat",
+      "load_Nm": 2,
+      "case": "Normal",
+      "family": "Normal",
+      "bytes": 98315640,
+      "crc": 1788751393,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "2Nm_Unbalalnce_0583mg.mat",
+      "load_Nm": 2,
+      "case": "Unbalance_0583mg",
+      "family": "Unbalance",
+      "bytes": 98315640,
+      "crc": 3253740335,
+      "filename_alias_applied": true
+    },
+    {
+      "native_filename": "2Nm_Unbalalnce_1169mg.mat",
+      "load_Nm": 2,
+      "case": "Unbalance_1169mg",
+      "family": "Unbalance",
+      "bytes": 98315672,
+      "crc": 2183059445,
+      "filename_alias_applied": true
+    },
+    {
+      "native_filename": "2Nm_Unbalalnce_1751mg.mat",
+      "load_Nm": 2,
+      "case": "Unbalance_1751mg",
+      "family": "Unbalance",
+      "bytes": 98315672,
+      "crc": 3062121733,
+      "filename_alias_applied": true
+    },
+    {
+      "native_filename": "2Nm_Unbalalnce_2239mg.mat",
+      "load_Nm": 2,
+      "case": "Unbalance_2239mg",
+      "family": "Unbalance",
+      "bytes": 98315672,
+      "crc": 664552942,
+      "filename_alias_applied": true
+    },
+    {
+      "native_filename": "2Nm_Unbalalnce_3318mg.mat",
+      "load_Nm": 2,
+      "case": "Unbalance_3318mg",
+      "family": "Unbalance",
+      "bytes": 98315672,
+      "crc": 844428332,
+      "filename_alias_applied": true
+    },
+    {
+      "native_filename": "4Nm_BPFI_03.mat",
+      "load_Nm": 4,
+      "case": "BPFI_03",
+      "family": "BPFI",
+      "bytes": 49163704,
+      "crc": 3608220279,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_BPFI_10.mat",
+      "load_Nm": 4,
+      "case": "BPFI_10",
+      "family": "BPFI",
+      "bytes": 49163704,
+      "crc": 3793646128,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_BPFI_30.mat",
+      "load_Nm": 4,
+      "case": "BPFI_30",
+      "family": "BPFI",
+      "bytes": 49163704,
+      "crc": 2098130424,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_BPFO_03.mat",
+      "load_Nm": 4,
+      "case": "BPFO_03",
+      "family": "BPFO",
+      "bytes": 49163704,
+      "crc": 4037737300,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_BPFO_10.mat",
+      "load_Nm": 4,
+      "case": "BPFO_10",
+      "family": "BPFO",
+      "bytes": 49163704,
+      "crc": 1361569386,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_BPFO_30.mat",
+      "load_Nm": 4,
+      "case": "BPFO_30",
+      "family": "BPFO",
+      "bytes": 49163704,
+      "crc": 2548878359,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_Misalign_01.mat",
+      "load_Nm": 4,
+      "case": "Misalign_01",
+      "family": "Misalign",
+      "bytes": 98315704,
+      "crc": 4282778646,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_Misalign_03.mat",
+      "load_Nm": 4,
+      "case": "Misalign_03",
+      "family": "Misalign",
+      "bytes": 98315768,
+      "crc": 2038899996,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_Misalign_05.mat",
+      "load_Nm": 4,
+      "case": "Misalign_05",
+      "family": "Misalign",
+      "bytes": 98315736,
+      "crc": 4268361097,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_Normal.mat",
+      "load_Nm": 4,
+      "case": "Normal",
+      "family": "Normal",
+      "bytes": 98315640,
+      "crc": 1650119552,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_Unbalance_0583mg.mat",
+      "load_Nm": 4,
+      "case": "Unbalance_0583mg",
+      "family": "Unbalance",
+      "bytes": 98315640,
+      "crc": 4100651475,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_Unbalance_1169mg.mat",
+      "load_Nm": 4,
+      "case": "Unbalance_1169mg",
+      "family": "Unbalance",
+      "bytes": 98315672,
+      "crc": 1245625672,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_Unbalance_1751mg.mat",
+      "load_Nm": 4,
+      "case": "Unbalance_1751mg",
+      "family": "Unbalance",
+      "bytes": 98315672,
+      "crc": 873670919,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_Unbalance_2239mg.mat",
+      "load_Nm": 4,
+      "case": "Unbalance_2239mg",
+      "family": "Unbalance",
+      "bytes": 98315672,
+      "crc": 1542594152,
+      "filename_alias_applied": false
+    },
+    {
+      "native_filename": "4Nm_Unbalance_3318mg.mat",
+      "load_Nm": 4,
+      "case": "Unbalance_3318mg",
+      "family": "Unbalance",
+      "bytes": 98315672,
+      "crc": 3507197643,
+      "filename_alias_applied": false
+    }
+  ],
+  "folds": [
+    {
+      "test_load_Nm": 0,
+      "source_loads_Nm": [
+        2,
+        4
+      ]
+    },
+    {
+      "test_load_Nm": 2,
+      "source_loads_Nm": [
+        0,
+        4
+      ]
+    },
+    {
+      "test_load_Nm": 4,
+      "source_loads_Nm": [
+        0,
+        2
+      ]
+    }
+  ],
+  "targets": [
+    "three-class: normal / inner race / outer race",
+    "binary: normal / any bearing fault"
+  ],
+  "primary_metrics": [
+    "macro F1 over diagnosis classes",
+    "balanced accuracy for normal/fault",
+    "healthy false-positive rate"
+  ],
+  "pooling": "Each native recording receives equal weight within its diagnosis class; windows are not independent assets",
+  "acquisition_bias": "Optional prespecified training-sample selection by native load and label; no label-assigned offsets. Such selection is a designed acquisition-bias challenge, not proof of a naturally occurring production confound.",
+  "prohibitions": [
+    "No random window splits across the same native recording",
+    "No target-load-based feature, background, model or threshold selection",
+    "No claim that 45 records or their windows are 45 independent bearings",
+    "No new-asset 5% conformal claim from this inventory",
+    "No exhaustive physical feature map without verified geometry and acquisition metadata"
+  ],
+  "next_gates": [
+    "Download and authenticate the full 2.66 GB vibration archive, or explicitly distinguish authenticated range objects from full-archive authentication",
+    "Verify native time axes, sampling rates, channel identities, repeated payloads and acquisition/asset IDs",
+    "Fix feature extraction and source-only model-selection rules before inspecting target signals",
+    "Run all three held-out-load folds and retain negative or zero-loss outcomes",
+    "Attempt mechanism-level auditing only after expected-feature and null-population assumptions are justified"
+  ]
+}

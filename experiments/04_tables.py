@@ -91,7 +91,7 @@ write('config', [
 prim = audit['primary']
 counts = bench['label_facts']['mode_counts']
 lines = [r'\begin{tabular}{@{}lrlrrrrrrrrr@{}}', r'\toprule',
-         r'& $n$ & Top feature & $R_m$ & Null & $p$ & $D_m$ & Null & $p$ & $S_m$ & Null & $p$ \\', r'\midrule']
+         r'& $n$ & Top feature & $R_m$ & Ref. & $p$ & $D_m$ & Ref. & $p$ & $S_m$ & Ref. & $p$ \\', r'\midrule']
 for m in PHYSICAL:
     o, a = prim['observed']['all'][m], prim['all']
     lines.append(f"{m} & {counts[m]} & {SHORT.get(o['top_feature'], o['top_feature'])} & "
@@ -153,9 +153,9 @@ groups = {}
 for r in scale['rows']:
     groups.setdefault((r['n'], r['sigma']), []).append(r)
 lines = [r'\begin{tabular}{@{}rlrrrrrrr@{}}', r'\toprule',
-         r'& & & & \multicolumn{2}{c}{HDF flagged by} & \multicolumn{2}{c}{TWF} & \\',
+         r'& & & & \multicolumn{2}{c}{HDF decision} & \multicolumn{2}{c}{TWF} & \\',
          r'\cmidrule(lr){5-6}\cmidrule(lr){7-8}',
-         r'$n$ & $\sigma$ & Seeds & Sensor & $R$ & $S$ & $D$ pass & $S$ flag & Min. \\', r'\midrule']
+         r'$n$ & $\sigma$ & Seeds & Sensor & $R$ loss & $S$ warn & $D$ supp. & $S$ warn & Min. \\', r'\midrule']
 for (n, sigma), rs in groups.items():
     first = sigma is None
     frac = lambda cond: f"{sum(bool(cond(r)) for r in rs)}/{len(rs)}"

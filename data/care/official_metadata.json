@@ -1,0 +1,137 @@
+{
+  "created": "2025-07-09T12:28:47.547619+00:00",
+  "modified": "2026-10-12T07:52:59.518171+00:00",
+  "id": 15846963,
+  "conceptrecid": "10958774",
+  "doi": "10.5281/zenodo.15846963",
+  "conceptdoi": "10.5281/zenodo.10958774",
+  "doi_url": "https://doi.org/10.5281/zenodo.15846963",
+  "metadata": {
+    "title": "Wind Turbine SCADA Data For Early Fault Detection",
+    "doi": "10.5281/zenodo.15846963",
+    "publication_date": "2025-07-09",
+    "description": "<h2>Table of Contents</h2>\n<ol>\n<li>Data Description</li>\n<li>\n<p>Notes</p>\n<ol>\n<li>\n<p>Known Data Issues</p>\n</li>\n<li>\n<p>Version Changes</p>\n</li>\n</ol>\n</li>\n</ol>\n<h1>Description</h1>\n<p>This dataset is published together with the&nbsp;<a href=\"https://doi.org/10.3390/data9120138\">paper</a> \"CARE to Compare: A real-world dataset for anomaly detection in wind turbine data\" which explains the dataset in detail and defines the CARE score that can be used to evaluate anomaly detection algorithms on this dataset. When referring to this dataset, please cite the paper mentioned in the related work section.</p>\n<p>The data consists of 95 datasets, containing 89 years of SCADA time series distributed across 36 different wind turbines<br>from the three wind farms A, B and C. The number of features depends on the wind farm; Wind farm A has 86 features, wind farm B has 257 features and wind farm C has 957 features.&nbsp;</p>\n<p>The overall dataset is balanced, as 45 out the 95 datasets contain a labeled anomaly event that leads up to a turbine fault and the other 50 datasets represent normal behavior. Additionally, the quality of training data is ensured by turbine-status-based labels for each data point and further information about some of the given turbine faults are included.</p>\n<p>The data for Wind farm A is based on data from the EDP open data platform (https://www.edp.com/en/innovation/open-data/data),&nbsp;<br>and consists of 5 wind turbines of an onshore wind farm in Portugal.&nbsp;<br>It contains SCADA data and information derived by a given fault logbook which defines start timestamps for specified faults.&nbsp;<br>From this data 22 datasets were selected to be included in this data collection.&nbsp;<br>The other two wind farms are offshore wind farms located in Germany. All three datasets were anonymized due to confidentiality reasons for the wind farms B and C.<br>Each dataset is provided in form of a csv-file with columns defining the features and rows representing the data points of the time series. Files</p>\n<p>More detailed information can be found in the included README-file. If there are unanswered questions please refer to this <a href=\"https://aefdi.github.io/EnergyFaultDetector/care2compare_faq.html\">FAQ</a> or contact <strong>christian.gueck@iee.fraunhofer.de</strong>, if your question is novel.</p>\n<h2><strong>Notes</strong></h2>\n<p>In wind farm A status_type_id labels can be ignored while evaluating prediction time frames of error events with metrics like the CARE-score since the status_type_id is of wind farm A is based on the EDP failure logbook and it is intended to be used for filtering of the training data.</p>\n<h3 class=\"MsoNormal\"><strong>Known Data Issues</strong></h3>\n<p class=\"MsoNormal\">This dataset contains per\u2011timestamp summary statistics (Min, Max, Avg, Std) for multiple sensors and wind farms.<br>The following issues are known and should be taken into account when using the data.</p>\n<p class=\"MsoNormal\"><strong>1. General Remarks and Recommendations</strong></p>\n<ul>\n<li class=\"MsoNormal\">Implausible values in <strong>Min</strong>, <strong>Max</strong> and <strong>Std</strong> are present across all wind farms, with varying severity by feature and site.</li>\n<li class=\"MsoNormal\">Values were provided <strong>as-is</strong> by the operator. The only modifications are:</li>\n<ul>\n<li class=\"MsoNormal\">Anonymization-related scaling of power-related data.</li>\n<li class=\"MsoNormal\">Renaming of features.</li>\n</ul>\n<li class=\"MsoNormal\">As a consequence, <strong>all Min, Max and Std values should be used with caution</strong> and may not be physically meaningful.</li>\n<li class=\"MsoNormal\"><strong>Per-timestamp Avg (average) sensor measurements are generally plausible</strong> across all datasets and can be used for meaningful analysis.</li>\n</ul>\n<p class=\"MsoNormal\"><strong>2. Types of Issues</strong></p>\n<p class=\"MsoNormal\">The following types of implausibilities occur in the Min/Max/Std statistics:</p>\n<table class=\"MsoTableGrid\">\n<tbody>\n<tr>\n<td>\n<p class=\"MsoNormal\"><strong>Issue</strong></p>\n</td>\n<td>\n<p class=\"MsoNormal\"><strong>Description</strong></p>\n</td>\n</tr>\n<tr>\n<td>\n<p class=\"MsoNormal\"><strong>1</strong></p>\n</td>\n<td>\n<p class=\"MsoNormal\">Std per timestamp is higher than the maximum possible standard deviation given the corresponding Min, Max and Avg.</p>\n</td>\n</tr>\n<tr>\n<td>\n<p class=\"MsoNormal\"><strong>2</strong></p>\n</td>\n<td>\n<p class=\"MsoNormal\">Min values are higher than the corresponding Avg values.</p>\n</td>\n</tr>\n<tr>\n<td>\n<p class=\"MsoNormal\"><strong>3</strong></p>\n</td>\n<td>\n<p class=\"MsoNormal\">Max values are lower than the corresponding Avg values.</p>\n</td>\n</tr>\n<tr>\n<td>\n<p class=\"MsoNormal\"><strong>4</strong></p>\n</td>\n<td>\n<p class=\"MsoNormal\">Min, Max and Std are equal to 0 for all datapoints of a feature.</p>\n</td>\n</tr>\n</tbody>\n</table>\n<p class=\"MsoNormal\">&nbsp;</p>\n<p class=\"MsoNormal\"><strong>3. Wind-Farm-Specific Issues</strong></p>\n<p class=\"MsoNormal\"><strong>3.1 Wind Farm A</strong></p>\n<ul>\n<li class=\"MsoNormal\"><strong>Grid Reactive Power</strong></li>\n<ul>\n<li class=\"MsoNormal\">Min, Max and Std are affected by <strong>Issue 1</strong> and <strong>Issue 3</strong>.</li>\n</ul>\n<li class=\"MsoNormal\"><strong>Pitch Angle</strong></li>\n<ul>\n<li class=\"MsoNormal\">Contains implausible values likely caused by angle wrapping (e.g. 0&deg; equivalent to 360&deg;), leading to ambiguities.</li>\n</ul>\n<li class=\"MsoNormal\"><strong>All other sensors</strong></li>\n<ul>\n<li class=\"MsoNormal\">Have fewer than <strong>5% implausible values</strong> in Min/Max/Std.</li>\n<li class=\"MsoNormal\">These features can generally be cleaned and used after appropriate quality filtering.</li>\n</ul>\n</ul>\n<p class=\"MsoNormal\"><strong>3.2 Wind Farm B</strong></p>\n<ul>\n<li class=\"MsoNormal\"><strong>Features with constant zero statistics (Issue 4)</strong> For the following sensors, Min, Max and Std are equal to 0 for all datapoints:</li>\n<ul>\n<li class=\"MsoNormal\">sensor_0, sensor_1, sensor_2, sensor_3, sensor_5, sensor_9</li>\n</ul>\n<li class=\"MsoNormal\"><strong>Features with localized inconsistencies (Issues 1, 2, 3)</strong> The following sensors show Issues 1, 2 and 3 for about <strong>5% of datapoints on average</strong> across all events:</li>\n<ul>\n<li class=\"MsoNormal\">sensor_6, sensor_54, sensor_55, sensor_56, wind_speed_60</li>\n</ul>\n<li class=\"MsoNormal\"><strong>All other features with Min/Max/Std in Wind Farm B</strong></li>\n<ul>\n<li class=\"MsoNormal\">A <strong>large proportion (typically &gt;50%)</strong> of datapoints per feature is affected by <strong>Issue 1</strong>.</li>\n<li class=\"MsoNormal\">For many signals, the share of datapoints with implausible Min/Max/Std values is <strong>close to 100%</strong>.</li>\n</ul>\n</ul>\n<p class=\"MsoNormal\"><strong>Recommendation for Wind Farm B:</strong><br>Use <strong>Avg signals only</strong> for most analyses. Treat <strong>all Min, Max and Std statistics as unreliable</strong> unless you perform additional, feature-specific validation.</p>\n<p class=\"MsoNormal\">&nbsp;</p>\n<p class=\"MsoNormal\"><strong>3.3 Wind Farm C</strong></p>\n<p class=\"MsoNormal\">In Wind Farm C, Min/Max/Std statistics exhibit varying levels of contamination by Issues 1, 2 and 3. The percentages refer to the <strong>average fraction of affected datapoints across all events of Wind Farm C</strong>.</p>\n<p class=\"MsoNormal\"><strong>3.3.1 High Contamination (&asymp;20&ndash;30% of datapoints affected)</strong></p>\n<p class=\"MsoNormal\">The following 17 sensors have a high proportion (20&ndash;30%) of datapoints affected by Issues 1, 2 and 3:</p>\n<ul>\n<li class=\"MsoNormal\">sensor_11, sensor_15, sensor_40, sensor_61, sensor_62, sensor_63, sensor_64, sensor_74, sensor_194, sensor_195, sensor_197, sensor_198, sensor_205, sensor_206, sensor_207,<br>sensor_217, sensor_218</li>\n</ul>\n<p class=\"MsoNormal\">These features should be treated with particular caution when using Min/Max/Std.</p>\n<p class=\"MsoNormal\"><strong>3.3.2 Medium to High Contamination (&asymp;10&ndash;15% of datapoints affected)</strong></p>\n<p class=\"MsoNormal\">The following 90 sensors show a medium to high proportion (mostly 10&ndash;15%) of datapoints affected by Issues 1, 2 and 3:</p>\n<ul>\n<li class=\"MsoNormal\">power_5, power_6, sensor_7, sensor_9, sensor_10, sensor_12, sensor_13, sensor_14, sensor_18, sensor_19, sensor_20, sensor_21, sensor_23, sensor_24, sensor_26, sensor_39,<br>sensor_41, sensor_44, sensor_45, sensor_65, sensor_71, sensor_72, sensor_73, sensor_77,<br>sensor_78, sensor_79, sensor_80, sensor_87, sensor_88, sensor_89, sensor_95, sensor_96,<br>sensor_104, sensor_105, sensor_106, sensor_149, sensor_150, sensor_151, sensor_152,<br>sensor_153, sensor_154, sensor_155, sensor_156, sensor_157, sensor_158, sensor_159,<br>sensor_160, sensor_161, sensor_162, sensor_163, sensor_164, sensor_165, sensor_166,<br>sensor_167, sensor_168, sensor_169, sensor_170, sensor_171, sensor_176, sensor_178,<br>sensor_179, sensor_180, sensor_181, sensor_182, sensor_183, sensor_184, sensor_185,<br>sensor_186, sensor_187, sensor_188, sensor_189, sensor_190, sensor_191, sensor_192,<br>sensor_193, sensor_196, sensor_199, sensor_200, sensor_201, sensor_202, sensor_203,<br>sensor_204, sensor_210, sensor_212, sensor_213, sensor_225, sensor_231, sensor_232,<br>sensor_233, sensor_234</li>\n</ul>\n<p class=\"MsoNormal\"><strong>3.3.3 Low Contamination (&lt;5% of datapoints affected)</strong></p>\n<p class=\"MsoNormal\">The following 131 sensors show a low contamination level (below 5% of datapoints affected by Issues 1, 2 and 3):</p>\n<p>sensor_0, sensor_1, power_2, sensor_3, sensor_4, sensor_8, sensor_16, power_17, sensor_22, sensor_25, sensor_27, sensor_28, sensor_29, sensor_30, sensor_31, sensor_32,<br>sensor_33, sensor_34, sensor_35, sensor_36, sensor_37, sensor_38, sensor_42, sensor_43,<br>sensor_46, sensor_47, sensor_48, sensor_49, sensor_50, sensor_51, sensor_52, sensor_53,<br>sensor_54, sensor_55, sensor_56, sensor_57, sensor_58, sensor_59, sensor_60, sensor_66,<br>sensor_67, sensor_68, sensor_69, sensor_70, sensor_75, sensor_76, sensor_81, sensor_82,<br>sensor_83, sensor_84, sensor_85, sensor_86, sensor_90, sensor_91, sensor_92, sensor_93,<br>sensor_94, sensor_97, sensor_98, sensor_99, sensor_100, sensor_101, sensor_102, sensor_103,<br>sensor_108, sensor_107, sensor_109, sensor_110, sensor_111, sensor_112, sensor_113, sensor_114,<br>sensor_115, sensor_116, sensor_117, sensor_118, reactive_power_119, reactive_power_120,<br>reactive_power_121, reactive_power_122, sensor_123, sensor_124, sensor_125, sensor_126,<br>sensor_127, sensor_128, sensor_129, sensor_130, sensor_131, sensor_132, sensor_133,<br>sensor_134, sensor_135, sensor_136, sensor_137, sensor_138, sensor_139, sensor_140,<br>sensor_141, sensor_142, sensor_143, sensor_144, sensor_145, sensor_146, sensor_147,<br>sensor_148, sensor_172, sensor_173, sensor_174, sensor_175, sensor_177, sensor_208,<br>sensor_209, sensor_211, sensor_214, sensor_215, sensor_216, sensor_219, sensor_220,<br>sensor_221, sensor_222, sensor_223, sensor_224, sensor_226, sensor_227, sensor_228,<br>sensor_229, sensor_230, wind_speed_236, wind_speed_235, wind_speed_237</p>\n<h3><strong>Version Changes:</strong></h3>\n<p><em>Version 5 -&gt; 6:</em></p>\n<ul>\n<li>Changed unit of sensor_40 and sensor_61 for wind farm C to hPa instead of bar. This unit error became obvious when looking at the data and comparing it to the standard air pressure.</li>\n<li>Edited event_description of events 34, 7 and 19 to high temperature in transformer cell.</li>\n<li>Changed date in event description of event 44 since it was not affected by the change in the date anonymization procedure from version 2.</li>\n<li>Changed date in event description of event 47 since it was not affected by the change in the date anonymization procedure from version 2 and edited the description text</li>\n<li>&nbsp;Changed date format in event_info files to match the date format in the dataset files.</li>\n<li>Fixed typo in Readme</li>\n<li>Re-added Readme files</li>\n</ul>\n<p><em>Version</em> 4-&gt;5:</p>\n<p>Corrections to labels were made:</p>\n<ul>\n<li>Previously missing status_type_id 4 labels were added to datasets in Wind Farm A.&nbsp;</li>\n<li>Event 51 from Wind Farm A was wrongly labeled as a normal event. With the newly added status_type_id 4 occurences, it is to be considered an anomaly event due to a gearbox bearing damage within the prediction data.</li>\n<li>Wind Farm A no longer contains status_type_id 5. All occurences of status_type_id 5 have been changed to 0 and are considered normal time stamps. This change is done, because status_type_id 5 was set as a result of a wind speed and power analysis, flagging potential anomalous data. This is not based on a fixed ground truth, so status_type_id 5 was removed. For Wind Farms B and C status_type_id 5 is still valid since it is based on real SCADA-status codes.</li>\n<li>The event_info.csv files now contain an additional column 'asset_id'.</li>\n</ul>\n<p><em>Version 3-&gt;4:<br></em></p>\n<ul>\n<li>The change of the timestamp anonymization lead to duplicate timestamps when transitioning from a leap year to 2022. This is now fixed in Version 4.</li>\n</ul>\n<p><em>Version 2-&gt;3:</em></p>\n<ul>\n<li>In version 2 timestamp changes were not consistent with the timestamps in the event-info-files. Version 3 fixes this.</li>\n</ul>\n<p><em>Version 1-&gt;2:<br></em></p>\n<ul>\n<li>Version 2 contains one deviation from version 1 regarding the anonymization procedure. Instead of shifting the timestamps of each sub-dataset by a random number of years, the size of the time shift is now determined to be the number of years so that each sub-dataset starts in 2022. This change is made to make the timestamp anonymization more consistent and to avoid future timestamps being present within the data.</li>\n</ul>",
+    "access_right": "open",
+    "creators": [
+      {
+        "name": "G\u00fcck, Christian",
+        "affiliation": "Fraunhofer Institute for Energy Economics and Energy System Technology",
+        "orcid": "0009-0000-5782-1641"
+      },
+      {
+        "name": "Roelofs, Cyriana",
+        "affiliation": "Fraunhofer Institute for Energy Economics and Energy System Technology",
+        "orcid": "0009-0007-8005-3194"
+      }
+    ],
+    "keywords": [
+      "benchmark",
+      "anomaly detection",
+      "wind turbines",
+      "predictive maintenance",
+      "fault detection",
+      "condition monitoring",
+      "Care2Compare",
+      "SCADA"
+    ],
+    "related_identifiers": [
+      {
+        "identifier": "10.3390/data9120138",
+        "relation": "isDescribedBy",
+        "resource_type": "publication-article",
+        "scheme": "doi"
+      }
+    ],
+    "language": "eng",
+    "resource_type": {
+      "title": "Dataset",
+      "type": "dataset"
+    },
+    "license": {
+      "id": "cc-by-sa-4.0"
+    },
+    "communities": [
+      {
+        "id": "wedowind"
+      }
+    ],
+    "relations": {
+      "version": [
+        {
+          "index": 5,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "10958774"
+          }
+        }
+      ]
+    }
+  },
+  "title": "Wind Turbine SCADA Data For Early Fault Detection",
+  "links": {
+    "self": "https://zenodo.org/api/records/15846963",
+    "self_html": "https://zenodo.org/records/15846963",
+    "preview_html": "https://zenodo.org/records/15846963?preview=1",
+    "doi": "https://doi.org/10.5281/zenodo.15846963",
+    "self_doi": "https://doi.org/10.5281/zenodo.15846963",
+    "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.15846963",
+    "reserve_doi": "https://zenodo.org/api/records/15846963/draft/pids/doi",
+    "parent": "https://zenodo.org/api/records/10958774",
+    "parent_html": "https://zenodo.org/records/10958774",
+    "parent_doi": "https://doi.org/10.5281/zenodo.10958774",
+    "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.10958774",
+    "self_iiif_manifest": "https://zenodo.org/api/iiif/record:15846963/manifest",
+    "self_iiif_sequence": "https://zenodo.org/api/iiif/record:15846963/sequence/default",
+    "files": "https://zenodo.org/api/records/15846963/files",
+    "media_files": "https://zenodo.org/api/records/15846963/media-files",
+    "latest": "https://zenodo.org/api/records/15846963/versions/latest",
+    "latest_html": "https://zenodo.org/records/15846963/latest",
+    "versions": "https://zenodo.org/api/records/15846963/versions",
+    "draft": "https://zenodo.org/api/records/15846963/draft",
+    "access_links": "https://zenodo.org/api/records/15846963/access/links",
+    "access_grants": "https://zenodo.org/api/records/15846963/access/grants",
+    "access_users": "https://zenodo.org/api/records/15846963/access/users",
+    "access_request": "https://zenodo.org/api/records/15846963/access/request",
+    "access": "https://zenodo.org/api/records/15846963/access",
+    "communities": "https://zenodo.org/api/records/15846963/communities",
+    "communities-suggestions": "https://zenodo.org/api/records/15846963/communities-suggestions",
+    "request_deletion": "https://zenodo.org/api/records/15846963/request-deletion",
+    "file_modification": "https://zenodo.org/api/records/15846963/file-modification",
+    "quota_increase": "https://zenodo.org/api/records/15846963/quota-increase",
+    "requests": "https://zenodo.org/api/records/15846963/requests"
+  },
+  "updated": "2026-10-12T07:52:59.518171+00:00",
+  "recid": "15846963",
+  "revision": 12,
+  "files": [
+    {
+      "id": "730f927a-0ac6-44ae-8c8f-11065031029e",
+      "key": "CARE_To_Compare.zip",
+      "size": 5503439673,
+      "checksum": "md5:2547b58c21ac8c242d13232860cf500c",
+      "links": {
+        "self": "https://zenodo.org/api/records/15846963/files/CARE_To_Compare.zip/content"
+      }
+    }
+  ],
+  "swh": {},
+  "owners": [
+    {
+      "id": "1096646"
+    }
+  ],
+  "status": "published",
+  "stats": {
+    "downloads": 62516,
+    "unique_downloads": 18592,
+    "views": 31655,
+    "unique_views": 28332,
+    "version_downloads": 48260,
+    "version_unique_downloads": 11344,
+    "version_unique_views": 9955,
+    "version_views": 11264
+  },
+  "state": "done",
+  "submitted": true
+}

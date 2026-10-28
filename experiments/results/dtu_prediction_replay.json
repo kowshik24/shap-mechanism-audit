@@ -1,0 +1,7325 @@
+{
+  "complete": true,
+  "scope": "Prediction-only replay of 300 previously specified fits; all 600 aggregate metric records reproduced exactly; no tuning, new study units, or SHAP recomputation",
+  "records": [
+    {
+      "packet": 141,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7452977676123362,
+        0.9213252770817622
+      ]
+    },
+    {
+      "packet": 141,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7452977676123362,
+        0.9220420082672434
+      ]
+    },
+    {
+      "packet": 141,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7716744989598108,
+        0.8986447756758015
+      ]
+    },
+    {
+      "packet": 141,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.77120017519416,
+        0.8973680353002855
+      ]
+    },
+    {
+      "packet": 141,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7563494879449432,
+        0.9280392264486884
+      ]
+    },
+    {
+      "packet": 141,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7611433172413676,
+        0.9102697796927834
+      ]
+    },
+    {
+      "packet": 141,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7462079859664549,
+        0.96469444750083
+      ]
+    },
+    {
+      "packet": 141,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7312397781124169,
+        0.8867260417816601
+      ]
+    },
+    {
+      "packet": 141,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7375416938978924,
+        0.9802691303102024
+      ]
+    },
+    {
+      "packet": 141,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.6421685889213624,
+        0.8317441043432692
+      ]
+    },
+    {
+      "packet": 142,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7975889142480731,
+        0.9387461615701282
+      ]
+    },
+    {
+      "packet": 142,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7975889142480731,
+        0.9387461615701282
+      ]
+    },
+    {
+      "packet": 142,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.8104568167113481,
+        0.9223370216893665
+      ]
+    },
+    {
+      "packet": 142,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.8104568167113481,
+        0.9318387816191
+      ]
+    },
+    {
+      "packet": 142,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7868736243477514,
+        0.9235500717978726
+      ]
+    },
+    {
+      "packet": 142,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7868736243477514,
+        0.916266892172119
+      ]
+    },
+    {
+      "packet": 142,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.8098985844362177,
+        0.9542762849014927
+      ]
+    },
+    {
+      "packet": 142,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.8022375634208526,
+        0.9529252363926651
+      ]
+    },
+    {
+      "packet": 142,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.8313243955391948,
+        0.9786540310253409
+      ]
+    },
+    {
+      "packet": 142,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7719804409510584,
+        0.9292383980790051
+      ]
+    },
+    {
+      "packet": 143,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7450220765983979,
+        0.928983568424657
+      ]
+    },
+    {
+      "packet": 143,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7450220765983979,
+        0.928983568424657
+      ]
+    },
+    {
+      "packet": 143,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7715457055448474,
+        0.9134769501839932
+      ]
+    },
+    {
+      "packet": 143,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7750473796519902,
+        0.9167617169157853
+      ]
+    },
+    {
+      "packet": 143,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7378685446554532,
+        0.9033778061716036
+      ]
+    },
+    {
+      "packet": 143,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7378685446554532,
+        0.9000154323872762
+      ]
+    },
+    {
+      "packet": 143,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7306778489236253,
+        0.9371416532203938
+      ]
+    },
+    {
+      "packet": 143,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7148491721150902,
+        0.9101344115499932
+      ]
+    },
+    {
+      "packet": 143,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.6856473762291087,
+        0.9763039354899447
+      ]
+    },
+    {
+      "packet": 143,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.6908389084871731,
+        0.8820724354434881
+      ]
+    },
+    {
+      "packet": 144,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.796364434555788,
+        0.9170893997680828
+      ]
+    },
+    {
+      "packet": 144,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.796364434555788,
+        0.9170893997680828
+      ]
+    },
+    {
+      "packet": 144,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7700715673620938,
+        0.9141606629023111
+      ]
+    },
+    {
+      "packet": 144,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7700715673620938,
+        0.9141606629023111
+      ]
+    },
+    {
+      "packet": 144,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7771527759137563,
+        0.9161819855111178
+      ]
+    },
+    {
+      "packet": 144,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7465837235924871,
+        0.9153924764857939
+      ]
+    },
+    {
+      "packet": 144,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7994012801353758,
+        0.9436896798693132
+      ]
+    },
+    {
+      "packet": 144,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7871817288533246,
+        0.9436896798693132
+      ]
+    },
+    {
+      "packet": 144,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7909850629162904,
+        0.9873029111789017
+      ]
+    },
+    {
+      "packet": 144,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7404766882862984,
+        0.9797015598275503
+      ]
+    },
+    {
+      "packet": 145,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.8072457710263298,
+        0.9125338921127318
+      ]
+    },
+    {
+      "packet": 145,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.8072457710263298,
+        0.9152880446818566
+      ]
+    },
+    {
+      "packet": 145,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7878913938020247,
+        0.9203798977101671
+      ]
+    },
+    {
+      "packet": 145,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7897373214472518,
+        0.9203798977101671
+      ]
+    },
+    {
+      "packet": 145,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7850554570564261,
+        0.9348625035891626
+      ]
+    },
+    {
+      "packet": 145,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7970423009135527,
+        0.9292021921633832
+      ]
+    },
+    {
+      "packet": 145,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.8025719995790283,
+        0.9656892400681167
+      ]
+    },
+    {
+      "packet": 145,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.750638410093976,
+        0.9536329796804971
+      ]
+    },
+    {
+      "packet": 145,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.8370956775443275,
+        0.9901480168766827
+      ]
+    },
+    {
+      "packet": 145,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7218100346509351,
+        0.9547229268678307
+      ]
+    },
+    {
+      "packet": 146,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7530190867455642,
+        0.9395361320642246
+      ]
+    },
+    {
+      "packet": 146,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7530190867455642,
+        0.9395361320642246
+      ]
+    },
+    {
+      "packet": 146,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7638844447322867,
+        0.9310438552329493
+      ]
+    },
+    {
+      "packet": 146,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7569811101500461,
+        0.9310438552329493
+      ]
+    },
+    {
+      "packet": 146,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7844146514710637,
+        0.9311990935787545
+      ]
+    },
+    {
+      "packet": 146,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7837991556227684,
+        0.9070668970612343
+      ]
+    },
+    {
+      "packet": 146,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7629122984877871,
+        0.9455609071819956
+      ]
+    },
+    {
+      "packet": 146,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.6913456868964555,
+        0.8893485855432591
+      ]
+    },
+    {
+      "packet": 146,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7888990837941352,
+        0.9832813547851548
+      ]
+    },
+    {
+      "packet": 146,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7195899806427546,
+        0.9097408510955095
+      ]
+    },
+    {
+      "packet": 147,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 11,
+      "IDV4_probability_range": [
+        0.7083749887893728,
+        0.8968713502387764
+      ]
+    },
+    {
+      "packet": 147,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 11,
+      "IDV4_probability_range": [
+        0.7083749887893728,
+        0.8968713502387764
+      ]
+    },
+    {
+      "packet": 147,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.6943993716873497,
+        0.8805699002902162
+      ]
+    },
+    {
+      "packet": 147,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.6999972680770875,
+        0.8724754755263835
+      ]
+    },
+    {
+      "packet": 147,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 10,
+      "IDV4_probability_range": [
+        0.7147113744789669,
+        0.9218664815521137
+      ]
+    },
+    {
+      "packet": 147,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 10,
+      "IDV4_probability_range": [
+        0.7354849859908391,
+        0.9092227537902074
+      ]
+    },
+    {
+      "packet": 147,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7563162105043125,
+        0.9453566877864686
+      ]
+    },
+    {
+      "packet": 147,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7101503756569761,
+        0.8722014584666152
+      ]
+    },
+    {
+      "packet": 147,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7642585109796484,
+        0.9933330966818202
+      ]
+    },
+    {
+      "packet": 147,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.6949733881360834,
+        0.8430488779369972
+      ]
+    },
+    {
+      "packet": 148,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7952034482300359,
+        0.9130646315494266
+      ]
+    },
+    {
+      "packet": 148,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7952034482300359,
+        0.9130646315494266
+      ]
+    },
+    {
+      "packet": 148,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.773384110736135,
+        0.9055441172966181
+      ]
+    },
+    {
+      "packet": 148,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.773384110736135,
+        0.8988759356516376
+      ]
+    },
+    {
+      "packet": 148,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7378810956971158,
+        0.9169058627188424
+      ]
+    },
+    {
+      "packet": 148,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.719260305488804,
+        0.9112533723095826
+      ]
+    },
+    {
+      "packet": 148,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.704029339911848,
+        0.9453309925614672
+      ]
+    },
+    {
+      "packet": 148,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.6910231161574294,
+        0.9319263970459859
+      ]
+    },
+    {
+      "packet": 148,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7519910156813541,
+        0.9671194359735485
+      ]
+    },
+    {
+      "packet": 148,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.6773184253053633,
+        0.9431059278694474
+      ]
+    },
+    {
+      "packet": 149,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7696471195509609,
+        0.8937202766429541
+      ]
+    },
+    {
+      "packet": 149,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7696471195509609,
+        0.9001831280325557
+      ]
+    },
+    {
+      "packet": 149,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.7789109549562101,
+        0.8890785631380059
+      ]
+    },
+    {
+      "packet": 149,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.7697058660964419,
+        0.8910625033729822
+      ]
+    },
+    {
+      "packet": 149,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7564268990050257,
+        0.9223185703278508
+      ]
+    },
+    {
+      "packet": 149,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7564268990050257,
+        0.9211592088559893
+      ]
+    },
+    {
+      "packet": 149,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.7529972351178009,
+        0.946157174605583
+      ]
+    },
+    {
+      "packet": 149,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.730701798916358,
+        0.9131582186882706
+      ]
+    },
+    {
+      "packet": 149,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.6967716444503836,
+        0.9803386245782222
+      ]
+    },
+    {
+      "packet": 149,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.6865083823959828,
+        0.9637966791543369
+      ]
+    },
+    {
+      "packet": 150,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7716299247853053,
+        0.8956456514982388
+      ]
+    },
+    {
+      "packet": 150,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7654416024168844,
+        0.898296813257105
+      ]
+    },
+    {
+      "packet": 150,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7965806959179386,
+        0.9189689431389813
+      ]
+    },
+    {
+      "packet": 150,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7964558045017146,
+        0.9189689431389813
+      ]
+    },
+    {
+      "packet": 150,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7817528173552263,
+        0.9143646678590237
+      ]
+    },
+    {
+      "packet": 150,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7618594842278654,
+        0.9081053907881839
+      ]
+    },
+    {
+      "packet": 150,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7881397603550503,
+        0.9559849767111765
+      ]
+    },
+    {
+      "packet": 150,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7586293363789934,
+        0.9132122339367489
+      ]
+    },
+    {
+      "packet": 150,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7708552210377718,
+        0.9679491988389102
+      ]
+    },
+    {
+      "packet": 150,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7237525603601626,
+        0.8829304743197092
+      ]
+    },
+    {
+      "packet": 151,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7424972442549895,
+        0.9155625971971023
+      ]
+    },
+    {
+      "packet": 151,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7424972442549895,
+        0.9155625971971023
+      ]
+    },
+    {
+      "packet": 151,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7332447951584519,
+        0.9226985574079261
+      ]
+    },
+    {
+      "packet": 151,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7332447951584519,
+        0.9226985574079261
+      ]
+    },
+    {
+      "packet": 151,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7420328821518491,
+        0.9091144884747864
+      ]
+    },
+    {
+      "packet": 151,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7251658905879652,
+        0.9003161429484495
+      ]
+    },
+    {
+      "packet": 151,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7270068284107234,
+        0.9522518605811687
+      ]
+    },
+    {
+      "packet": 151,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7249049118244169,
+        0.9455753536610644
+      ]
+    },
+    {
+      "packet": 151,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7379330864804136,
+        0.9773683382332733
+      ]
+    },
+    {
+      "packet": 151,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.6757553117430269,
+        0.8994801268542707
+      ]
+    },
+    {
+      "packet": 152,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7516357715283918,
+        0.9062612565469327
+      ]
+    },
+    {
+      "packet": 152,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7516357715283918,
+        0.9062612565469327
+      ]
+    },
+    {
+      "packet": 152,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7522952943841598,
+        0.9031238146817793
+      ]
+    },
+    {
+      "packet": 152,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7522952943841598,
+        0.9031238146817793
+      ]
+    },
+    {
+      "packet": 152,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7333412881340909,
+        0.8979369920260951
+      ]
+    },
+    {
+      "packet": 152,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7183595238258227,
+        0.8723828364964274
+      ]
+    },
+    {
+      "packet": 152,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.760424806807555,
+        0.9511350360819608
+      ]
+    },
+    {
+      "packet": 152,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7299854064420899,
+        0.8725329041750894
+      ]
+    },
+    {
+      "packet": 152,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.750137549336137,
+        0.9615391440613918
+      ]
+    },
+    {
+      "packet": 152,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.637848071025441,
+        0.8382273203341732
+      ]
+    },
+    {
+      "packet": 153,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7589074358851016,
+        0.891076748202764
+      ]
+    },
+    {
+      "packet": 153,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7589074358851016,
+        0.891076748202764
+      ]
+    },
+    {
+      "packet": 153,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.724094669936782,
+        0.8874574089554778
+      ]
+    },
+    {
+      "packet": 153,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7210203254665811,
+        0.8858504762170621
+      ]
+    },
+    {
+      "packet": 153,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7423663432430748,
+        0.9012098883670779
+      ]
+    },
+    {
+      "packet": 153,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7105607777887852,
+        0.8914689131981609
+      ]
+    },
+    {
+      "packet": 153,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7642675012287851,
+        0.9433358519127053
+      ]
+    },
+    {
+      "packet": 153,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7401510092359378,
+        0.9282864250310188
+      ]
+    },
+    {
+      "packet": 153,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7175738919262449,
+        0.9603787362070246
+      ]
+    },
+    {
+      "packet": 153,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.6351389302640846,
+        0.9048689650915351
+      ]
+    },
+    {
+      "packet": 154,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7544807242153072,
+        0.8861071654623778
+      ]
+    },
+    {
+      "packet": 154,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7544807242153072,
+        0.8962634154623778
+      ]
+    },
+    {
+      "packet": 154,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7190030119785527,
+        0.8930386606347804
+      ]
+    },
+    {
+      "packet": 154,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7190030119785527,
+        0.8930386606347804
+      ]
+    },
+    {
+      "packet": 154,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7964940503343918,
+        0.9288278455331302
+      ]
+    },
+    {
+      "packet": 154,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7717902685082221,
+        0.9023785237655877
+      ]
+    },
+    {
+      "packet": 154,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7818998620410398,
+        0.9487686884744113
+      ]
+    },
+    {
+      "packet": 154,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7378925613134502,
+        0.928730356232967
+      ]
+    },
+    {
+      "packet": 154,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.8104752863474434,
+        0.9628431320268378
+      ]
+    },
+    {
+      "packet": 154,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.6955194826690753,
+        0.8993548887080973
+      ]
+    },
+    {
+      "packet": 155,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.8058091589555133,
+        0.9109765940313413
+      ]
+    },
+    {
+      "packet": 155,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.8065482578010594,
+        0.9109765940313413
+      ]
+    },
+    {
+      "packet": 155,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7622869291952676,
+        0.9039243727191526
+      ]
+    },
+    {
+      "packet": 155,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7779119291952676,
+        0.9039243727191526
+      ]
+    },
+    {
+      "packet": 155,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7846277737817966,
+        0.9191198983753017
+      ]
+    },
+    {
+      "packet": 155,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7951906755004373,
+        0.9133144199325449
+      ]
+    },
+    {
+      "packet": 155,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7804064666947577,
+        0.9577838413280737
+      ]
+    },
+    {
+      "packet": 155,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7558510618990048,
+        0.9073815172935229
+      ]
+    },
+    {
+      "packet": 155,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7868460335212866,
+        0.9835018441678072
+      ]
+    },
+    {
+      "packet": 155,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7417512540970095,
+        0.8524664261661007
+      ]
+    },
+    {
+      "packet": 156,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.8067002761740848,
+        0.9127538527348711
+      ]
+    },
+    {
+      "packet": 156,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.8067002761740848,
+        0.9127538527348711
+      ]
+    },
+    {
+      "packet": 156,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.8096193240051167,
+        0.9229412414928223
+      ]
+    },
+    {
+      "packet": 156,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.8085848141079136,
+        0.9229412414928223
+      ]
+    },
+    {
+      "packet": 156,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7965659233531893,
+        0.927772371148935
+      ]
+    },
+    {
+      "packet": 156,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7776877021389232,
+        0.9088762174106422
+      ]
+    },
+    {
+      "packet": 156,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7619584825454307,
+        0.9490374929232979
+      ]
+    },
+    {
+      "packet": 156,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7194234565095238,
+        0.9068077531957134
+      ]
+    },
+    {
+      "packet": 156,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7567439145346081,
+        0.9887782005701927
+      ]
+    },
+    {
+      "packet": 156,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7462668992749524,
+        0.9363178653038956
+      ]
+    },
+    {
+      "packet": 157,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7799631707010102,
+        0.927757151991116
+      ]
+    },
+    {
+      "packet": 157,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7799631707010102,
+        0.927757151991116
+      ]
+    },
+    {
+      "packet": 157,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.8034608446857354,
+        0.9213886033412283
+      ]
+    },
+    {
+      "packet": 157,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7962817906316814,
+        0.9213886033412283
+      ]
+    },
+    {
+      "packet": 157,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.763607261022732,
+        0.9409148521628017
+      ]
+    },
+    {
+      "packet": 157,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7555054091708802,
+        0.9048822709447809
+      ]
+    },
+    {
+      "packet": 157,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7416480559456263,
+        0.9564470358791897
+      ]
+    },
+    {
+      "packet": 157,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7179186258915711,
+        0.9158722196512565
+      ]
+    },
+    {
+      "packet": 157,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7463100441372554,
+        0.9712895527669615
+      ]
+    },
+    {
+      "packet": 157,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.6664486119928581,
+        0.9096269300411387
+      ]
+    },
+    {
+      "packet": 158,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7694526567379213,
+        0.894103694090805
+      ]
+    },
+    {
+      "packet": 158,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7694526567379213,
+        0.894103694090805
+      ]
+    },
+    {
+      "packet": 158,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7524134157749184,
+        0.8864435371486842
+      ]
+    },
+    {
+      "packet": 158,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7252649597835015,
+        0.8864435371486842
+      ]
+    },
+    {
+      "packet": 158,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7576117215116694,
+        0.8928423485598357
+      ]
+    },
+    {
+      "packet": 158,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7505586708870728,
+        0.8940274783003547
+      ]
+    },
+    {
+      "packet": 158,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7406927689002892,
+        0.9425119934792103
+      ]
+    },
+    {
+      "packet": 158,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7406927689002892,
+        0.9213097710361791
+      ]
+    },
+    {
+      "packet": 158,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7985077583159265,
+        0.9753013597911636
+      ]
+    },
+    {
+      "packet": 158,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.688762674251943,
+        0.9465992511315334
+      ]
+    },
+    {
+      "packet": 159,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 11,
+      "IDV4_probability_range": [
+        0.7662828364140014,
+        0.9225911724373691
+      ]
+    },
+    {
+      "packet": 159,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 11,
+      "IDV4_probability_range": [
+        0.7662828364140014,
+        0.9225911724373691
+      ]
+    },
+    {
+      "packet": 159,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.8016923143074418,
+        0.9175078412494541
+      ]
+    },
+    {
+      "packet": 159,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.8016923143074418,
+        0.9172840295040263
+      ]
+    },
+    {
+      "packet": 159,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7868399259849144,
+        0.9223277337074499
+      ]
+    },
+    {
+      "packet": 159,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7797520490039608,
+        0.9223277337074499
+      ]
+    },
+    {
+      "packet": 159,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7972374482183631,
+        0.9684351822012359
+      ]
+    },
+    {
+      "packet": 159,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7381112212344123,
+        0.9445119476331076
+      ]
+    },
+    {
+      "packet": 159,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7593751983750934,
+        0.975809149656199
+      ]
+    },
+    {
+      "packet": 159,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7002758403287603,
+        0.9073579486175262
+      ]
+    },
+    {
+      "packet": 160,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7678228045642684,
+        0.9342860760639311
+      ]
+    },
+    {
+      "packet": 160,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7678228045642684,
+        0.9342860760639311
+      ]
+    },
+    {
+      "packet": 160,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7630693545072985,
+        0.9287093784692818
+      ]
+    },
+    {
+      "packet": 160,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7630693545072985,
+        0.9287093784692818
+      ]
+    },
+    {
+      "packet": 160,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7863706751846915,
+        0.916293124394223
+      ]
+    },
+    {
+      "packet": 160,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7760280991441448,
+        0.912909914488277
+      ]
+    },
+    {
+      "packet": 160,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.7998283304494107,
+        0.9590454936689192
+      ]
+    },
+    {
+      "packet": 160,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.7682187308306558,
+        0.9373353053531541
+      ]
+    },
+    {
+      "packet": 160,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7903240451095769,
+        0.9810829744587399
+      ]
+    },
+    {
+      "packet": 160,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7435797417702034,
+        0.9260004678404286
+      ]
+    },
+    {
+      "packet": 161,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7549418926166734,
+        0.9345899956756637
+      ]
+    },
+    {
+      "packet": 161,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7549418926166734,
+        0.9345899956756637
+      ]
+    },
+    {
+      "packet": 161,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7371025492191537,
+        0.9390070734413847
+      ]
+    },
+    {
+      "packet": 161,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7371025492191537,
+        0.9390070734413847
+      ]
+    },
+    {
+      "packet": 161,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.6934979417367472,
+        0.9503999573860864
+      ]
+    },
+    {
+      "packet": 161,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.6995884623851031,
+        0.9503999573860864
+      ]
+    },
+    {
+      "packet": 161,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.6836247044125262,
+        0.9593509468634627
+      ]
+    },
+    {
+      "packet": 161,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.6632413741188485,
+        0.8937870450909695
+      ]
+    },
+    {
+      "packet": 161,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7416318669252263,
+        0.9706095041709402
+      ]
+    },
+    {
+      "packet": 161,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.6769449984517141,
+        0.8990741321041846
+      ]
+    },
+    {
+      "packet": 162,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 28,
+      "IDV4_probability_range": [
+        0.7796362465551913,
+        0.9037773387729506
+      ]
+    },
+    {
+      "packet": 162,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 28,
+      "IDV4_probability_range": [
+        0.7796362465551913,
+        0.9037773387729506
+      ]
+    },
+    {
+      "packet": 162,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 28,
+      "IDV4_probability_range": [
+        0.7825208894503537,
+        0.9165297074439893
+      ]
+    },
+    {
+      "packet": 162,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 28,
+      "IDV4_probability_range": [
+        0.7764131829509985,
+        0.925054472407336
+      ]
+    },
+    {
+      "packet": 162,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 28,
+      "IDV4_probability_range": [
+        0.7856166258844363,
+        0.9195329687162389
+      ]
+    },
+    {
+      "packet": 162,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 28,
+      "IDV4_probability_range": [
+        0.7590568318686854,
+        0.9068685646726272
+      ]
+    },
+    {
+      "packet": 162,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.7834313344002016,
+        0.9293518482326675
+      ]
+    },
+    {
+      "packet": 162,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.7776048210503912,
+        0.9141216220275749
+      ]
+    },
+    {
+      "packet": 162,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.7607572987944937,
+        0.9775065004761267
+      ]
+    },
+    {
+      "packet": 162,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.7394142233208623,
+        0.9362663275572123
+      ]
+    },
+    {
+      "packet": 163,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.7374980477014809,
+        0.9087262493185966
+      ]
+    },
+    {
+      "packet": 163,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.7374980477014809,
+        0.9087262493185966
+      ]
+    },
+    {
+      "packet": 163,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7321904072827845,
+        0.9363587700298048
+      ]
+    },
+    {
+      "packet": 163,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7321904072827845,
+        0.9363587700298048
+      ]
+    },
+    {
+      "packet": 163,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7170973006846257,
+        0.9144153367351425
+      ]
+    },
+    {
+      "packet": 163,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7161057821172019,
+        0.910274510595183
+      ]
+    },
+    {
+      "packet": 163,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7589871390657522,
+        0.9364924097932207
+      ]
+    },
+    {
+      "packet": 163,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.6967426307137755,
+        0.8943292044739188
+      ]
+    },
+    {
+      "packet": 163,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 27,
+      "IDV4_probability_range": [
+        0.7998742251071016,
+        0.9698805888766006
+      ]
+    },
+    {
+      "packet": 163,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 27,
+      "IDV4_probability_range": [
+        0.6367584767651919,
+        0.9385899320263497
+      ]
+    },
+    {
+      "packet": 164,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7580256857605843,
+        0.9043524379592853
+      ]
+    },
+    {
+      "packet": 164,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7580256857605843,
+        0.9043524379592853
+      ]
+    },
+    {
+      "packet": 164,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7867559123951051,
+        0.9108321643435886
+      ]
+    },
+    {
+      "packet": 164,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7867559123951051,
+        0.910149341854934
+      ]
+    },
+    {
+      "packet": 164,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.8045579466678114,
+        0.9086520581653134
+      ]
+    },
+    {
+      "packet": 164,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7993496133344781,
+        0.9101305411891416
+      ]
+    },
+    {
+      "packet": 164,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.8224457658208828,
+        0.9474092520531817
+      ]
+    },
+    {
+      "packet": 164,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.8138444214471252,
+        0.9217391988449083
+      ]
+    },
+    {
+      "packet": 164,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.794526315468146,
+        0.9591094236890028
+      ]
+    },
+    {
+      "packet": 164,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7605231849696541,
+        0.8948951739208169
+      ]
+    },
+    {
+      "packet": 165,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7710412786707224,
+        0.934813158867554
+      ]
+    },
+    {
+      "packet": 165,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7710412786707224,
+        0.934813158867554
+      ]
+    },
+    {
+      "packet": 165,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7706993220312911,
+        0.9208597796762557
+      ]
+    },
+    {
+      "packet": 165,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7739739045823086,
+        0.9208597796762557
+      ]
+    },
+    {
+      "packet": 165,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7779347008692186,
+        0.9302777374838909
+      ]
+    },
+    {
+      "packet": 165,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7544523157407867,
+        0.9238199982217272
+      ]
+    },
+    {
+      "packet": 165,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7673416297838385,
+        0.9452240110253707
+      ]
+    },
+    {
+      "packet": 165,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7404308178774386,
+        0.926859840127102
+      ]
+    },
+    {
+      "packet": 165,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7256842035971435,
+        0.979728316649019
+      ]
+    },
+    {
+      "packet": 165,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7042181201371565,
+        0.9728197671467439
+      ]
+    },
+    {
+      "packet": 166,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 27,
+      "IDV4_probability_range": [
+        0.7524202623208848,
+        0.9121879908279584
+      ]
+    },
+    {
+      "packet": 166,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 27,
+      "IDV4_probability_range": [
+        0.7524202623208848,
+        0.9121879908279584
+      ]
+    },
+    {
+      "packet": 166,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 29,
+      "IDV4_probability_range": [
+        0.7261632232593948,
+        0.9304513394081302
+      ]
+    },
+    {
+      "packet": 166,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 29,
+      "IDV4_probability_range": [
+        0.727978524712211,
+        0.9448474068238605
+      ]
+    },
+    {
+      "packet": 166,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 29,
+      "IDV4_probability_range": [
+        0.7585778268662455,
+        0.9070496858689763
+      ]
+    },
+    {
+      "packet": 166,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 29,
+      "IDV4_probability_range": [
+        0.7524432330433881,
+        0.9054056228706195
+      ]
+    },
+    {
+      "packet": 166,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 27,
+      "IDV4_probability_range": [
+        0.7180180288275281,
+        0.9279641364509452
+      ]
+    },
+    {
+      "packet": 166,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 27,
+      "IDV4_probability_range": [
+        0.713175183515737,
+        0.8927001925577334
+      ]
+    },
+    {
+      "packet": 166,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7027006565120536,
+        0.9667216141468001
+      ]
+    },
+    {
+      "packet": 166,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.6946094620156413,
+        0.9413182827062984
+      ]
+    },
+    {
+      "packet": 167,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7899983384579045,
+        0.9477598603150846
+      ]
+    },
+    {
+      "packet": 167,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7904492888542236,
+        0.9477598603150846
+      ]
+    },
+    {
+      "packet": 167,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7762110221692227,
+        0.9468377880222856
+      ]
+    },
+    {
+      "packet": 167,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7605860221692227,
+        0.9468377880222856
+      ]
+    },
+    {
+      "packet": 167,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7992604882455868,
+        0.9586486718969908
+      ]
+    },
+    {
+      "packet": 167,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.8070382531454326,
+        0.9586486718969908
+      ]
+    },
+    {
+      "packet": 167,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.8102645485020545,
+        0.9777037601660975
+      ]
+    },
+    {
+      "packet": 167,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.792158052467326,
+        0.9254384314748146
+      ]
+    },
+    {
+      "packet": 167,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 10,
+      "IDV4_probability_range": [
+        0.8128343218936391,
+        0.9819152751426575
+      ]
+    },
+    {
+      "packet": 167,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 10,
+      "IDV4_probability_range": [
+        0.7570338307199164,
+        0.9021590277021182
+      ]
+    },
+    {
+      "packet": 168,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7896985758307303,
+        0.927995999112218
+      ]
+    },
+    {
+      "packet": 168,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7896985758307303,
+        0.927995999112218
+      ]
+    },
+    {
+      "packet": 168,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.8038201568954865,
+        0.930063697206717
+      ]
+    },
+    {
+      "packet": 168,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.8038201568954865,
+        0.9232885416050572
+      ]
+    },
+    {
+      "packet": 168,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7796592941514388,
+        0.9543791289327961
+      ]
+    },
+    {
+      "packet": 168,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7796592941514388,
+        0.9129593315425157
+      ]
+    },
+    {
+      "packet": 168,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7703940085369868,
+        0.9431015568830257
+      ]
+    },
+    {
+      "packet": 168,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7642975334809715,
+        0.9291519481553698
+      ]
+    },
+    {
+      "packet": 168,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7820554571167029,
+        0.9770266885275273
+      ]
+    },
+    {
+      "packet": 168,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7409366615351027,
+        0.9218997010165757
+      ]
+    },
+    {
+      "packet": 169,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7688587401759766,
+        0.9213406257274025
+      ]
+    },
+    {
+      "packet": 169,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7688587401759766,
+        0.9213406257274025
+      ]
+    },
+    {
+      "packet": 169,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7600750565219273,
+        0.8919452215769748
+      ]
+    },
+    {
+      "packet": 169,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7695890105115728,
+        0.8984036162115786
+      ]
+    },
+    {
+      "packet": 169,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 13,
+      "IDV4_probability_range": [
+        0.7910239801689198,
+        0.9062696776912514
+      ]
+    },
+    {
+      "packet": 169,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 13,
+      "IDV4_probability_range": [
+        0.7682344544854335,
+        0.9007550336586795
+      ]
+    },
+    {
+      "packet": 169,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7948284552170869,
+        0.9522186487556871
+      ]
+    },
+    {
+      "packet": 169,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7798757583600494,
+        0.9215594603060641
+      ]
+    },
+    {
+      "packet": 169,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 9,
+      "IDV4_probability_range": [
+        0.7760604035432562,
+        0.9794343520433738
+      ]
+    },
+    {
+      "packet": 169,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 9,
+      "IDV4_probability_range": [
+        0.7471537108591554,
+        0.9188026960787578
+      ]
+    },
+    {
+      "packet": 170,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.726787536029786,
+        0.9155215645060337
+      ]
+    },
+    {
+      "packet": 170,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.726787536029786,
+        0.9155215645060337
+      ]
+    },
+    {
+      "packet": 170,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7133073523911887,
+        0.9178324795411555
+      ]
+    },
+    {
+      "packet": 170,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7133073523911887,
+        0.9176644687884674
+      ]
+    },
+    {
+      "packet": 170,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7646444998353278,
+        0.9169313348172977
+      ]
+    },
+    {
+      "packet": 170,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7560582485092885,
+        0.910286339003692
+      ]
+    },
+    {
+      "packet": 170,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.8048411992811139,
+        0.944793205051485
+      ]
+    },
+    {
+      "packet": 170,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7746492039224034,
+        0.9058075201908852
+      ]
+    },
+    {
+      "packet": 170,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.813343521254211,
+        0.9840246480434743
+      ]
+    },
+    {
+      "packet": 170,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7398331561784778,
+        0.9148308762943603
+      ]
+    },
+    {
+      "packet": 171,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7651772555621039,
+        0.9141779627202135
+      ]
+    },
+    {
+      "packet": 171,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7564198923875505,
+        0.9141779627202135
+      ]
+    },
+    {
+      "packet": 171,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7391993086355657,
+        0.9009680371678987
+      ]
+    },
+    {
+      "packet": 171,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7410800956726027,
+        0.9074304131422541
+      ]
+    },
+    {
+      "packet": 171,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7617394852304477,
+        0.9060152779499633
+      ]
+    },
+    {
+      "packet": 171,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7387554756435237,
+        0.9017168146777076
+      ]
+    },
+    {
+      "packet": 171,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7663141893122958,
+        0.9449254142326469
+      ]
+    },
+    {
+      "packet": 171,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7224208824103342,
+        0.8912092077464554
+      ]
+    },
+    {
+      "packet": 171,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.8292699356642729,
+        0.9666989980932341
+      ]
+    },
+    {
+      "packet": 171,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.6776318500556131,
+        0.8779107980677174
+      ]
+    },
+    {
+      "packet": 172,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7768957738437727,
+        0.8972585597522904
+      ]
+    },
+    {
+      "packet": 172,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7768957738437727,
+        0.8972585597522904
+      ]
+    },
+    {
+      "packet": 172,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7892826624045887,
+        0.8858435345146253
+      ]
+    },
+    {
+      "packet": 172,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7966990593840925,
+        0.8850402836878105
+      ]
+    },
+    {
+      "packet": 172,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7344647079047479,
+        0.9082040469036538
+      ]
+    },
+    {
+      "packet": 172,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7379160131256315,
+        0.9089437033130948
+      ]
+    },
+    {
+      "packet": 172,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7370754263857094,
+        0.9559444908428655
+      ]
+    },
+    {
+      "packet": 172,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7127863717411178,
+        0.9554764394996371
+      ]
+    },
+    {
+      "packet": 172,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7995981685795877,
+        0.9836598044574665
+      ]
+    },
+    {
+      "packet": 172,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.6829582313386203,
+        0.9780938947847468
+      ]
+    },
+    {
+      "packet": 173,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7340024455073109,
+        0.9026480775948664
+      ]
+    },
+    {
+      "packet": 173,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7340024455073109,
+        0.9026480775948664
+      ]
+    },
+    {
+      "packet": 173,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7632813836338109,
+        0.9165472848335932
+      ]
+    },
+    {
+      "packet": 173,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7632813836338109,
+        0.9092453517915285
+      ]
+    },
+    {
+      "packet": 173,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7422851578926628,
+        0.9114002638528808
+      ]
+    },
+    {
+      "packet": 173,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7227682836079261,
+        0.9060487127330865
+      ]
+    },
+    {
+      "packet": 173,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7550205924218067,
+        0.9695596534559519
+      ]
+    },
+    {
+      "packet": 173,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7127180409034355,
+        0.918951250235621
+      ]
+    },
+    {
+      "packet": 173,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7246577193593488,
+        0.9877464335850272
+      ]
+    },
+    {
+      "packet": 173,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.6637529451986943,
+        0.9585125626172852
+      ]
+    },
+    {
+      "packet": 174,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7495337346668376,
+        0.9415628063805085
+      ]
+    },
+    {
+      "packet": 174,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7495337346668376,
+        0.9415628063805085
+      ]
+    },
+    {
+      "packet": 174,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.7473016316439431,
+        0.9055204842925761
+      ]
+    },
+    {
+      "packet": 174,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.7473016316439431,
+        0.9055204842925761
+      ]
+    },
+    {
+      "packet": 174,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 13,
+      "IDV4_probability_range": [
+        0.7756508542659104,
+        0.9163319763304096
+      ]
+    },
+    {
+      "packet": 174,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 13,
+      "IDV4_probability_range": [
+        0.7675759325943121,
+        0.910923203518883
+      ]
+    },
+    {
+      "packet": 174,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.7361721592855875,
+        0.9601346244125616
+      ]
+    },
+    {
+      "packet": 174,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.7062755530265634,
+        0.8836140031984773
+      ]
+    },
+    {
+      "packet": 174,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 9,
+      "IDV4_probability_range": [
+        0.8064867570327013,
+        0.9796425369598133
+      ]
+    },
+    {
+      "packet": 174,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 9,
+      "IDV4_probability_range": [
+        0.7452406305657341,
+        0.8930453688920423
+      ]
+    },
+    {
+      "packet": 175,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 30,
+      "IDV4_probability_range": [
+        0.7263621407688704,
+        0.9070266183112586
+      ]
+    },
+    {
+      "packet": 175,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 30,
+      "IDV4_probability_range": [
+        0.7263621407688704,
+        0.9070266183112586
+      ]
+    },
+    {
+      "packet": 175,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 29,
+      "IDV4_probability_range": [
+        0.7179130076672456,
+        0.9103661181131409
+      ]
+    },
+    {
+      "packet": 175,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 29,
+      "IDV4_probability_range": [
+        0.7202611175071804,
+        0.9103661181131409
+      ]
+    },
+    {
+      "packet": 175,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7506111937884871,
+        0.9310482084998728
+      ]
+    },
+    {
+      "packet": 175,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7552427084464676,
+        0.9310482084998728
+      ]
+    },
+    {
+      "packet": 175,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7733910674291887,
+        0.9349115362625697
+      ]
+    },
+    {
+      "packet": 175,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7506582383548168,
+        0.9116544317129852
+      ]
+    },
+    {
+      "packet": 175,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7191120653733902,
+        0.9849680467113846
+      ]
+    },
+    {
+      "packet": 175,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.6956745653733901,
+        0.9345712613046253
+      ]
+    },
+    {
+      "packet": 176,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.6984573124969293,
+        0.9121271735959692
+      ]
+    },
+    {
+      "packet": 176,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.6984573124969293,
+        0.9121271735959692
+      ]
+    },
+    {
+      "packet": 176,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7505946007716745,
+        0.9237065106673336
+      ]
+    },
+    {
+      "packet": 176,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7419812087018879,
+        0.9237065106673336
+      ]
+    },
+    {
+      "packet": 176,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7448890107129438,
+        0.903678486175066
+      ]
+    },
+    {
+      "packet": 176,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7414567661426724,
+        0.9034628897479441
+      ]
+    },
+    {
+      "packet": 176,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.761286290554298,
+        0.9346286736501735
+      ]
+    },
+    {
+      "packet": 176,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.6920935789955264,
+        0.910807386727245
+      ]
+    },
+    {
+      "packet": 176,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7905199364755322,
+        0.968697357246809
+      ]
+    },
+    {
+      "packet": 176,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.6766034220846546,
+        0.9383178968490885
+      ]
+    },
+    {
+      "packet": 177,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7492160803143112,
+        0.8674917646408364
+      ]
+    },
+    {
+      "packet": 177,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7492160803143112,
+        0.8674917646408364
+      ]
+    },
+    {
+      "packet": 177,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7386734959312101,
+        0.8723714622407319
+      ]
+    },
+    {
+      "packet": 177,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7386734959312101,
+        0.8660608317785644
+      ]
+    },
+    {
+      "packet": 177,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7560270919471577,
+        0.8999572975239457
+      ]
+    },
+    {
+      "packet": 177,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7460545422395629,
+        0.893619173879694
+      ]
+    },
+    {
+      "packet": 177,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7516081356943908,
+        0.9438237044294209
+      ]
+    },
+    {
+      "packet": 177,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.6890197623489144,
+        0.9144726452877189
+      ]
+    },
+    {
+      "packet": 177,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7339505621409234,
+        0.963880265456639
+      ]
+    },
+    {
+      "packet": 177,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.6840159371819156,
+        0.9282649802655468
+      ]
+    },
+    {
+      "packet": 178,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.786299417270757,
+        0.9337626012169407
+      ]
+    },
+    {
+      "packet": 178,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.786299417270757,
+        0.9337626012169407
+      ]
+    },
+    {
+      "packet": 178,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7719548209250318,
+        0.9183214407264756
+      ]
+    },
+    {
+      "packet": 178,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7719548209250318,
+        0.9183214407264756
+      ]
+    },
+    {
+      "packet": 178,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.8020741047803095,
+        0.9357099170667896
+      ]
+    },
+    {
+      "packet": 178,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.8020741047803095,
+        0.9170238494839544
+      ]
+    },
+    {
+      "packet": 178,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7738275837924091,
+        0.9406407684249293
+      ]
+    },
+    {
+      "packet": 178,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7285374734013689,
+        0.8955458820493527
+      ]
+    },
+    {
+      "packet": 178,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7833228898048961,
+        0.9836208620402489
+      ]
+    },
+    {
+      "packet": 178,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7104055625585564,
+        0.9310634485623619
+      ]
+    },
+    {
+      "packet": 179,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7997680596342485,
+        0.9174077163877032
+      ]
+    },
+    {
+      "packet": 179,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7997680596342485,
+        0.9174077163877032
+      ]
+    },
+    {
+      "packet": 179,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7825079644092178,
+        0.9201530361785388
+      ]
+    },
+    {
+      "packet": 179,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7825079644092178,
+        0.9201530361785388
+      ]
+    },
+    {
+      "packet": 179,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7955248542190663,
+        0.9751581134500822
+      ]
+    },
+    {
+      "packet": 179,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7937202844481072,
+        0.9390991566141824
+      ]
+    },
+    {
+      "packet": 179,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.8007395989262243,
+        0.9781853370150083
+      ]
+    },
+    {
+      "packet": 179,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7722981988414885,
+        0.9066189482718431
+      ]
+    },
+    {
+      "packet": 179,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7963496335549141,
+        0.9973554009140665
+      ]
+    },
+    {
+      "packet": 179,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7173623731888424,
+        0.8541588691544009
+      ]
+    },
+    {
+      "packet": 180,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7496889797415991,
+        0.9132056122423404
+      ]
+    },
+    {
+      "packet": 180,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.745001479741599,
+        0.9132056122423404
+      ]
+    },
+    {
+      "packet": 180,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7665091839879994,
+        0.9234107897843091
+      ]
+    },
+    {
+      "packet": 180,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7528043287224131,
+        0.9234107897843091
+      ]
+    },
+    {
+      "packet": 180,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7696574206557293,
+        0.9116007952426228
+      ]
+    },
+    {
+      "packet": 180,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7330499883036077,
+        0.9160641049061026
+      ]
+    },
+    {
+      "packet": 180,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7181707933039259,
+        0.9482798329835834
+      ]
+    },
+    {
+      "packet": 180,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.6919580651147003,
+        0.9227960384931466
+      ]
+    },
+    {
+      "packet": 180,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.738523222449045,
+        0.9866787449890786
+      ]
+    },
+    {
+      "packet": 180,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.6634855393196237,
+        0.9794493404194903
+      ]
+    },
+    {
+      "packet": 181,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 13,
+      "IDV4_probability_range": [
+        0.7342933035999296,
+        0.9433222392468137
+      ]
+    },
+    {
+      "packet": 181,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 13,
+      "IDV4_probability_range": [
+        0.7342933035999296,
+        0.9511347392468137
+      ]
+    },
+    {
+      "packet": 181,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7368516540978852,
+        0.9384061624797158
+      ]
+    },
+    {
+      "packet": 181,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7368516540978852,
+        0.9462186624797158
+      ]
+    },
+    {
+      "packet": 181,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 13,
+      "IDV4_probability_range": [
+        0.8045757000124436,
+        0.9400152717931427
+      ]
+    },
+    {
+      "packet": 181,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 13,
+      "IDV4_probability_range": [
+        0.7800153462925218,
+        0.9571304114197116
+      ]
+    },
+    {
+      "packet": 181,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 11,
+      "IDV4_probability_range": [
+        0.7125626680981635,
+        0.9508133173804107
+      ]
+    },
+    {
+      "packet": 181,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 11,
+      "IDV4_probability_range": [
+        0.7004664572226625,
+        0.956021650713744
+      ]
+    },
+    {
+      "packet": 181,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 8,
+      "IDV4_probability_range": [
+        0.8059669338860147,
+        0.9619507200245813
+      ]
+    },
+    {
+      "packet": 181,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 8,
+      "IDV4_probability_range": [
+        0.7010189113125571,
+        0.9186273346596215
+      ]
+    },
+    {
+      "packet": 182,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.7669927760438694,
+        0.9205983971167297
+      ]
+    },
+    {
+      "packet": 182,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.7669927760438694,
+        0.9205983971167297
+      ]
+    },
+    {
+      "packet": 182,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.7718768746025372,
+        0.927090286012691
+      ]
+    },
+    {
+      "packet": 182,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.7612492093573346,
+        0.927090286012691
+      ]
+    },
+    {
+      "packet": 182,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7796421711120574,
+        0.9277084382853413
+      ]
+    },
+    {
+      "packet": 182,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7796421711120574,
+        0.9239999177487341
+      ]
+    },
+    {
+      "packet": 182,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7911039072934866,
+        0.962924934387335
+      ]
+    },
+    {
+      "packet": 182,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7826666011657959,
+        0.9362760922208232
+      ]
+    },
+    {
+      "packet": 182,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7312823158843971,
+        0.9711947997986101
+      ]
+    },
+    {
+      "packet": 182,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7058779561633322,
+        0.8827146458050749
+      ]
+    },
+    {
+      "packet": 183,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 28,
+      "IDV4_probability_range": [
+        0.7664893464808834,
+        0.9061843605578676
+      ]
+    },
+    {
+      "packet": 183,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 28,
+      "IDV4_probability_range": [
+        0.7554499443069702,
+        0.909002207604438
+      ]
+    },
+    {
+      "packet": 183,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7357010568143469,
+        0.927581044802073
+      ]
+    },
+    {
+      "packet": 183,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7357010568143469,
+        0.9264582903110551
+      ]
+    },
+    {
+      "packet": 183,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7544397739345937,
+        0.9352068217568126
+      ]
+    },
+    {
+      "packet": 183,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7441366538983579,
+        0.9268235999479895
+      ]
+    },
+    {
+      "packet": 183,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7528563942815786,
+        0.9659515409789234
+      ]
+    },
+    {
+      "packet": 183,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7038532212538314,
+        0.9358891118483514
+      ]
+    },
+    {
+      "packet": 183,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.8493033286250716,
+        0.9894333645761224
+      ]
+    },
+    {
+      "packet": 183,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7344348488150643,
+        0.9260042837951425
+      ]
+    },
+    {
+      "packet": 184,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7886656975830415,
+        0.931741925016983
+      ]
+    },
+    {
+      "packet": 184,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7886656975830415,
+        0.931741925016983
+      ]
+    },
+    {
+      "packet": 184,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7939382008421948,
+        0.9286565482316959
+      ]
+    },
+    {
+      "packet": 184,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7939382008421948,
+        0.9286565482316959
+      ]
+    },
+    {
+      "packet": 184,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.8218072808390356,
+        0.9325019627249297
+      ]
+    },
+    {
+      "packet": 184,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7578455547252069,
+        0.9155540784282332
+      ]
+    },
+    {
+      "packet": 184,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.8055571927292041,
+        0.9523328722902797
+      ]
+    },
+    {
+      "packet": 184,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7764876388701943,
+        0.9214398829442354
+      ]
+    },
+    {
+      "packet": 184,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.822635845367025,
+        0.9816478771214701
+      ]
+    },
+    {
+      "packet": 184,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7104503432821777,
+        0.9453104207848765
+      ]
+    },
+    {
+      "packet": 185,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7795418539882664,
+        0.9376280162814099
+      ]
+    },
+    {
+      "packet": 185,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7795418539882664,
+        0.9376280162814099
+      ]
+    },
+    {
+      "packet": 185,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7682148783357283,
+        0.9215767752079801
+      ]
+    },
+    {
+      "packet": 185,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7682148783357283,
+        0.9215767752079801
+      ]
+    },
+    {
+      "packet": 185,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7269979658783416,
+        0.9312382086527798
+      ]
+    },
+    {
+      "packet": 185,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7269979658783416,
+        0.9353383859577445
+      ]
+    },
+    {
+      "packet": 185,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7506414895371972,
+        0.935069205850499
+      ]
+    },
+    {
+      "packet": 185,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7506414895371972,
+        0.8983877866156811
+      ]
+    },
+    {
+      "packet": 185,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7430731764209321,
+        0.9682287517023782
+      ]
+    },
+    {
+      "packet": 185,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7142992371510676,
+        0.907175623847644
+      ]
+    },
+    {
+      "packet": 186,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7878222492886928,
+        0.91676286199462
+      ]
+    },
+    {
+      "packet": 186,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7878222492886928,
+        0.91676286199462
+      ]
+    },
+    {
+      "packet": 186,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7839963426185381,
+        0.922517876904655
+      ]
+    },
+    {
+      "packet": 186,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7839963426185381,
+        0.9350671656661445
+      ]
+    },
+    {
+      "packet": 186,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7544993879010973,
+        0.9235769763250328
+      ]
+    },
+    {
+      "packet": 186,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7544993879010973,
+        0.9243570008420751
+      ]
+    },
+    {
+      "packet": 186,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7772427925607054,
+        0.9624888162446469
+      ]
+    },
+    {
+      "packet": 186,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7538664160034235,
+        0.9109658548073328
+      ]
+    },
+    {
+      "packet": 186,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.8057636642003809,
+        0.9853870871613096
+      ]
+    },
+    {
+      "packet": 186,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7591984801034588,
+        0.9221375027680184
+      ]
+    },
+    {
+      "packet": 187,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7607810293060555,
+        0.9279186238142393
+      ]
+    },
+    {
+      "packet": 187,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7607810293060555,
+        0.9279186238142393
+      ]
+    },
+    {
+      "packet": 187,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7773093709886894,
+        0.9196753298177728
+      ]
+    },
+    {
+      "packet": 187,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7773093709886894,
+        0.9196753298177728
+      ]
+    },
+    {
+      "packet": 187,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7822258357950822,
+        0.9259111376724558
+      ]
+    },
+    {
+      "packet": 187,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7687653379595843,
+        0.9178581227082125
+      ]
+    },
+    {
+      "packet": 187,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.7762398253021205,
+        0.9550020683864452
+      ]
+    },
+    {
+      "packet": 187,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.7651770510066536,
+        0.9288449653725388
+      ]
+    },
+    {
+      "packet": 187,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7670891563630481,
+        0.9728089337131147
+      ]
+    },
+    {
+      "packet": 187,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.694517837139618,
+        0.9512309616240996
+      ]
+    },
+    {
+      "packet": 188,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.7842574399645126,
+        0.9064283031253042
+      ]
+    },
+    {
+      "packet": 188,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.7842574399645126,
+        0.9064283031253042
+      ]
+    },
+    {
+      "packet": 188,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.8072977662016819,
+        0.920335964388525
+      ]
+    },
+    {
+      "packet": 188,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 26,
+      "IDV4_probability_range": [
+        0.806093462667887,
+        0.920335964388525
+      ]
+    },
+    {
+      "packet": 188,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.8060489956404473,
+        0.9114829198234524
+      ]
+    },
+    {
+      "packet": 188,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.8039689800987919,
+        0.9073435525416607
+      ]
+    },
+    {
+      "packet": 188,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.8181791670700588,
+        0.9526900100498952
+      ]
+    },
+    {
+      "packet": 188,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.8024882949765465,
+        0.9434526394825257
+      ]
+    },
+    {
+      "packet": 188,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7875879244021848,
+        0.9795285147768358
+      ]
+    },
+    {
+      "packet": 188,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 25,
+      "IDV4_probability_range": [
+        0.7479319812013205,
+        0.9608755083515003
+      ]
+    },
+    {
+      "packet": 189,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.7447157999680167,
+        0.9119892539843371
+      ]
+    },
+    {
+      "packet": 189,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.7447157999680167,
+        0.9119892539843371
+      ]
+    },
+    {
+      "packet": 189,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7296531549372977,
+        0.9116520418802339
+      ]
+    },
+    {
+      "packet": 189,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7296531549372977,
+        0.9116520418802339
+      ]
+    },
+    {
+      "packet": 189,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7277451931739232,
+        0.8841909263440084
+      ]
+    },
+    {
+      "packet": 189,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7075504892778804,
+        0.884938564462694
+      ]
+    },
+    {
+      "packet": 189,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7557047107115015,
+        0.9216058900445723
+      ]
+    },
+    {
+      "packet": 189,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7072843726697304,
+        0.9189178239931576
+      ]
+    },
+    {
+      "packet": 189,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 10,
+      "IDV4_probability_range": [
+        0.7395587905193733,
+        0.9738096818632841
+      ]
+    },
+    {
+      "packet": 189,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 10,
+      "IDV4_probability_range": [
+        0.6422680707549786,
+        0.8670029937650596
+      ]
+    },
+    {
+      "packet": 190,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7565116790384497,
+        0.9314285181693036
+      ]
+    },
+    {
+      "packet": 190,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7544557579858181,
+        0.9314285181693036
+      ]
+    },
+    {
+      "packet": 190,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7675658968150374,
+        0.9132675699603449
+      ]
+    },
+    {
+      "packet": 190,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7714181747944717,
+        0.9132675699603449
+      ]
+    },
+    {
+      "packet": 190,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7889116074748552,
+        0.9069681522854742
+      ]
+    },
+    {
+      "packet": 190,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7925590631205693,
+        0.8983820812840362
+      ]
+    },
+    {
+      "packet": 190,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 11,
+      "IDV4_probability_range": [
+        0.805409109409006,
+        0.9503336468486128
+      ]
+    },
+    {
+      "packet": 190,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 11,
+      "IDV4_probability_range": [
+        0.7815012900227848,
+        0.9130781797584104
+      ]
+    },
+    {
+      "packet": 190,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.8211006493763494,
+        0.9837260753572244
+      ]
+    },
+    {
+      "packet": 190,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.7412917632803723,
+        0.8942177417511266
+      ]
+    },
+    {
+      "packet": 191,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7048488730907353,
+        0.8836086025030674
+      ]
+    },
+    {
+      "packet": 191,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7048488730907353,
+        0.8836086025030674
+      ]
+    },
+    {
+      "packet": 191,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7254357682495376,
+        0.8794882533121456
+      ]
+    },
+    {
+      "packet": 191,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.717970215117103,
+        0.8794882533121456
+      ]
+    },
+    {
+      "packet": 191,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7367403114583404,
+        0.9143337442673551
+      ]
+    },
+    {
+      "packet": 191,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7286858938556142,
+        0.8887939732641037
+      ]
+    },
+    {
+      "packet": 191,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7426733675898668,
+        0.9461616135326665
+      ]
+    },
+    {
+      "packet": 191,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.6842918807640902,
+        0.8772511734503968
+      ]
+    },
+    {
+      "packet": 191,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.8085745943051972,
+        0.9679597974977322
+      ]
+    },
+    {
+      "packet": 191,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.6703640645501645,
+        0.9023050853917878
+      ]
+    },
+    {
+      "packet": 192,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7883343430644264,
+        0.9379108804050927
+      ]
+    },
+    {
+      "packet": 192,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7883343430644264,
+        0.9379108804050927
+      ]
+    },
+    {
+      "packet": 192,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7869817560736561,
+        0.9480141683860829
+      ]
+    },
+    {
+      "packet": 192,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7762732431426216,
+        0.9324663946422946
+      ]
+    },
+    {
+      "packet": 192,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7702643084984457,
+        0.9614349444757513
+      ]
+    },
+    {
+      "packet": 192,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7514326323620821,
+        0.9163363866231445
+      ]
+    },
+    {
+      "packet": 192,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 11,
+      "IDV4_probability_range": [
+        0.7643348070956135,
+        0.9579282822207077
+      ]
+    },
+    {
+      "packet": 192,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 11,
+      "IDV4_probability_range": [
+        0.7438262929176473,
+        0.9051250358011129
+      ]
+    },
+    {
+      "packet": 192,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.8172724289728099,
+        0.9847323930864721
+      ]
+    },
+    {
+      "packet": 192,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 12,
+      "IDV4_probability_range": [
+        0.7639675226502968,
+        0.9303042609510339
+      ]
+    },
+    {
+      "packet": 193,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7764154475116689,
+        0.934475378144154
+      ]
+    },
+    {
+      "packet": 193,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7764154475116689,
+        0.934475378144154
+      ]
+    },
+    {
+      "packet": 193,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7812578748916821,
+        0.9232067059773841
+      ]
+    },
+    {
+      "packet": 193,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7812578748916821,
+        0.9232067059773841
+      ]
+    },
+    {
+      "packet": 193,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.727023418475389,
+        0.9390997208874833
+      ]
+    },
+    {
+      "packet": 193,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 16,
+      "IDV4_probability_range": [
+        0.7250847613525336,
+        0.9390997208874833
+      ]
+    },
+    {
+      "packet": 193,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7954064865910528,
+        0.9580663986960226
+      ]
+    },
+    {
+      "packet": 193,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7833131943552906,
+        0.9286868744658382
+      ]
+    },
+    {
+      "packet": 193,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7391244993401815,
+        0.9692873647778979
+      ]
+    },
+    {
+      "packet": 193,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7233026765409503,
+        0.9158324376826509
+      ]
+    },
+    {
+      "packet": 194,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7570312792577987,
+        0.9064441963751345
+      ]
+    },
+    {
+      "packet": 194,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7570312792577987,
+        0.9064441963751345
+      ]
+    },
+    {
+      "packet": 194,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7695394851535576,
+        0.9136194792278012
+      ]
+    },
+    {
+      "packet": 194,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7695394851535576,
+        0.9136194792278012
+      ]
+    },
+    {
+      "packet": 194,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7803484839614748,
+        0.9491300885482092
+      ]
+    },
+    {
+      "packet": 194,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7803484839614748,
+        0.9166421288191392
+      ]
+    },
+    {
+      "packet": 194,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.8305727715842579,
+        0.9668251830046053
+      ]
+    },
+    {
+      "packet": 194,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.8130776074878975,
+        0.9347748713778509
+      ]
+    },
+    {
+      "packet": 194,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.8612334087689691,
+        0.978789314109164
+      ]
+    },
+    {
+      "packet": 194,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.7438828938888224,
+        0.910191498080964
+      ]
+    },
+    {
+      "packet": 195,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7536418662127441,
+        0.8995483071944745
+      ]
+    },
+    {
+      "packet": 195,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7536418662127441,
+        0.8995483071944745
+      ]
+    },
+    {
+      "packet": 195,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.6961828875567699,
+        0.8745781181205531
+      ]
+    },
+    {
+      "packet": 195,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7047031401700103,
+        0.8684128605542245
+      ]
+    },
+    {
+      "packet": 195,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7532803794278738,
+        0.915730643111832
+      ]
+    },
+    {
+      "packet": 195,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7625539420580029,
+        0.9042569346247472
+      ]
+    },
+    {
+      "packet": 195,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7707171374062548,
+        0.9516176114341703
+      ]
+    },
+    {
+      "packet": 195,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 17,
+      "IDV4_probability_range": [
+        0.7370495620132481,
+        0.9111160121862779
+      ]
+    },
+    {
+      "packet": 195,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.773745058239138,
+        0.9806626055116543
+      ]
+    },
+    {
+      "packet": 195,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.6290229474878215,
+        0.950224312693691
+      ]
+    },
+    {
+      "packet": 196,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 27,
+      "IDV4_probability_range": [
+        0.7887405671827306,
+        0.9129139206158592
+      ]
+    },
+    {
+      "packet": 196,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 27,
+      "IDV4_probability_range": [
+        0.7887405671827306,
+        0.9129139206158592
+      ]
+    },
+    {
+      "packet": 196,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 28,
+      "IDV4_probability_range": [
+        0.7750971743179009,
+        0.9284663939853388
+      ]
+    },
+    {
+      "packet": 196,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 28,
+      "IDV4_probability_range": [
+        0.7750971743179009,
+        0.9284663939853388
+      ]
+    },
+    {
+      "packet": 196,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 28,
+      "IDV4_probability_range": [
+        0.7894331398540649,
+        0.9259908128610397
+      ]
+    },
+    {
+      "packet": 196,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 28,
+      "IDV4_probability_range": [
+        0.7955695391923867,
+        0.9192073661775595
+      ]
+    },
+    {
+      "packet": 196,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7864787709024255,
+        0.9614784146661509
+      ]
+    },
+    {
+      "packet": 196,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 23,
+      "IDV4_probability_range": [
+        0.7864787709024255,
+        0.932167981645269
+      ]
+    },
+    {
+      "packet": 196,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7779252993670714,
+        0.9877992729980015
+      ]
+    },
+    {
+      "packet": 196,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7226915964869675,
+        0.9204154716371811
+      ]
+    },
+    {
+      "packet": 197,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.8033285108028078,
+        0.9387856431914745
+      ]
+    },
+    {
+      "packet": 197,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.8033285108028078,
+        0.9387856431914745
+      ]
+    },
+    {
+      "packet": 197,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7974300846191401,
+        0.9378510335106944
+      ]
+    },
+    {
+      "packet": 197,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7974300846191401,
+        0.9378510335106944
+      ]
+    },
+    {
+      "packet": 197,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7793778800203621,
+        0.9412878880412068
+      ]
+    },
+    {
+      "packet": 197,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7793778800203621,
+        0.9412878880412068
+      ]
+    },
+    {
+      "packet": 197,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7795361304266047,
+        0.9493262182499479
+      ]
+    },
+    {
+      "packet": 197,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7768348353815597,
+        0.9259128124758589
+      ]
+    },
+    {
+      "packet": 197,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.8181277409492027,
+        0.9858378871176436
+      ]
+    },
+    {
+      "packet": 197,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7182412222988113,
+        0.9249725181732438
+      ]
+    },
+    {
+      "packet": 198,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7446774125673938,
+        0.887976965711283
+      ]
+    },
+    {
+      "packet": 198,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7446774125673938,
+        0.887976965711283
+      ]
+    },
+    {
+      "packet": 198,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7716161778356444,
+        0.8844657301330014
+      ]
+    },
+    {
+      "packet": 198,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7670302153319841,
+        0.8844657301330014
+      ]
+    },
+    {
+      "packet": 198,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.7406492983485886,
+        0.9287573277012253
+      ]
+    },
+    {
+      "packet": 198,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 24,
+      "IDV4_probability_range": [
+        0.728320664654545,
+        0.9287573277012253
+      ]
+    },
+    {
+      "packet": 198,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7379964459145901,
+        0.9680999237317334
+      ]
+    },
+    {
+      "packet": 198,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7379964459145901,
+        0.9680999237317334
+      ]
+    },
+    {
+      "packet": 198,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7853224289760597,
+        0.9717619225857468
+      ]
+    },
+    {
+      "packet": 198,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7212228606858876,
+        0.9359597314682495
+      ]
+    },
+    {
+      "packet": 199,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.771024196394958,
+        0.9131783140901455
+      ]
+    },
+    {
+      "packet": 199,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.771024196394958,
+        0.9131783140901455
+      ]
+    },
+    {
+      "packet": 199,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7513105270747572,
+        0.9122177721805977
+      ]
+    },
+    {
+      "packet": 199,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7782417128998533,
+        0.9176779370157626
+      ]
+    },
+    {
+      "packet": 199,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7633900716445974,
+        0.9262888446981303
+      ]
+    },
+    {
+      "packet": 199,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 18,
+      "IDV4_probability_range": [
+        0.7522466607918842,
+        0.9303885115590977
+      ]
+    },
+    {
+      "packet": 199,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7922293756538802,
+        0.9501063926542018
+      ]
+    },
+    {
+      "packet": 199,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7803538124801535,
+        0.9293542747077077
+      ]
+    },
+    {
+      "packet": 199,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7821425033585094,
+        0.9879752805737417
+      ]
+    },
+    {
+      "packet": 199,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 21,
+      "IDV4_probability_range": [
+        0.7151253547547711,
+        0.9071064615279648
+      ]
+    },
+    {
+      "packet": 200,
+      "dose": 0.1,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7295533036669314,
+        0.8785427345554466
+      ]
+    },
+    {
+      "packet": 200,
+      "dose": 0.1,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 22,
+      "IDV4_probability_range": [
+        0.7413588592224869,
+        0.8785427345554466
+      ]
+    },
+    {
+      "packet": 200,
+      "dose": 0.25,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7606262190059417,
+        0.8704045826354158
+      ]
+    },
+    {
+      "packet": 200,
+      "dose": 0.25,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 20,
+      "IDV4_probability_range": [
+        0.7554435984548511,
+        0.8623739304632607
+      ]
+    },
+    {
+      "packet": 200,
+      "dose": 0.5,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7598544575370114,
+        0.924115727903605
+      ]
+    },
+    {
+      "packet": 200,
+      "dose": 0.5,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 19,
+      "IDV4_probability_range": [
+        0.7547714635726795,
+        0.9204966340994851
+      ]
+    },
+    {
+      "packet": 200,
+      "dose": 1.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.7995944075648375,
+        0.9487308982114525
+      ]
+    },
+    {
+      "packet": 200,
+      "dose": 1.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 15,
+      "IDV4_probability_range": [
+        0.774843368800879,
+        0.9073031609762952
+      ]
+    },
+    {
+      "packet": 200,
+      "dose": 2.0,
+      "view": "matched",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.8094777222908418,
+        0.9806823309101028
+      ]
+    },
+    {
+      "packet": 200,
+      "dose": 2.0,
+      "view": "removed",
+      "IDV4_positive": 48,
+      "IDV4_rows": 48,
+      "IDV5_positive": 14,
+      "IDV4_probability_range": [
+        0.708630244315163,
+        0.8492483232724305
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "dose": 0.1,
+      "view": "matched",
+      "units": 60,
+      "fully_positive_IDV4_units": 60,
+      "IDV4_positive_range": [
+        48,
+        48
+      ],
+      "IDV4_minimum_probability": 0.6984573124969293
+    },
+    {
+      "dose": 0.1,
+      "view": "removed",
+      "units": 60,
+      "fully_positive_IDV4_units": 60,
+      "IDV4_positive_range": [
+        48,
+        48
+      ],
+      "IDV4_minimum_probability": 0.6984573124969293
+    },
+    {
+      "dose": 0.25,
+      "view": "matched",
+      "units": 60,
+      "fully_positive_IDV4_units": 60,
+      "IDV4_positive_range": [
+        48,
+        48
+      ],
+      "IDV4_minimum_probability": 0.6943993716873497
+    },
+    {
+      "dose": 0.25,
+      "view": "removed",
+      "units": 60,
+      "fully_positive_IDV4_units": 60,
+      "IDV4_positive_range": [
+        48,
+        48
+      ],
+      "IDV4_minimum_probability": 0.6999972680770875
+    },
+    {
+      "dose": 0.5,
+      "view": "matched",
+      "units": 60,
+      "fully_positive_IDV4_units": 60,
+      "IDV4_positive_range": [
+        48,
+        48
+      ],
+      "IDV4_minimum_probability": 0.6934979417367472
+    },
+    {
+      "dose": 0.5,
+      "view": "removed",
+      "units": 60,
+      "fully_positive_IDV4_units": 60,
+      "IDV4_positive_range": [
+        48,
+        48
+      ],
+      "IDV4_minimum_probability": 0.6995884623851031
+    },
+    {
+      "dose": 1.0,
+      "view": "matched",
+      "units": 60,
+      "fully_positive_IDV4_units": 60,
+      "IDV4_positive_range": [
+        48,
+        48
+      ],
+      "IDV4_minimum_probability": 0.6836247044125262
+    },
+    {
+      "dose": 1.0,
+      "view": "removed",
+      "units": 60,
+      "fully_positive_IDV4_units": 60,
+      "IDV4_positive_range": [
+        48,
+        48
+      ],
+      "IDV4_minimum_probability": 0.6632413741188485
+    },
+    {
+      "dose": 2.0,
+      "view": "matched",
+      "units": 60,
+      "fully_positive_IDV4_units": 60,
+      "IDV4_positive_range": [
+        48,
+        48
+      ],
+      "IDV4_minimum_probability": 0.6856473762291087
+    },
+    {
+      "dose": 2.0,
+      "view": "removed",
+      "units": 60,
+      "fully_positive_IDV4_units": 60,
+      "IDV4_positive_range": [
+        48,
+        48
+      ],
+      "IDV4_minimum_probability": 0.6290229474878215
+    }
+  ],
+  "sha256": {
+    "experiments/84_replay_dtu_predictions.py": "eed767e20302ba6bcf418a4154c030b424ab9ce39891092b6284e96432c58a78",
+    "experiments/results/dtu_dose_response.json": "4003ffaf3afdb49eaad8303e2871d16fd1fb5c9083e5789e8b6d49c0e98fdd3b",
+    "experiments/results/dtu_prospective_data.npz": "247a0fb8f208eab3c0e7195ac123e6b19e513acbf4a5b1403e79c32f432d9a92",
+    "experiments/results/dtu_prospective_source.json": "8c05ead5d3b1d8aae772be64b1fe5454f49a9e7946904f74e055b10585d65962",
+    "src/pdm_audit/process_audit.py": "16594a85230e1c965904b427bf8628384dbed85d2572cc391290605c06f5be6a"
+  }
+}

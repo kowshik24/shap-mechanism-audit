@@ -1,0 +1,87 @@
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=3 by 1,horizontal sep=0.65cm},
+auditaxis,width=0.235\textwidth,height=4.35cm,xmin=-3,xmax=103,
+xtick={0,25,50,75,100},ymin=0.55,ymax=4.45,ytick={1,2,3,4},
+xlabel={Context localization (\%)}]
+\nextgroupplot[title={Tree (46/154)},yticklabels={Targeted SHAP,Flip excess,Frozen raw SHAP,Batch SHAP},legend to name=specificitylegend,legend columns=2]
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(0,4.0999999999999996) (0,4.0999999999999996)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(0,4.0999999999999996) (0,4.0999999999999996)};
+\addplot[only marks,color=auditblue,mark=*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(0,4.0999999999999996)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(0,3.8999999999999999) (0,3.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(0,3.8999999999999999) (0,3.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=*,mark size=2.3pt,mark options={fill=white,line width=0.8pt},forget plot] coordinates {(0,3.8999999999999999)};
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(2.6878997077571647,3.1000000000000001) (11.956541651852161,3.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(2.6878997077571647,3.1000000000000001) (11.956541651852161,3.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(6.5500566350091489,3.1000000000000001)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(7.6558999335633953,2.8999999999999999) (19.44751926618299,2.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(7.6558999335633953,2.8999999999999999) (19.44751926618299,2.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=*,mark size=2.3pt,mark options={fill=white,line width=0.8pt},forget plot] coordinates {(12.423652499804804,2.8999999999999999)};
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(5.2494485770797352,2.1000000000000001) (11.838578925318085,2.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(5.2494485770797352,2.1000000000000001) (11.838578925318085,2.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(8.0818577075098812,2.1000000000000001)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(9.9609811332251166,1.8999999999999999) (20.659590780619023,1.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(9.9609811332251166,1.8999999999999999) (20.659590780619023,1.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=*,mark size=2.3pt,mark options={fill=white,line width=0.8pt},forget plot] coordinates {(14.777119244391972,1.8999999999999999)};
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(100,1.1000000000000001) (100,1.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(100,1.1000000000000001) (100,1.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(100,1.1000000000000001)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(45.117085754357852,0.90000000000000002) (59.209059304703473,0.90000000000000002)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(45.117085754357852,0.90000000000000002) (59.209059304703473,0.90000000000000002)};
+\addplot[only marks,color=auditorange,mark=*,mark size=2.3pt,mark options={fill=white,line width=0.8pt},forget plot] coordinates {(52.5,0.90000000000000002)};
+\addlegendimage{only marks,color=auditblue,mark=*,mark options={fill=auditblue}}
+\addlegendentry{Harm-positive}
+\addlegendimage{only marks,color=auditorange,mark=*,mark options={fill=white}}
+\addlegendentry{Below harm threshold}
+\nextgroupplot[title={Forest (100/100)},yticklabels=\empty]
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(0,4.0999999999999996) (0,4.0999999999999996)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(0,4.0999999999999996) (0,4.0999999999999996)};
+\addplot[only marks,color=auditblue,mark=*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(0,4.0999999999999996)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(0,3.8999999999999999) (0,3.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(0,3.8999999999999999) (0,3.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=*,mark size=2.3pt,mark options={fill=white,line width=0.8pt},forget plot] coordinates {(0,3.8999999999999999)};
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(16.854832034982266,3.1000000000000001) (40.753642386894285,3.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(16.854832034982266,3.1000000000000001) (40.753642386894285,3.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(28.580844155844154,3.1000000000000001)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(5.4967969367851772,2.8999999999999999) (24.595630466835043,2.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(5.4967969367851772,2.8999999999999999) (24.595630466835043,2.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=*,mark size=2.3pt,mark options={fill=white,line width=0.8pt},forget plot] coordinates {(13.4937012987013,2.8999999999999999)};
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(36.240990788294638,2.1000000000000001) (54.931050892059552,2.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(36.240990788294638,2.1000000000000001) (54.931050892059552,2.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(46.958367427222655,2.1000000000000001)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(17.138138655088408,1.8999999999999999) (34.641582679126003,1.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(17.138138655088408,1.8999999999999999) (34.641582679126003,1.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=*,mark size=2.3pt,mark options={fill=white,line width=0.8pt},forget plot] coordinates {(25.715106215578288,1.8999999999999999)};
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(100,1.1000000000000001) (100,1.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(100,1.1000000000000001) (100,1.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(100,1.1000000000000001)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(100,0.90000000000000002) (100,0.90000000000000002)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(100,0.90000000000000002) (100,0.90000000000000002)};
+\addplot[only marks,color=auditorange,mark=*,mark size=2.3pt,mark options={fill=white,line width=0.8pt},forget plot] coordinates {(100,0.90000000000000002)};
+\nextgroupplot[title={Logistic (150/50)},yticklabels=\empty]
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(0,4.0999999999999996) (0,4.0999999999999996)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(0,4.0999999999999996) (0,4.0999999999999996)};
+\addplot[only marks,color=auditblue,mark=*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(0,4.0999999999999996)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(0,3.8999999999999999) (0,3.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(0,3.8999999999999999) (0,3.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=*,mark size=2.3pt,mark options={fill=white,line width=0.8pt},forget plot] coordinates {(0,3.8999999999999999)};
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(5.8558526711016228,3.1000000000000001) (17.100600013752132,3.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(5.8558526711016228,3.1000000000000001) (17.100600013752132,3.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(10.624523007856341,3.1000000000000001)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(2.0572656786118704,2.8999999999999999) (16.465942115922232,2.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(2.0572656786118704,2.8999999999999999) (16.465942115922232,2.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=*,mark size=2.3pt,mark options={fill=white,line width=0.8pt},forget plot] coordinates {(7.1949494949494959,2.8999999999999999)};
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(12.198390682128499,2.1000000000000001) (31.780801179082879,2.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(12.198390682128499,2.1000000000000001) (31.780801179082879,2.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(20.716099290780139,2.1000000000000001)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(6.9961743262162255,1.8999999999999999) (30.69647599013437,1.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(6.9961743262162255,1.8999999999999999) (30.69647599013437,1.8999999999999999)};
+\addplot[only marks,color=auditorange,mark=*,mark size=2.3pt,mark options={fill=white,line width=0.8pt},forget plot] coordinates {(15.678404255319148,1.8999999999999999)};
+\addplot[no marks,color=auditblue,line width=0.65pt,forget plot] coordinates {(100,1.1000000000000001) (100,1.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=|,mark size=2pt,forget plot] coordinates {(100,1.1000000000000001) (100,1.1000000000000001)};
+\addplot[only marks,color=auditblue,mark=*,mark size=2.3pt,mark options={fill=auditblue,line width=0.8pt},forget plot] coordinates {(100,1.1000000000000001)};
+\addplot[no marks,color=auditorange,line width=0.65pt,forget plot] coordinates {(100,0.90000000000000002) (100,0.90000000000000002)};
+\addplot[only marks,color=auditorange,mark=|,mark size=2pt,forget plot] coordinates {(100,0.90000000000000002) (100,0.90000000000000002)};
+\addplot[only marks,color=auditorange,mark=*,mark size=2.3pt,mark options={fill=white,line width=0.8pt},forget plot] coordinates {(100,0.90000000000000002)};
+\end{groupplot}
+\node[anchor=north] at ([yshift=-0.85cm]group c2r1.south) {\pgfplotslegendfromname{specificitylegend}};
+\end{tikzpicture}
