@@ -9,8 +9,6 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
-\usepackage{tikz}
-\usetikzlibrary{arrows.meta}
 \usepackage[capitalise]{cleveref}
 \usepackage{booktabs}
 \usepackage{threeparttable}
@@ -168,16 +166,25 @@ measure agreement with known failure rules, not whether SHAP establishes
 the physical cause of failure. \Cref{fig:pipeline} summarizes the data
 flow of the audit, detailed in the remainder of this section.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\resizebox{\columnwidth}{!}{\input{figures/audit_pipeline}}
-\caption{Audit pipeline. Hyperparameters are selected once on the
-training split; the audit then explains every observation with a model
-that did not train on it (blue) and repeats the identical procedure on
-$K$ label permutations (orange). Mechanism flags $z$ are used only to
-group the explanations.}
+\includegraphics[width=\textwidth]{figures/audit_pipeline.pdf}
+\caption{Mechanism-level SHAP audit. (1)~The classifier is trained on the
+sensor features $\mathbf{x}$ and the overall failure label $y$; the mechanism
+flags $\mathbf{z}$ are withheld from training and used only to group
+observations. (2)~Five-fold cross-fitting gives every observation a
+TreeSHAP explanation from a model that did not train on it. (3)~The
+absolute attributions $|\phi_{ij}|$ are split into mechanism observations
+$S_m$ and other failures $F\setminus S_m$, and into trigger features $E_m$
+and all other features, giving the relevant share $R_m$, the specificity
+$D_m$, and the shortcut score $C_m$. (4)~Each observed statistic $T_m$ is
+compared with its distribution over $K$ shuffled-label runs (orange), in
+which $y$ is permuted, $\mathbf{x}$ and $\mathbf{z}$ are kept, and the same
+pipeline is refitted. After Holm correction, a mechanism is flagged if
+$C_m$ is significant, aligned if $R_m$ and $D_m$ are significant, and not
+aligned otherwise.}
 \label{fig:pipeline}
-\end{figure}
+\end{figure*}
 
 \subsection{Dataset and Failure Mechanisms}
 \label{sec:data}
