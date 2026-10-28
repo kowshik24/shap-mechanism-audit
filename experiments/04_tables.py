@@ -219,4 +219,20 @@ for (n, sigma), rs in groups.items():
                  f"{frac(lambda r: r['p_holm_R']['HDF'] >= 0.05)} & {frac(lambda r: r['p_holm_S']['HDF'] < 0.05)} & "
                  f"{frac(lambda r: r['p_holm_D']['TWF'] < 0.05)} & {frac(lambda r: r['p_holm_S']['TWF'] < 0.05)} & "
                  f"{minutes:.0f} \\\\")
-write('scale', lines + [r'\bottomrule', r'\end{tabular}'])
+
+# workshop paper: grouped headers, centred counts, '--' for no sensor, a gap between dataset sizes
+ws = [r'\begin{tabular}{@{}rcccccccr@{}}', r'\toprule',
+      r'& & & \multicolumn{3}{c}{HDF, planted sensor} & \multicolumn{2}{c}{TWF} & \\',
+      r'\cmidrule(lr){4-6}\cmidrule(lr){7-8}',
+      r'$n$ & $\sigma$ & Runs & Share & $R$ fails & $C$ flags & $D$ passes & $C$ flags & Min. \\', r'\midrule']
+for i, ((n, sigma), rs) in enumerate(groups.items()):
+    first = sigma is None
+    if first and i:
+        ws.append(r'\addlinespace')
+    frac = lambda cond: f"{sum(bool(cond(r)) for r in rs)}/{len(rs)}"
+    ws.append(f"{f'{n:,}'.replace(',', '{,}') if first else ''} & {'none' if first else sigma} & {len(rs)} & "
+              f"{'--' if first else f3(np.mean([r['sensor_share_HDF'] for r in rs]))} & "
+              f"{frac(lambda r: r['p_holm_R']['HDF'] >= 0.05)} & {frac(lambda r: r['p_holm_S']['HDF'] < 0.05)} & "
+              f"{frac(lambda r: r['p_holm_D']['TWF'] < 0.05)} & {frac(lambda r: r['p_holm_S']['TWF'] < 0.05)} & "
+              f"{np.mean([r['seconds'] for r in rs]) / 60:.0f} \\\\")
+write('scale', lines + [r'\bottomrule', r'\end{tabular}'], ws + [r'\bottomrule', r'\end{tabular}'])

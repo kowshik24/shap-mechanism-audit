@@ -659,11 +659,9 @@ The shortcut score also flags TWF in 7 of 30 runs from $3\cdot10^4$ observations
 
 \begin{table}[t]
 \centering
-\caption{Audit results on generated data with increasing
-dataset size ($K=200$). The table reports HDF shortcut
-attribution, detection frequencies, TWF outcomes, and
-runtime. HDF, PWF, and OSF pass the alignment tests in
-every run without the injected sensor.}
+\caption{Audit on generated data of increasing size ($K=200$).
+Share: planted sensor's share of HDF attribution. Counts give the runs
+in which a test fires; Min.: minutes per audit on eight cores.}
 \label{tab:scale}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
@@ -681,28 +679,27 @@ The audit requires $5(K+1)$ model fits because each real and randomized model is
 \begin{table}[t]
 \centering
 \begin{threeparttable}
-\caption{Simpler audit designs on three checks: rejects a
-shuffled-label model (Shuf.), avoids the in-sample TWF pass (TWF),
-detects the strong shortcut at $3\cdot10^5$ observations (Short.).}
+\caption{Simpler audit designs on three checks.}
 \label{tab:compare}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular}{@{}l>{\centering\arraybackslash}b{1.25cm}>{\centering\arraybackslash}b{1.25cm}>{\centering\arraybackslash}b{1.25cm}@{}}
 \toprule
-Design & Shuf. & TWF & Short. \\
+Design & Rejects shuffled labels & Avoids in-sample TWF pass & Detects shortcut at $3\cdot10^5$ \\
 \midrule
 Global SHAP ranking~\cite{milling2025shap} & -- & -- & -- \\
 Naive null & No & No & No \\
-In-sample SHAP, shuffled null & Yes & No & No \\
+In-sample SHAP & Yes & No & No \\
 Relevant share $R_m$ only & Yes & Yes & No \\
+\addlinespace
 \textbf{Full audit} & \textbf{Yes} & \textbf{Yes} & \textbf{Yes} \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}[flushleft]
 \footnotesize
 \item ``--'': no statistical verdict. The naive null passes all four
-mechanisms ($p=0.002$); in-sample SHAP passes TWF ($p=0.004$) and
-misses the shortcut ($p_C=0.06$).
+mechanisms ($p=0.002$); in-sample SHAP, tested against the shuffled-label
+null, passes TWF ($p=0.004$) and misses the shortcut ($p_C=0.06$).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
