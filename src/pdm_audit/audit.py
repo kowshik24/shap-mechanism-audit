@@ -23,25 +23,43 @@ from joblib import Parallel, delayed
 from sklearn.model_selection import StratifiedKFold
 
 from .config import PHYSICAL, SEED, TRIGGER_FEATURES
+TRIGGERS_DEFAULT = TRIGGER_FEATURES
 from .data import mechanism_groups
 from .models import feature_names, fit_pipeline, resampler
 
 
 def abs_shap(model, pre, df, rows, numeric_cols, explainer='path', background_rows=None, seed=SEED,
-             n_background=100, background_seed=0, background='train', background_y=None):
+             n_background=100, background_seed=0, background='train', background_y=None, transform='abs',
+             **agnostic_kw):
     """
     |SHAP| per row and feature. explainer='path' is path-dependent TreeSHAP; 'interventional'
     averages over a background of `n_background` rows drawn from `background_rows` (training rows).
     `background` picks which training rows: 'train' (all), 'failures' / 'non_failures' (by the
     training labels `background_y`), or 'oversampled' (the Borderline-SMOTE output the model was fit
     on, synthetic rows included, which is the distribution path-dependent TreeSHAP's covers reflect).
+    explainer='pairwise' explains each row against its nearest normal-operation training row (by the
+    training labels), i.e. interventional TreeSHAP with that single reference (pairwise Shapley).
+    transform='abs' returns |SHAP|; 'positive' keeps only the part pushing towards failure, max(SHAP, 0).
     """
     cols = list(numeric_cols) + ['Type']
     X = pre.transform(df.loc[rows, cols])
-    if explainer in ('kernel', 'ig'):
+    names = feature_names(pre, numeric_cols)
+    tf = np.abs if transform == 'abs' else (lambda v: np.clip(v, 0, None))
+    if explainer in ('kernel', 'ig', 'deep', 'smoothgrad'):
         sv = _model_agnostic(model, X, pre.transform(df.loc[background_rows, cols]), explainer, seed,
-                             n_background, background_seed)
-        return pd.DataFrame(np.abs(sv), index=rows, columns=feature_names(pre, numeric_cols))
+                             n_background, background_seed, **agnostic_kw)
+        return pd.DataFrame(tf(sv), index=rows, columns=names)
+    if explainer == 'pairwise':
+        from sklearn.neighbors import NearestNeighbors
+        normal = pre.transform(df.loc[background_rows, cols])[np.asarray(background_y) == 0]
+        ref = NearestNeighbors(n_neighbors=1).fit(normal).kneighbors(X, return_distance=False)[:, 0]
+        est = model.get_booster() if hasattr(model, 'get_booster') else model
+        sv = np.zeros(X.shape)
+        for r in np.unique(ref):
+            at = np.flatnonzero(ref == r)
+            ex = shap.TreeExplainer(est, data=normal[r:r + 1], feature_perturbation='interventional')
+            sv[at] = ex.shap_values(X[at], check_additivity=False)
+        return pd.DataFrame(tf(sv), index=rows, columns=names)
     if explainer == 'path':
         tree = shap.TreeExplainer(model)
     else:
@@ -67,17 +85,19 @@ def abs_shap(model, pre, df, rows, numeric_cols, explainer='path', background_ro
         sv = sv[1]
     elif np.ndim(sv) == 3:
         sv = sv[:, :, 1]
-    return pd.DataFrame(np.abs(sv), index=rows, columns=feature_names(pre, numeric_cols))
+    return pd.DataFrame(tf(sv), index=rows, columns=names)
 
 
 def _model_agnostic(model, X, X_train, explainer, seed, n_background, background_seed, ig_steps=1024,
-                    kernel_background=25, kernel_samples=1000):
+                    kernel_background=25, kernel_samples=1000, smooth_samples=50, smooth_sigma=0.15):
     """
     Attributions of the MLP's logit (fit_pipeline(model='mlp')) by a model-agnostic or gradient explainer.
     'kernel': KernelSHAP with `kernel_background` training rows as the background (shap.KernelExplainer,
     `kernel_samples` coalitions per row). 'ig': Integrated Gradients from the mean of `n_background`
     training rows, `ig_steps` trapezoid steps; completeness (attributions sum to logit(x) - logit(baseline))
-    is checked.
+    is checked. 'deep': DeepSHAP (shap.DeepExplainer) with `n_background` training rows. 'smoothgrad':
+    SmoothGrad gradients (mean over `smooth_samples` copies with N(0, smooth_sigma^2) noise in the
+    standardized inputs) times the input's difference from the mean of `n_background` training rows.
     """
     import torch
 
@@ -86,7 +106,20 @@ def _model_agnostic(model, X, X_train, explainer, seed, n_background, background
         bg = X_train[rng.choice(len(X_train), kernel_background, replace=False)]
         ex = shap.KernelExplainer(model.logit, bg, seed=seed)
         return np.asarray(ex.shap_values(X, nsamples=kernel_samples, silent=True))
-    baseline = X_train[rng.choice(len(X_train), n_background, replace=False)].mean(axis=0)
+    bg = X_train[rng.choice(len(X_train), n_background, replace=False)]
+    if explainer == 'deep':
+        ex = shap.DeepExplainer(model.net, torch.tensor(bg, dtype=torch.float32))
+        sv = ex.shap_values(torch.tensor(np.asarray(X), dtype=torch.float32), check_additivity=False)
+        return np.asarray(sv).reshape(len(X), -1)
+    baseline = bg.mean(axis=0)
+    if explainer == 'smoothgrad':
+        x0 = np.asarray(X)
+        grads = np.zeros(x0.shape)
+        for _ in range(smooth_samples):
+            xi = torch.tensor(x0 + rng.normal(0, smooth_sigma, x0.shape), dtype=torch.float32).requires_grad_(True)
+            model.net(xi).sum().backward()
+            grads += xi.grad.numpy() / smooth_samples
+        return grads * (x0 - baseline)
     x = torch.tensor(np.asarray(X), dtype=torch.float32)
     b = torch.tensor(baseline, dtype=torch.float32)
     alphas = torch.linspace(0, 1, ig_steps + 1)
@@ -138,8 +171,10 @@ def _share(imp, feats):
     return float(imp[feats].sum() / imp.sum())
 
 
-def statistics(A: pd.DataFrame, df: pd.DataFrame, groups: dict, extra_features=()):
-    """R_m, D_m for physical mechanisms; top-feature share for RNF; shares of any extra features."""
+def statistics(A: pd.DataFrame, df: pd.DataFrame, groups: dict, extra_features=(), triggers=None):
+    """R_m, D_m for physical mechanisms; top-feature share for RNF; shares of any extra features.
+    `triggers` overrides the expected feature sets E_m (default TRIGGER_FEATURES)."""
+    TRIGGER_FEATURES = triggers or TRIGGERS_DEFAULT
     failures = df.index[df['Machine failure'] == 1]
     out = {}
     for m in PHYSICAL:
@@ -189,7 +224,7 @@ def naive_null_p(A, df, groups, n_draws=2000, seed=0):
     return out
 
 
-def _null_draw(k, df, numeric_cols, params, seed, train_idx, cross_fit, groups_by_name, extra, fit_kw):
+def _null_draw(k, df, numeric_cols, params, seed, train_idx, cross_fit, groups_by_name, extra, fit_kw, triggers=None):
     rng = np.random.default_rng(seed * 100_003 + k)
     y = df['Machine failure']
     perm = pd.Series(y.values, index=y.index)
@@ -199,12 +234,12 @@ def _null_draw(k, df, numeric_cols, params, seed, train_idx, cross_fit, groups_b
     else:
         perm.loc[train_idx] = rng.permutation(y.loc[train_idx].values)
         A = shap_in_sample(df, train_idx, numeric_cols, params, seed, labels=perm, **fit_kw)
-    return {name: statistics(A, df, g, extra) for name, g in groups_by_name.items()}
+    return {name: statistics(A, df, g, extra, triggers) for name, g in groups_by_name.items()}
 
 
 def run_audit(df, numeric_cols, params, *, seed=SEED, K=100, cross_fit=True, train_idx=None,
               extra_features=(), n_jobs=-1, observed_labels=None, model='xgb', explainer='path',
-              **shap_kw):
+              triggers=None, **shap_kw):
     """
     Observed statistics, a K-model randomization null, p-values and Holm-adjusted p-values, for
     all flagged rows ('all') and single-mechanism rows ('single'). `model` ('xgb', 'rf') and
@@ -216,11 +251,11 @@ def run_audit(df, numeric_cols, params, *, seed=SEED, K=100, cross_fit=True, tra
         A = shap_cross_fitted(df, numeric_cols, params, seed, labels=observed_labels, **fit_kw)
     else:
         A = shap_in_sample(df, train_idx, numeric_cols, params, seed, labels=observed_labels, **fit_kw)
-    observed = {name: statistics(A, df, g, extra_features) for name, g in groups_by_name.items()}
+    observed = {name: statistics(A, df, g, extra_features, triggers) for name, g in groups_by_name.items()}
 
     draws = Parallel(n_jobs=n_jobs)(
         delayed(_null_draw)(k, df, numeric_cols, params, seed, train_idx, cross_fit, groups_by_name,
-                            extra_features, fit_kw) for k in range(K))
+                            extra_features, fit_kw, triggers) for k in range(K))
 
     result = {'seed': seed, 'K': K, 'cross_fit': cross_fit, 'observed': observed,
               'naive_null_p': naive_null_p(A, df, groups_by_name['all']),

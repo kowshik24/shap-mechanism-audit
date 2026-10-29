@@ -171,12 +171,18 @@ or stage by stage:
 | 6 | `experiments/06_explainers.py` | interventional TreeSHAP (3 background sizes, 3 seeds) and random forest (~55 min) |
 | 7 | `experiments/07_scale.py` | audit on AI4I generated at 10k–300k rows (3 seeds), cost at 1M (~6 h) |
 | 8 | `experiments/08_compare.py` | missing audit-design combinations for the comparison table: naive null and in-sample SHAP on shortcut data, in-sample SHAP on a permuted-label model |
-| 9 | `experiments/09_retuned_null.py` | primary audit against a null re-tuned on every permutation (K=200, ~50 min on 8 cores) |
+| 9 | `experiments/09_retuned_null.py` | primary audit against a null re-tuned on every permutation (K=200, ~50 min on 8 cores); `--extend-to 500` adds draws 200–499 (~80 min) |
 | 10 | `experiments/10_effect_sizes.py` | null-standardized effect sizes and bootstrap CIs for R and D (seconds) |
 | 11 | `experiments/11_twf_diagnostics.py` | interventional TreeSHAP with failure-only, non-failure, oversampled backgrounds and raw features (~20 min) |
 | 12 | `experiments/12_other_explainers.py` | the MLP audited with KernelSHAP and Integrated Gradients (~30 min) |
+| 13 | `experiments/13_review_checks.py` | label-anomaly and class-weight variants, K stability, Holm over all tests, signed attributions, removal check, per-row attributions; `--kernel` adds exact KernelSHAP on the MLP (~1 h) |
+| 14 | `experiments/14_cwru_audit.py` | the audit on measured CWRU bearing vibration, with and without a fault-dependent gain shortcut (~10 min); fetch the 36 recordings first with `experiments/download_cwru.py` |
+| 15 | `experiments/15_tep_audit.py` | the audit on Tennessee Eastman process runs (DTU, IDV4/IDV5; data in `data/dtu_tep`) (~11 min) |
+| 16 | `experiments/16_more_checks.py` | plain SMOTE and ADASYN, misspecified trigger sets, HSIC corroboration (~20 min) |
+| 17 | `experiments/17_final_checks.py` | Borderline-SMOTE with 3/10 neighbours, focal loss, failure-pushing (positive-part) SHAP, pairwise normal-operation reference, MLP with DeepSHAP and SmoothGrad (~50 min), and exact KernelSHAP with a 500-row background (K=100, ~3.5 h); `--only name,name` reruns a subset |
+| 18 | `experiments/18_dependence.py` | grouped TreeSHAP and exact conditional group Shapley values against their own nulls, normal-approximation power, Monte Carlo error and null spread versus mechanism size (~15 min) |
 
-Stages 2–7 read the outputs of stage 1 (4 and 5 also read 2, 3, 6, 7; 4 also reads 9–12) from `experiments/results/`. Tables are generated, never
+Stages 2–7 read the outputs of stage 1 (4 and 5 also read 2, 3, 6, 7; 4 also reads 9–18) from `experiments/results/`. Tables are generated, never
 typed by hand. Seeds are fixed, and re-running a stage reproduces its numbers exactly. Unit tests for
 the audit statistics: `python -m pytest`.
 

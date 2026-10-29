@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Reproduce every number, table and figure in the paper from the raw dataset.
-#   ./reproduce.sh          full run (about 45 minutes on 8 cores)
+#   ./reproduce.sh          full run (about a day on 8 cores; per-stage times in README.md)
 #   ./reproduce.sh --quick  smoke test of the audit stages with tiny K (a few minutes)
 set -euo pipefail
 cd "$(dirname "$0")"
@@ -15,9 +15,17 @@ python experiments/06_explainers.py "$@"
 python experiments/07_scale.py "$@"
 python experiments/08_compare.py "$@"
 python experiments/09_retuned_null.py "$@"
+[[ "${1:-}" == "--quick" ]] || python experiments/09_retuned_null.py --extend-to 500
 python experiments/10_effect_sizes.py
 python experiments/11_twf_diagnostics.py "$@"
 python experiments/12_other_explainers.py "$@"
+python experiments/13_review_checks.py "$@"
+python experiments/13_review_checks.py --kernel "$@"
+python experiments/14_cwru_audit.py "$@"
+python experiments/15_tep_audit.py "$@"
+python experiments/16_more_checks.py "$@"
+python experiments/17_final_checks.py "$@"
+python experiments/18_dependence.py "$@"
 
 if [[ "${1:-}" != "--quick" ]]; then
   python experiments/04_tables.py

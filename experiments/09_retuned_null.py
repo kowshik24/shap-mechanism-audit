@@ -7,7 +7,8 @@ training split, Borderline-SMOTE inside the CV folds) before it is cross-fitted 
 null matches the procedure that produced the audited model. Draw k uses the same permutation as draw k
 of the primary null, so the first K primary draws are a paired carry-over reference.
 
-Usage: python experiments/09_retuned_null.py [--quick] [--K 200]
+Usage: python experiments/09_retuned_null.py [--quick] [--K 200] [--extend-to 500]
+  --extend-to N   add draws K..N-1 to an existing retuned_null.json instead of starting over
 """
 import argparse
 import json
@@ -27,8 +28,13 @@ from pdm_audit.models import make_preprocessor, tune_xgb
 ap = argparse.ArgumentParser()
 ap.add_argument('--quick', action='store_true', help='tiny K for a smoke test')
 ap.add_argument('--K', type=int, default=200)
+ap.add_argument('--extend-to', type=int, default=0)
 args = ap.parse_args()
 K = 2 if args.quick else args.K
+previous = None
+if args.extend_to:
+    previous = json.loads((RESULTS_DIR / 'retuned_null.json').read_text())
+    K = args.extend_to
 STATS = ('R', 'D', 'S')  # 'S' is the shortcut statistic C_m in the paper
 
 df = load()
@@ -51,11 +57,16 @@ def draw(k):
 
 
 t0 = time.time()
-draws = Parallel(n_jobs=-1, verbose=5)(delayed(draw)(k) for k in range(K))
+start = previous['K'] if previous else 0
+draws = Parallel(n_jobs=-1, verbose=5)(delayed(draw)(k) for k in range(start, K))
 observed = primary['observed']['all']
+if previous:  # prepend the stored draws 0..start-1 (same permutations, so the result equals a fresh run)
+    old = previous['retuned']['null_draws']
+    draws = [{'stats': {m: {s: old[f'{m}.{s}'][k] for s in STATS} for m in PHYSICAL},
+              'params': previous['params'][k], 'cv_f1': previous['cv_f1'][k]} for k in range(start)] + draws
 
-out = {'K': K, 'seconds': time.time() - t0, 'params': [d['params'] for d in draws],
-       'cv_f1': [d['cv_f1'] for d in draws]}
+out = {'K': K, 'seconds': time.time() - t0 + (previous['seconds'] if previous else 0),
+       'params': [d['params'] for d in draws], 'cv_f1': [d['cv_f1'] for d in draws]}
 for name, null_of in [('retuned', lambda m, s: [d['stats'][m][s] for d in draws]),
                       ('carry_over_paired', lambda m, s: primary['all']['null_draws'][f'{m}.{s}'][:K])]:
     p = {f'{m}.{s}': permutation_p(observed[m][s], null_of(m, s)) for m in PHYSICAL for s in STATS}

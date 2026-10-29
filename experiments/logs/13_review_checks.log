@@ -1,0 +1,6 @@
+{'R': {'TWF': 0.179, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}, 'D': {'TWF': 0.075, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}, 'S': {'TWF': 1.0, 'HDF': 1.0, 'PWF': 1.0, 'OSF': 1.0}}
+{'R': {'TWF': 0.308, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}, 'D': {'TWF': 0.144, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}, 'S': {'TWF': 1.0, 'HDF': 1.0, 'PWF': 1.0, 'OSF': 1.0}}
+{'R': {'TWF': 0.085, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}, 'D': {'TWF': 0.02, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}, 'S': {'TWF': 1.0, 'HDF': 1.0, 'PWF': 1.0, 'OSF': 1.0}}
+signed {'TWF': {'own': 0.985507607460022, 'other_failures': 0.39341092109680176}, 'HDF': {'own': 0.9740443825721741, 'other_failures': 0.2953503727912903}, 'PWF': {'own': 0.9727998375892639, 'other_failures': 0.6695142984390259}, 'OSF': {'own': 0.987363338470459, 'other_failures': 0.46327200531959534}}
+removal {'TWF': ([0.07, 0.02], [0.88, 0.73]), 'HDF': ([0.94, 0.23], [0.68, 0.72]), 'PWF': ([0.85, 0.01], [0.74, 0.23]), 'OSF': ([0.95, 0.23], [0.7, 0.59])}
+saved /Users/kowshik/personal-work/glowing-broccoli/experiments/results/review_checks.json
