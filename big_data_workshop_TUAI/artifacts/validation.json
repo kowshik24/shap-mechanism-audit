@@ -12,8 +12,9 @@
   ],
   "public_release_verified": false,
   "pdf_sha256": {
-    "big_data_workshop_TUAI.revised.pdf": "233d8112e161ac55e78a69b34edab6cb8edd1aa48c9c9a5391c4f596b9dc91ef",
-    "supplement.pdf": "d52b07f4001e68f8a8cfd5ae7908135fd5c198f2304cc88b2d0865760bc343a5"
+    "big_data_workshop_TUAI.revised.pdf": "8c71dce61e00f7a4e105a5ff02782313b8280a0ae2e42a9dadd3bdd48b29c0c6",
+    "supplement.pdf": "62beaa8bb5f82756b9470c6255652bc5bdf671dc898b60f140fe46cf054ad42c"
   },
-  "build_checks": "No overfull boxes, undefined citations/references, or multiply defined labels."
+  "build_checks": "No overfull boxes, undefined citations/references, or multiply defined labels.",
+  "repository": "https://github.com/kowshik24/shap-mechanism-audit"
 }
