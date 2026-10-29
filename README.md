@@ -11,7 +11,7 @@ Submitted to the TUAI 2026 workshop (*Towards an Understanding of Artificial Int
 
 ## Overview
 
-A failure-prediction model can be accurate and still base its predictions on the wrong inputs. This
+Machine learning models predict equipment failures in industrial systems, but whether their explanations reflect the physical failure mechanism is rarely tested statistically. This
 repository implements a statistical audit that checks, for each documented failure mechanism, whether
 held-out SHAP attributions concentrate on the features named in that mechanism's rule. Three statistics
 are computed on cross-fitted explanations:
