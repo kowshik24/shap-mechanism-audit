@@ -1,6 +1,6 @@
 """
 Stage 21: the workshop paper's data figures as pgfplots sources (Times fonts, as in the paper),
-compiled with pdflatex into big_data_workshop_TUAI/figures/:
+compiled with pdflatex into paper/figures/:
 
   twf_reference         the TWF relevant share under attribution formulations grouped by reference
                         distribution, with each variant's own null mean (stages 2, 11, 17, 18 and 6)
@@ -20,10 +20,10 @@ from pathlib import Path
 import pdm_audit  # noqa: F401
 import numpy as np
 
-from pdm_audit.config import PHYSICAL, RESULTS_DIR, WORKSHOP_TABLES_DIR
+from pdm_audit.config import PAPER_FIGURES_DIR, PHYSICAL, RESULTS_DIR
 
 ALPHA = 0.05
-FIGURES = WORKSHOP_TABLES_DIR.parent / 'figures'
+FIGURES = PAPER_FIGURES_DIR
 PREAMBLE = r"""\documentclass[border=1pt]{standalone}
 \usepackage{newtxtext,newtxmath}
 \usepackage{pgfplots}

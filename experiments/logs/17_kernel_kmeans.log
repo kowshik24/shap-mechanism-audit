@@ -1,2 +1,0 @@
-kernel_kmeans K=200  1378s R={'TWF': 0.084, 'HDF': 0.482, 'PWF': 0.677, 'OSF': 0.709} pR={'TWF': 0.98, 'HDF': 0.547, 'PWF': 0.493, 'OSF': 0.08} pD={'TWF': 0.9, 'HDF': 0.299, 'PWF': 0.045, 'OSF': 0.02} pS={'TWF': 0.637, 'HDF': 1.0, 'PWF': 1.0, 'OSF': 1.0}
-saved /Users/kowshik/personal-work/glowing-broccoli/experiments/results/final_checks.json

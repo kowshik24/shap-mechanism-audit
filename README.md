@@ -1,210 +1,159 @@
-# Machine Failure Prediction
+# Auditing SHAP Explanations Against Known Failure Mechanisms in Predictive Maintenance
 
-![pipeline](assets/pipeline.drawio.png)
+**Koshik Debanath, Prakrit Uprety, Peiyu Li**
+Department of Computer Science, South Dakota State University
 
-Predicts `Machine failure` on the AI4I 2020 predictive maintenance dataset, then tests whether the
-model's SHAP explanations point at the physical cause of each failure, using the five mechanism
-flags the model never sees in training.
+Submitted to the TUAI 2026 workshop (*Towards an Understanding of Artificial Intelligence*) at IEEE BigData 2026.
 
-Dataset: [AI4I 2020 Predictive Maintenance](https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset)
-(also in `dataset/ai4i2020.csv`) — 10,000 rows, synthetic but modeled on real industrial sensor
-data, 3.39% failure rate.
+[Paper](paper/main.pdf) · [Supplement](paper/supplement.pdf) · [Computational snapshot](paper/artifacts/)
 
-## What was tried
+![Mechanism-level SHAP audit](paper/figures/audit_pipeline.png)
 
-| Stage | Techniques |
-|---|---|
-| Feature engineering | `Power`, `Temp_diff`, `Overstrain`, `Overstrain_ratio` — derived straight from the failure-mode physics, not generic polynomial features |
-| Imbalance handling | SMOTE vs BorderlineSMOTE vs ADASYN, compared on validation F1; winner carried through |
-| Dimensionality check | PCA vs t-SNE vs UMAP (diagnostic only — see below) |
-| Models | Logistic Regression, SVM (RBF), KNN, Decision Tree, Random Forest, XGBoost, PyTorch MLP |
-| Tuning | `RandomizedSearchCV` (F1-scored) + validation-set decision-threshold tuning on the winning model |
-| Validation | 5-fold stratified CV (single 1,000-row test split isn't enough to trust on its own) |
-| Calibration | Isotonic calibration check on `predict_proba` before trusting it for threshold tuning |
-| Explainability | SHAP `TreeExplainer`, cross-checked against ground-truth TWF/HDF/PWF/OSF/RNF labels |
-| Bonus | Multi-label model predicting the 5 failure modes directly, not just failure/no-failure |
+## Overview
 
-## Results
+A failure-prediction model can be accurate and still base its predictions on the wrong inputs. This
+repository implements a statistical audit that checks, for each documented failure mechanism, whether
+held-out SHAP attributions concentrate on the features named in that mechanism's rule. Three statistics
+are computed on cross-fitted explanations:
 
-Best model: **tuned XGBoost**, BorderlineSMOTE-resampled training set, custom decision threshold
-instead of the default 0.5.
+- **Relevant share** $R_m$: the share of attribution on the mechanism's observations that falls on its expected features $E_m$.
+- **Specificity** $D_m$: how much larger that share is than on other failures.
+- **Outside-set excess** $C_m$: how much the most-gaining feature outside $E_m$ increases its share.
 
-| Model | Precision | Recall | F1 | ROC-AUC |
-|---|---|---|---|---|
-| **XGBoost (tuned)** | **1.00** | 0.79 | **0.89** | 0.988 |
-| XGBoost (baseline) | 0.86 | 0.88 | 0.87 | 0.988 |
-| Random Forest | 0.79 | 0.88 | 0.83 | 0.989 |
-| PyTorch MLP | 0.65 | 0.91 | 0.76 | 0.988 |
-| Decision Tree | 0.68 | 0.82 | 0.75 | 0.927 |
-| SVM (RBF) | 0.42 | 0.88 | 0.57 | 0.976 |
-| KNN | 0.43 | 0.79 | 0.56 | 0.877 |
-| Logistic Regression | 0.24 | 0.85 | 0.37 | 0.943 |
+Each statistic is compared with $K$ pipelines retrained on shuffled labels, with Holm correction across
+mechanisms. A mechanism is *flagged* if $C_m$ is significant, *aligned* if $R_m$ and $D_m$ are, and
+*not aligned* otherwise. A passing audit describes where attribution falls under a stated mechanism map;
+it does not certify that the model is physically correct.
 
-### PCA vs t-SNE vs UMAP
+## Main results
 
-Three views of the same 12-dimensional training data. PCA (linear) shows the classes smeared
-together with no clean separating direction. t-SNE and UMAP (both nonlinear, preserve local
-neighborhoods) show the failure points clumping into several distinct pockets rather than one
-region — consistent with `Machine failure` actually being five separate physical mechanisms, each
-carving out its own little neighborhood in feature space instead of one shared "failure zone".
+| Data | Mechanism | Verdict |
+|---|---|---|
+| AI4I 2020 (synthetic milling) | heat dissipation, power, overstrain | aligned (Holm-adjusted $p=0.004$) |
+| | tool wear | not aligned with path-dependent TreeSHAP; aligned against a normal-operation reference |
+| | planted shortcut sensor | flagged when it takes ≥35% of attribution; weak or multi-sensor shortcuts go undetected |
+| CWRU bearings (laboratory) | inner race, outer race | aligned |
+| | injected acquisition-gain shortcut | flagged although every recording is classified correctly |
+| Tennessee Eastman process (simulated) | reactor cooling fault (IDV4) | aligned |
+| | condenser cooling fault (IDV5) | flagged on a feed valve; needs inspection |
 
-![PCA vs t-SNE vs UMAP](assets/images/dimred_comparison.png)
+The tuned XGBoost classifier reaches test F1 = 0.89 on AI4I 2020. Held-out explanations and the
+retrained null are both necessary: without them, a model trained on shuffled labels or explained
+in-sample passes the audit.
 
-Numbers above are from `experiments/01_benchmark.py` on the 1,000-row test split (34 failures, so
-the tuned model's precision of 1.00 has a 95% Clopper–Pearson interval of 0.87–1.00). 5-fold CV of the
-whole pipeline (Borderline-SMOTE inside the folds, default threshold): F1 = 0.822 ± 0.013,
-macro-F1 = 0.908 ± 0.007. Hyperparameter search also resamples inside its folds (search CV F1 0.831). The notebook's older CV cell used plain SMOTE and reported 0.784; the
-script is the reference.
+## Repository structure
 
-Class imbalance is why accuracy is useless here — a model that predicts "no failure" every time
-still scores ~96% accuracy. Precision/recall/F1 on the failure class is what actually matters.
-
-<img src="assets/images/class_imbalance.png" width="420"> <img src="assets/images/pca_2d.png" width="420">
-
-<img src="assets/images/roc_curves.png" width="420"> <img src="assets/images/pr_curves.png" width="420">
-
-### Resampling, visualized
-
-Same comparison [imbalanced-learn's own docs](https://imbalanced-learn.org/stable/auto_examples/over-sampling/plot_comparison_over_sampling.html)
-run — a plain Logistic Regression fit on the 2D PCA projection, once per sampler. Without
-resampling the boundary barely bends toward the minority (red) class; each oversampler drags it
-further into majority territory, trading precision for recall — the same tradeoff the metrics
-table above shows in numbers.
-
-![resampling comparison](assets/images/resampling_scatter_2d.png)
-![decision boundary comparison](assets/images/decision_boundary_2d.png)
-
-## Explainable AI — does the model know *why*?
-
-`Machine failure` is the OR of five mechanisms, and the model is never told which one fired. For
-each mechanism the audit computes out-of-sample SHAP (5-fold cross-fitting) and three statistics:
-
-- **relevant share** R — fraction of attribution on the mechanism's rows that falls on its trigger
-  features;
-- **specificity** D — how much larger that share is on the mechanism's rows than on other failures;
-- **shortcut score** C — the largest excess share any *non*-trigger feature takes on the mechanism's
-  rows (large C flags a shortcut).
-
-All three are compared with 1,000 copies of the full pipeline retrained on permuted labels, with Holm
-correction over the four physical mechanisms.
-
-| Mechanism | Top out-of-sample SHAP feature | R | D | Verdict |
-|---|---|---|---|---|
-| TWF (tool wear) | `Tool wear [min]` | 0.19 | 0.13 | fails both (p = 0.20, 0.077) |
-| HDF (heat dissipation) | `Rotational speed [rpm]` | 0.71 | 0.43 | passes (p = 0.004) |
-| PWF (power) | `Power [W]` | 0.70 | 0.33 | passes (p = 0.004) |
-| OSF (overstrain) | `Overstrain_ratio` | 0.67 | 0.42 | passes (p = 0.004) |
-| RNF (random) | no dominant feature | — | — | descriptive only |
-
-HDF, PWF, and OSF pass in all five seeds, with interventional TreeSHAP (backgrounds of 100–1000
-rows), with a random forest, and (PWF, OSF) without the rule-derived features. TWF passes only
-in-sample or with interventional TreeSHAP, so its verdict is unresolved. Controls: a model trained
-on shuffled labels fails every test (a naive "random failure subset" null would wrongly pass it),
-and a planted shortcut sensor is flagged once it takes a fifth to a third of the HDF attribution.
-On data generated from the AI4I process at up to 300k rows (`src/pdm_audit/sim.py`), the R test
-alone misses a sensor taking 27% of the attribution; C still flags it in every run.
-
-![audit overview](paper/figures/audit_overview.png)
-
-<img src="assets/images/shap_summary.png" width="420"> <img src="paper/figures/shap_crosscheck_heatmap.png" width="420">
-
-## Running it
-
-```bash
-uv venv .venv --python 3.13
-source .venv/bin/activate
-uv pip install -r requirements.txt
-python -m ipykernel install --user --name glowing-broccoli-venv --display-name "Python 3 (venv)"
+```
+├── src/pdm_audit/        audit statistics, data, models, metrics, AI4I process simulator
+├── src/predict.py        score new sensor readings with the trained model
+├── experiments/          numbered pipeline stages (01–24) and their stored results/
+├── models/               tuned XGBoost model, preprocessor, hyperparameters
+├── dataset/              AI4I 2020 data (UCI, CC BY 4.0)
+├── tests/                unit tests for the audit statistics
+├── paper/                LaTeX source and PDFs of the paper and supplement
+│   ├── tables/           generated by experiments/04_tables.py
+│   ├── figures/          generated by experiments/21 and 23, plus the TikZ overview
+│   └── artifacts/        content-addressed computational snapshot and checksums
+├── reproduce.sh          runs every stage in order and builds the paper
+└── requirements.txt      pinned dependencies
 ```
 
-Open `notebooks/Exploratory-Data-Analysis.ipynb`, select the `Python 3 (venv)` kernel, run all.
-Headless equivalent:
+## Installation
+
+Python 3.11 or newer; the results were produced with Python 3.13.
 
 ```bash
-cd notebooks
-jupyter nbconvert --to notebook --execute --inplace \
-  --ExecutePreprocessor.timeout=1200 \
-  --ExecutePreprocessor.kernel_name=glowing-broccoli-venv \
-  Exploratory-Data-Analysis.ipynb
+git clone https://github.com/kowshik24/shap-mechanism-audit.git
+cd shap-mechanism-audit
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt -e .
+python -m pytest -q
 ```
 
-Takes 15-20 minutes — the hyperparameter search alone is ~200 XGBoost fits.
+On macOS, XGBoost needs OpenMP (`brew install libomp`). The package sets single-threaded BLAS/OpenMP
+on import to avoid runtime conflicts between NumPy, scikit-learn, XGBoost and PyTorch.
 
-**Apple Silicon note:** numpy/sklearn/xgboost/torch each bundle their own threaded BLAS/OpenMP
-runtime, and running them together in one Jupyter kernel segfaults the kernel with no useful
-traceback. The notebook forces everything single-threaded before any other imports
-(`OMP_NUM_THREADS=1`, `KMP_DUPLICATE_LIB_OK=TRUE`) — don't strip that cell out. If xgboost itself
-won't import (`libomp.dylib` not found), `brew install libomp` first.
+## Quick start
 
-## Scoring new data
+The tuned model and its hyperparameters are committed in `models/`, so the primary AI4I audit runs
+directly. As a smoke test with a tiny null:
 
-The trained model and preprocessor are committed in `models/` (`experiments/01_benchmark.py`
-regenerates them):
+```bash
+python experiments/02_audit.py --quick  # K=4 shuffled-label pipelines; writes experiments/results/audit_quick.json
+```
+
+Score new readings with the trained model:
 
 ```bash
 python src/predict.py --csv path/to/new_readings.csv --out predictions.csv
 ```
 
-Input needs: `Type`, `Air temperature [K]`, `Process temperature [K]`, `Rotational speed [rpm]`,
-`Torque [Nm]`, `Tool wear [min]`.
+The input needs the columns `Type`, `Air temperature [K]`, `Process temperature [K]`,
+`Rotational speed [rpm]`, `Torque [Nm]` and `Tool wear [min]`.
+
+## Data
+
+- **AI4I 2020** is included in `dataset/ai4i2020.csv` ([UCI](https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset)).
+- **CWRU bearings**: `python experiments/download_cwru.py` fetches the 36 drive-end recordings from the [Case Western Reserve University Bearing Data Center](https://engineering.case.edu/bearingdatacenter) into `data/cwru/` and checksums them.
+- **Tennessee Eastman process**: 400 runs (IDV4, IDV5) of the extended TEP dataset of Reinartz et al. (2021). The extraction script is `experiments/59_dtu_extract.py` on the `paper/new-experiments` branch; it writes `data/dtu_tep/prospective_runs/`.
+
+Raw CWRU and TEP files are not redistributed.
 
 ## Reproducing the paper
 
-The code in `src/pdm_audit/` (data, models, audit statistics, metrics) and the numbered scripts in
-`experiments/` produce every number, table, and figure in the IEEE paper
-(`paper/ieee_bigdata/main.tex`). The notebook is the exploratory record and is not needed.
-
 ```bash
-./reproduce.sh          # everything, ~9 h on 8 cores; ends with paper/ieee_bigdata/main.pdf
+./reproduce.sh          # every stage, tables, figures and both PDFs (about a day on 8 cores)
 ./reproduce.sh --quick  # smoke test of the audit stages with tiny K
 ```
 
-or stage by stage:
+Seeds are fixed, and re-running a stage reproduces its stored numbers. Tables and data figures are
+generated from `experiments/results/`, never typed by hand. Per-stage scripts:
 
-| Stage | Script | Output |
-|---|---|---|
-| 1 | `experiments/01_benchmark.py` | model comparison, tuning, CIs, CV, `models/` |
-| 2 | `experiments/02_audit.py` | cross-fitted audit, seeds, raw-feature and in-sample variants (~28 min) |
-| 3 | `experiments/03_shortcut_sweep.py` | graded shortcut experiment (~11 min) |
-| 4 | `experiments/04_tables.py` | LaTeX tables in `paper/ieee_bigdata/tables/` |
-| 5 | `experiments/05_figures.py` | figures in `paper/figures/` |
-| 6 | `experiments/06_explainers.py` | interventional TreeSHAP (3 background sizes, 3 seeds) and random forest (~55 min) |
-| 7 | `experiments/07_scale.py` | audit on AI4I generated at 10k–300k rows (3 seeds), cost at 1M (~6 h) |
-| 8 | `experiments/08_compare.py` | missing audit-design combinations for the comparison table: naive null and in-sample SHAP on shortcut data, in-sample SHAP on a permuted-label model |
-| 9 | `experiments/09_retuned_null.py` | primary audit against a null re-tuned on every permutation (K=200, ~50 min on 8 cores); `--extend-to 500` adds draws 200–499 (~80 min) |
-| 10 | `experiments/10_effect_sizes.py` | null-standardized effect sizes and bootstrap CIs for R and D (seconds) |
-| 11 | `experiments/11_twf_diagnostics.py` | interventional TreeSHAP with failure-only, non-failure, oversampled backgrounds and raw features (~20 min) |
-| 12 | `experiments/12_other_explainers.py` | the MLP audited with KernelSHAP and Integrated Gradients (~30 min) |
-| 13 | `experiments/13_review_checks.py` | label-anomaly and class-weight variants, K stability, Holm over all tests, signed attributions, removal check, per-row attributions; `--kernel` adds exact KernelSHAP on the MLP (~1 h) |
-| 14 | `experiments/14_cwru_audit.py` | the audit on measured CWRU bearing vibration, with and without a fault-dependent gain shortcut (~10 min); fetch the 36 recordings first with `experiments/download_cwru.py`; `--band 0.05`, `--band 0.3` and `--harmonics 1,2,3 --conditions original` test the defect-frequency bands |
-| 15 | `experiments/15_tep_audit.py` | the audit on Tennessee Eastman process runs (DTU, IDV4/IDV5; data in `data/dtu_tep`) (~11 min); `--window 10` adds each variable's 30-minute mean and change; `--null shift` rotates each run's time-ordered labels instead of permuting them (~9 min, ~30 min with `--window 10`) |
-| 16 | `experiments/16_more_checks.py` | plain SMOTE and ADASYN, misspecified trigger sets, HSIC corroboration (~20 min) |
-| 17 | `experiments/17_final_checks.py` | Borderline-SMOTE with 3/10 neighbours, focal loss, failure-pushing (positive-part) SHAP, pairwise normal-operation reference, MLP with DeepSHAP and SmoothGrad (~50 min), KernelSHAP with a k-means background (~20 min), LIME on the primary pipeline (~10 min), and exact KernelSHAP with a 500-row background (K=100, ~3.5 h); `--only name,name` reruns a subset |
-| 18 | `experiments/18_dependence.py` | grouped TreeSHAP and exact conditional group Shapley values against their own nulls, normal-approximation power, Monte Carlo error and null spread versus mechanism size (~15 min); `--bw 0.15`, `--bw 0.6` and `--split-wear` rerun the conditional values with another kernel bandwidth or grouping |
-| 19 | `experiments/19_flag_threshold.py` | every significant shortcut flag in the stored results with its excess share, and which a minimum-excess rule would keep (seconds) |
-| 20 | `experiments/20_rank_checks.py` | rank-based alignment statistics (Rk, Dk) and a null-referenced shortcut score (N) on the primary audit, misspecified trigger sets and the planted shortcut at four strengths (~15 min); `--transform positive` repeats it on failure-pushing SHAP |
-| 21 | `experiments/21_reference_figure.py` | the workshop paper's data figures (primary audit, TWF by reference distribution, planted-shortcut sweep) as pgfplots sources compiled with pdflatex into `big_data_workshop_TUAI/figures/` (seconds) |
-| 22 | `experiments/22_tep_lstm.py` | the TEP audit with an LSTM on 30-minute sequences, Integrated Gradients summed over time per variable (~15 min) |
-| 23 | `experiments/23_twf_example.py` | one TWF observation explained with path-dependent and interventional TreeSHAP (signed values and pgfplots figure; seconds) |
-| 24 | `experiments/24_multi_proxy.py` | the planted shortcut split over three sensors with independent noise, at six noise levels (~35 min); `--proxies N` changes the number of sensors |
+| Stage | Script | Purpose | Time |
+|---|---|---|---|
+| 1 | `01_benchmark.py` | model comparison, tuning, confidence intervals, saved model | ~15 min |
+| 2 | `02_audit.py` | primary audit, seeds, raw-feature and in-sample variants | ~28 min |
+| 3 | `03_shortcut_sweep.py` | planted shortcut at eleven strengths | ~1 h |
+| 4 | `04_tables.py` | LaTeX tables in `paper/tables/` | seconds |
+| 5 | `05_figures.py` | exploratory figures in `experiments/figures/` (not in the paper) | minutes |
+| 6 | `06_explainers.py` | interventional TreeSHAP (3 backgrounds × 3 seeds), random forest | ~55 min |
+| 7 | `07_scale.py` | audit on generated AI4I data from 10k to 300k rows | ~6 h |
+| 8 | `08_compare.py` | audit-component ablations | minutes |
+| 9 | `09_retuned_null.py` | null re-tuned on every permutation (`--extend-to 500`) | ~2 h |
+| 10 | `10_effect_sizes.py` | null-standardized effect sizes, bootstrap intervals | seconds |
+| 11 | `11_twf_diagnostics.py` | tool-wear backgrounds and raw features | ~20 min |
+| 12 | `12_other_explainers.py` | MLP with KernelSHAP and Integrated Gradients | ~30 min |
+| 13 | `13_review_checks.py` | label and class-weight variants, K stability, removal and direction checks | ~1 h |
+| 14 | `14_cwru_audit.py` | CWRU audit with and without the gain shortcut; `--band`, `--harmonics` | ~10 min |
+| 15 | `15_tep_audit.py` | TEP audit; `--window 10` adds temporal features, `--null shift` rotates labels | ~11 min |
+| 16 | `16_more_checks.py` | SMOTE and ADASYN, misspecified expected sets, HSIC | ~20 min |
+| 17 | `17_final_checks.py` | focal loss, pairwise reference, DeepSHAP, SmoothGrad, LIME, exact KernelSHAP | ~5 h |
+| 18 | `18_dependence.py` | grouped TreeSHAP and conditional group Shapley values | ~15 min |
+| 19 | `19_flag_threshold.py` | every significant outside-set flag and its excess | seconds |
+| 20 | `20_rank_checks.py` | rank-based and null-referenced alternative statistics | ~15 min |
+| 21 | `21_reference_figure.py` | the paper's data figures (pgfplots) | seconds |
+| 22 | `22_tep_lstm.py` | TEP audit with an LSTM and Integrated Gradients | ~15 min |
+| 23 | `23_twf_example.py` | single tool-wear observation under two references | seconds |
+| 24 | `24_multi_proxy.py` | planted shortcut split over three sensors | ~35 min |
 
-Stages 2–7 read the outputs of stage 1 (4 and 5 also read 2, 3, 6, 7; 4 also reads 9–20; 21 reads 2, 6, 11, 13, 17, 18) from `experiments/results/`. The workshop supplement (`big_data_workshop_TUAI/supplement.tex`) holds implementation settings, the full p-value table and sensitivity analyses. Tables are generated, never
-typed by hand. Seeds are fixed, and re-running a stage reproduces its numbers exactly. Unit tests for
-the audit statistics: `python -m pytest`.
+The AI4I stages read the tuned hyperparameters written by stage 1; stage 4 reads the results of stages
+2–20, and stage 21 those of stages 2, 6, 11, 13, 17 and 18. The snapshot
+`paper/artifacts/tuai-computation-5b97414ab7ef.zip` holds the code, stored results and model of the
+submitted version, with a SHA-256 manifest.
 
-## Layout
+## Citation
 
+```bibtex
+@inproceedings{debanath2026auditing,
+  title     = {Auditing {SHAP} Explanations Against Known Failure Mechanisms in Predictive Maintenance},
+  author    = {Debanath, Koshik and Uprety, Prakrit and Li, Peiyu},
+  booktitle = {Proc. IEEE Int. Conf. Big Data (BigData), Workshop on Towards an Understanding of Artificial Intelligence (TUAI)},
+  year      = {2026},
+  note      = {Submitted}
+}
 ```
-dataset/ai4i2020.csv      raw data
-src/pdm_audit/            package: config, data, models, audit statistics, metrics, simulator
-src/predict.py            CLI inference on new rows
-experiments/              numbered pipeline stages; results/ holds their outputs
-tests/                    unit tests
-models/                   saved model, preprocessor, tuned hyperparameters
-paper/ieee_bigdata/       IEEE BigData submission (tables/ generated)
-paper/main.tex            single-column preprint, generated by paper/sync_arxiv.py
-paper/figures/            generated figures
-notebooks/                exploratory notebook
-reproduce.sh              runs everything in order
-requirements.txt          pinned versions
-```
+
+## Contact
+
+Koshik Debanath (koshik.debanath@jacks.sdstate.edu), Prakrit Uprety (prakrit.uprety@jacks.sdstate.edu),
+Peiyu Li (peiyu.li@sdstate.edu)

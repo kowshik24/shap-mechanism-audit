@@ -1,7 +1,0 @@
-sigma=1.0   F1=0.852 proxy_share=0.074 max_proxy=0.030 R_HDF=0.646 pR=0.008 pD=0.008 C=0.008 Shortcut sensor 2 pC=1.000 (309s)
-sigma=0.67  F1=0.848 proxy_share=0.106 max_proxy=0.049 R_HDF=0.593 pR=0.008 pD=0.008 C=0.027 Shortcut sensor 2 pC=1.000 (324s)
-sigma=0.5   F1=0.882 proxy_share=0.165 max_proxy=0.072 R_HDF=0.505 pR=0.008 pD=0.008 C=0.047 Shortcut sensor 2 pC=1.000 (333s)
-sigma=0.4   F1=0.833 proxy_share=0.323 max_proxy=0.134 R_HDF=0.343 pR=0.479 pD=0.008 C=0.108 Shortcut sensor 3 pC=0.974 (320s)
-sigma=0.35  F1=0.912 proxy_share=0.377 max_proxy=0.138 R_HDF=0.290 pR=0.838 pD=0.008 C=0.114 Shortcut sensor 2 pC=0.902 (335s)
-sigma=0.25  F1=0.889 proxy_share=0.538 max_proxy=0.251 R_HDF=0.119 pR=1.000 pD=0.182 C=0.227 Shortcut sensor 2 pC=0.024 (386s)
-saved /Users/kowshik/personal-work/glowing-broccoli/experiments/results/multi_proxy_3.json

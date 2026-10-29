@@ -1,5 +1,6 @@
 """
-Stage 5: every paper figure -> paper/figures/ (PDF + 300 dpi PNG).
+Stage 5: exploratory figures (model comparison, SHAP summaries, embeddings) -> experiments/figures/
+(PDF + 300 dpi PNG). The paper's own figures come from stages 21 and 23.
 
 Reads experiments/results/{benchmark.json, test_predictions.npz, audit.json, shortcut_sweep.json} and
 the committed model; only the feature-space projections are recomputed.

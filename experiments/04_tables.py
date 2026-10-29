@@ -1,9 +1,7 @@
 """
 Stage 4: LaTeX tables for the paper, generated from experiments/results/*.json so no number is
-transcribed by hand. Writes paper/ieee_bigdata/tables/*.tex (tabular bodies, \\input by main.tex) and
-the tables the TUAI workshop paper uses to big_data_workshop_TUAI/tables/. The shortcut statistic is
-S_m in the IEEE BigData paper and C_m in the workshop paper (where S_m names the mechanism's rows), so
-headers carry the placeholder @SC@ and each target substitutes its own symbol.
+transcribed by hand. Writes the tabular bodies that paper/main.tex and paper/supplement.tex \\input to
+paper/tables/. Headers carry the placeholder @SC@ for the outside-set statistic, written as C_m.
 """
 import argparse
 import json
@@ -11,7 +9,7 @@ import json
 import numpy as np
 
 from pdm_audit.audit import holm
-from pdm_audit.config import PHYSICAL, RESULTS_DIR, TABLES_DIR, WORKSHOP_TABLES_DIR
+from pdm_audit.config import PHYSICAL, RESULTS_DIR, TABLES_DIR
 
 bench = json.loads((RESULTS_DIR / 'benchmark.json').read_text())
 audit = json.loads((RESULTS_DIR / 'audit.json').read_text())
@@ -33,29 +31,25 @@ SHORT = {'Tool wear [min]': 'tool wear', 'Rotational speed [rpm]': 'speed', 'Pow
          'Overstrain [minNm]': 'overstrain', 'Shortcut sensor': 'shortcut sensor'}
 
 
-parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--workshop-only', action='store_true', help='regenerate only TUAI paper and supplement tables')
-WORKSHOP_ONLY = parser.parse_args().workshop_only
+argparse.ArgumentParser(description=__doc__).parse_args()
 
-WORKSHOP_TABLES = {'models', 'config', 'audit', 'scale', 'cwru'}
-WORKSHOP_TABLES_DIR.mkdir(parents=True, exist_ok=True)
+# Tables the paper and supplement \\input; the others are computed for the console record only.
+PAPER_TABLES = {'models', 'config', 'audit', 'scale', 'cwru'}
 
 
 def write(name, lines, workshop_lines=None):
-    """`workshop_lines` replaces `lines` in the workshop copy (for rows only that paper reports)."""
-    text = '\n'.join(lines) + '\n'
-    if not WORKSHOP_ONLY:
-        (TABLES_DIR / f'{name}.tex').write_text(text.replace('@SC@', 'S'))
-    if name in WORKSHOP_TABLES:
-        text = text if workshop_lines is None else '\n'.join(workshop_lines) + '\n'
-        (WORKSHOP_TABLES_DIR / f'{name}.tex').write_text(text.replace('@SC@', 'C'))
+    """`workshop_lines`, when given, are the rows the paper reports in place of `lines`."""
+    if name not in PAPER_TABLES:
+        return
+    text = '\n'.join(lines if workshop_lines is None else workshop_lines) + '\n'
+    (TABLES_DIR / f'{name}.tex').write_text(text.replace('@SC@', 'C'))
     print('wrote', name)
 
 
 def write_ws(name, lines):
-    """A table only the workshop paper or its supplement uses (nothing written to paper/)."""
-    (WORKSHOP_TABLES_DIR / f'{name}.tex').write_text('\n'.join(lines).replace('@SC@', 'C') + '\n')
-    print('wrote', name, '(workshop only)')
+    """A table only the paper or its supplement uses."""
+    (TABLES_DIR / f'{name}.tex').write_text('\n'.join(lines).replace('@SC@', 'C') + '\n')
+    print('wrote', name)
 
 
 def verdict(pr, pd_, pc):
@@ -418,6 +412,6 @@ for i, (r, label, mechs) in enumerate([(cwru['original'], 'CWRU', ['IR', 'B', 'O
         ws.append(f"{label if j == 0 else ''} & {FAULT_NAME[m]} & {f3(o['R'])} & {pv(pr)} & {f3(o['D'])} & {pv(pd_)} & "
                   f"{f3(o['S'])} & {flag_s(pc)} & {verdict} \\\\")
 ws += [r'\bottomrule', r'\end{tabular}']
-(WORKSHOP_TABLES_DIR / 'cwru.tex').write_text('\n'.join(ws).replace('@SC@', 'C') + '\n')
+(TABLES_DIR / 'cwru.tex').write_text('\n'.join(ws).replace('@SC@', 'C') + '\n')
 print('wrote cwru')
 

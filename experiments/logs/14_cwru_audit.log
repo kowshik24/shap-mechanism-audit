@@ -1,9 +1,0 @@
-original 159s acc(window/recording)=0.988/1.000
-  IR: R=0.440 (null 0.234, p=0.004)  D=0.190 (p=0.030)  C=0.065 raw_OR_1 (p=1.000)  logRMS share=0.068
-  B: R=0.133 (null 0.172, p=0.773)  D=0.036 (p=0.211)  C=0.051 log_RMS (p=1.000)  logRMS share=0.151
-  OR: R=0.392 (null 0.151, p=0.003)  D=0.131 (p=0.027)  C=0.042 band_4000_6001 (p=1.000)  logRMS share=0.127
-gain 159s acc(window/recording)=0.995/1.000
-  IR: R=0.394 (null 0.224, p=0.018)  D=0.168 (p=0.054)  C=0.063 raw_OR_1 (p=0.989)  logRMS share=0.157
-  B: R=0.105 (null 0.172, p=0.948)  D=0.029 (p=0.547)  C=0.020 kurtosis (p=0.989)  logRMS share=0.271
-  OR: R=0.269 (null 0.147, p=0.018)  D=0.050 (p=0.547)  C=0.165 log_RMS (p=0.006)  logRMS share=0.380
-saved /Users/kowshik/personal-work/glowing-broccoli/experiments/results/cwru_audit.json

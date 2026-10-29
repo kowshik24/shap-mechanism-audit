@@ -4,9 +4,10 @@ ROOT = Path(__file__).resolve().parents[2]
 DATA_PATH = ROOT / 'dataset' / 'ai4i2020.csv'
 MODELS_DIR = ROOT / 'models'
 RESULTS_DIR = ROOT / 'experiments' / 'results'
-FIGURES_DIR = ROOT / 'paper' / 'figures'
-TABLES_DIR = ROOT / 'paper' / 'ieee_bigdata' / 'tables'
-WORKSHOP_TABLES_DIR = ROOT / 'big_data_workshop_TUAI' / 'tables'
+PAPER_DIR = ROOT / 'paper'
+TABLES_DIR = PAPER_DIR / 'tables'
+PAPER_FIGURES_DIR = PAPER_DIR / 'figures'
+FIGURES_DIR = ROOT / 'experiments' / 'figures'  # exploratory figures of stage 5, not in the paper
 
 SEED = 42
 

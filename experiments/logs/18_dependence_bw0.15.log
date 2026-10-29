@@ -1,3 +1,0 @@
-grouped {'TWF': (0.224, 0.269, 0.816, 1.0, 1.0), 'HDF': (0.813, 0.731, 0.02, 0.02, 1.0), 'PWF': (0.705, 0.338, 0.02, 0.02, 1.0), 'OSF': (0.856, 0.52, 0.02, 0.03, 1.0)}
-conditional {'TWF': (0.592, 0.328, 0.02, 0.02, 1.0), 'HDF': (0.731, 0.57, 0.02, 0.02, 1.0), 'PWF': (0.677, 0.374, 0.02, 0.02, 1.0), 'OSF': (0.848, 0.602, 0.02, 0.02, 1.0)}
-saved /Users/kowshik/personal-work/glowing-broccoli/experiments/results/dependence_bw0.15.json

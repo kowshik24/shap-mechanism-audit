@@ -9,8 +9,6 @@ shap==0.52.0
 imbalanced-learn==0.14.2
 umap-learn==0.5.12
 torch==2.14.0
-jupyter==1.1.1
-ipykernel==7.3.0
 scipy==1.18.1
 joblib==1.6.0
 pytest==9.1.1

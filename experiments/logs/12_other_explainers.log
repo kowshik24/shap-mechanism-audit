@@ -1,3 +1,0 @@
-mlp_ig        1105s  R={'TWF': 0.173, 'HDF': 0.607, 'PWF': 0.707, 'OSF': 0.641}  p(R)={'TWF': 0.338, 'HDF': 0.02, 'PWF': 0.05, 'OSF': 0.03}  p(D)={'TWF': 0.1, 'HDF': 0.02, 'PWF': 0.1, 'OSF': 0.02}  p(C)={'TWF': 0.522, 'HDF': 1.0, 'PWF': 0.478, 'OSF': 1.0}
-mlp_kernel    1150s  R={'TWF': 0.092, 'HDF': 0.471, 'PWF': 0.666, 'OSF': 0.649}  p(R)={'TWF': 0.975, 'HDF': 0.388, 'PWF': 0.358, 'OSF': 0.358}  p(D)={'TWF': 0.831, 'HDF': 0.189, 'PWF': 0.02, 'OSF': 0.075}  p(C)={'TWF': 0.975, 'HDF': 1.0, 'PWF': 1.0, 'OSF': 1.0}
-saved /Users/kowshik/personal-work/glowing-broccoli/experiments/results/other_explainers.json

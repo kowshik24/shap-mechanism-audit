@@ -5,7 +5,7 @@ Picks the single-mechanism TWF observation whose held-out path-dependent tool-we
 the TWF mean, refits the cross-fitting fold that holds it out, and explains it with path-dependent
 TreeSHAP (training cover of the oversampled data) and with interventional TreeSHAP against 100
 original training observations (about 97% normal operation). Writes the signed attributions to
-experiments/results/twf_example.json and a pgfplots figure to big_data_workshop_TUAI/figures/twf_example.pdf.
+experiments/results/twf_example.json and a pgfplots figure to paper/figures/twf_example.pdf.
 
 Usage: python experiments/23_twf_example.py
 """
@@ -20,7 +20,7 @@ import pandas as pd
 from sklearn.model_selection import StratifiedKFold
 
 from pdm_audit.audit import abs_shap
-from pdm_audit.config import ENGINEERED, MODELS_DIR, RESULTS_DIR, SEED, WORKSHOP_TABLES_DIR
+from pdm_audit.config import ENGINEERED, MODELS_DIR, PAPER_FIGURES_DIR, RESULTS_DIR, SEED
 from pdm_audit.data import load, mechanism_groups
 from pdm_audit.models import fit_pipeline
 
@@ -86,7 +86,7 @@ tex = r"""\documentclass[border=1pt]{standalone}
 \end{tikzpicture}
 \end{document}
 """
-figures = WORKSHOP_TABLES_DIR.parent / 'figures'
+figures = PAPER_FIGURES_DIR
 (figures / 'twf_example.tex').write_text(tex)
 with tempfile.TemporaryDirectory() as tmp:
     run = subprocess.run(['pdflatex', '-interaction=nonstopmode', '-output-directory', tmp, str(figures / 'twf_example.tex')],

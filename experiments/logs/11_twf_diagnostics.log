@@ -1,7 +1,0 @@
-failures          167s  TWF R=0.075  p(R)={'TWF': 0.995, 'HDF': 0.826, 'PWF': 0.045, 'OSF': 0.04}  p(D)={'TWF': 0.945, 'HDF': 0.149, 'PWF': 0.09, 'OSF': 0.02}
-non_failures      155s  TWF R=0.462  p(R)={'TWF': 0.02, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}  p(D)={'TWF': 0.02, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}
-oversampled       158s  TWF R=0.225  p(R)={'TWF': 0.045, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}  p(D)={'TWF': 0.02, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}
-raw               129s  TWF R=0.582  p(R)={'TWF': 0.02, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}  p(D)={'TWF': 0.02, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}
-path {'Tool wear [min]': 0.193, 'Rotational speed [rpm]': 0.188, 'Temp_diff [K]': 0.11, 'Power [W]': 0.109, 'Overstrain_ratio': 0.106}
-interventional {'Tool wear [min]': 0.461, 'Overstrain_ratio': 0.093, 'Overstrain [minNm]': 0.071, 'Rotational speed [rpm]': 0.071, 'Power [W]': 0.065}
-saved /Users/kowshik/personal-work/glowing-broccoli/experiments/results/twf_diagnostics.json

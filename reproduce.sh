@@ -46,12 +46,7 @@ if [[ "${1:-}" != "--quick" ]]; then
   python experiments/04_tables.py
   python experiments/05_figures.py
   python experiments/21_reference_figure.py
-  (cd paper/ieee_bigdata && pdflatex -interaction=nonstopmode main.tex >/dev/null \
-     && bibtex main >/dev/null && pdflatex -interaction=nonstopmode main.tex >/dev/null \
-     && pdflatex -interaction=nonstopmode main.tex >/dev/null)
-  python paper/sync_arxiv.py
-  (cd paper && pdflatex -interaction=nonstopmode main.tex >/dev/null \
-     && bibtex main >/dev/null && pdflatex -interaction=nonstopmode main.tex >/dev/null \
-     && pdflatex -interaction=nonstopmode main.tex >/dev/null)
-  echo "paper: paper/ieee_bigdata/main.pdf (IEEE), paper/main.pdf (single-column preprint)"
+  (cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex >/dev/null \
+     && latexmk -pdf -interaction=nonstopmode -halt-on-error supplement.tex >/dev/null)
+  echo "paper: paper/main.pdf, paper/supplement.pdf"
 fi

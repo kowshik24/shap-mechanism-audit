@@ -1,5 +1,0 @@
-original 147s acc(window/recording)=0.975/1.000
-  IR: R=0.413 (null 0.235, p=0.010)  D=0.185 (p=0.018)  C=0.078 raw_OR_1 (p=0.575)  logRMS share=0.089
-  B: R=0.216 (null 0.120, p=0.015)  D=0.062 (p=0.018)  C=0.044 log_RMS (p=1.000)  logRMS share=0.153
-  OR: R=0.359 (null 0.169, p=0.003)  D=0.148 (p=0.015)  C=0.039 band_4000_6001 (p=1.000)  logRMS share=0.128
-saved /Users/kowshik/personal-work/glowing-broccoli/experiments/results/cwru_audit_band0.3_h12.json

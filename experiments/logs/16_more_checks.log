@@ -1,9 +1,0 @@
-SMOTE {'R': {'TWF': 0.169, 'HDF': 0.109, 'PWF': 0.02, 'OSF': 0.02}, 'D': {'TWF': 0.085, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}, 'S': {'TWF': 1.0, 'HDF': 1.0, 'PWF': 1.0, 'OSF': 1.0}}
-ADASYN {'R': {'TWF': 0.159, 'HDF': 0.109, 'PWF': 0.02, 'OSF': 0.02}, 'D': {'TWF': 0.09, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}, 'S': {'TWF': 0.955, 'HDF': 1.0, 'PWF': 1.0, 'OSF': 1.0}}
-no_derived {'R': {'TWF': 0.468, 'HDF': 0.04, 'PWF': 0.179, 'OSF': 0.776}, 'D': {'TWF': 0.209, 'HDF': 0.02, 'PWF': 1.0, 'OSF': 1.0}, 'S': {'TWF': 0.478, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}}
-drop_top {'R': {'TWF': 0.701, 'HDF': 0.995, 'PWF': 0.239, 'OSF': 0.995}, 'D': {'TWF': 0.209, 'HDF': 0.02, 'PWF': 0.935, 'OSF': 0.657}, 'S': {'TWF': 0.478, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.02}}
-hsic TWF 0.276 0.27 Tool wear [min]
-hsic HDF 0.535 0.75 Rotational speed [rpm]
-hsic PWF 0.671 0.6 Torque [Nm]
-hsic OSF 0.713 0.9 Overstrain_ratio
-saved /Users/kowshik/personal-work/glowing-broccoli/experiments/results/more_checks.json

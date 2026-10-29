@@ -1,32 +1,34 @@
-.venv
-papers/
-assets/.$*.dtmp
-paper/*.aux
-paper/*.bbl
-paper/*.blg
-paper/*.log
-paper/*.out
-paper/**/*.aux
-paper/**/*.bbl
-paper/**/*.blg
-paper/**/*.log
-paper/**/*.out
-*.egg-info/
+# Python
+.venv/
 __pycache__/
 *.pyc
+*.egg-info/
 .pytest_cache/
-DS_Store
+
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+
+# Raw downloads (CWRU, DTU TEP); fetch with the scripts in experiments/
+data/
+
+# Run outputs that are not part of the release
+experiments/logs/
+experiments/figures/
+experiments/results/*_draws.npz
+experiments/results/*_models/
+experiments/results/*_checkpoints/
+experiments/results/*_quick.json
+
+# Local only
+archive/
+tmp/
 .DS_Store
-.DS_Store*
-.*aux
-.*bbl
-.*blg
-.*log
-.*out
-.*pdf
-.*tex
-.*bib
-.*bst
-.*bst.gz
-.*bst.gz.1
-.*bst.gz.1.1
+papers/
