@@ -37,13 +37,15 @@
   <link rel="icon" type="image/png" href="static/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
   <script defer src="static/js/index.js"></script>
 
   <script type="application/ld+json">
@@ -64,14 +66,48 @@
   }
   </script>
   <style>
-    .figure-caption { font-size: 0.95rem; color: #4a4a4a; margin-top: 0.75rem; }
-    .results-carousel .item img { max-height: 420px; width: auto; margin: 0 auto; display: block; }
-    .stat-card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 1.1rem 1.2rem; height: 100%; }
-    .stat-card h3 { margin-bottom: 0.4rem !important; }
-    .verdict-table td, .verdict-table th { vertical-align: middle; }
+    .section-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 1.4rem; font-size: 0.95rem; margin-top: 1.25rem; }
+    .section-nav a { color: #4b5563; }
+    .section-nav a:hover { color: #2563eb; }
+    .prose { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.08rem; line-height: 1.7; color: #1f2937; }
+    .prose p { margin-bottom: 0.9rem; }
+    .subsection-title { font-size: 1.3rem; font-weight: 600; margin: 2.2rem 0 0.8rem; color: #111827; }
+    figure.paper-figure { margin: 1.6rem auto; text-align: center; }
+    figure.paper-figure img { max-width: 100%; height: auto; }
+    figure.paper-figure.narrow img { max-width: 560px; width: 100%; }
+    figcaption, .table-caption { font-size: 0.93rem; color: #374151; line-height: 1.5; text-align: left; margin-top: 0.6rem; }
+    figcaption b, .table-caption b { font-variant: small-caps; letter-spacing: 0.02em; }
+    .table-caption { margin: 0 0 0.6rem; }
+    .paper-table-wrap { overflow-x: auto; margin: 1.6rem 0; }
+    table.paper-table { border-collapse: collapse; width: 100%; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+    table.paper-table th, table.paper-table td { padding: 0.32rem 0.6rem; border: none; white-space: nowrap; }
+    table.paper-table thead tr:first-child th { border-top: 2px solid #111827; }
+    table.paper-table thead tr:last-child th { border-bottom: 1px solid #111827; }
+    table.paper-table tbody tr:last-child td { border-bottom: 2px solid #111827; }
+    table.paper-table th { font-weight: 600; color: #111827; }
+    table.paper-table td.num, table.paper-table th.num { text-align: right; }
+    table.paper-table td.c, table.paper-table th.c { text-align: center; }
+    table.paper-table tr.group td { font-style: italic; color: #4b5563; padding-top: 0.7rem; }
+    table.paper-table tr.sep td { border-top: 1px solid #d1d5db; }
+    table.paper-table td.wrap { white-space: normal; min-width: 12rem; }
+    table.paper-table .fail { color: #6b7280; }
+    .table-note { font-size: 0.85rem; color: #4b5563; margin-top: 0.4rem; }
+    .v-ok { color: #17734a; font-weight: 700; }
+    .v-no { color: #6b7280; font-weight: 700; }
+    .v-flag { color: #b42318; font-weight: 800; }
     .tag.aligned { background: #e3f6ec; color: #17734a; }
     .tag.flagged { background: #fde8e8; color: #b42318; }
     .tag.notaligned { background: #eef0f3; color: #4b5563; }
+    .stat-card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 1.1rem 1.2rem; height: 100%; background: #fff; }
+    .stat-card h3 { margin-bottom: 0.4rem !important; }
+    .contrib li { margin-bottom: 0.55rem; }
+    .equation-block { background: #f9fafb; border: 1px solid #eef0f3; border-radius: 8px; padding: 0.6rem 1rem; margin: 1rem 0; overflow-x: auto; }
+    .hero.is-light .title, .hero.is-light .subsection-title { color: #111827; }
+    .hero.is-light .prose, .hero.is-light .content.prose p { color: #1f2937; }
+    table.paper-table.compact { font-size: 0.8rem; }
+    table.paper-table.compact th, table.paper-table.compact td { padding: 0.3rem 0.36rem; }
+    .figure-row { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; align-items: flex-start; }
+    .figure-row figure.paper-figure { flex: 1 1 360px; max-width: 480px; margin: 1rem 0; }
   </style>
 </head>
 <body>
@@ -119,6 +155,16 @@
                   </a>
                 </span>
               </div>
+              <nav class="section-nav" aria-label="Sections">
+                <a href="#abstract">Abstract</a>
+                <a href="#method">Method</a>
+                <a href="#results">Results</a>
+                <a href="#robustness">Robustness</a>
+                <a href="#shortcuts">Shortcuts</a>
+                <a href="#other-data">Bearings &amp; process</a>
+                <a href="#guidance">Guidance</a>
+                <a href="#BibTeX">BibTeX</a>
+              </nav>
             </div>
           </div>
         </div>
@@ -129,38 +175,41 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <img src="static/images/audit_pipeline.png" alt="Overview of the mechanism-level SHAP audit" style="width: 100%;">
-        <h2 class="subtitle has-text-centered figure-caption">
-          The classifier is trained on the failure label only. Five-fold cross-fitting explains every observation with a
-          model that did not train on it. Attribution on each mechanism's observations gives three statistics, which are
-          compared with <i>K</i> pipelines retrained on shuffled labels.
-        </h2>
+        <figure class="paper-figure" style="margin-top: 0;">
+          <img src="static/images/audit_pipeline.png" alt="Overview of the mechanism-level SHAP audit">
+          <figcaption><b>Figure 1.</b> Mechanism-level SHAP audit. (1) The classifier is trained on the inputs and the failure
+            label; the mechanism flags only group observations, and the expected sets \(E_m\) are fixed beforehand from failure
+            rules or physics. (2) Five-fold cross-fitting gives every observation a TreeSHAP explanation from a model that did
+            not train on it. (3) Attribution on the mechanism's observations \(S_m\) and on the other failures \(F\setminus S_m\)
+            gives \(R_m\), \(D_m\) and \(C_m\). (4) Each statistic is compared with \(K\) shuffled-label refits; after Holm
+            correction a mechanism is flagged, aligned, or not aligned.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <section class="section hero is-light">
+  <section class="section hero is-light" id="abstract">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
+          <div class="content has-text-justified prose">
             <p>
-              Machine learning models predict equipment failures in industrial systems, but whether their explanations reflect the physical failure mechanism is rarely tested statistically. We propose a
-              statistical audit that checks, for each documented failure mechanism, whether held-out SHAP attributions
-              concentrate on the features named in that mechanism's rule. The audit uses three statistics, which measure the
-              share of attribution on these features, how much larger this share is than on other failures, and how much any
-              other feature gains. Each statistic is compared with pipelines retrained on shuffled labels. On the AI4I 2020
-              benchmark, a tuned XGBoost classifier (test F1 = 0.89) passes the audit for three of four physical mechanisms.
-              The tool-wear result depends on the reference distribution of the explanation. It fails with path-dependent
-              TreeSHAP and passes when attributions are measured against normal operation. A planted shortcut sensor shows
-              that accuracy can stay high while attribution moves to a misleading feature, and that weak shortcuts, or
-              shortcuts spread over several sensors, go undetected. On laboratory bearing recordings and simulated Tennessee
-              Eastman process data, the audit finds attribution consistent with the specified features for inner- and
-              outer-race faults and a reactor-cooling fault, and it flags an injected acquisition-gain shortcut although
-              classification accuracy remains perfect. A passing audit is evidence about where attribution falls under a
-              given mechanism map. It does not certify that the model is physically correct, and flagged features need to be
-              investigated.
+              Machine learning models predict equipment failures in industrial systems, but whether their explanations reflect
+              the physical failure mechanism is rarely tested statistically. We propose a statistical audit that checks, for
+              each documented failure mechanism, whether held-out SHAP attributions concentrate on the features named in that
+              mechanism's rule. The audit uses three statistics, which measure the share of attribution on these features, how
+              much larger this share is than on other failures, and how much any other feature gains. Each statistic is
+              compared with pipelines retrained on shuffled labels. On the AI4I 2020 benchmark, a tuned XGBoost classifier
+              (test F1 = 0.89) passes the audit for three of four physical mechanisms. The tool-wear result depends on the
+              reference distribution of the explanation. It fails with path-dependent TreeSHAP and passes when attributions are
+              measured against normal operation. A planted shortcut sensor shows that accuracy can stay high while attribution
+              moves to a misleading feature, and that weak shortcuts, or shortcuts spread over several sensors, go undetected.
+              On laboratory bearing recordings and simulated Tennessee Eastman process data, the audit finds attribution
+              consistent with the specified features for inner- and outer-race faults and a reactor-cooling fault, and it flags
+              an injected acquisition-gain shortcut although classification accuracy remains perfect. A passing audit is
+              evidence about where attribution falls under a given mechanism map. It does not certify that the model is
+              physically correct, and flagged features need to be investigated.
             </p>
           </div>
         </div>
@@ -170,89 +219,375 @@
 
   <section class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Three statistics per mechanism</h2>
+      <h2 class="title is-3 has-text-centered">Contributions</h2>
+      <div class="content prose">
+        <ul class="contrib">
+          <li>A <b>mechanism-level audit</b> with three attribution statistics computed on held-out explanations, a retrained
+            shuffled-label reference, and a decision rule that labels each mechanism as aligned, flagged, or not aligned for a
+            stated configuration.</li>
+          <li>A study of the audit's <b>behaviour in controlled experiments</b>: leaving out held-out explanations or the
+            retrained reference led to misleading passes, a planted sensor went undetected when weak and was detected when
+            stronger, and the tool-wear result changed with the attribution reference.</li>
+          <li>Applications to <b>AI4I 2020, laboratory bearing recordings and simulated process data</b>, with a supplement and
+            a versioned computational snapshot.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light" id="method">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Method</h2>
+      <div class="content prose">
+        <p>A classifier \(f\) is trained on the inputs \(x_i\) and the overall failure label \(y_i\) only. For each mechanism
+          \(m\), domain knowledge fixes a set \(E_m\) of expected features before the audit. \(S_m\) are the mechanism-positive
+          observations and \(F\) the observed failures. With \(\phi_j(x_i)\) the held-out SHAP attribution of feature \(j\),
+          absolute attributions are averaged over a set \(A\) and normalized:</p>
+        <div class="equation-block">
+          $$I_j(A)=\frac{1}{|A|}\sum_{i\in A}|\phi_j(x_i)|,\qquad s_j(A)=\frac{I_j(A)}{\sum_{k=1}^{d} I_k(A)},\qquad r_m(A)=\sum_{j\in E_m}s_j(A).$$
+        </div>
+        <p>The three statistics are</p>
+        <div class="equation-block">
+          $$R_m=r_m(S_m),\qquad D_m=r_m(S_m)-r_m(F\setminus S_m),\qquad C_m=\max_{j\notin E_m}\big[s_j(S_m)-s_j(F\setminus S_m)\big].$$
+        </div>
+      </div>
+
       <div class="columns">
         <div class="column">
           <div class="stat-card">
-            <h3 class="title is-5">Relevant share <i>R<sub>m</sub></i></h3>
-            <p>The share of attribution on mechanism <i>m</i>'s observations that falls on its expected features
-              <i>E<sub>m</sub></i>, fixed beforehand from the failure rule or physics.</p>
+            <h3 class="title is-5">Relevant share \(R_m\)</h3>
+            <p>The share of attribution on mechanism \(m\)'s observations that falls on its expected features.</p>
           </div>
         </div>
         <div class="column">
           <div class="stat-card">
-            <h3 class="title is-5">Specificity <i>D<sub>m</sub></i></h3>
+            <h3 class="title is-5">Specificity \(D_m\)</h3>
             <p>How much larger that share is on the mechanism's observations than on all other failures.</p>
           </div>
         </div>
         <div class="column">
           <div class="stat-card">
-            <h3 class="title is-5">Outside-set excess <i>C<sub>m</sub></i></h3>
-            <p>How much the feature outside <i>E<sub>m</sub></i> with the largest gain increases its share relative to other
-              failures. A significant excess names a feature to inspect.</p>
+            <h3 class="title is-5">Outside-set excess \(C_m\)</h3>
+            <p>How much the feature outside \(E_m\) with the largest gain increases its share. A significant excess names a
+              feature to inspect.</p>
           </div>
         </div>
       </div>
-      <div class="content has-text-centered">
-        <p>After Holm correction across mechanisms, a mechanism is
-          <span class="tag flagged">flagged</span> if <i>C<sub>m</sub></i> is significant,
-          <span class="tag aligned">aligned</span> if <i>R<sub>m</sub></i> and <i>D<sub>m</sub></i> are, and
+
+      <div class="content prose">
+        <p>Mechanism observations have extreme sensor values that receive large attributions even from a model that has
+          learned nothing. Each statistic is therefore compared with \(K\) pipelines in which the failure labels are permuted
+          and preprocessing, oversampling, training, cross-fitting and explanation are all repeated. For an observed value
+          \(T\) and null values \(T^{(1)},\dots,T^{(K)}\),</p>
+        <div class="equation-block">
+          $$p=\frac{1+\sum_{k=1}^{K}\mathbb{I}\big(T^{(k)}\geq T\big)}{K+1}.$$
+        </div>
+        <p>After Holm correction across the four physical mechanisms (\(\alpha=0.05\)), a mechanism is
+          <span class="tag flagged">flagged</span> if \(C_m\) is significant,
+          <span class="tag aligned">aligned</span> if \(R_m\) and \(D_m\) are both significant, and
           <span class="tag notaligned">not aligned</span> otherwise.</p>
       </div>
+
+      <div class="paper-table-wrap">
+        <p class="table-caption"><b>Table 1.</b> AI4I 2020 failure mechanisms, their trigger conditions, expected features
+          \(E_m\), and number of mechanism-positive observations \(n\). L/M/H are product quality types.</p>
+        <table class="paper-table">
+          <thead>
+            <tr><th>Mech.</th><th>Trigger</th><th>\(E_m\)</th><th class="num">\(n\)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>TWF</td><td class="wrap">tool wear at a random point in 200–240 min</td><td class="wrap">tool wear</td><td class="num">46</td></tr>
+            <tr><td>HDF</td><td class="wrap">(process − air temp.) &lt; 8.6 K and speed &lt; 1380 rpm</td><td class="wrap">both temps., their difference, speed</td><td class="num">115</td></tr>
+            <tr><td>PWF</td><td class="wrap">torque × speed (rad/s) outside [3500, 9000] W</td><td class="wrap">torque, speed, power</td><td class="num">95</td></tr>
+            <tr><td>OSF</td><td class="wrap">tool wear × torque above 11,000/12,000/13,000 min·Nm for L/M/H</td><td class="wrap">tool wear, torque, overstrain, its ratio</td><td class="num">98</td></tr>
+            <tr><td>RNF</td><td class="wrap">0.1% chance, independent of the process</td><td>–</td><td class="num">19</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
-  <section class="section hero is-light">
+  <section class="section" id="results">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Main results</h2>
-      <table class="table is-fullwidth is-hoverable verdict-table">
-        <thead>
-          <tr><th>Data</th><th>Mechanism</th><th>Verdict</th></tr>
-        </thead>
-        <tbody>
-          <tr><td rowspan="3">AI4I 2020 (synthetic milling)</td><td>Heat dissipation, power, overstrain</td><td><span class="tag aligned">aligned</span></td></tr>
-          <tr><td>Tool wear</td><td><span class="tag notaligned">not aligned</span> with path-dependent TreeSHAP; <span class="tag aligned">aligned</span> against normal operation</td></tr>
-          <tr><td>Planted shortcut sensor</td><td><span class="tag flagged">flagged</span> once it takes &ge;35% of attribution; weak or multi-sensor shortcuts go undetected</td></tr>
-          <tr><td rowspan="2">CWRU bearings (laboratory)</td><td>Inner race, outer race</td><td><span class="tag aligned">aligned</span></td></tr>
-          <tr><td>Acquisition-gain shortcut</td><td><span class="tag flagged">flagged</span> although every recording is classified correctly</td></tr>
-          <tr><td rowspan="2">Tennessee Eastman process (simulated)</td><td>Reactor cooling (IDV4)</td><td><span class="tag aligned">aligned</span></td></tr>
-          <tr><td>Condenser cooling (IDV5)</td><td><span class="tag flagged">flagged</span> on a feed valve; needs inspection</td></tr>
-        </tbody>
-      </table>
+      <h2 class="title is-3 has-text-centered">Alignment with failure mechanisms</h2>
+      <div class="content prose">
+        <p>On the 34 test failures, tuned XGBoost reaches precision 1.00, recall 0.79 and F1 0.89. Its held-out attributions are
+          compared with 1,000 shuffled-label pipelines. Heat dissipation, power and overstrain are aligned; tool wear is not.</p>
+      </div>
+      <div class="paper-table-wrap">
+        <p class="table-caption"><b>Table 2.</b> Primary audit using held-out SHAP values (seed 42, \(K=1{,}000\)). Null: mean
+          over the shuffled-label pipelines; \(z\): (observed − null mean)/null s.d.; brackets: 95% bootstrap intervals
+          conditional on the fitted models; \(p\): Holm-adjusted over the four physical mechanisms; grey: non-significant
+          alignment test.</p>
+        <table class="paper-table compact">
+          <thead>
+            <tr><th></th><th class="num">\(n\)</th><th>Top feature</th><th class="num">\(R_m\) [95% CI]</th><th class="num">Null</th><th class="num">\(z\)</th><th class="num">\(p\)</th><th class="num">\(D_m\) [95% CI]</th><th class="num">Null</th><th class="num">\(z\)</th><th class="num">\(p\)</th><th class="num">\(C_m\)</th><th class="num">Null</th><th class="num">\(p\)</th><th>Verdict</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>TWF</td><td class="num">46</td><td>tool wear</td><td class="num">0.193 [0.17, 0.22]</td><td class="num">0.152</td><td class="num">0.9</td><td class="num fail">0.201</td><td class="num">0.129 [0.10, 0.16]</td><td class="num">0.070</td><td class="num">1.5</td><td class="num fail">0.077</td><td class="num">0.025</td><td class="num">0.025</td><td class="num">1.000</td><td><span class="tag notaligned">not aligned</span></td></tr>
+            <tr><td>HDF</td><td class="num">115</td><td>speed</td><td class="num">0.711 [0.69, 0.73]</td><td class="num">0.557</td><td class="num">3.4</td><td class="num">0.004</td><td class="num">0.431 [0.41, 0.45]</td><td class="num">0.049</td><td class="num">8.4</td><td class="num">0.004</td><td class="num">0.001</td><td class="num">0.015</td><td class="num">1.000</td><td><span class="tag aligned">aligned</span></td></tr>
+            <tr><td>PWF</td><td class="num">95</td><td>power</td><td class="num">0.696 [0.67, 0.72]</td><td class="num">0.347</td><td class="num">7.6</td><td class="num">0.004</td><td class="num">0.330 [0.30, 0.36]</td><td class="num">0.088</td><td class="num">5.7</td><td class="num">0.004</td><td class="num">0.001</td><td class="num">0.011</td><td class="num">1.000</td><td><span class="tag aligned">aligned</span></td></tr>
+            <tr><td>OSF</td><td class="num">98</td><td>overstrain ratio</td><td class="num">0.672 [0.66, 0.69]</td><td class="num">0.345</td><td class="num">5.6</td><td class="num">0.004</td><td class="num">0.424 [0.40, 0.44]</td><td class="num">0.067</td><td class="num">7.0</td><td class="num">0.004</td><td class="num">−0.001</td><td class="num">0.019</td><td class="num">1.000</td><td><span class="tag aligned">aligned</span></td></tr>
+            <tr><td>RNF</td><td class="num">19</td><td>speed</td><td class="num">0.186</td><td class="num">0.240</td><td class="num">–</td><td class="num">0.985</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td class="num">–</td><td>–</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <figure class="paper-figure narrow">
+        <img src="static/images/attribution_heatmap.png" alt="Share of held-out attribution per feature on each mechanism" loading="lazy">
+        <figcaption><b>Figure 2.</b> Share of held-out attribution per feature on each mechanism's observations (primary
+          audit). Green outlines mark the expected sets \(E_m\); shares of at least 0.10 are printed. HDF relies mostly on
+          speed and temperature difference, PWF on power and torque, and OSF on the overstrain ratio, a difference that a
+          global SHAP ranking hides.</figcaption>
+      </figure>
+
+      <h3 class="subsection-title">Why held-out explanations and a retrained null are needed</h3>
+      <div class="content prose">
+        <p>A classifier trained on shuffled labels fails the alignment tests. Compared with random failure observations instead,
+          all four mechanisms appear significant, because mechanism observations have unusual sensor values that receive large
+          attributions in any case. Explaining training observations is also too optimistic: in-sample SHAP passes all four
+          mechanisms, including tool wear.</p>
+      </div>
+      <div class="paper-table-wrap">
+        <p class="table-caption"><b>Table 3.</b> Audit-component ablations on three selected diagnostic checks. “–”: no
+          statistical result.</p>
+        <table class="paper-table">
+          <thead>
+            <tr><th>Design</th><th class="c">Rejects shuffled labels</th><th class="c">Avoids in-sample TWF pass</th><th class="c">Detects shortcut at 3·10⁵</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Global SHAP ranking</td><td class="c">–</td><td class="c">–</td><td class="c">–</td></tr>
+            <tr><td>Naive null</td><td class="c v-no">No</td><td class="c v-no">No</td><td class="c v-no">No</td></tr>
+            <tr><td>In-sample SHAP</td><td class="c v-ok">Yes</td><td class="c v-no">No</td><td class="c v-no">No</td></tr>
+            <tr><td>Relevant share \(R_m\) only</td><td class="c v-ok">Yes</td><td class="c v-ok">Yes</td><td class="c v-no">No</td></tr>
+            <tr class="sep"><td><b>Full audit</b></td><td class="c v-ok">Yes</td><td class="c v-ok">Yes</td><td class="c v-ok">Yes</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
-  <section class="hero is-small">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Figures</h2>
-        <div id="results-carousel" class="carousel results-carousel">
-          <div class="item">
-            <img src="static/images/attribution_heatmap.png" alt="Share of held-out attribution per feature and mechanism" loading="lazy">
-            <h2 class="subtitle has-text-centered figure-caption">Share of held-out attribution per feature on each AI4I mechanism; outlines mark the expected sets.</h2>
+  <section class="section hero is-light" id="robustness">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Robustness and the attribution reference</h2>
+      <div class="content prose">
+        <p>Each variant changes one part of the primary configuration and is compared with its own null. Seeds, single-mechanism
+          observations and a null re-tuned on every permutation change nothing. Across five seeds \(R_m\) varies by at most
+          0.02. Removing the engineered features or using SMOTE removes HDF's relevant-share result, and removing each
+          mechanism's most attributed trigger from \(E_m\) makes the audit flag the omitted feature.</p>
+      </div>
+      <div class="paper-table-wrap">
+        <p class="table-caption"><b>Table 4.</b> Verdicts for selected audit variants: <span class="v-ok">✓</span> aligned,
+          <span class="v-no">×</span> not aligned, <span class="v-flag">!</span> flagged. All variants and Holm-adjusted
+          \(p\)-values are in the supplement.</p>
+        <table class="paper-table">
+          <thead>
+            <tr><th>Variant</th><th class="num">\(K\)</th><th class="c">TWF</th><th class="c">HDF</th><th class="c">PWF</th><th class="c">OSF</th></tr>
+          </thead>
+          <tbody>
+            <tr class="group"><td colspan="6">Primary and null</td></tr>
+            <tr><td>Primary audit</td><td class="num">1000</td><td class="c v-no">×</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td></tr>
+            <tr><td>Seeds 1–4 (largest \(p\))</td><td class="num">200</td><td class="c v-no">×</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td></tr>
+            <tr><td>Null re-tuned per permutation</td><td class="num">500</td><td class="c v-no">×</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td></tr>
+            <tr class="group"><td colspan="6">Data and expected sets</td></tr>
+            <tr><td>Raw features only</td><td class="num">1000</td><td class="c v-no">×</td><td class="c v-no">×</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td></tr>
+            <tr><td>Label = OR of flags</td><td class="num">200</td><td class="c v-no">×</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td></tr>
+            <tr><td>\(E_m\) without top trigger</td><td class="num">200</td><td class="c v-no">×</td><td class="c v-flag">!</td><td class="c v-flag">!</td><td class="c v-flag">!</td></tr>
+            <tr class="group"><td colspan="6">Imbalance treatment</td></tr>
+            <tr><td>Class weights</td><td class="num">200</td><td class="c v-no">×</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td></tr>
+            <tr><td>Focal loss</td><td class="num">200</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td></tr>
+            <tr><td>SMOTE</td><td class="num">200</td><td class="c v-no">×</td><td class="c v-no">×</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td></tr>
+            <tr class="group"><td colspan="6">Attribution (XGBoost)</td></tr>
+            <tr><td>Interventional, training background</td><td class="num">200</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td></tr>
+            <tr><td>&emsp;oversampled background</td><td class="num">200</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td></tr>
+            <tr><td>&emsp;failure-only background</td><td class="num">200</td><td class="c v-flag">!</td><td class="c v-no">×</td><td class="c v-no">×</td><td class="c v-ok">✓</td></tr>
+            <tr><td>Pairwise, nearest normal</td><td class="num">200</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td></tr>
+            <tr><td>Conditional group Shapley</td><td class="num">200</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td></tr>
+            <tr><td>LIME</td><td class="num">200</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-no">×</td><td class="c v-ok">✓</td></tr>
+            <tr class="group"><td colspan="6">Other models</td></tr>
+            <tr><td>Random forest, path TreeSHAP</td><td class="num">200</td><td class="c v-no">×</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td></tr>
+            <tr><td>MLP, KernelSHAP</td><td class="num">200</td><td class="c v-no">×</td><td class="c v-no">×</td><td class="c v-no">×</td><td class="c v-no">×</td></tr>
+            <tr><td>MLP, Integrated Gradients</td><td class="num">200</td><td class="c v-no">×</td><td class="c v-ok">✓</td><td class="c v-no">×</td><td class="c v-ok">✓</td></tr>
+            <tr><td>MLP, SmoothGrad</td><td class="num">200</td><td class="c v-flag">!</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td><td class="c v-ok">✓</td></tr>
+            <tr class="group"><td colspan="6">Sanity check</td></tr>
+            <tr><td>Permuted labels</td><td class="num">200</td><td class="c v-no">×</td><td class="c v-no">×</td><td class="c v-no">×</td><td class="c v-no">×</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-title">Tool wear depends on the reference distribution</h3>
+      <div class="content prose">
+        <p>Tool-wear failure fails with path-dependent TreeSHAP but passes with interventional TreeSHAP for every background
+          size and seed, and with every tested normal-operation reference. Path-dependent TreeSHAP weights tree paths by the
+          cover of the oversampled training data, which is balanced between failures and non-failures. Against this
+          reference, ordinary operating values look like evidence against failure, and they dominate the absolute
+          attribution of tool-wear observations, which the model rarely detects (recall 0.07). For questions about abnormal
+          operation, we recommend a stated normal-operation reference.</p>
+      </div>
+      <div class="figure-row">
+        <figure class="paper-figure">
+          <img src="static/images/twf_reference.png" alt="Tool-wear relevant share by reference distribution" loading="lazy">
+          <figcaption><b>Figure 3.</b> Relevant share of TWF (circles; filled: aligned) under attribution formulations grouped
+            by reference distribution; bars mark each variant's own shuffled-label null mean.</figcaption>
+        </figure>
+        <figure class="paper-figure">
+          <img src="static/images/twf_example.png" alt="Signed SHAP values for one tool-wear observation" loading="lazy">
+          <figcaption><b>Figure 4.</b> Signed SHAP values for one TWF observation from the same held-out model under two
+            reference distributions. Orange pushes toward failure, blue away from it.</figcaption>
+        </figure>
+      </div>
+
+      <figure class="paper-figure narrow">
+        <img src="static/images/explainer_dependence.png" alt="Relevant share by model and explainer" loading="lazy">
+        <figcaption><b>Figure 5.</b> Relevant share of each mechanism under XGBoost with path-dependent TreeSHAP and an MLP with
+          four explainers (filled: aligned). Bars mark each pipeline's own shuffled-label null mean, which is higher for the
+          MLP on HDF, PWF and OSF.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="shortcuts">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Detecting planted shortcuts</h2>
+      <div class="content prose">
+        <p>A sensor \(s_i=z_{i,\mathrm{HDF}}+\epsilon_i\), \(\epsilon_i\sim\mathcal{N}(0,\sigma^2)\), is a noisy copy of the
+          heat-dissipation flag with no physical role. Weak shortcuts (\(\sigma\geq0.35\), at most 13% of HDF attribution)
+          leave HDF aligned. A moderate one (\(\sigma=0.30\)) removes the alignment without naming a feature, and stronger ones
+          (\(\sigma\leq0.25\), at least 35%) are flagged by the outside-set test, which names the sensor. Test F1 stays between
+          0.84 and 0.92 throughout. When the same signal is split over three sensors, they take 38% of the attribution together
+          at \(\sigma=0.35\) but at most 14% each, and no feature is flagged until \(\sigma=0.25\).</p>
+      </div>
+      <figure class="paper-figure narrow">
+        <img src="static/images/shortcut_sweep_tikz.png" alt="Planted shortcut sweep" loading="lazy">
+        <figcaption><b>Figure 6.</b> Planted shortcut: as the sensor's noise decreases, its share of HDF attribution rises and
+          \(R_{\mathrm{HDF}}\) falls. Circles: relevant-share test fails; triangles: outside-set test flags the sensor.</figcaption>
+      </figure>
+
+      <h3 class="subsection-title">Effect of sample size</h3>
+      <div class="content prose">
+        <p>On data generated from the documented AI4I process, the strong sensor is flagged in all ten runs, including at
+          300,000 observations, where the relevant-share test alone would pass. As the null narrows with more data, a model can
+          beat the shuffled-label pipelines while relying heavily on a misleading feature, and only the outside-set test
+          changes the result.</p>
+      </div>
+      <div class="paper-table-wrap">
+        <p class="table-caption"><b>Table 5.</b> Verdicts on generated data of increasing size (\(K=200\)): numbers of runs
+          aligned (A), not aligned (N) and flagged (F). Share: planted sensor's share of HDF attribution; Min.: minutes per
+          full audit on eight cores.</p>
+        <table class="paper-table">
+          <thead>
+            <tr><th class="num" rowspan="2">\(n\)</th><th class="c" rowspan="2">\(\sigma\)</th><th class="num" rowspan="2">Runs</th><th class="num" rowspan="2">Share</th><th class="c" colspan="3">HDF verdicts</th><th class="c" colspan="3">TWF verdicts</th><th class="num" rowspan="2">Min.</th></tr>
+            <tr><th class="c">A</th><th class="c">N</th><th class="c">F</th><th class="c">A</th><th class="c">N</th><th class="c">F</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="num">10,000</td><td class="c">none</td><td class="num">3</td><td class="num">–</td><td class="c">3</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">3</td><td class="c">0</td><td class="num">3</td></tr>
+            <tr><td></td><td class="c">0.35</td><td class="num">3</td><td class="num">0.158</td><td class="c">1</td><td class="c">2</td><td class="c">0</td><td class="c">0</td><td class="c">3</td><td class="c">0</td><td class="num">3</td></tr>
+            <tr><td></td><td class="c">0.25</td><td class="num">3</td><td class="num">0.390</td><td class="c">0</td><td class="c">0</td><td class="c">3</td><td class="c">0</td><td class="c">3</td><td class="c">0</td><td class="num">3</td></tr>
+            <tr class="sep"><td class="num">30,000</td><td class="c">none</td><td class="num">3</td><td class="num">–</td><td class="c">3</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">2</td><td class="c">1</td><td class="num">7</td></tr>
+            <tr><td></td><td class="c">0.35</td><td class="num">3</td><td class="num">0.128</td><td class="c">3</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">3</td><td class="c">0</td><td class="num">6</td></tr>
+            <tr><td></td><td class="c">0.25</td><td class="num">3</td><td class="num">0.346</td><td class="c">0</td><td class="c">0</td><td class="c">3</td><td class="c">0</td><td class="c">2</td><td class="c">1</td><td class="num">7</td></tr>
+            <tr class="sep"><td class="num">100,000</td><td class="c">none</td><td class="num">3</td><td class="num">–</td><td class="c">3</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">1</td><td class="c">2</td><td class="num">17</td></tr>
+            <tr><td></td><td class="c">0.35</td><td class="num">3</td><td class="num">0.100</td><td class="c">3</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">2</td><td class="c">1</td><td class="num">19</td></tr>
+            <tr><td></td><td class="c">0.25</td><td class="num">3</td><td class="num">0.315</td><td class="c">0</td><td class="c">0</td><td class="c">3</td><td class="c">0</td><td class="c">2</td><td class="c">1</td><td class="num">19</td></tr>
+            <tr class="sep"><td class="num">300,000</td><td class="c">none</td><td class="num">1</td><td class="num">–</td><td class="c">1</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">1</td><td class="c">0</td><td class="num">52</td></tr>
+            <tr><td></td><td class="c">0.35</td><td class="num">1</td><td class="num">0.063</td><td class="c">1</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">1</td><td class="c">0</td><td class="num">59</td></tr>
+            <tr><td></td><td class="c">0.25</td><td class="num">1</td><td class="num">0.271</td><td class="c">0</td><td class="c">0</td><td class="c">1</td><td class="c">0</td><td class="c">0</td><td class="c">1</td><td class="num">61</td></tr>
+          </tbody>
+        </table>
+        <p class="table-note">TWF flags at larger sizes fall on air or process temperature with excesses of 0.03–0.05, well below
+          the planted shortcuts and omitted triggers (at least 0.165).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light" id="other-data">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Bearing and process data</h2>
+      <div class="content prose">
+        <p><b>CWRU bearings.</b> A random forest classifies the fault location of 36 laboratory recordings from 19 spectral
+          features; \(E_m\) holds the spectral power around each fault's defect frequency. Inner- and outer-race attribution
+          concentrates on the defect frequencies. When each recording's amplitude is scaled by a fault-dependent gain, every
+          recording is still classified correctly, yet outer-race attribution moves to log-RMS and the outside-set test flags it.</p>
+        <p><b>Tennessee Eastman process.</b> 400 simulated runs with a reactor (IDV4) or condenser (IDV5) cooling-water
+          disturbance; \(E_m\) holds the three variables of the disturbed loop. IDV4 is aligned. IDV5 is flagged on the E-feed
+          valve, which may be a downstream control response that the three-variable map does not cover; the data cannot
+          separate this from a shortcut. A null that rotates each run's time-ordered labels gives the same verdicts.</p>
+      </div>
+      <div class="paper-table-wrap">
+        <p class="table-caption"><b>Table 6.</b> Audit on CWRU bearing data (\(K=1{,}000\)) and simulated Tennessee Eastman
+          process data (\(K=200\)); Holm-adjusted \(p\). Grey: non-significant alignment test; red: significant outside-set test.</p>
+        <table class="paper-table">
+          <thead>
+            <tr><th>Data</th><th>Fault</th><th class="num">\(R_m\)</th><th class="num">\(p\)</th><th class="num">\(D_m\)</th><th class="num">\(p\)</th><th class="num">\(C_m\)</th><th class="num">\(p\)</th><th>Verdict</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>CWRU</td><td>Inner</td><td class="num">0.440</td><td class="num">0.004</td><td class="num">0.190</td><td class="num">0.030</td><td class="num">0.065</td><td class="num">1.000</td><td><span class="tag aligned">aligned</span></td></tr>
+            <tr><td></td><td>Ball</td><td class="num">0.133</td><td class="num fail">0.773</td><td class="num">0.036</td><td class="num fail">0.211</td><td class="num">0.051</td><td class="num">1.000</td><td><span class="tag notaligned">not aligned</span></td></tr>
+            <tr><td></td><td>Outer</td><td class="num">0.392</td><td class="num">0.003</td><td class="num">0.131</td><td class="num">0.027</td><td class="num">0.042</td><td class="num">1.000</td><td><span class="tag aligned">aligned</span></td></tr>
+            <tr class="sep"><td>+ gain</td><td>Inner</td><td class="num">0.394</td><td class="num">0.018</td><td class="num">0.168</td><td class="num fail">0.054</td><td class="num">0.063</td><td class="num">0.989</td><td><span class="tag notaligned">not aligned</span></td></tr>
+            <tr><td></td><td>Ball</td><td class="num">0.105</td><td class="num fail">0.948</td><td class="num">0.029</td><td class="num fail">0.547</td><td class="num">0.020</td><td class="num">0.989</td><td><span class="tag notaligned">not aligned</span></td></tr>
+            <tr><td></td><td>Outer</td><td class="num">0.269</td><td class="num">0.018</td><td class="num">0.050</td><td class="num fail">0.547</td><td class="num">0.165</td><td class="num v-flag">0.006</td><td><span class="tag flagged">flagged</span></td></tr>
+            <tr class="sep"><td>TEP</td><td>IDV4</td><td class="num">0.747</td><td class="num">0.010</td><td class="num">0.568</td><td class="num">0.010</td><td class="num">0.000</td><td class="num">1.000</td><td><span class="tag aligned">aligned</span></td></tr>
+            <tr><td></td><td>IDV5</td><td class="num">0.221</td><td class="num">0.010</td><td class="num">0.164</td><td class="num">0.010</td><td class="num">0.026</td><td class="num v-flag">0.010</td><td><span class="tag flagged">flagged</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure class="paper-figure narrow">
+        <img src="static/images/cwru_shares.png" alt="CWRU attribution shares" loading="lazy">
+        <figcaption><b>Figure 7.</b> CWRU: share of attribution on the defect-frequency bands, on log-RMS, and on the other
+          features for each fault, on the original recordings and with the acquisition-gain shortcut. !: flagged by the
+          outside-set test.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="guidance">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Practical guidance and limitations</h2>
+      <div class="columns">
+        <div class="column">
+          <h3 class="subsection-title" style="margin-top: 0.5rem;">Recommended defaults</h3>
+          <div class="content prose">
+            <ul>
+              <li>Fix \(E_m\) before the audit and explain only held-out observations.</li>
+              <li>Refit the full pipeline for \(K\geq200\) shuffled-label nulls (\(K\geq500\) when an adjusted \(p\) lies near
+                \(\alpha\); with \(M\) mechanisms, \(K\geq M/\alpha\)).</li>
+              <li>Measure attributions against normal operation for questions about abnormal behaviour, and report the reference.</li>
+              <li>Call a mechanism aligned only when both \(R_m\) and \(D_m\) pass, and report effect sizes with every verdict.</li>
+              <li>Treat outside-set excesses below about 0.05 as exploratory, and inspect every flag.</li>
+            </ul>
           </div>
-          <div class="item">
-            <img src="static/images/twf_reference.png" alt="Tool-wear relevant share by reference distribution" loading="lazy">
-            <h2 class="subtitle has-text-centered figure-caption">Tool wear passes against every tested normal-operation reference and fails with path-dependent TreeSHAP.</h2>
-          </div>
-          <div class="item">
-            <img src="static/images/twf_example.png" alt="Signed SHAP values for one tool-wear observation" loading="lazy">
-            <h2 class="subtitle has-text-centered figure-caption">One tool-wear observation from the same model under two reference distributions.</h2>
-          </div>
-          <div class="item">
-            <img src="static/images/shortcut_sweep_tikz.png" alt="Planted shortcut sweep" loading="lazy">
-            <h2 class="subtitle has-text-centered figure-caption">As a planted sensor becomes less noisy, it takes attribution from the heat-dissipation features; strong versions are flagged.</h2>
-          </div>
-          <div class="item">
-            <img src="static/images/cwru_shares.png" alt="CWRU attribution shares" loading="lazy">
-            <h2 class="subtitle has-text-centered figure-caption">CWRU bearings: an acquisition-gain shortcut moves outer-race attribution to log-RMS and is flagged, while accuracy stays perfect.</h2>
-          </div>
-          <div class="item">
-            <img src="static/images/explainer_dependence.png" alt="Relevant share by model and explainer" loading="lazy">
-            <h2 class="subtitle has-text-centered figure-caption">Relevant share under XGBoost with TreeSHAP and an MLP with four explainers, each against its own null.</h2>
+        </div>
+        <div class="column">
+          <h3 class="subsection-title" style="margin-top: 0.5rem;">Limitations</h3>
+          <div class="content prose">
+            <ul>
+              <li>Results hold for a stated configuration and depend on the reference, the oversampler, engineered features, the
+                model and explainer, and the expected sets.</li>
+              <li>A flag alone cannot tell a missing trigger, a downstream effect and a shortcut apart.</li>
+              <li>The outside-set test misses weak shortcuts and shortcuts spread over several sensors, and flags small excesses
+                at large \(n\).</li>
+              <li>AI4I and TEP are simulated and CWRU uses laboratory faults, so the audit shows agreement with documented rules
+                and physics, not with verified causes in operating plants.</li>
+            </ul>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light" id="code">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Code and reproduction</h2>
+      <div class="content prose">
+        <p>The repository contains the audit library, the 24 numbered experiment stages with their stored results, the tuned
+          model, and the LaTeX sources. Seeds are fixed, and tables and figures are generated from the stored results.</p>
+      </div>
+      <pre><code>git clone https://github.com/kowshik24/shap-mechanism-audit.git
+cd shap-mechanism-audit
+pip install -r requirements.txt -e .
+python experiments/02_audit.py --quick   # primary AI4I audit with a tiny null
+./reproduce.sh                           # every stage, tables, figures and both PDFs</code></pre>
     </div>
   </section>
   </main>

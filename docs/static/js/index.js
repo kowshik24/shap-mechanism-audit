@@ -30,14 +30,3 @@ function scrollToTop() {
 window.addEventListener('scroll', function () {
     document.querySelector('.scroll-to-top').classList.toggle('visible', window.pageYOffset > 300);
 });
-
-document.addEventListener('DOMContentLoaded', function () {
-    bulmaCarousel.attach('.carousel', {
-        slidesToScroll: 1,
-        slidesToShow: 1,
-        loop: true,
-        infinite: true,
-        autoplay: true,
-        autoplaySpeed: 6000,
-    });
-});
