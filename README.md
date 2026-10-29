@@ -77,15 +77,15 @@ table above shows in numbers.
 ## Explainable AI — does the model know *why*?
 
 `Machine failure` is the OR of five mechanisms, and the model is never told which one fired. For
-each mechanism the audit computes out-of-sample SHAP (5-fold cross-fitting) and two statistics:
+each mechanism the audit computes out-of-sample SHAP (5-fold cross-fitting) and three statistics:
 
 - **relevant share** R — fraction of attribution on the mechanism's rows that falls on its trigger
   features;
 - **specificity** D — how much larger that share is on the mechanism's rows than on other failures;
-- **shortcut score** S — the largest excess share any *non*-trigger feature takes on the mechanism's
-  rows (large S flags a shortcut).
+- **shortcut score** C — the largest excess share any *non*-trigger feature takes on the mechanism's
+  rows (large C flags a shortcut).
 
-Both are compared with 1,000 copies of the full pipeline retrained on permuted labels, with Holm
+All three are compared with 1,000 copies of the full pipeline retrained on permuted labels, with Holm
 correction over the four physical mechanisms.
 
 | Mechanism | Top out-of-sample SHAP feature | R | D | Verdict |
@@ -102,7 +102,7 @@ in-sample or with interventional TreeSHAP, so its verdict is unresolved. Control
 on shuffled labels fails every test (a naive "random failure subset" null would wrongly pass it),
 and a planted shortcut sensor is flagged once it takes a fifth to a third of the HDF attribution.
 On data generated from the AI4I process at up to 300k rows (`src/pdm_audit/sim.py`), the R test
-alone misses a sensor taking 27% of the attribution; S still flags it in every run.
+alone misses a sensor taking 27% of the attribution; C still flags it in every run.
 
 ![audit overview](paper/figures/audit_overview.png)
 
@@ -171,8 +171,24 @@ or stage by stage:
 | 6 | `experiments/06_explainers.py` | interventional TreeSHAP (3 background sizes, 3 seeds) and random forest (~55 min) |
 | 7 | `experiments/07_scale.py` | audit on AI4I generated at 10k–300k rows (3 seeds), cost at 1M (~6 h) |
 | 8 | `experiments/08_compare.py` | missing audit-design combinations for the comparison table: naive null and in-sample SHAP on shortcut data, in-sample SHAP on a permuted-label model |
+| 9 | `experiments/09_retuned_null.py` | primary audit against a null re-tuned on every permutation (K=200, ~50 min on 8 cores); `--extend-to 500` adds draws 200–499 (~80 min) |
+| 10 | `experiments/10_effect_sizes.py` | null-standardized effect sizes and bootstrap CIs for R and D (seconds) |
+| 11 | `experiments/11_twf_diagnostics.py` | interventional TreeSHAP with failure-only, non-failure, oversampled backgrounds and raw features (~20 min) |
+| 12 | `experiments/12_other_explainers.py` | the MLP audited with KernelSHAP and Integrated Gradients (~30 min) |
+| 13 | `experiments/13_review_checks.py` | label-anomaly and class-weight variants, K stability, Holm over all tests, signed attributions, removal check, per-row attributions; `--kernel` adds exact KernelSHAP on the MLP (~1 h) |
+| 14 | `experiments/14_cwru_audit.py` | the audit on measured CWRU bearing vibration, with and without a fault-dependent gain shortcut (~10 min); fetch the 36 recordings first with `experiments/download_cwru.py`; `--band 0.05`, `--band 0.3` and `--harmonics 1,2,3 --conditions original` test the defect-frequency bands |
+| 15 | `experiments/15_tep_audit.py` | the audit on Tennessee Eastman process runs (DTU, IDV4/IDV5; data in `data/dtu_tep`) (~11 min); `--window 10` adds each variable's 30-minute mean and change; `--null shift` rotates each run's time-ordered labels instead of permuting them (~9 min, ~30 min with `--window 10`) |
+| 16 | `experiments/16_more_checks.py` | plain SMOTE and ADASYN, misspecified trigger sets, HSIC corroboration (~20 min) |
+| 17 | `experiments/17_final_checks.py` | Borderline-SMOTE with 3/10 neighbours, focal loss, failure-pushing (positive-part) SHAP, pairwise normal-operation reference, MLP with DeepSHAP and SmoothGrad (~50 min), KernelSHAP with a k-means background (~20 min), LIME on the primary pipeline (~10 min), and exact KernelSHAP with a 500-row background (K=100, ~3.5 h); `--only name,name` reruns a subset |
+| 18 | `experiments/18_dependence.py` | grouped TreeSHAP and exact conditional group Shapley values against their own nulls, normal-approximation power, Monte Carlo error and null spread versus mechanism size (~15 min); `--bw 0.15`, `--bw 0.6` and `--split-wear` rerun the conditional values with another kernel bandwidth or grouping |
+| 19 | `experiments/19_flag_threshold.py` | every significant shortcut flag in the stored results with its excess share, and which a minimum-excess rule would keep (seconds) |
+| 20 | `experiments/20_rank_checks.py` | rank-based alignment statistics (Rk, Dk) and a null-referenced shortcut score (N) on the primary audit, misspecified trigger sets and the planted shortcut at four strengths (~15 min); `--transform positive` repeats it on failure-pushing SHAP |
+| 21 | `experiments/21_reference_figure.py` | the workshop paper's data figures (primary audit, TWF by reference distribution, planted-shortcut sweep) as pgfplots sources compiled with pdflatex into `big_data_workshop_TUAI/figures/` (seconds) |
+| 22 | `experiments/22_tep_lstm.py` | the TEP audit with an LSTM on 30-minute sequences, Integrated Gradients summed over time per variable (~15 min) |
+| 23 | `experiments/23_twf_example.py` | one TWF observation explained with path-dependent and interventional TreeSHAP (signed values and pgfplots figure; seconds) |
+| 24 | `experiments/24_multi_proxy.py` | the planted shortcut split over three sensors with independent noise, at six noise levels (~35 min); `--proxies N` changes the number of sensors |
 
-Stages 2–7 read the outputs of stage 1 (4 and 5 also read 2, 3, 6, 7) from `experiments/results/`. Tables are generated, never
+Stages 2–7 read the outputs of stage 1 (4 and 5 also read 2, 3, 6, 7; 4 also reads 9–20; 21 reads 2, 6, 11, 13, 17, 18) from `experiments/results/`. The workshop supplement (`big_data_workshop_TUAI/supplement.tex`) holds implementation settings, the full p-value table and sensitivity analyses. Tables are generated, never
 typed by hand. Seeds are fixed, and re-running a stage reproduces its numbers exactly. Unit tests for
 the audit statistics: `python -m pytest`.
 

@@ -6,6 +6,7 @@ MODELS_DIR = ROOT / 'models'
 RESULTS_DIR = ROOT / 'experiments' / 'results'
 FIGURES_DIR = ROOT / 'paper' / 'figures'
 TABLES_DIR = ROOT / 'paper' / 'ieee_bigdata' / 'tables'
+WORKSHOP_TABLES_DIR = ROOT / 'big_data_workshop_TUAI' / 'tables'
 
 SEED = 42
 

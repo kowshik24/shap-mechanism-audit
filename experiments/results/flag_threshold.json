@@ -1,0 +1,231 @@
+{
+ "threshold": 0.05,
+ "flags": [
+  {
+   "source": "scale n=10000 seed=0 sigma=0.25",
+   "mechanism": "HDF",
+   "excess": 0.40558937191963196,
+   "feature": "Shortcut sensor",
+   "kind": "planted shortcut",
+   "kept": true
+  },
+  {
+   "source": "scale n=10000 seed=1 sigma=0.25",
+   "mechanism": "HDF",
+   "excess": 0.28938156366348267,
+   "feature": "Shortcut sensor",
+   "kind": "planted shortcut",
+   "kept": true
+  },
+  {
+   "source": "scale n=10000 seed=2 sigma=0.25",
+   "mechanism": "HDF",
+   "excess": 0.344965398311615,
+   "feature": "Shortcut sensor",
+   "kind": "planted shortcut",
+   "kept": true
+  },
+  {
+   "source": "scale n=30000 seed=0 sigma=None",
+   "mechanism": "TWF",
+   "excess": 0.04736030846834183,
+   "feature": "Process temperature [K]",
+   "kind": "false flag",
+   "kept": false
+  },
+  {
+   "source": "scale n=30000 seed=0 sigma=0.25",
+   "mechanism": "HDF",
+   "excess": 0.29143279790878296,
+   "feature": "Shortcut sensor",
+   "kind": "planted shortcut",
+   "kept": true
+  },
+  {
+   "source": "scale n=30000 seed=0 sigma=0.25",
+   "mechanism": "TWF",
+   "excess": 0.047319017350673676,
+   "feature": "Process temperature [K]",
+   "kind": "false flag",
+   "kept": false
+  },
+  {
+   "source": "scale n=30000 seed=1 sigma=0.25",
+   "mechanism": "HDF",
+   "excess": 0.29698866605758667,
+   "feature": "Shortcut sensor",
+   "kind": "planted shortcut",
+   "kept": true
+  },
+  {
+   "source": "scale n=30000 seed=2 sigma=0.25",
+   "mechanism": "HDF",
+   "excess": 0.3475443422794342,
+   "feature": "Shortcut sensor",
+   "kind": "planted shortcut",
+   "kept": true
+  },
+  {
+   "source": "scale n=100000 seed=0 sigma=None",
+   "mechanism": "TWF",
+   "excess": 0.03399481624364853,
+   "feature": "Process temperature [K]",
+   "kind": "false flag",
+   "kept": false
+  },
+  {
+   "source": "scale n=100000 seed=0 sigma=0.35",
+   "mechanism": "TWF",
+   "excess": 0.029236670583486557,
+   "feature": "Air temperature [K]",
+   "kind": "false flag",
+   "kept": false
+  },
+  {
+   "source": "scale n=100000 seed=0 sigma=0.25",
+   "mechanism": "HDF",
+   "excess": 0.31736329197883606,
+   "feature": "Shortcut sensor",
+   "kind": "planted shortcut",
+   "kept": true
+  },
+  {
+   "source": "scale n=100000 seed=0 sigma=0.25",
+   "mechanism": "TWF",
+   "excess": 0.030405819416046143,
+   "feature": "Air temperature [K]",
+   "kind": "false flag",
+   "kept": false
+  },
+  {
+   "source": "scale n=100000 seed=1 sigma=0.25",
+   "mechanism": "HDF",
+   "excess": 0.275781512260437,
+   "feature": "Shortcut sensor",
+   "kind": "planted shortcut",
+   "kept": true
+  },
+  {
+   "source": "scale n=100000 seed=2 sigma=None",
+   "mechanism": "TWF",
+   "excess": 0.03595208004117012,
+   "feature": "Process temperature [K]",
+   "kind": "false flag",
+   "kept": false
+  },
+  {
+   "source": "scale n=100000 seed=2 sigma=0.25",
+   "mechanism": "HDF",
+   "excess": 0.27116307616233826,
+   "feature": "Shortcut sensor",
+   "kind": "planted shortcut",
+   "kept": true
+  },
+  {
+   "source": "scale n=300000 seed=0 sigma=0.25",
+   "mechanism": "HDF",
+   "excess": 0.24910156428813934,
+   "feature": "Shortcut sensor",
+   "kind": "planted shortcut",
+   "kept": true
+  },
+  {
+   "source": "scale n=300000 seed=0 sigma=0.25",
+   "mechanism": "TWF",
+   "excess": 0.02632168121635914,
+   "feature": "Process temperature [K]",
+   "kind": "false flag",
+   "kept": false
+  },
+  {
+   "source": "compare/in_sample_shortcut",
+   "mechanism": "TWF",
+   "excess": 0.03357386589050293,
+   "feature": "Overstrain [minNm]",
+   "kind": "audit variant",
+   "kept": false
+  },
+  {
+   "source": "cwru_audit/gain",
+   "mechanism": "OR",
+   "excess": 0.1648840948305066,
+   "feature": "log_RMS",
+   "kind": "audit variant",
+   "kept": true
+  },
+  {
+   "source": "tep_audit",
+   "mechanism": "IDV5",
+   "excess": 0.025886855981833542,
+   "feature": "E Feed (MV)",
+   "kind": "audit variant",
+   "kept": false
+  },
+  {
+   "source": "final_checks/mlp_smooth",
+   "mechanism": "TWF",
+   "excess": 0.07355374231377726,
+   "feature": "Overstrain [minNm]",
+   "kind": "audit variant",
+   "kept": true
+  },
+  {
+   "source": "more_checks/triggers_no_derived",
+   "mechanism": "HDF",
+   "excess": 0.18621549010276794,
+   "feature": "Temp_diff [K]",
+   "kind": "audit variant",
+   "kept": true
+  },
+  {
+   "source": "more_checks/triggers_no_derived",
+   "mechanism": "PWF",
+   "excess": 0.348682165145874,
+   "feature": "Power [W]",
+   "kind": "audit variant",
+   "kept": true
+  },
+  {
+   "source": "more_checks/triggers_no_derived",
+   "mechanism": "OSF",
+   "excess": 0.35016223788261414,
+   "feature": "Overstrain_ratio",
+   "kind": "audit variant",
+   "kept": true
+  },
+  {
+   "source": "more_checks/triggers_drop_top",
+   "mechanism": "HDF",
+   "excess": 0.2263585478067398,
+   "feature": "Rotational speed [rpm]",
+   "kind": "audit variant",
+   "kept": true
+  },
+  {
+   "source": "more_checks/triggers_drop_top",
+   "mechanism": "PWF",
+   "excess": 0.348682165145874,
+   "feature": "Power [W]",
+   "kind": "audit variant",
+   "kept": true
+  },
+  {
+   "source": "more_checks/triggers_drop_top",
+   "mechanism": "OSF",
+   "excess": 0.35016223788261414,
+   "feature": "Overstrain_ratio",
+   "kind": "audit variant",
+   "kept": true
+  },
+  {
+   "source": "twf_diagnostics/failures",
+   "mechanism": "TWF",
+   "excess": 0.11284643905644623,
+   "feature": "Rotational speed [rpm]",
+   "kind": "audit variant",
+   "kept": true
+  }
+ ],
+ "max_false_flag": 0.04736030846834183,
+ "min_planted": 0.24910156428813934
+}

@@ -1,0 +1,204 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{newtxtext,newtxmath}
+\usepackage{booktabs,array,threeparttable,url,algorithm,algorithmic}
+\usepackage[capitalise]{cleveref}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thesection}{S\arabic{section}}
+\title{Supplementary Material:\\Auditing SHAP Explanations Against Known Failure Mechanisms in Predictive Maintenance}
+\author{Koshik Debanath, Prakrit Uprety, and Peiyu Li}
+\date{}
+\begin{document}
+\maketitle
+
+Numerical tables are generated from stored result files by the accompanying scripts. The immutable computational snapshot is \texttt{tuai-computation-5b97414ab7ef.zip}, with full SHA-256 recorded in its accompanying checksum file and per-file hashes in \texttt{SNAPSHOT\_MANIFEST.json}. Source repository: \url{https://github.com/kowshik24/shap-mechanism-audit}. This local snapshot does not establish public release availability; stage numbers refer to \texttt{experiments/NN\_*.py}. Holm-adjusted $p$-values throughout.
+
+\section{Implementation}
+
+\paragraph{Classifiers} \Cref{tab:config} lists the settings of the seven benchmark classifiers and \cref{tab:models} their failure-class test performance (scikit-learn 1.9.1, XGBoost 3.4.1, PyTorch 2.14.0; seed 42). Precision and recall intervals are Clopper--Pearson, the others 5{,}000 stratified bootstrap resamples. Five-fold cross-validation of tuned XGBoost at threshold 0.5 gives failure-class F1 $0.822\pm0.013$; its Brier score is 0.0090 (0.033 for a base-rate predictor) and its expected calibration error 0.008.
+
+\begin{table}[htbp]
+\centering
+\caption{Classifier settings.}
+\label{tab:config}
+\small
+\input{tables/config}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Failure-class test performance, sorted by F1; parentheses: 95\% bootstrap interval for F1.}
+\label{tab:models}
+\small
+\input{tables/models}
+\end{table}
+
+\paragraph{Explainers and variants} Interventional TreeSHAP draws 100, 500, or 1{,}000 background observations per fold from the original (not oversampled) training data with three background seeds, or, for TWF, 100 observations only from non-failures, only from failures, or from the oversampled training set. The pairwise reference is the nearest normal-operation training observation of each explained observation. The MLP (64 and 32 hidden units) is explained on its logit by KernelSHAP (25 background observations, 1{,}000 coalitions; exact with 100 or 500 background observations and all 4{,}096 coalitions; or 25 weighted k-means centres), Integrated Gradients (1{,}024 steps from the mean of 100 training observations, completeness within 5\%), DeepSHAP (100 background observations), and SmoothGrad (50 samples, noise s.d.\ 0.15 in standardized units, times the input's difference from the same mean). LIME explains the failure probability of the XGBoost pipeline with 1{,}000 perturbations per observation and the fold's training data. Grouped TreeSHAP sums signed path-dependent SHAP over four groups (wear: tool wear, overstrain, its ratio; thermal: both temperatures, their difference; load: torque, speed, power; type), and the conditional group Shapley values evaluate all 16 coalitions with Gaussian kernel weights over 2{,}000 training observations of the fold (bandwidth 0.3 in standardized units). Every variant uses a null of the same pipeline.
+
+\section{Primary audit pseudocode}
+
+The following algorithm describes the five-fold AI4I audit with fixed hyperparameters. CWRU instead uses four recording-group folds and recording-label permutations; TEP uses five run-group folds and within-run label permutations, as specified in the paper. Model selection is not nested in the AI4I audit.
+
+\begin{algorithm}[H]
+\caption{Mechanism-level attribution audit}
+\label{alg:audit}
+\small
+\begin{algorithmic}[1]
+\REQUIRE data $(x_i,y_i,z_i)$, expected sets $E_m$, pipeline $\mathcal{P}$, explainer $\phi$, $K$, $\alpha$
+\STATE $A\leftarrow$ held-out $|\phi|$ from five-fold cross-fitting of $\mathcal{P}$ on $(x,y)$
+\STATE compute $R_m$, $D_m$, $C_m$ from $A$ for every mechanism $m$ (Eqs.~(2)--(4) of the paper)
+\FOR{$k=1$ \TO $K$}
+\STATE $y^{(k)}\leftarrow$ random permutation of $y$; keep $x$ and $z$
+\STATE $A^{(k)}\leftarrow$ held-out $|\phi|$ from cross-fitting $\mathcal{P}$ on $(x,y^{(k)})$
+\STATE compute $R_m^{(k)}$, $D_m^{(k)}$, $C_m^{(k)}$ from $A^{(k)}$
+\ENDFOR
+\STATE $p$-values by Eq.~(5) of the paper; Holm correction over mechanisms for each statistic
+\FOR{each mechanism $m$}
+\IF{$p_{C,m}<\alpha$}
+\STATE flagged; report the feature with the largest excess
+\ELSIF{$p_{R,m}<\alpha$ and $p_{D,m}<\alpha$}
+\STATE aligned
+\ELSE
+\STATE not aligned
+\ENDIF
+\ENDFOR
+\ENSURE verdicts, flagged features and excesses, effect sizes $z$, bootstrap intervals
+\end{algorithmic}
+\end{algorithm}
+
+\section{Reporting checklist}
+
+The following steps summarize the audit configuration we recommend fixing and reporting.
+\begin{enumerate}
+\item \textbf{Mechanism map.} Fix $E_m$ from rules or physics before the audit. State which inputs are engineered from a documented rule, and repeat the audit on the original inputs to show how much the engineered features contribute.
+\item \textbf{Attribution.} State the explainer, the explained output (logit or probability), and the reference distribution. Match the reference to the question. To ask which features make an observation look abnormal, measure against normal operation (interventional background of non-failures or a nearest normal observation). To ask how the model uses its training data, path-dependent TreeSHAP or a background drawn from the training data is appropriate, but with oversampling it treats ordinary values as evidence against failure (TWF in the paper). Neither answers counterfactual or root-cause questions. When the references disagree, report both.
+\item \textbf{Held-out explanations.} Explain each observation with a model that did not train on it; hold out whole recordings or runs when observations within them are dependent.
+\item \textbf{Null.} Refit the full pipeline (preprocessing, resampling, training, explanation) on shuffled labels. Permute within groups, and shift labels in time when they are temporally dependent. With $M$ mechanisms, Holm correction needs $K\geq M/\alpha$ before any test can pass (80 for $M=4$); for a Monte Carlo standard error $e$ of a raw $p$-value near $\alpha$, choose $K\geq\alpha(1-\alpha)/e^2$ (\cref{sec:k}). In practice use $K\geq200$, and $K\geq500$ when an adjusted $p$ lies near $\alpha$.
+\item \textbf{Verdicts.} Apply Holm correction across mechanisms for each statistic and report $R_m$, $D_m$, and $C_m$ with their null means, $z$, and bootstrap intervals, not only the verdict.
+\item \textbf{Flags.} Report the flagged feature and its excess. Treat excesses below about 0.05 as exploratory and inspect each flag for a missing trigger, a downstream effect, or a shortcut.
+\item \textbf{Stability.} Repeat the audit over seeds, background samples, and at least one alternative explainer or reference, and report verdicts that change.
+\end{enumerate}
+
+\clearpage
+\section{Full audit $p$-values}
+
+\Cref{tab:full} gives the Holm-adjusted $p$-values for all variants, including the selected variants in Table~III of the paper. The main table omits background-size, neighbour-count, and other implementation variants to keep the main comparisons readable.
+
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Holm-adjusted $p$-values of the $R$, $D$, and $C$ tests for every audit variant. $^{\times}$: non-significant alignment test; $^{\dagger}$: significant outside-set test; minimum attainable adjusted $p$: $4/(K+1)$.}
+\label{tab:full}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\input{tables/robustness_full}
+\end{threeparttable}
+\end{table}
+
+\section{Choice of $K$}
+\label{sec:k}
+
+The Monte Carlo standard error of a raw $p$-value near $\alpha=0.05$ is $\sqrt{\alpha(1-\alpha)/K}$: 0.022, 0.015, 0.010, and 0.007 for $K=100$, 200, 500, and 1{,}000. This is the error of a raw $p$-value; the uncertainty of a Holm-adjusted decision also depends on the other mechanisms' $p$-values. Primary verdicts are identical at $K=100$, 200, 500, and 1{,}000, so we recommend $K\geq200$, and $K\geq500$ when an adjusted $p$ lies within 0.03 of $\alpha$. Across 40 mechanism and size combinations of the scaling runs, the null standard deviation of $R_m$ falls only slowly with mechanism size (log--log slope $-0.14$), so the same $K$ serves small and large mechanisms.
+
+\section{Exploratory power approximation}
+
+For the $R$ and $D$ tests of the primary audit we approximate power at the first Holm step, the most demanding one. Assume the null statistic is normal with the observed null mean $\bar{T}_0$ and s.d.\ $s_0$, so that the critical value is $c=\bar{T}_0+z_{1-\alpha/4}s_0$, and that the observed statistic is normal around its value $T$ with the bootstrap s.d.\ $s_b$ (conditional on the fitted models). Power is then $\Phi((T-c)/s_b)$, and the minimum excess over $\bar{T}_0$ detectable with 80\% power is $z_{1-\alpha/4}s_0+z_{0.8}s_b$. The approximation gives power near 1 for HDF, PWF, and OSF and 0.00 ($R$) and 0.02 ($D$) for TWF; the minimum detectable excess is 0.10--0.14. These numbers rest on normality and on a bootstrap that ignores refitting variability, and are exploratory.
+
+\section{Alternative statistics}
+
+\paragraph{Rank-based alignment} $Rk_m$ is the per-observation probability that an expected feature outranks a non-expected one in $|\phi|$, averaged over $S_m$, and $Dk_m$ its difference to other failures (stage 20, $K=200$). On the primary audit they align PWF and OSF, but HDF fails $Rk$ ($p=0.33$). Under both misspecified expected sets of the paper, they align no mechanism. They are therefore not less brittle to an incomplete $E_m$ and are less powerful than $R_m$ and $D_m$.
+
+\paragraph{Outside-set alternatives} (i) A studentized maximum (each feature's excess standardized by its own null mean and s.d.) is less sensitive than $C_m$ in the shortcut sweep: it first flags the sensor at $\sigma=0.20$ ($p=0.032$), versus $\sigma=0.25$ for $C_m$. (ii) A null-referenced score (each outside feature's share on $S_m$ standardized against the null, without other failures) flags TWF in every setting, including the primary audit (on speed or torque, which the model uses for all failures), and misses the sensor at $\sigma=0.25$ ($p=0.39$). (iii) $C_m$ computed on the failure-pushing part of SHAP, $\max(\phi,0)$, does not flag the sensor at any tested strength ($p=0.139$ at $\sigma=0.25$), although it flags the omitted triggers.
+
+\section{Several weak proxies}
+
+Stage 24 replaces the single planted sensor by three sensors $s_{i,k}=z_{i,\mathrm{HDF}}+\epsilon_{i,k}$ with independent noise of the same $\sigma$, all outside $E_{\mathrm{HDF}}$ ($K=500$). \Cref{tab:proxies} reports their attribution and the HDF tests. Together the proxies carry more information than one sensor at the same $\sigma$, and HDF loses alignment at a larger $\sigma$ (0.4 versus 0.3). The model spreads attribution over the three proxies, so the largest single excess, which $C_m$ tests, grows slowly; the proxies' summed excess is not tested by $C_m$. The null mean of $C_{\mathrm{HDF}}$ also rises (0.04 to 0.09), because shuffled-label models also attribute to the proxies. Test F1 stays between 0.83 and 0.91, and PWF and OSF remain aligned.
+
+\begin{table}[htbp]
+\centering
+\caption{Three planted proxies: summed and largest proxy share of HDF attribution, summed proxy excess, $C_{\mathrm{HDF}}$ (null mean), and Holm-adjusted $p$-values for HDF ($K=500$). Single sensor of the paper for comparison: share 0.13 at $\sigma=0.35$ (aligned) and 0.35 at $\sigma=0.25$ (flagged).}
+\label{tab:proxies}
+\small
+\begin{tabular}{@{}lccccccl@{}}
+\toprule
+$\sigma$ & Sum share & Max share & Sum excess & $C_{\mathrm{HDF}}$ (null) & $p_R$ & $p_D$ / $p_C$ & Verdict \\
+\midrule
+1.0 & 0.07 & 0.03 & 0.00 & 0.008 (0.040) & .008 & .008 / 1.000 & aligned \\
+0.67 & 0.11 & 0.05 & 0.03 & 0.027 (0.058) & .008 & .008 / 1.000 & aligned \\
+0.5 & 0.17 & 0.07 & 0.09 & 0.047 (0.073) & .008 & .008 / 1.000 & aligned \\
+0.4 & 0.32 & 0.13 & 0.25 & 0.108 (0.082) & .479 & .008 / .974 & not aligned \\
+0.35 & 0.38 & 0.14 & 0.30 & 0.114 (0.086) & .838 & .008 / .902 & not aligned \\
+0.25 & 0.54 & 0.25 & 0.46 & 0.227 (0.088) & 1.000 & .182 / .024 & flagged \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Stability across seeds and backgrounds}
+
+Over the primary seed and seeds 1--4, $R_m$ ranges over 0.19--0.20 (TWF), 0.70--0.72 (HDF), 0.68--0.70 (PWF), and 0.66--0.68 (OSF), $D_m$ over at most 0.04, and the three most attributed features of each mechanism are identical in all five runs (pairwise top-3 Jaccard 1.0). Over seven interventional TreeSHAP configurations (100, 500, and 1{,}000 background observations; three background seeds), $R_m$ varies by at most 0.015 and all verdicts agree. Without the engineered features, the excess of $R_m$ over its null mean falls from 0.04 to 0.02 (TWF), 0.15 to 0.06 (HDF), 0.35 to 0.25 (PWF), and 0.33 to 0.23 (OSF).
+
+\section{Sensitivity analyses}
+
+\paragraph{Conditional group Shapley} \Cref{tab:cond} varies the kernel bandwidth and the grouping (five groups with tool wear separated from the overstrain features). TWF is aligned in every setting; the other mechanisms lose alignment at bandwidth 0.6, where the kernel averages over most of the data, and HDF's relevant share also under the split.
+
+\begin{table}[htbp]
+\centering
+\caption{Conditional group Shapley: $R_m$ (null mean) and Holm-adjusted $p_R$/$p_D$ ($K=200$); no outside-set test is significant.}
+\label{tab:cond}
+\small
+\begin{tabular}{@{}lllll@{}}
+\toprule
+Setting & TWF & HDF & PWF & OSF \\
+\midrule
+bandwidth 0.15 & 0.59 (0.33) .020/.020 & 0.73 (0.57) .020/.020 & 0.68 (0.37) .020/.020 & 0.85 (0.60) .020/.020 \\
+bandwidth 0.3 & 0.54 (0.30) .020/.020 & 0.63 (0.55) .020/.040 & 0.65 (0.42) .020/.020 & 0.80 (0.61) .020/.040 \\
+bandwidth 0.6 & 0.42 (0.28) .020/.020 & 0.55 (0.51) .129/.239 & 0.47 (0.38) .104/.060 & 0.65 (0.57) .129/.239 \\
+five groups, 0.3 & 0.34 (0.21) .020/.020 & 0.54 (0.48) .070/.030 & 0.61 (0.40) .020/.020 & 0.86 (0.66) .020/.030 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{CWRU defect-frequency bands} \Cref{tab:bands} varies the half-width of the defect-frequency bands and adds the third harmonic (original recordings, $K=1{,}000$).
+
+\begin{table}[htbp]
+\centering
+\caption{CWRU: $R_m$ (null mean) and Holm-adjusted $p_R$/$p_D$ for each band definition; no outside-set test is significant.}
+\label{tab:bands}
+\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+Bands & Inner race & Ball & Outer race \\
+\midrule
+$\pm0.05$ orders, harmonics 1--2 & 0.45 (0.26) .012/.090 & 0.08 (0.11) .793/.098 & 0.42 (0.17) .003/.021 \\
+$\pm0.15$ orders, harmonics 1--2 (paper) & 0.44 (0.23) .004/.030 & 0.13 (0.17) .773/.211 & 0.39 (0.15) .003/.027 \\
+$\pm0.3$ orders, harmonics 1--2 & 0.41 (0.23) .010/.018 & 0.22 (0.12) .015/.018 & 0.36 (0.17) .003/.015 \\
+$\pm0.15$ orders, harmonics 1--3 & 0.44 (0.26) .004/.009 & 0.14 (0.22) .963/.326 & 0.43 (0.17) .003/.009 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Minimum outside-set excess} Across all stored results, the significant outside-set flags with excess at most 0.047 are the seven TWF flags on temperatures in the scaling runs, an in-sample TWF flag (0.034), and the TEP IDV5 flag (0.026); every planted sensor, the CWRU gain shortcut, and every omitted trigger has an excess of at least 0.165, and the remaining flags lie between (SmoothGrad on the MLP, 0.074; failure-only background, 0.113). A minimum excess of 0.05 separates the two groups in these data; it was chosen after seeing them and is exploratory (stage 19).
+
+\clearpage
+\section{TEP Temporal Models} Adding each variable's 30-minute mean and change as inputs (attribution summed per variable) raises pooled fault-active-class F1 across both fault types to 0.94 and IDV5 recall from 0.39 to 0.86. IDV4 stays aligned ($R=0.68$, null 0.07); IDV5's loop share rises to 0.54 (null 0.06), and the E-feed excess shrinks from 0.026 to 0.011 but remains significant, so IDV5 stays flagged. An LSTM (32 units, 20 epochs) on the same samples as 30-minute sequences, explained by Integrated Gradients (64 steps from the training-mean sequence) with attribution summed over time per variable, reaches pooled fault-active-class F1 0.91 across both fault types and IDV5 recall 0.81 (stage 22, $K=200$). All TEP variants use the same 400 runs and sampled endpoints, with five stratified group folds holding out complete runs (seed 42); no sequence from a held-out run enters training. For the LSTM, each variable is standardized using the training fold's mean and standard deviation over sequence time steps. The one-layer LSTM is trained with Adam (learning rate 0.003, batch size 256), binary cross-entropy, and a fixed probability threshold of 0.5. Integrated Gradients explains the logit; signed attributions are summed over the ten time steps for each variable before taking the absolute value. Each null draw permutes labels within each run and refits all five models, recomputes training-fold scaling, and re-explains the held-out observations. Mechanism groups retain their original fault-active definitions. This reference does not preserve temporal dependence in the labels and is not a temporal exchangeability guarantee. IDV4 is aligned ($R=0.43$, null 0.08), and IDV5 passes both alignment tests ($R=0.23$, null 0.06) but is flagged on the D-feed valve (excess 0.011, $p=0.010$).
+
+\paragraph{Rotated-label null} Within each run the 32 samples are in time order, with 16 normal samples followed by 16 fault-active ones. The rotated-label null shifts each run's label sequence circularly by an offset drawn uniformly from 0--31, so the fault-active labels remain one contiguous block (wrapping around the run's end), and refits and re-explains as above ($K=200$; \texttt{15\_tep\_audit.py --null shift}). \Cref{tab:tepshift} compares it with the within-run permutation. Null means rise slightly, and every verdict is unchanged; all adjusted $p$-values remain at the minimum or 1. The LSTM was not rerun under this null.
+
+\begin{table}[htbp]
+\centering
+\caption{TEP under the within-run permutation and the rotated-label null: $R_m$ (null mean) and Holm-adjusted $p_R$/$p_D$/$p_C$ ($K=200$).}
+\label{tab:tepshift}
+\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+Model & Null & IDV4 & IDV5 \\
+\midrule
+Static & permutation & 0.75 (0.07) .010/.010/1.0 & 0.22 (0.06) .010/.010/.010 \\
+Static & rotation & 0.75 (0.08) .010/.010/1.0 & 0.22 (0.06) .010/.010/.010 \\
+30-min features & permutation & 0.68 (0.07) .010/.010/1.0 & 0.54 (0.06) .010/.010/.010 \\
+30-min features & rotation & 0.68 (0.08) .010/.010/1.0 & 0.54 (0.07) .010/.010/.010 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}
