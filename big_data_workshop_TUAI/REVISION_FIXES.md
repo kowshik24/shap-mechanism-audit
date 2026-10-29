@@ -56,4 +56,6 @@ New experiments (results in `experiments/results/`, logs in `experiments/logs/`)
 
 Text changes from stored results: seed/background stability (R_m range <=0.02, identical top-3 features), per-mechanism raw-feature gap, effect of applying the 0.05 cutoff as a rule, multiplicity citations (Fisher 2019, Black 2022, Krishna 2024), learned conditional Shapley in future work, and a reporting checklist in the supplement.
 
-Main manuscript still 10 pages; supplement 7 pages. The computational snapshot (`artifacts/`) predates these runs and does not contain stage 24 or the new TEP results.
+Abstract now mentions shortcuts spread over several sensors. Main manuscript still 10 pages; supplement 7 pages.
+
+New computational snapshot `artifacts/tuai-computation-5b97414ab7ef.zip` (81 files, every file read from commit 7238db1, deterministic rebuild) replaces `c0ec38a0b7f2` in the supplement and `refs.bib`. It adds stage 24 and the three new result files. The old archive is left untracked in `artifacts/` and is no longer cited.

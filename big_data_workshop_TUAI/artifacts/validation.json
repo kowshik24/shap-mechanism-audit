@@ -1,0 +1,15 @@
+{
+  "paper_pages": 10,
+  "supplement_pages": 7,
+  "snapshot": "tuai-computation-5b97414ab7ef.zip",
+  "snapshot_base_commit": "7238db112d4c0e6d19a2c4be4a753fff220fd032",
+  "snapshot_files_verified": 81,
+  "snapshot_rebuild_deterministic": true,
+  "experiments_rerun": ["15_tep_audit.py --null shift", "15_tep_audit.py --window 10 --null shift", "24_multi_proxy.py"],
+  "public_release_verified": false,
+  "pdf_sha256": {
+    "big_data_workshop_TUAI.revised.pdf": "180b40b406f80637cf4249d9f3a41262b3ac2f93ed8c51134679af1eab234b3f",
+    "supplement.pdf": "896146ed6da51d4278a5c91ec088ec9ffc5baec11c794e805061a01eac2b87cf"
+  },
+  "build_checks": "No overfull boxes, undefined citations/references, or multiply defined labels."
+}
