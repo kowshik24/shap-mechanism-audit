@@ -1,0 +1,87 @@
+\documentclass[border=1pt]{standalone}
+\usepackage{newtxtext,newtxmath}
+\usepackage{pgfplots}
+\usetikzlibrary{calc}
+\pgfplotsset{compat=1.18}
+\definecolor{obs}{HTML}{D55E00}
+\definecolor{sens}{HTML}{0072B2}
+\begin{document}
+\definecolor{trig}{HTML}{009E73}
+\definecolor{purp}{HTML}{CC79A7}
+\definecolor{yel}{HTML}{E69F00}
+\begin{tikzpicture}[stick/.style={line width=1pt, black!25}, nullmark/.style={line width=1.2pt, black!55}]
+\begin{axis}[width=8.6cm, height=4.6cm, xmin=-0.8, xmax=23.4, ymin=0, ymax=0.8,
+  axis x line*=bottom, axis y line*=left, xtick={2.0,8.2,14.4,20.6},
+  xticklabels={TWF,HDF,PWF,OSF}, x tick style={draw=none},
+  tick label style={font=\footnotesize}, ylabel={$R_m$ (relevant share)}, ylabel style={font=\footnotesize},
+  yticklabel style={/pgf/number format/fixed}, ymajorgrids, grid style={black!8},
+  legend style={draw=none, fill=none, font=\scriptsize, at={(0.5,1.03)}, anchor=south, legend columns=3,
+    /tikz/every even column/.append style={column sep=5pt}}, legend cell align=left]
+\addlegendimage{only marks, mark=*, mark size=2.4pt, draw=obs, fill=obs}\addlegendentry{XGBoost, path TreeSHAP}
+\addlegendimage{only marks, mark=square*, mark size=2.4pt, draw=sens, fill=sens}\addlegendentry{MLP, KernelSHAP}
+\addlegendimage{only marks, mark=diamond*, mark size=2.4pt, draw=trig, fill=trig}\addlegendentry{MLP, Integrated Gradients}
+\addlegendimage{only marks, mark=triangle*, mark size=2.4pt, draw=purp, fill=purp}\addlegendentry{MLP, DeepSHAP}
+\addlegendimage{only marks, mark=pentagon*, mark size=2.4pt, draw=yel, fill=yel}\addlegendentry{MLP, SmoothGrad}
+\draw[stick] (axis cs:0.0,0.1516) -- (axis cs:0.0,0.1934);
+\draw[nullmark] (axis cs:-0.3,0.1516) -- (axis cs:0.3,0.1516);
+\addplot[only marks, mark=*, mark size=2.4pt, draw=obs, fill=white, line width=0.8pt] coordinates {(0.0,0.1934)};
+\draw[stick] (axis cs:1.0,0.1624) -- (axis cs:1.0,0.0924);
+\draw[nullmark] (axis cs:0.7,0.1624) -- (axis cs:1.3,0.1624);
+\addplot[only marks, mark=square*, mark size=2.4pt, draw=sens, fill=white, line width=0.8pt] coordinates {(1.0,0.0924)};
+\draw[stick] (axis cs:2.0,0.1635) -- (axis cs:2.0,0.1731);
+\draw[nullmark] (axis cs:1.7,0.1635) -- (axis cs:2.3,0.1635);
+\addplot[only marks, mark=diamond*, mark size=2.4pt, draw=trig, fill=white, line width=0.8pt] coordinates {(2.0,0.1731)};
+\draw[stick] (axis cs:3.0,0.1525) -- (axis cs:3.0,0.1123);
+\draw[nullmark] (axis cs:2.7,0.1525) -- (axis cs:3.3,0.1525);
+\addplot[only marks, mark=triangle*, mark size=2.4pt, draw=purp, fill=white, line width=0.8pt] coordinates {(3.0,0.1123)};
+\draw[stick] (axis cs:4.0,0.1634) -- (axis cs:4.0,0.1051);
+\draw[nullmark] (axis cs:3.7,0.1634) -- (axis cs:4.3,0.1634);
+\addplot[only marks, mark=pentagon*, mark size=2.4pt, draw=yel, fill=white, line width=0.8pt] coordinates {(4.0,0.1051)};
+\draw[stick] (axis cs:6.2,0.5570) -- (axis cs:6.2,0.7106);
+\draw[nullmark] (axis cs:5.9,0.5570) -- (axis cs:6.5,0.5570);
+\addplot[only marks, mark=*, mark size=2.4pt, draw=obs, fill=obs, line width=0.8pt] coordinates {(6.2,0.7106)};
+\draw[stick] (axis cs:7.2,0.4171) -- (axis cs:7.2,0.4710);
+\draw[nullmark] (axis cs:6.9,0.4171) -- (axis cs:7.5,0.4171);
+\addplot[only marks, mark=square*, mark size=2.4pt, draw=sens, fill=white, line width=0.8pt] coordinates {(7.2,0.4710)};
+\draw[stick] (axis cs:8.2,0.4074) -- (axis cs:8.2,0.6073);
+\draw[nullmark] (axis cs:7.8999999999999995,0.4074) -- (axis cs:8.5,0.4074);
+\addplot[only marks, mark=diamond*, mark size=2.4pt, draw=trig, fill=trig, line width=0.8pt] coordinates {(8.2,0.6073)};
+\draw[stick] (axis cs:9.2,0.4134) -- (axis cs:9.2,0.5763);
+\draw[nullmark] (axis cs:8.899999999999999,0.4134) -- (axis cs:9.5,0.4134);
+\addplot[only marks, mark=triangle*, mark size=2.4pt, draw=purp, fill=purp, line width=0.8pt] coordinates {(9.2,0.5763)};
+\draw[stick] (axis cs:10.2,0.4385) -- (axis cs:10.2,0.5937);
+\draw[nullmark] (axis cs:9.899999999999999,0.4385) -- (axis cs:10.5,0.4385);
+\addplot[only marks, mark=pentagon*, mark size=2.4pt, draw=yel, fill=yel, line width=0.8pt] coordinates {(10.2,0.5937)};
+\draw[stick] (axis cs:12.399999999999999,0.3469) -- (axis cs:12.399999999999999,0.6957);
+\draw[nullmark] (axis cs:12.099999999999998,0.3469) -- (axis cs:12.7,0.3469);
+\addplot[only marks, mark=*, mark size=2.4pt, draw=obs, fill=obs, line width=0.8pt] coordinates {(12.399999999999999,0.6957)};
+\draw[stick] (axis cs:13.399999999999999,0.6024) -- (axis cs:13.399999999999999,0.6657);
+\draw[nullmark] (axis cs:13.099999999999998,0.6024) -- (axis cs:13.7,0.6024);
+\addplot[only marks, mark=square*, mark size=2.4pt, draw=sens, fill=white, line width=0.8pt] coordinates {(13.399999999999999,0.6657)};
+\draw[stick] (axis cs:14.399999999999999,0.6305) -- (axis cs:14.399999999999999,0.7073);
+\draw[nullmark] (axis cs:14.099999999999998,0.6305) -- (axis cs:14.7,0.6305);
+\addplot[only marks, mark=diamond*, mark size=2.4pt, draw=trig, fill=white, line width=0.8pt] coordinates {(14.399999999999999,0.7073)};
+\draw[stick] (axis cs:15.399999999999999,0.6019) -- (axis cs:15.399999999999999,0.6883);
+\draw[nullmark] (axis cs:15.099999999999998,0.6019) -- (axis cs:15.7,0.6019);
+\addplot[only marks, mark=triangle*, mark size=2.4pt, draw=purp, fill=white, line width=0.8pt] coordinates {(15.399999999999999,0.6883)};
+\draw[stick] (axis cs:16.4,0.5811) -- (axis cs:16.4,0.6687);
+\draw[nullmark] (axis cs:16.099999999999998,0.5811) -- (axis cs:16.7,0.5811);
+\addplot[only marks, mark=pentagon*, mark size=2.4pt, draw=yel, fill=yel, line width=0.8pt] coordinates {(16.4,0.6687)};
+\draw[stick] (axis cs:18.599999999999998,0.3451) -- (axis cs:18.599999999999998,0.6719);
+\draw[nullmark] (axis cs:18.299999999999997,0.3451) -- (axis cs:18.9,0.3451);
+\addplot[only marks, mark=*, mark size=2.4pt, draw=obs, fill=obs, line width=0.8pt] coordinates {(18.599999999999998,0.6719)};
+\draw[stick] (axis cs:19.599999999999998,0.5616) -- (axis cs:19.599999999999998,0.6492);
+\draw[nullmark] (axis cs:19.299999999999997,0.5616) -- (axis cs:19.9,0.5616);
+\addplot[only marks, mark=square*, mark size=2.4pt, draw=sens, fill=white, line width=0.8pt] coordinates {(19.599999999999998,0.6492)};
+\draw[stick] (axis cs:20.599999999999998,0.4946) -- (axis cs:20.599999999999998,0.6407);
+\draw[nullmark] (axis cs:20.299999999999997,0.4946) -- (axis cs:20.9,0.4946);
+\addplot[only marks, mark=diamond*, mark size=2.4pt, draw=trig, fill=trig, line width=0.8pt] coordinates {(20.599999999999998,0.6407)};
+\draw[stick] (axis cs:21.599999999999998,0.5328) -- (axis cs:21.599999999999998,0.6332);
+\draw[nullmark] (axis cs:21.299999999999997,0.5328) -- (axis cs:21.9,0.5328);
+\addplot[only marks, mark=triangle*, mark size=2.4pt, draw=purp, fill=white, line width=0.8pt] coordinates {(21.599999999999998,0.6332)};
+\draw[stick] (axis cs:22.599999999999998,0.5141) -- (axis cs:22.599999999999998,0.6670);
+\draw[nullmark] (axis cs:22.299999999999997,0.5141) -- (axis cs:22.9,0.5141);
+\addplot[only marks, mark=pentagon*, mark size=2.4pt, draw=yel, fill=yel, line width=0.8pt] coordinates {(22.599999999999998,0.6670)};
+\end{axis}
+\end{tikzpicture}
+\end{document}

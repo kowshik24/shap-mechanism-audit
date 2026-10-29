@@ -37,17 +37,30 @@ def abs_shap(model, pre, df, rows, numeric_cols, explainer='path', background_ro
     `background` picks which training rows: 'train' (all), 'failures' / 'non_failures' (by the
     training labels `background_y`), or 'oversampled' (the Borderline-SMOTE output the model was fit
     on, synthetic rows included, which is the distribution path-dependent TreeSHAP's covers reflect).
-    explainer='pairwise' explains each row against its nearest normal-operation training row (by the
+    explainer='lime' fits a LIME tabular surrogate of the failure probability per row (`lime_samples`
+    perturbations, default 1,000). explainer='pairwise' explains each row against its nearest normal-operation training row (by the
     training labels), i.e. interventional TreeSHAP with that single reference (pairwise Shapley).
-    transform='abs' returns |SHAP|; 'positive' keeps only the part pushing towards failure, max(SHAP, 0).
+    transform='abs' returns |SHAP|; 'positive' keeps only the part pushing towards failure, max(SHAP, 0);
+    'signed' returns SHAP itself.
     """
     cols = list(numeric_cols) + ['Type']
     X = pre.transform(df.loc[rows, cols])
     names = feature_names(pre, numeric_cols)
-    tf = np.abs if transform == 'abs' else (lambda v: np.clip(v, 0, None))
+    tf = {'abs': np.abs, 'positive': lambda v: np.clip(v, 0, None), 'signed': lambda v: v}[transform]
     if explainer in ('kernel', 'ig', 'deep', 'smoothgrad'):
         sv = _model_agnostic(model, X, pre.transform(df.loc[background_rows, cols]), explainer, seed,
                              n_background, background_seed, **agnostic_kw)
+        return pd.DataFrame(tf(sv), index=rows, columns=names)
+    if explainer == 'lime':  # LIME tabular surrogate of the failure probability, training rows as data
+        from lime.lime_tabular import LimeTabularExplainer
+        ex = LimeTabularExplainer(pre.transform(df.loc[background_rows, cols]), mode='classification',
+                                  random_state=seed)
+        sv = np.zeros(X.shape)
+        for i, x in enumerate(np.asarray(X)):
+            exp = ex.explain_instance(x, model.predict_proba, labels=(1,), num_features=X.shape[1],
+                                      num_samples=agnostic_kw.get('lime_samples', 1000))
+            for j, w in exp.as_map()[1]:
+                sv[i, j] = w
         return pd.DataFrame(tf(sv), index=rows, columns=names)
     if explainer == 'pairwise':
         from sklearn.neighbors import NearestNeighbors
@@ -89,11 +102,13 @@ def abs_shap(model, pre, df, rows, numeric_cols, explainer='path', background_ro
 
 
 def _model_agnostic(model, X, X_train, explainer, seed, n_background, background_seed, ig_steps=1024,
-                    kernel_background=25, kernel_samples=1000, smooth_samples=50, smooth_sigma=0.15):
+                    kernel_background=25, kernel_samples=1000, smooth_samples=50, smooth_sigma=0.15,
+                    kernel_kmeans=False):
     """
     Attributions of the MLP's logit (fit_pipeline(model='mlp')) by a model-agnostic or gradient explainer.
     'kernel': KernelSHAP with `kernel_background` training rows as the background (shap.KernelExplainer,
-    `kernel_samples` coalitions per row). 'ig': Integrated Gradients from the mean of `n_background`
+    `kernel_samples` coalitions per row), or, with `kernel_kmeans`, `kernel_background` weighted k-means
+    centres of the training rows (shap.kmeans). 'ig': Integrated Gradients from the mean of `n_background`
     training rows, `ig_steps` trapezoid steps; completeness (attributions sum to logit(x) - logit(baseline))
     is checked. 'deep': DeepSHAP (shap.DeepExplainer) with `n_background` training rows. 'smoothgrad':
     SmoothGrad gradients (mean over `smooth_samples` copies with N(0, smooth_sigma^2) noise in the
@@ -103,7 +118,8 @@ def _model_agnostic(model, X, X_train, explainer, seed, n_background, background
 
     rng = np.random.default_rng([seed, background_seed])
     if explainer == 'kernel':
-        bg = X_train[rng.choice(len(X_train), kernel_background, replace=False)]
+        bg = (shap.kmeans(X_train, kernel_background) if kernel_kmeans
+              else X_train[rng.choice(len(X_train), kernel_background, replace=False)])
         ex = shap.KernelExplainer(model.logit, bg, seed=seed)
         return np.asarray(ex.shap_values(X, nsamples=kernel_samples, silent=True))
     bg = X_train[rng.choice(len(X_train), n_background, replace=False)]
@@ -171,9 +187,18 @@ def _share(imp, feats):
     return float(imp[feats].sum() / imp.sum())
 
 
+def _rank_share(A, rows, feats):
+    """Mean over rows of the probability that a trigger feature outranks a non-trigger one in |attribution|."""
+    inside = A.columns.isin(feats)
+    t, n = A.loc[rows].to_numpy()[:, inside], A.loc[rows].to_numpy()[:, ~inside]
+    wins = (t[:, :, None] > n[:, None, :]).mean(axis=(1, 2)) + 0.5 * (t[:, :, None] == n[:, None, :]).mean(axis=(1, 2))
+    return float(wins.mean())
+
+
 def statistics(A: pd.DataFrame, df: pd.DataFrame, groups: dict, extra_features=(), triggers=None):
     """R_m, D_m for physical mechanisms; top-feature share for RNF; shares of any extra features.
-    `triggers` overrides the expected feature sets E_m (default TRIGGER_FEATURES)."""
+    `triggers` overrides the expected feature sets E_m (default TRIGGER_FEATURES). Rk_m and Dk_m are
+    rank-based analogues of R_m and D_m (per-row probability that a trigger outranks a non-trigger)."""
     TRIGGER_FEATURES = triggers or TRIGGERS_DEFAULT
     failures = df.index[df['Machine failure'] == 1]
     out = {}
@@ -185,6 +210,10 @@ def statistics(A: pd.DataFrame, df: pd.DataFrame, groups: dict, extra_features=(
                   'D': _share(own, TRIGGER_FEATURES[m]) - _share(rest, TRIGGER_FEATURES[m]),
                   'S': float(excess.max()), 'S_feature': str(excess.idxmax()),
                   'excess': {k: float(v) for k, v in excess.items()},
+                  'shares': {k: float(v) for k, v in (own / own.sum()).items()},
+                  'Rk': _rank_share(A, groups[m], TRIGGER_FEATURES[m]),
+                  'Dk': _rank_share(A, groups[m], TRIGGER_FEATURES[m])
+                  - _rank_share(A, np.setdiff1d(failures, groups[m]), TRIGGER_FEATURES[m]),
                   'top_feature': str(own.idxmax()),
                   **{f'share[{f}]': _share(own, [f]) for f in extra_features}}
     rnf = A.loc[groups['RNF']].mean(axis=0)
@@ -264,7 +293,7 @@ def run_audit(df, numeric_cols, params, *, seed=SEED, K=100, cross_fit=True, tra
     for name in groups_by_name:
         tests, null_store = {}, {}
         for m in PHYSICAL:
-            for stat in ('R', 'D', 'S'):
+            for stat in ('R', 'D', 'S', 'Rk', 'Dk'):
                 null = [d[name][m][stat] for d in draws]
                 null_store[f'{m}.{stat}'] = null
                 tests[f'{m}.{stat}'] = permutation_p(observed[name][m][stat], null)
@@ -281,6 +310,16 @@ def run_audit(df, numeric_cols, params, *, seed=SEED, K=100, cross_fit=True, tra
             null = ((E - mu) / sd).max(axis=1)
             null_store[f'{m}.Z'] = null.tolist()
             tests[f'{m}.Z'] = permutation_p(observed[name][m]['Z'], null)
+            # null-referenced shortcut score N_m: each non-trigger feature's share on S_m standardized by
+            # its own null mean and s.d. (no comparison with other failures), maximum over features
+            E = np.array([[d[name][m]['shares'][f] for f in feats] for d in draws])
+            mu, sd = E.mean(axis=0), E.std(axis=0, ddof=1)
+            sd = np.where(sd > 0, sd, np.inf)
+            n_obs = (np.array([observed[name][m]['shares'][f] for f in feats]) - mu) / sd
+            observed[name][m]['N'], observed[name][m]['N_feature'] = float(n_obs.max()), feats[int(n_obs.argmax())]
+            null = ((E - mu) / sd).max(axis=1)
+            null_store[f'{m}.N'] = null.tolist()
+            tests[f'{m}.N'] = permutation_p(observed[name][m]['N'], null)
         rnf_null = [d[name]['RNF']['top_share'] for d in draws]
         null_store['RNF.top_share'] = rnf_null
         result[name] = {
@@ -289,6 +328,7 @@ def run_audit(df, numeric_cols, params, *, seed=SEED, K=100, cross_fit=True, tra
             'p_holm_D': holm({m: tests[f'{m}.D'] for m in PHYSICAL}),
             'p_holm_S': holm({m: tests[f'{m}.S'] for m in PHYSICAL}),  # small = shortcut flagged
             'p_holm_Z': holm({m: tests[f'{m}.Z'] for m in PHYSICAL}),  # studentized shortcut score
+            **{f'p_holm_{s}': holm({m: tests[f'{m}.{s}'] for m in PHYSICAL}) for s in ('Rk', 'Dk', 'N')},
             'p_RNF_more_concentrated': permutation_p(observed[name]['RNF']['top_share'], rnf_null),
             'null_mean': {k: float(np.mean(v)) for k, v in null_store.items()},
             'null_draws': null_store,

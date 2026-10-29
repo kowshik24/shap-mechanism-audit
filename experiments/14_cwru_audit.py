@@ -15,7 +15,10 @@ recording's label), refits and re-explains, and keeps the true fault groups, as 
   gain       an acquisition shortcut: the recorded amplitude is scaled by a fault-dependent gain
              (x0.25 IR, x1 B, x4 OR), which shifts only log_RMS, a feature outside every E_m
 
-Usage: python experiments/14_cwru_audit.py [--quick]
+Sensitivity of E_m: --band sets the half-width of each defect-frequency band (shaft orders, default
+0.15) and --harmonics the harmonics used (default 1,2); --conditions original skips the gain shortcut.
+
+Usage: python experiments/14_cwru_audit.py [--quick] [--band 0.15] [--harmonics 1,2] [--conditions original,gain]
 """
 import argparse
 import json
@@ -31,19 +34,26 @@ from sklearn.model_selection import StratifiedGroupKFold
 
 from pdm_audit.audit import holm, permutation_p
 from pdm_audit.config import RESULTS_DIR, ROOT, SEED
-from pdm_audit.cwru import EXPECTED, FAULTS, FEATURES, load
+from pdm_audit.cwru import BAND, FAULTS, HARMONICS, expected, feature_list, load
 
 ap = argparse.ArgumentParser()
 ap.add_argument('--quick', action='store_true')
+ap.add_argument('--band', type=float, default=BAND)
+ap.add_argument('--harmonics', default=','.join(map(str, HARMONICS)))
+ap.add_argument('--conditions', default='original,gain')
 args = ap.parse_args()
+harmonics = tuple(int(h) for h in args.harmonics.split(','))
+EXPECTED, FEATURES = expected(harmonics), feature_list(harmonics)
+default = args.band == BAND and harmonics == HARMONICS
+suffix = '' if default else f'_band{args.band:g}_h{"".join(map(str, harmonics))}'
 K = 4 if args.quick else 1000
 GAINS = {'IR': 0.25, 'B': 1.0, 'OR': 4.0}
 
-cache = RESULTS_DIR / 'cwru_features.csv'
+cache = RESULTS_DIR / f'cwru_features{suffix}.csv'
 if cache.exists():
     df = pd.read_csv(cache)
 else:
-    df = load(ROOT / 'data' / 'cwru')
+    df = load(ROOT / 'data' / 'cwru', band=args.band, harmonics=harmonics)
     df.to_csv(cache, index=False)
 recordings = df['recording'].to_numpy()
 truth = df['fault'].to_numpy()
@@ -89,8 +99,9 @@ def null_draw(k, X):
     return statistics(heads)
 
 
-results = {'K': K, 'n_windows': len(df), 'n_recordings': int(len(set(recordings)))}
-for condition in ('original', 'gain'):
+results = {'K': K, 'n_windows': len(df), 'n_recordings': int(len(set(recordings))), 'band': args.band,
+           'harmonics': list(harmonics)}
+for condition in args.conditions.split(','):
     t0 = time.time()
     Xdf = df[FEATURES].copy()
     if condition == 'gain':
@@ -117,6 +128,6 @@ for condition in ('original', 'gain'):
               f'D={obs[m]["D"]:.3f} (p={r["p_holm_D"][m]:.3f})  C={obs[m]["S"]:.3f} {obs[m]["S_feature"]} '
               f'(p={r["p_holm_S"][m]:.3f})  logRMS share={obs[m]["share_log_RMS"]:.3f}', flush=True)
 
-name = 'cwru_audit_quick.json' if args.quick else 'cwru_audit.json'
+name = 'cwru_audit_quick.json' if args.quick else f'cwru_audit{suffix}.json'
 (RESULTS_DIR / name).write_text(json.dumps(results, indent=1))
 print('saved', RESULTS_DIR / name)

@@ -1,0 +1,35 @@
+{
+ "row": 4816,
+ "tool_wear_min": 215.0,
+ "failure_probability": 0.006123480387032032,
+ "tool_wear_share_path": 0.20049136877059937,
+ "tool_wear_share_interventional": 0.46939175323984594,
+ "path": {
+  "Air temperature [K]": -0.3426600694656372,
+  "Process temperature [K]": -1.129433035850525,
+  "Rotational speed [rpm]": -2.7113850116729736,
+  "Torque [Nm]": -1.201766014099121,
+  "Tool wear [min]": 1.767667531967163,
+  "Power [W]": -0.8565704226493835,
+  "Temp_diff [K]": -0.19174042344093323,
+  "Overstrain [minNm]": 0.12774211168289185,
+  "Overstrain_ratio": -0.27502238750457764,
+  "Type_H": -0.022586453706026077,
+  "Type_L": -0.07807835191488266,
+  "Type_M": -0.11202336102724075
+ },
+ "interventional": {
+  "Air temperature [K]": -0.23896459188865266,
+  "Process temperature [K]": -0.7488056701369351,
+  "Rotational speed [rpm]": -0.6043430495163193,
+  "Torque [Nm]": -0.3731635797675699,
+  "Tool wear [min]": 3.3434108499657302,
+  "Power [W]": -0.16357007738784887,
+  "Temp_diff [K]": 0.2503140147146769,
+  "Overstrain [minNm]": 0.9014253356395057,
+  "Overstrain_ratio": 0.44449423218145967,
+  "Type_H": -0.01930845695314929,
+  "Type_L": 0.013422719785012305,
+  "Type_M": -0.021635518501279875
+ }
+}

@@ -1,0 +1,2 @@
+lime          K=200   212s R={'TWF': 0.129, 'HDF': 0.696, 'PWF': 0.429, 'OSF': 0.319} pR={'TWF': 0.04, 'HDF': 0.02, 'PWF': 0.02, 'OSF': 0.04} pD={'TWF': 0.02, 'HDF': 0.02, 'PWF': 0.159, 'OSF': 0.02} pS={'TWF': 1.0, 'HDF': 1.0, 'PWF': 1.0, 'OSF': 0.597}
+saved /Users/kowshik/personal-work/glowing-broccoli/experiments/results/final_checks.json

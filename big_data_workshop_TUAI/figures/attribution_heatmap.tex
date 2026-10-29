@@ -1,0 +1,102 @@
+\documentclass[border=1pt]{standalone}
+\usepackage{newtxtext,newtxmath}
+\usepackage{pgfplots}
+\usetikzlibrary{calc}
+\pgfplotsset{compat=1.18}
+\definecolor{obs}{HTML}{D55E00}
+\definecolor{sens}{HTML}{0072B2}
+\begin{document}
+\definecolor{trig}{HTML}{009E73}
+\begin{tikzpicture}
+\begin{axis}[width=5.4cm, height=6.6cm, scale only axis=false, enlargelimits=false, axis on top,
+  xmin=-0.5, xmax=4.5, ymin=-0.5, ymax=9.5, y dir=reverse,
+  xtick={0,...,4}, xticklabels={TWF,HDF,PWF,OSF,RNF}, xticklabel pos=upper,
+  ytick={0,...,9}, yticklabels={{tool wear},{overstrain},{overstrain ratio},{torque},{power},{rotational speed},{temp.\ difference},{air temp.},{process temp.},{product type}},
+  tick label style={font=\footnotesize}, tick style={draw=none},
+  colormap={blues}{rgb255=(255,255,255) rgb255=(158,202,225) rgb255=(33,113,181) rgb255=(8,48,107)},
+  point meta min=0, point meta max=0.6,
+  colorbar, colorbar style={width=0.18cm, font=\scriptsize, ytick={0,0.2,0.4,0.6},
+    yticklabel style={/pgf/number format/fixed}, ylabel={attribution share}, ylabel style={font=\scriptsize}}]
+\addplot[draw=none] coordinates {(0,0)};
+\fill[fill={rgb,255:red,161;green,204;blue,226}] (axis cs:-0.5,-0.5) rectangle (axis cs:0.5,0.5);
+\fill[fill={rgb,255:red,232;green,243;blue,248}] (axis cs:-0.5,0.5) rectangle (axis cs:0.5,1.5);
+\fill[fill={rgb,255:red,204;green,227;blue,239}] (axis cs:-0.5,1.5) rectangle (axis cs:0.5,2.5);
+\fill[fill={rgb,255:red,216;green,234;blue,243}] (axis cs:-0.5,2.5) rectangle (axis cs:0.5,3.5);
+\fill[fill={rgb,255:red,202;green,226;blue,239}] (axis cs:-0.5,3.5) rectangle (axis cs:0.5,4.5);
+\fill[fill={rgb,255:red,164;green,205;blue,227}] (axis cs:-0.5,4.5) rectangle (axis cs:0.5,5.5);
+\fill[fill={rgb,255:red,202;green,226;blue,238}] (axis cs:-0.5,5.5) rectangle (axis cs:0.5,6.5);
+\fill[fill={rgb,255:red,223;green,237;blue,245}] (axis cs:-0.5,6.5) rectangle (axis cs:0.5,7.5);
+\fill[fill={rgb,255:red,227;green,240;blue,246}] (axis cs:-0.5,7.5) rectangle (axis cs:0.5,8.5);
+\fill[fill={rgb,255:red,234;green,243;blue,248}] (axis cs:-0.5,8.5) rectangle (axis cs:0.5,9.5);
+\fill[fill={rgb,255:red,228;green,240;blue,247}] (axis cs:0.5,-0.5) rectangle (axis cs:1.5,0.5);
+\fill[fill={rgb,255:red,241;green,248;blue,251}] (axis cs:0.5,0.5) rectangle (axis cs:1.5,1.5);
+\fill[fill={rgb,255:red,229;green,241;blue,247}] (axis cs:0.5,1.5) rectangle (axis cs:1.5,2.5);
+\fill[fill={rgb,255:red,229;green,241;blue,247}] (axis cs:0.5,2.5) rectangle (axis cs:1.5,3.5);
+\fill[fill={rgb,255:red,218;green,235;blue,244}] (axis cs:0.5,3.5) rectangle (axis cs:1.5,4.5);
+\fill[fill={rgb,255:red,64;green,135;blue,192}] (axis cs:0.5,4.5) rectangle (axis cs:1.5,5.5);
+\fill[fill={rgb,255:red,118;green,174;blue,211}] (axis cs:0.5,5.5) rectangle (axis cs:1.5,6.5);
+\fill[fill={rgb,255:red,223;green,238;blue,245}] (axis cs:0.5,6.5) rectangle (axis cs:1.5,7.5);
+\fill[fill={rgb,255:red,240;green,247;blue,250}] (axis cs:0.5,7.5) rectangle (axis cs:1.5,8.5);
+\fill[fill={rgb,255:red,245;green,249;blue,252}] (axis cs:0.5,8.5) rectangle (axis cs:1.5,9.5);
+\fill[fill={rgb,255:red,231;green,242;blue,248}] (axis cs:1.5,-0.5) rectangle (axis cs:2.5,0.5);
+\fill[fill={rgb,255:red,241;green,247;blue,251}] (axis cs:1.5,0.5) rectangle (axis cs:2.5,1.5);
+\fill[fill={rgb,255:red,224;green,238;blue,245}] (axis cs:1.5,1.5) rectangle (axis cs:2.5,2.5);
+\fill[fill={rgb,255:red,176;green,212;blue,231}] (axis cs:1.5,2.5) rectangle (axis cs:2.5,3.5);
+\fill[fill={rgb,255:red,31;green,107;blue,174}] (axis cs:1.5,3.5) rectangle (axis cs:2.5,4.5);
+\fill[fill={rgb,255:red,200;green,225;blue,238}] (axis cs:1.5,4.5) rectangle (axis cs:2.5,5.5);
+\fill[fill={rgb,255:red,220;green,236;blue,244}] (axis cs:1.5,5.5) rectangle (axis cs:2.5,6.5);
+\fill[fill={rgb,255:red,238;green,246;blue,250}] (axis cs:1.5,6.5) rectangle (axis cs:2.5,7.5);
+\fill[fill={rgb,255:red,238;green,246;blue,250}] (axis cs:1.5,7.5) rectangle (axis cs:2.5,8.5);
+\fill[fill={rgb,255:red,246;green,250;blue,252}] (axis cs:1.5,8.5) rectangle (axis cs:2.5,9.5);
+\fill[fill={rgb,255:red,216;green,234;blue,243}] (axis cs:2.5,-0.5) rectangle (axis cs:3.5,0.5);
+\fill[fill={rgb,255:red,193;green,221;blue,236}] (axis cs:2.5,0.5) rectangle (axis cs:3.5,1.5);
+\fill[fill={rgb,255:red,34;green,114;blue,181}] (axis cs:2.5,1.5) rectangle (axis cs:3.5,2.5);
+\fill[fill={rgb,255:red,223;green,238;blue,245}] (axis cs:2.5,2.5) rectangle (axis cs:3.5,3.5);
+\fill[fill={rgb,255:red,218;green,235;blue,244}] (axis cs:2.5,3.5) rectangle (axis cs:3.5,4.5);
+\fill[fill={rgb,255:red,202;green,226;blue,238}] (axis cs:2.5,4.5) rectangle (axis cs:3.5,5.5);
+\fill[fill={rgb,255:red,224;green,238;blue,245}] (axis cs:2.5,5.5) rectangle (axis cs:3.5,6.5);
+\fill[fill={rgb,255:red,238;green,245;blue,250}] (axis cs:2.5,6.5) rectangle (axis cs:3.5,7.5);
+\fill[fill={rgb,255:red,242;green,248;blue,251}] (axis cs:2.5,7.5) rectangle (axis cs:3.5,8.5);
+\fill[fill={rgb,255:red,248;green,251;blue,253}] (axis cs:2.5,8.5) rectangle (axis cs:3.5,9.5);
+\fill[fill={rgb,255:red,180;green,214;blue,232}] (axis cs:3.5,-0.5) rectangle (axis cs:4.5,0.5);
+\fill[fill={rgb,255:red,233;green,243;blue,248}] (axis cs:3.5,0.5) rectangle (axis cs:4.5,1.5);
+\fill[fill={rgb,255:red,208;green,229;blue,240}] (axis cs:3.5,1.5) rectangle (axis cs:4.5,2.5);
+\fill[fill={rgb,255:red,220;green,236;blue,244}] (axis cs:3.5,2.5) rectangle (axis cs:4.5,3.5);
+\fill[fill={rgb,255:red,189;green,219;blue,235}] (axis cs:3.5,3.5) rectangle (axis cs:4.5,4.5);
+\fill[fill={rgb,255:red,165;green,206;blue,227}] (axis cs:3.5,4.5) rectangle (axis cs:4.5,5.5);
+\fill[fill={rgb,255:red,185;green,217;blue,233}] (axis cs:3.5,5.5) rectangle (axis cs:4.5,6.5);
+\fill[fill={rgb,255:red,227;green,240;blue,246}] (axis cs:3.5,6.5) rectangle (axis cs:4.5,7.5);
+\fill[fill={rgb,255:red,221;green,237;blue,245}] (axis cs:3.5,7.5) rectangle (axis cs:4.5,8.5);
+\fill[fill={rgb,255:red,238;green,245;blue,250}] (axis cs:3.5,8.5) rectangle (axis cs:4.5,9.5);
+\draw[trig, line width=1.1pt] (axis cs:-0.5,-0.5) rectangle (axis cs:0.5,0.5);
+\draw[trig, line width=1.1pt] (axis cs:0.5,4.5) rectangle (axis cs:1.5,5.5);
+\draw[trig, line width=1.1pt] (axis cs:0.5,5.5) rectangle (axis cs:1.5,6.5);
+\draw[trig, line width=1.1pt] (axis cs:0.5,6.5) rectangle (axis cs:1.5,7.5);
+\draw[trig, line width=1.1pt] (axis cs:0.5,7.5) rectangle (axis cs:1.5,8.5);
+\draw[trig, line width=1.1pt] (axis cs:1.5,2.5) rectangle (axis cs:2.5,3.5);
+\draw[trig, line width=1.1pt] (axis cs:1.5,3.5) rectangle (axis cs:2.5,4.5);
+\draw[trig, line width=1.1pt] (axis cs:1.5,4.5) rectangle (axis cs:2.5,5.5);
+\draw[trig, line width=1.1pt] (axis cs:2.5,-0.5) rectangle (axis cs:3.5,0.5);
+\draw[trig, line width=1.1pt] (axis cs:2.5,0.5) rectangle (axis cs:3.5,1.5);
+\draw[trig, line width=1.1pt] (axis cs:2.5,1.5) rectangle (axis cs:3.5,2.5);
+\draw[trig, line width=1.1pt] (axis cs:2.5,2.5) rectangle (axis cs:3.5,3.5);
+\node[font=\tiny, text=black] at (axis cs:0,0) {0.19};
+\node[font=\tiny, text=black] at (axis cs:0,2) {0.11};
+\node[font=\tiny, text=black] at (axis cs:0,4) {0.11};
+\node[font=\tiny, text=black] at (axis cs:0,5) {0.19};
+\node[font=\tiny, text=black] at (axis cs:0,6) {0.11};
+\node[font=\tiny, text=white] at (axis cs:1,5) {0.35};
+\node[font=\tiny, text=black] at (axis cs:1,6) {0.26};
+\node[font=\tiny, text=black] at (axis cs:2,3) {0.16};
+\node[font=\tiny, text=white] at (axis cs:2,4) {0.42};
+\node[font=\tiny, text=black] at (axis cs:2,5) {0.11};
+\node[font=\tiny, text=black] at (axis cs:3,1) {0.13};
+\node[font=\tiny, text=white] at (axis cs:3,2) {0.40};
+\node[font=\tiny, text=black] at (axis cs:3,5) {0.11};
+\node[font=\tiny, text=black] at (axis cs:4,0) {0.15};
+\node[font=\tiny, text=black] at (axis cs:4,4) {0.14};
+\node[font=\tiny, text=black] at (axis cs:4,5) {0.19};
+\node[font=\tiny, text=black] at (axis cs:4,6) {0.15};
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -176,13 +176,19 @@ or stage by stage:
 | 11 | `experiments/11_twf_diagnostics.py` | interventional TreeSHAP with failure-only, non-failure, oversampled backgrounds and raw features (~20 min) |
 | 12 | `experiments/12_other_explainers.py` | the MLP audited with KernelSHAP and Integrated Gradients (~30 min) |
 | 13 | `experiments/13_review_checks.py` | label-anomaly and class-weight variants, K stability, Holm over all tests, signed attributions, removal check, per-row attributions; `--kernel` adds exact KernelSHAP on the MLP (~1 h) |
-| 14 | `experiments/14_cwru_audit.py` | the audit on measured CWRU bearing vibration, with and without a fault-dependent gain shortcut (~10 min); fetch the 36 recordings first with `experiments/download_cwru.py` |
-| 15 | `experiments/15_tep_audit.py` | the audit on Tennessee Eastman process runs (DTU, IDV4/IDV5; data in `data/dtu_tep`) (~11 min) |
+| 14 | `experiments/14_cwru_audit.py` | the audit on measured CWRU bearing vibration, with and without a fault-dependent gain shortcut (~10 min); fetch the 36 recordings first with `experiments/download_cwru.py`; `--band 0.05`, `--band 0.3` and `--harmonics 1,2,3 --conditions original` test the defect-frequency bands |
+| 15 | `experiments/15_tep_audit.py` | the audit on Tennessee Eastman process runs (DTU, IDV4/IDV5; data in `data/dtu_tep`) (~11 min); `--window 10` adds each variable's 30-minute mean and change; `--null shift` rotates each run's time-ordered labels instead of permuting them (~9 min, ~30 min with `--window 10`) |
 | 16 | `experiments/16_more_checks.py` | plain SMOTE and ADASYN, misspecified trigger sets, HSIC corroboration (~20 min) |
-| 17 | `experiments/17_final_checks.py` | Borderline-SMOTE with 3/10 neighbours, focal loss, failure-pushing (positive-part) SHAP, pairwise normal-operation reference, MLP with DeepSHAP and SmoothGrad (~50 min), and exact KernelSHAP with a 500-row background (K=100, ~3.5 h); `--only name,name` reruns a subset |
-| 18 | `experiments/18_dependence.py` | grouped TreeSHAP and exact conditional group Shapley values against their own nulls, normal-approximation power, Monte Carlo error and null spread versus mechanism size (~15 min) |
+| 17 | `experiments/17_final_checks.py` | Borderline-SMOTE with 3/10 neighbours, focal loss, failure-pushing (positive-part) SHAP, pairwise normal-operation reference, MLP with DeepSHAP and SmoothGrad (~50 min), KernelSHAP with a k-means background (~20 min), LIME on the primary pipeline (~10 min), and exact KernelSHAP with a 500-row background (K=100, ~3.5 h); `--only name,name` reruns a subset |
+| 18 | `experiments/18_dependence.py` | grouped TreeSHAP and exact conditional group Shapley values against their own nulls, normal-approximation power, Monte Carlo error and null spread versus mechanism size (~15 min); `--bw 0.15`, `--bw 0.6` and `--split-wear` rerun the conditional values with another kernel bandwidth or grouping |
+| 19 | `experiments/19_flag_threshold.py` | every significant shortcut flag in the stored results with its excess share, and which a minimum-excess rule would keep (seconds) |
+| 20 | `experiments/20_rank_checks.py` | rank-based alignment statistics (Rk, Dk) and a null-referenced shortcut score (N) on the primary audit, misspecified trigger sets and the planted shortcut at four strengths (~15 min); `--transform positive` repeats it on failure-pushing SHAP |
+| 21 | `experiments/21_reference_figure.py` | the workshop paper's data figures (primary audit, TWF by reference distribution, planted-shortcut sweep) as pgfplots sources compiled with pdflatex into `big_data_workshop_TUAI/figures/` (seconds) |
+| 22 | `experiments/22_tep_lstm.py` | the TEP audit with an LSTM on 30-minute sequences, Integrated Gradients summed over time per variable (~15 min) |
+| 23 | `experiments/23_twf_example.py` | one TWF observation explained with path-dependent and interventional TreeSHAP (signed values and pgfplots figure; seconds) |
+| 24 | `experiments/24_multi_proxy.py` | the planted shortcut split over three sensors with independent noise, at six noise levels (~35 min); `--proxies N` changes the number of sensors |
 
-Stages 2–7 read the outputs of stage 1 (4 and 5 also read 2, 3, 6, 7; 4 also reads 9–18) from `experiments/results/`. Tables are generated, never
+Stages 2–7 read the outputs of stage 1 (4 and 5 also read 2, 3, 6, 7; 4 also reads 9–20; 21 reads 2, 6, 11, 13, 17, 18) from `experiments/results/`. The workshop supplement (`big_data_workshop_TUAI/supplement.tex`) holds implementation settings, the full p-value table and sensitivity analyses. Tables are generated, never
 typed by hand. Seeds are fixed, and re-running a stage reproduces its numbers exactly. Unit tests for
 the audit statistics: `python -m pytest`.
 

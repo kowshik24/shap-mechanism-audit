@@ -1,0 +1,4 @@
+F1=0.763 recall={'IDV4': 1.0, 'IDV5': 0.3934375} FPR=0.130 (518s)
+  IDV4: R=0.747 (null 0.079, p=0.010)  D=0.568 (p=0.010)  C=0.000 Recycle (MV) (p=1.000)  top=Reactor Coolant (MV)
+  IDV5: R=0.221 (null 0.061, p=0.010)  D=0.164 (p=0.010)  C=0.026 E Feed (MV) (p=0.010)  top=Condenser Coolant (MV)
+saved /Users/kowshik/personal-work/glowing-broccoli/experiments/results/tep_audit_shift.json

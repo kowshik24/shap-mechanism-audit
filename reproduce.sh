@@ -22,14 +22,30 @@ python experiments/12_other_explainers.py "$@"
 python experiments/13_review_checks.py "$@"
 python experiments/13_review_checks.py --kernel "$@"
 python experiments/14_cwru_audit.py "$@"
+for opt in "--band 0.05" "--band 0.3" "--harmonics 1,2,3"; do
+  python experiments/14_cwru_audit.py $opt --conditions original "$@"
+done
 python experiments/15_tep_audit.py "$@"
+python experiments/15_tep_audit.py --window 10 "$@"
+python experiments/15_tep_audit.py --null shift "$@"
+python experiments/15_tep_audit.py --window 10 --null shift "$@"
 python experiments/16_more_checks.py "$@"
 python experiments/17_final_checks.py "$@"
 python experiments/18_dependence.py "$@"
+python experiments/18_dependence.py --bw 0.15 "$@"
+python experiments/18_dependence.py --bw 0.6 "$@"
+python experiments/18_dependence.py --split-wear "$@"
+python experiments/19_flag_threshold.py
+python experiments/20_rank_checks.py "$@"
+python experiments/20_rank_checks.py --transform positive "$@"
+python experiments/22_tep_lstm.py "$@"
+python experiments/23_twf_example.py
+python experiments/24_multi_proxy.py "$@"
 
 if [[ "${1:-}" != "--quick" ]]; then
   python experiments/04_tables.py
   python experiments/05_figures.py
+  python experiments/21_reference_figure.py
   (cd paper/ieee_bigdata && pdflatex -interaction=nonstopmode main.tex >/dev/null \
      && bibtex main >/dev/null && pdflatex -interaction=nonstopmode main.tex >/dev/null \
      && pdflatex -interaction=nonstopmode main.tex >/dev/null)

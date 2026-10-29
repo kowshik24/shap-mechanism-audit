@@ -19,7 +19,11 @@ Stage 18: dependence-aware attribution, power, and the choice of K.
   k_and_size    Monte Carlo error of p near alpha for several K, and the null spread of R against
                 mechanism size across the generated-data runs of stage 7.
 
-Usage: python experiments/18_dependence.py [--quick]
+Sensitivity: --bw sets the kernel bandwidth (default 0.3) and --split-wear separates tool wear from the
+two overstrain features (five groups; E_TWF = {wear}, E_OSF = {wear, strain, load}); both write
+dependence_<setting>.json and skip the power and K sections.
+
+Usage: python experiments/18_dependence.py [--quick] [--bw 0.3] [--split-wear]
 """
 import argparse
 import itertools
@@ -41,6 +45,8 @@ from pdm_audit.models import feature_names, fit_pipeline
 
 ap = argparse.ArgumentParser()
 ap.add_argument('--quick', action='store_true')
+ap.add_argument('--bw', type=float, default=0.3)
+ap.add_argument('--split-wear', action='store_true')
 args = ap.parse_args()
 K = 4 if args.quick else 200
 
@@ -48,8 +54,13 @@ GROUPS = {'wear': ['Tool wear [min]', 'Overstrain [minNm]', 'Overstrain_ratio'],
           'thermal': ['Air temperature [K]', 'Process temperature [K]', 'Temp_diff [K]'],
           'load': ['Torque [Nm]', 'Rotational speed [rpm]', 'Power [W]'],
           'type': ['Type_H', 'Type_L', 'Type_M']}
-G = list(GROUPS)
 E_GROUP = {'TWF': ['wear'], 'HDF': ['thermal', 'load'], 'PWF': ['load'], 'OSF': ['wear', 'load']}
+if args.split_wear:
+    GROUPS = {'wear': ['Tool wear [min]'], 'strain': ['Overstrain [minNm]', 'Overstrain_ratio'],
+              **{g: fs for g, fs in GROUPS.items() if g != 'wear'}}
+    E_GROUP['OSF'] = ['wear', 'strain', 'load']
+G = list(GROUPS)
+setting = '_'.join(([f'bw{args.bw:g}'] if args.bw != 0.3 else []) + (['split'] if args.split_wear else []))
 COALITIONS = [frozenset(c) for r in range(len(G) + 1) for c in itertools.combinations(G, r)]
 
 df = load()
@@ -61,7 +72,7 @@ failures = df.index[y == 1]
 cols = ENGINEERED + ['Type']
 
 
-def group_attributions(labels, seed=SEED, n_bg=2000, bw=0.3):
+def group_attributions(labels, seed=SEED, n_bg=2000, bw=args.bw):
     """(grouped |path SHAP|, |conditional group Shapley|) for the audit rows, cross-fitted."""
     grouped, conditional = [], []
     for tr, te in StratifiedKFold(5, shuffle=True, random_state=seed).split(df, y):
@@ -118,7 +129,7 @@ def draw(k):
 obs_g, obs_c = group_attributions(None)
 observed = {'grouped': stats(obs_g), 'conditional': stats(obs_c)}
 draws = Parallel(n_jobs=-1)(delayed(draw)(k) for k in range(K))
-results = {'K': K, 'groups': GROUPS, 'E_group': E_GROUP}
+results = {'K': K, 'groups': GROUPS, 'E_group': E_GROUP, 'bw': args.bw}
 for kind in ('grouped', 'conditional'):
     p = {f'{m}.{s}': permutation_p(observed[kind][m][s], [d[kind][m][s] for d in draws]) for m in PHYSICAL for s in 'RDS'}
     results[kind] = {'observed': observed[kind],
@@ -127,6 +138,12 @@ for kind in ('grouped', 'conditional'):
     r = results[kind]
     print(kind, {m: (round(observed[kind][m]['R'], 3), round(r['null_mean'][m + '.R'], 3), round(r['p_holm_R'][m], 3),
                      round(r['p_holm_D'][m], 3), round(r['p_holm_S'][m], 3)) for m in PHYSICAL}, flush=True)
+
+if setting:
+    name = f'dependence_{setting}_quick.json' if args.quick else f'dependence_{setting}.json'
+    (RESULTS_DIR / name).write_text(json.dumps(results, indent=1))
+    print('saved', RESULTS_DIR / name)
+    raise SystemExit
 
 # ---- power of the primary tests (normal approximation)
 eff = json.loads((RESULTS_DIR / 'effect_sizes.json').read_text())['mechanisms']

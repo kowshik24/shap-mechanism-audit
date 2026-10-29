@@ -7,6 +7,8 @@ Stage 17: remaining audit variants from the second review, each against its own 
   pairwise                each row explained against its nearest normal-operation training row
   mlp_deep, mlp_smooth    the MLP with DeepSHAP and with SmoothGrad x (input - baseline)
   kernel_bg500            the MLP with exact KernelSHAP and a 500-row background (K=100; slow)
+  kernel_kmeans           the MLP with KernelSHAP against 25 weighted k-means centres of the training rows
+  lime                    the primary XGBoost pipeline explained by LIME (1,000 perturbations per row)
 
 Usage: python experiments/17_final_checks.py [--quick] [--only name,name]
 """
@@ -34,6 +36,8 @@ VARIANTS = {
     'mlp_deep': dict(model='mlp', explainer='deep'),
     'mlp_smooth': dict(model='mlp', explainer='smoothgrad'),
     'kernel_bg500': dict(model='mlp', explainer='kernel', kernel_background=500, kernel_samples=4096),
+    'kernel_kmeans': dict(model='mlp', explainer='kernel', kernel_kmeans=True),
+    'lime': dict(explainer='lime'),
 }
 K_OF = {'kernel_bg500': 100}
 names = [n for n in args.only.split(',') if n] or list(VARIANTS)

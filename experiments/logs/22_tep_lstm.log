@@ -1,0 +1,4 @@
+F1=0.909 recall={'IDV4': 0.9984375, 'IDV5': 0.814375} (1152s)
+  IDV4: R=0.432 (null 0.078, p=0.010)  D=0.205 (p=0.010)  C=0.001 var28 (p=0.701)  top=var50
+  IDV5: R=0.227 (null 0.056, p=0.010)  D=0.094 (p=0.010)  C=0.011 var41 (p=0.010)  top=var51
+saved /Users/kowshik/personal-work/glowing-broccoli/experiments/results/tep_lstm.json
