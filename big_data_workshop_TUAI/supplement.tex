@@ -71,9 +71,9 @@ The following algorithm describes the five-fold AI4I audit with fixed hyperparam
 The following steps summarize the audit configuration we recommend fixing and reporting.
 \begin{enumerate}
 \item \textbf{Mechanism map.} Fix $E_m$ from rules or physics before the audit. State which inputs are engineered from a documented rule, and repeat the audit on the original inputs to show how much the engineered features contribute.
-\item \textbf{Attribution.} State the explainer, the explained output (logit or probability), and the reference distribution. For questions about abnormal operation, use a normal-operation reference; when it differs from the training data, report both.
+\item \textbf{Attribution.} State the explainer, the explained output (logit or probability), and the reference distribution. Match the reference to the question. To ask which features make an observation look abnormal, measure against normal operation (interventional background of non-failures or a nearest normal observation). To ask how the model uses its training data, path-dependent TreeSHAP or a background drawn from the training data is appropriate, but with oversampling it treats ordinary values as evidence against failure (TWF in the paper). Neither answers counterfactual or root-cause questions. When the references disagree, report both.
 \item \textbf{Held-out explanations.} Explain each observation with a model that did not train on it; hold out whole recordings or runs when observations within them are dependent.
-\item \textbf{Null.} Refit the full pipeline (preprocessing, resampling, training, explanation) on shuffled labels. Permute within groups, and shift labels in time when they are temporally dependent. Use $K\geq200$, and $K\geq500$ when an adjusted $p$ lies near $\alpha$.
+\item \textbf{Null.} Refit the full pipeline (preprocessing, resampling, training, explanation) on shuffled labels. Permute within groups, and shift labels in time when they are temporally dependent. With $M$ mechanisms, Holm correction needs $K\geq M/\alpha$ before any test can pass (80 for $M=4$); for a Monte Carlo standard error $e$ of a raw $p$-value near $\alpha$, choose $K\geq\alpha(1-\alpha)/e^2$ (\cref{sec:k}). In practice use $K\geq200$, and $K\geq500$ when an adjusted $p$ lies near $\alpha$.
 \item \textbf{Verdicts.} Apply Holm correction across mechanisms for each statistic and report $R_m$, $D_m$, and $C_m$ with their null means, $z$, and bootstrap intervals, not only the verdict.
 \item \textbf{Flags.} Report the flagged feature and its excess. Treat excesses below about 0.05 as exploratory and inspect each flag for a missing trigger, a downstream effect, or a shortcut.
 \item \textbf{Stability.} Repeat the audit over seeds, background samples, and at least one alternative explainer or reference, and report verdicts that change.
@@ -96,6 +96,7 @@ The following steps summarize the audit configuration we recommend fixing and re
 \end{table}
 
 \section{Choice of $K$}
+\label{sec:k}
 
 The Monte Carlo standard error of a raw $p$-value near $\alpha=0.05$ is $\sqrt{\alpha(1-\alpha)/K}$: 0.022, 0.015, 0.010, and 0.007 for $K=100$, 200, 500, and 1{,}000. This is the error of a raw $p$-value; the uncertainty of a Holm-adjusted decision also depends on the other mechanisms' $p$-values. Primary verdicts are identical at $K=100$, 200, 500, and 1{,}000, so we recommend $K\geq200$, and $K\geq500$ when an adjusted $p$ lies within 0.03 of $\alpha$. Across 40 mechanism and size combinations of the scaling runs, the null standard deviation of $R_m$ falls only slowly with mechanism size (log--log slope $-0.14$), so the same $K$ serves small and large mechanisms.
 

@@ -59,3 +59,13 @@ Text changes from stored results: seed/background stability (R_m range <=0.02, i
 Abstract now mentions shortcuts spread over several sensors. Main manuscript still 10 pages; supplement 7 pages.
 
 New computational snapshot `artifacts/tuai-computation-5b97414ab7ef.zip` (81 files, every file read from commit 7238db1, deterministic rebuild) replaces `c0ec38a0b7f2` in the supplement and `refs.bib`. It adds stage 24 and the three new result files. The old archive is left untracked in `artifacts/` and is no longer cited.
+
+## Fourth review round (paperreview.ai, 2026-10-29, accept)
+
+Text only; no new runs, snapshot unchanged.
+
+- **Normalization:** Sec. III-C explains why shares come from group means (observations weighted by total attribution, as in mean-|SHAP| importance). Per-observation normalization changes the observed primary R_m by at most 0.009 and D_m by at most 0.018 (computed from `attributions_primary.csv`; no null).
+- **Practitioner defaults:** new paragraph in Discussion (E_m fixed beforehand, held-out explanations, K >= 200 / 500 / M/alpha, normal-operation reference for abnormality questions, R and D both required, 0.05 excess exploratory, inspect flags). Supplement checklist now matches the reference to the question type and gives the K formulas.
+- **Related work:** phi-test (Kim et al., arXiv 2512.07578) positioned as complementary global selection-adjusted inference; baseline and path choice for gradient attributions (Sturmfels et al. 2020, Erion et al. 2021).
+
+Main manuscript 10 pages; supplement 7 pages.

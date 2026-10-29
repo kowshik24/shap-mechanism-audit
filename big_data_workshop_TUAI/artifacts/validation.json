@@ -5,11 +5,15 @@
   "snapshot_base_commit": "7238db112d4c0e6d19a2c4be4a753fff220fd032",
   "snapshot_files_verified": 81,
   "snapshot_rebuild_deterministic": true,
-  "experiments_rerun": ["15_tep_audit.py --null shift", "15_tep_audit.py --window 10 --null shift", "24_multi_proxy.py"],
+  "experiments_rerun": [
+    "15_tep_audit.py --null shift",
+    "15_tep_audit.py --window 10 --null shift",
+    "24_multi_proxy.py"
+  ],
   "public_release_verified": false,
   "pdf_sha256": {
-    "big_data_workshop_TUAI.revised.pdf": "180b40b406f80637cf4249d9f3a41262b3ac2f93ed8c51134679af1eab234b3f",
-    "supplement.pdf": "896146ed6da51d4278a5c91ec088ec9ffc5baec11c794e805061a01eac2b87cf"
+    "big_data_workshop_TUAI.revised.pdf": "233d8112e161ac55e78a69b34edab6cb8edd1aa48c9c9a5391c4f596b9dc91ef",
+    "supplement.pdf": "d52b07f4001e68f8a8cfd5ae7908135fd5c198f2304cc88b2d0865760bc343a5"
   },
   "build_checks": "No overfull boxes, undefined citations/references, or multiply defined labels."
 }
