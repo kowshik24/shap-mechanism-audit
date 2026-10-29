@@ -12,7 +12,7 @@
   ],
   "public_release_verified": false,
   "pdf_sha256": {
-    "main.pdf": "a6e8da7089d091aeae7b8ba9d55c6bc40694a6a1f99624fec0e3ed62023e3c1d",
+    "main.pdf": "fdbc20513b689a47f68b14a19e0c87045e866ec90225e6e50e1dd6e554e87cb4",
     "supplement.pdf": "62beaa8bb5f82756b9470c6255652bc5bdf671dc898b60f140fe46cf054ad42c"
   },
   "build_checks": "No overfull boxes, undefined citations/references, or multiply defined labels.",
