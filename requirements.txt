@@ -1,0 +1,15 @@
+numpy==2.5.3
+pandas==3.0.6
+scikit-learn==1.9.1
+xgboost==3.4.1
+matplotlib==3.11.2
+seaborn==0.13.2
+lime==0.2.0.1
+shap==0.52.0
+imbalanced-learn==0.14.2
+umap-learn==0.5.12
+torch==2.14.0
+scipy==1.18.1
+h5py==3.16.0
+joblib==1.6.0
+pytest==9.1.1

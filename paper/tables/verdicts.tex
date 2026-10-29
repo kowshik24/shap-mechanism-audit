@@ -1,0 +1,37 @@
+\begin{tabular}{@{}lrcccc@{}}
+\toprule
+Variant & $K$ & TWF & HDF & PWF & OSF \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{Primary and null}} \\
+Primary audit & 1000 & $\times$ & \checkmark & \checkmark & \checkmark \\
+Seeds 1--4 (largest $p$) & 200 & $\times$ & \checkmark & \checkmark & \checkmark \\
+Null re-tuned per permutation & 500 & $\times$ & \checkmark & \checkmark & \checkmark \\
+\addlinespace[2pt]
+\multicolumn{6}{@{}l}{\textit{Data and expected sets}} \\
+Raw features only & 1000 & $\times$ & $\times$ & \checkmark & \checkmark \\
+Label = OR of flags & 200 & $\times$ & \checkmark & \checkmark & \checkmark \\
+$E_m$ without top trigger & 200 & $\times$ & \textbf{!} & \textbf{!} & \textbf{!} \\
+\addlinespace[2pt]
+\multicolumn{6}{@{}l}{\textit{Imbalance treatment}} \\
+Class weights & 200 & $\times$ & \checkmark & \checkmark & \checkmark \\
+Focal loss & 200 & \checkmark & \checkmark & \checkmark & \checkmark \\
+SMOTE & 200 & $\times$ & $\times$ & \checkmark & \checkmark \\
+\addlinespace[2pt]
+\multicolumn{6}{@{}l}{\textit{Attribution (XGBoost)}} \\
+Interventional, training bg. & 200 & \checkmark & \checkmark & \checkmark & \checkmark \\
+\quad oversampled bg. & 200 & \checkmark & \checkmark & \checkmark & \checkmark \\
+\quad failure-only bg. & 200 & \textbf{!} & $\times$ & $\times$ & \checkmark \\
+Pairwise, nearest normal & 200 & \checkmark & \checkmark & \checkmark & \checkmark \\
+Conditional group Shapley & 200 & \checkmark & \checkmark & \checkmark & \checkmark \\
+LIME & 200 & \checkmark & \checkmark & $\times$ & \checkmark \\
+\addlinespace[2pt]
+\multicolumn{6}{@{}l}{\textit{Other models}} \\
+Random forest, path TreeSHAP & 200 & $\times$ & \checkmark & \checkmark & \checkmark \\
+MLP, KernelSHAP & 200 & $\times$ & $\times$ & $\times$ & $\times$ \\
+MLP, Integrated Gradients & 200 & $\times$ & \checkmark & $\times$ & \checkmark \\
+MLP, SmoothGrad & 200 & \textbf{!} & \checkmark & \checkmark & \checkmark \\
+\addlinespace[2pt]
+\multicolumn{6}{@{}l}{\textit{Sanity check}} \\
+Permuted labels & 200 & $\times$ & $\times$ & $\times$ & $\times$ \\
+\bottomrule
+\end{tabular}

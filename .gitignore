@@ -1,0 +1,34 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+
+# Raw downloads (CWRU, DTU TEP); fetch with the scripts in experiments/
+data/
+
+# Run outputs that are not part of the release
+experiments/logs/
+experiments/figures/
+experiments/results/*_draws.npz
+experiments/results/*_models/
+experiments/results/*_checkpoints/
+experiments/results/*_quick.json
+
+# Local only
+archive/
+tmp/
+.DS_Store
+papers/

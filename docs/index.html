@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="title" content="Auditing SHAP Explanations Against Known Failure Mechanisms in Predictive Maintenance">
+  <meta name="description" content="A statistical audit that tests whether held-out SHAP attributions concentrate on the features of each documented failure mechanism, against pipelines retrained on shuffled labels.">
+  <meta name="keywords" content="explainable AI, SHAP, predictive maintenance, feature attribution evaluation, failure mechanisms, shortcut learning">
+  <meta name="author" content="Koshik Debanath, Prakrit Uprety, Peiyu Li">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="South Dakota State University">
+  <meta property="og:title" content="Auditing SHAP Explanations Against Known Failure Mechanisms in Predictive Maintenance">
+  <meta property="og:description" content="A statistical audit that tests whether held-out SHAP attributions concentrate on the features of each documented failure mechanism.">
+  <meta property="og:url" content="https://kowshik24.github.io/shap-mechanism-audit/">
+  <meta property="og:image" content="https://kowshik24.github.io/shap-mechanism-audit/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Overview of the mechanism-level SHAP audit">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Auditing SHAP Explanations Against Known Failure Mechanisms in Predictive Maintenance">
+  <meta name="twitter:image" content="https://kowshik24.github.io/shap-mechanism-audit/static/images/social_preview.png">
+
+  <meta name="citation_title" content="Auditing SHAP Explanations Against Known Failure Mechanisms in Predictive Maintenance">
+  <meta name="citation_author" content="Debanath, Koshik">
+  <meta name="citation_author" content="Uprety, Prakrit">
+  <meta name="citation_author" content="Li, Peiyu">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="IEEE International Conference on Big Data (BigData), TUAI Workshop">
+  <meta name="citation_pdf_url" content="https://kowshik24.github.io/shap-mechanism-audit/static/pdfs/paper.pdf">
+  <meta name="theme-color" content="#2563eb">
+
+  <title>Auditing SHAP Explanations Against Known Failure Mechanisms in Predictive Maintenance</title>
+
+  <link rel="icon" type="image/png" href="static/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Auditing SHAP Explanations Against Known Failure Mechanisms in Predictive Maintenance",
+    "author": [
+      {"@type": "Person", "name": "Koshik Debanath", "affiliation": {"@type": "Organization", "name": "South Dakota State University"}},
+      {"@type": "Person", "name": "Prakrit Uprety", "affiliation": {"@type": "Organization", "name": "South Dakota State University"}},
+      {"@type": "Person", "name": "Peiyu Li", "affiliation": {"@type": "Organization", "name": "South Dakota State University"}}
+    ],
+    "datePublished": "2026",
+    "url": "https://kowshik24.github.io/shap-mechanism-audit/",
+    "image": "https://kowshik24.github.io/shap-mechanism-audit/static/images/social_preview.png",
+    "keywords": ["explainable AI", "SHAP", "predictive maintenance", "feature attribution evaluation"],
+    "isAccessibleForFree": true
+  }
+  </script>
+  <style>
+    .figure-caption { font-size: 0.95rem; color: #4a4a4a; margin-top: 0.75rem; }
+    .results-carousel .item img { max-height: 420px; width: auto; margin: 0 auto; display: block; }
+    .stat-card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 1.1rem 1.2rem; height: 100%; }
+    .stat-card h3 { margin-bottom: 0.4rem !important; }
+    .verdict-table td, .verdict-table th { vertical-align: middle; }
+    .tag.aligned { background: #e3f6ec; color: #17734a; }
+    .tag.flagged { background: #fde8e8; color: #b42318; }
+    .tag.notaligned { background: #eef0f3; color: #4b5563; }
+  </style>
+</head>
+<body>
+
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Auditing SHAP Explanations Against Known Failure Mechanisms in Predictive Maintenance</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="mailto:koshik.debanath@jacks.sdstate.edu">Koshik Debanath</a>,</span>
+              <span class="author-block"><a href="mailto:prakrit.uprety@jacks.sdstate.edu">Prakrit Uprety</a>,</span>
+              <span class="author-block"><a href="mailto:peiyu.li@sdstate.edu">Peiyu Li</a></span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Department of Computer Science, South Dakota State University<br>
+                TUAI Workshop at IEEE BigData 2026 (submitted)</span>
+            </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="static/pdfs/paper.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="static/pdfs/supplement.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Supplementary</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/kowshik24/shap-mechanism-audit" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/kowshik24/shap-mechanism-audit/tree/main/paper/artifacts" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-archive"></i></span><span>Snapshot</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="static/images/audit_pipeline.png" alt="Overview of the mechanism-level SHAP audit" style="width: 100%;">
+        <h2 class="subtitle has-text-centered figure-caption">
+          The classifier is trained on the failure label only. Five-fold cross-fitting explains every observation with a
+          model that did not train on it. Attribution on each mechanism's observations gives three statistics, which are
+          compared with <i>K</i> pipelines retrained on shuffled labels.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              A failure-prediction model can be accurate and still base its predictions on the wrong inputs. We propose a
+              statistical audit that checks, for each documented failure mechanism, whether held-out SHAP attributions
+              concentrate on the features named in that mechanism's rule. The audit uses three statistics, which measure the
+              share of attribution on these features, how much larger this share is than on other failures, and how much any
+              other feature gains. Each statistic is compared with pipelines retrained on shuffled labels. On the AI4I 2020
+              benchmark, a tuned XGBoost classifier (test F1 = 0.89) passes the audit for three of four physical mechanisms.
+              The tool-wear result depends on the reference distribution of the explanation. It fails with path-dependent
+              TreeSHAP and passes when attributions are measured against normal operation. A planted shortcut sensor shows
+              that accuracy can stay high while attribution moves to a misleading feature, and that weak shortcuts, or
+              shortcuts spread over several sensors, go undetected. On laboratory bearing recordings and simulated Tennessee
+              Eastman process data, the audit finds attribution consistent with the specified features for inner- and
+              outer-race faults and a reactor-cooling fault, and it flags an injected acquisition-gain shortcut although
+              classification accuracy remains perfect. A passing audit is evidence about where attribution falls under a
+              given mechanism map. It does not certify that the model is physically correct, and flagged features need to be
+              investigated.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Three statistics per mechanism</h2>
+      <div class="columns">
+        <div class="column">
+          <div class="stat-card">
+            <h3 class="title is-5">Relevant share <i>R<sub>m</sub></i></h3>
+            <p>The share of attribution on mechanism <i>m</i>'s observations that falls on its expected features
+              <i>E<sub>m</sub></i>, fixed beforehand from the failure rule or physics.</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="stat-card">
+            <h3 class="title is-5">Specificity <i>D<sub>m</sub></i></h3>
+            <p>How much larger that share is on the mechanism's observations than on all other failures.</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="stat-card">
+            <h3 class="title is-5">Outside-set excess <i>C<sub>m</sub></i></h3>
+            <p>How much the feature outside <i>E<sub>m</sub></i> with the largest gain increases its share relative to other
+              failures. A significant excess names a feature to inspect.</p>
+          </div>
+        </div>
+      </div>
+      <div class="content has-text-centered">
+        <p>After Holm correction across mechanisms, a mechanism is
+          <span class="tag flagged">flagged</span> if <i>C<sub>m</sub></i> is significant,
+          <span class="tag aligned">aligned</span> if <i>R<sub>m</sub></i> and <i>D<sub>m</sub></i> are, and
+          <span class="tag notaligned">not aligned</span> otherwise.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Main results</h2>
+      <table class="table is-fullwidth is-hoverable verdict-table">
+        <thead>
+          <tr><th>Data</th><th>Mechanism</th><th>Verdict</th></tr>
+        </thead>
+        <tbody>
+          <tr><td rowspan="3">AI4I 2020 (synthetic milling)</td><td>Heat dissipation, power, overstrain</td><td><span class="tag aligned">aligned</span></td></tr>
+          <tr><td>Tool wear</td><td><span class="tag notaligned">not aligned</span> with path-dependent TreeSHAP; <span class="tag aligned">aligned</span> against normal operation</td></tr>
+          <tr><td>Planted shortcut sensor</td><td><span class="tag flagged">flagged</span> once it takes &ge;35% of attribution; weak or multi-sensor shortcuts go undetected</td></tr>
+          <tr><td rowspan="2">CWRU bearings (laboratory)</td><td>Inner race, outer race</td><td><span class="tag aligned">aligned</span></td></tr>
+          <tr><td>Acquisition-gain shortcut</td><td><span class="tag flagged">flagged</span> although every recording is classified correctly</td></tr>
+          <tr><td rowspan="2">Tennessee Eastman process (simulated)</td><td>Reactor cooling (IDV4)</td><td><span class="tag aligned">aligned</span></td></tr>
+          <tr><td>Condenser cooling (IDV5)</td><td><span class="tag flagged">flagged</span> on a feed valve; needs inspection</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Figures</h2>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item">
+            <img src="static/images/attribution_heatmap.png" alt="Share of held-out attribution per feature and mechanism" loading="lazy">
+            <h2 class="subtitle has-text-centered figure-caption">Share of held-out attribution per feature on each AI4I mechanism; outlines mark the expected sets.</h2>
+          </div>
+          <div class="item">
+            <img src="static/images/twf_reference.png" alt="Tool-wear relevant share by reference distribution" loading="lazy">
+            <h2 class="subtitle has-text-centered figure-caption">Tool wear passes against every tested normal-operation reference and fails with path-dependent TreeSHAP.</h2>
+          </div>
+          <div class="item">
+            <img src="static/images/twf_example.png" alt="Signed SHAP values for one tool-wear observation" loading="lazy">
+            <h2 class="subtitle has-text-centered figure-caption">One tool-wear observation from the same model under two reference distributions.</h2>
+          </div>
+          <div class="item">
+            <img src="static/images/shortcut_sweep_tikz.png" alt="Planted shortcut sweep" loading="lazy">
+            <h2 class="subtitle has-text-centered figure-caption">As a planted sensor becomes less noisy, it takes attribution from the heat-dissipation features; strong versions are flagged.</h2>
+          </div>
+          <div class="item">
+            <img src="static/images/cwru_shares.png" alt="CWRU attribution shares" loading="lazy">
+            <h2 class="subtitle has-text-centered figure-caption">CWRU bearings: an acquisition-gain shortcut moves outer-race attribution to log-RMS and is flagged, while accuracy stays perfect.</h2>
+          </div>
+          <div class="item">
+            <img src="static/images/explainer_dependence.png" alt="Relevant share by model and explainer" loading="lazy">
+            <h2 class="subtitle has-text-centered figure-caption">Relevant share under XGBoost with TreeSHAP and an MLP with four explainers, each against its own null.</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@inproceedings{debanath2026auditing,
+  title     = {Auditing {SHAP} Explanations Against Known Failure Mechanisms in Predictive Maintenance},
+  author    = {Debanath, Koshik and Uprety, Prakrit and Li, Peiyu},
+  booktitle = {Proc. IEEE Int. Conf. Big Data (BigData), Workshop on Towards an Understanding of Artificial Intelligence (TUAI)},
+  year      = {2026},
+  note      = {Submitted}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>, which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "paper_pages": 10,
+  "supplement_pages": 7,
+  "snapshot": "tuai-computation-5b97414ab7ef.zip",
+  "snapshot_base_commit": "7238db112d4c0e6d19a2c4be4a753fff220fd032",
+  "snapshot_files_verified": 81,
+  "snapshot_rebuild_deterministic": true,
+  "experiments_rerun": [
+    "15_tep_audit.py --null shift",
+    "15_tep_audit.py --window 10 --null shift",
+    "24_multi_proxy.py"
+  ],
+  "public_release_verified": false,
+  "pdf_sha256": {
+    "main.pdf": "8c71dce61e00f7a4e105a5ff02782313b8280a0ae2e42a9dadd3bdd48b29c0c6",
+    "supplement.pdf": "62beaa8bb5f82756b9470c6255652bc5bdf671dc898b60f140fe46cf054ad42c"
+  },
+  "build_checks": "No overfull boxes, undefined citations/references, or multiply defined labels.",
+  "repository": "https://github.com/kowshik24/shap-mechanism-audit"
+}
