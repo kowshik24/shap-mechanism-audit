@@ -1,6 +1,6 @@
 {
-  "paper_pages": 10,
-  "supplement_pages": 7,
+  "paper_pages": 9,
+  "supplement_pages": 9,
   "snapshot": "tuai-computation-5b97414ab7ef.zip",
   "snapshot_base_commit": "7238db112d4c0e6d19a2c4be4a753fff220fd032",
   "snapshot_files_verified": 81,
@@ -12,9 +12,46 @@
   ],
   "public_release_verified": false,
   "pdf_sha256": {
-    "main.pdf": "fdbc20513b689a47f68b14a19e0c87045e866ec90225e6e50e1dd6e554e87cb4",
-    "supplement.pdf": "62beaa8bb5f82756b9470c6255652bc5bdf671dc898b60f140fe46cf054ad42c"
+    "main.pdf": "dc4a1db5f098558f17d2e04d9070c23accc195a0f2996a13c93a02e77d785410",
+    "supplement.pdf": "6d32ebeb1bc4edb4ec38485b161c1bf243ba3fc462f389038ce2e714bf66a41e"
   },
-  "build_checks": "No overfull boxes, undefined citations/references, or multiply defined labels.",
-  "repository": "https://github.com/kowshik24/shap-mechanism-audit"
+  "build_checks": "Successful builds; no LaTeX package warnings, overfull boxes, undefined citations/references, or multiply defined labels. Eight manuscript underfull-spacing diagnostics were reviewed visually; the supplement has none.",
+  "repository": "https://github.com/kowshik24/shap-mechanism-audit",
+  "editorial_revision": {
+    "date": "2026-10-29",
+    "abstract_words_before": 235,
+    "abstract_words_after": 180,
+    "experiments_rerun": false,
+    "stored_evidence_files_unchanged": 55,
+    "equations_unchanged": true,
+    "numerical_tables_and_figure_assets_unchanged": true,
+    "main_figures": 6,
+    "main_tables": 5,
+    "visual_review": "All 8 manuscript pages and all 9 supplement pages inspected; changed pages rechecked after the final build.",
+    "local_website_abstract_and_pdf_mirrors_synchronized": true,
+    "computational_snapshot_checksum_and_internal_manifest_verified": true
+  },
+  "version_reconciliation": {
+    "date": "2026-10-29",
+    "scope": "Supplied earlier manuscript reconciled with current stored experiments; narrative and evidence interpretation updated.",
+    "abstract_words": 187,
+    "experiment_claim_checks_passed": 28,
+    "claim_check_record": "experiment_claim_checks.json",
+    "experiments_rerun": false,
+    "evidence_table_figure_files_hash_verified_unchanged": 78,
+    "core_equation_blocks_unchanged": true,
+    "visual_review": "All 8 manuscript pages and all 9 supplement pages inspected. Pages 1 and 3 rechecked after acronym clarification; other manuscript page renders verified pixel-identical to the inspected version.",
+    "main_underfull_spacing_diagnostics": 8,
+    "supplement_underfull_spacing_diagnostics": 0,
+    "local_website_abstract_and_pdf_mirrors_synchronized": true,
+    "change_record": "../VERSION_RECONCILIATION.md",
+    "public_deployment_or_submission_performed": false
+  },
+  "submission_revision": {
+    "date": "2026-10-31",
+    "paper_id": "SP11217",
+    "main_pdf": "Revised manuscript as uploaded, copied unchanged; rebuilding paper/main.tex gives the same text.",
+    "experiments_rerun": false,
+    "note": "The editorial_revision and version_reconciliation entries describe an earlier 8-page draft."
+  }
 }

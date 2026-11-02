@@ -11,13 +11,13 @@ Submitted to the TUAI 2026 workshop (*Towards an Understanding of Artificial Int
 
 ## Overview
 
-Machine learning models predict equipment failures in industrial systems, but whether their explanations reflect the physical failure mechanism is rarely tested statistically. This
+Machine learning models are widely used to predict equipment failures in industrial systems, but accurate predictions do not guarantee that models rely on features consistent with physical failure mechanisms. This
 repository implements a statistical audit that checks, for each documented failure mechanism, whether
 held-out SHAP attributions concentrate on the features named in that mechanism's rule. Three statistics
 are computed on cross-fitted explanations:
 
 - **Relevant share** $R_m$: the share of attribution on the mechanism's observations that falls on its expected features $E_m$.
-- **Specificity** $D_m$: how much larger that share is than on other failures.
+- **Differential score** $D_m$: how much larger that share is than on other failures.
 - **Outside-set excess** $C_m$: how much the most-gaining feature outside $E_m$ increases its share.
 
 Each statistic is compared with $K$ pipelines retrained on shuffled labels, with Holm correction across

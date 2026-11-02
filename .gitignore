@@ -28,6 +28,8 @@ experiments/results/*_checkpoints/
 experiments/results/*_quick.json
 
 # Local only
+ID_PASS.md
+paper-v2/
 archive/
 tmp/
 .DS_Store

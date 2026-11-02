@@ -242,7 +242,7 @@
 \filldraw[fill=obsL, draw=obs!55, line width=0.7pt, rounded corners=5pt]
      (10.92,2.66) rectangle (12.73,5.24);
 \foreach \yc/\name/\word/\col/\kind in
-   {4.8/R_m/relevant/trig/1, 3.95/D_m/specific/trig/2, 3.1/C_m/outside/cut/3}{
+   {4.8/R_m/relevant/trig/1, 3.95/D_m/differential/trig/2, 3.1/C_m/outside-set/cut/3}{
   \filldraw[fill=white, draw=\col, line width=0.9pt, rounded corners=3pt]
      (11.02,\yc-0.32) rectangle (12.63,\yc+0.32);
   % 2x2 glyph: rows (S_m, F\S_m) x cols (E_m, others)
@@ -254,7 +254,7 @@
   \ifnum\kind=3 \fill[cut] (11.285,\yc+0.15) rectangle ++(0.145,-0.145);
                 \fill[cut!35] (11.285,\yc-0.015) rectangle ++(0.145,-0.145); \fi
   \node[anchor=west, align=left, inner sep=0pt, text=\col] at (11.56,\yc)
-       {{\footnotesize$\name$}\\[-1.5pt]{\sffamily\scriptsize \word}};
+       {{\footnotesize$\name$}\\[-1.5pt]{\sffamily\fontsize{5.6}{6.5}\selectfont \word}};
 }
 
 % =====================================================================

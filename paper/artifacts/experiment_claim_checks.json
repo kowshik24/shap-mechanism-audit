@@ -1,0 +1,315 @@
+{
+  "scope": "Read-only checks of stored results, protocols, and one CSV-derived diagnostic; no model experiments rerun.",
+  "checks": [
+    {
+      "claim": "Primary AI4I verdicts",
+      "source": "audit.json",
+      "observed": [
+        "not aligned",
+        "aligned",
+        "aligned",
+        "aligned"
+      ],
+      "expected": [
+        "not aligned",
+        "aligned",
+        "aligned",
+        "aligned"
+      ],
+      "passed": true
+    },
+    {
+      "claim": "Primary verdicts stable over additional seeds",
+      "source": "audit.json",
+      "observed": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "claim": "Null retuned with 500 permutations",
+      "source": "retuned_null.json",
+      "observed": 500,
+      "expected": 500,
+      "passed": true
+    },
+    {
+      "claim": "Retuned-null verdicts preserved",
+      "source": "retuned_null.json",
+      "observed": [
+        "not aligned",
+        "aligned",
+        "aligned",
+        "aligned"
+      ],
+      "expected": [
+        "not aligned",
+        "aligned",
+        "aligned",
+        "aligned"
+      ],
+      "passed": true
+    },
+    {
+      "claim": "Retuned OSF R adjusted p rounds to 0.032",
+      "source": "retuned_null.json",
+      "observed": 0.032,
+      "expected": 0.032,
+      "passed": true
+    },
+    {
+      "claim": "TWF background/input check: raw",
+      "source": "twf_diagnostics.json",
+      "observed": "aligned",
+      "expected": "aligned",
+      "passed": true
+    },
+    {
+      "claim": "TWF background/input check: non_failures",
+      "source": "twf_diagnostics.json",
+      "observed": "aligned",
+      "expected": "aligned",
+      "passed": true
+    },
+    {
+      "claim": "TWF background/input check: failures",
+      "source": "twf_diagnostics.json",
+      "observed": "flagged",
+      "expected": "flagged",
+      "passed": true
+    },
+    {
+      "claim": "Grouped path SHAP does not align TWF",
+      "source": "dependence.json",
+      "observed": "not aligned",
+      "expected": "not aligned",
+      "passed": true
+    },
+    {
+      "claim": "Conditional group Shapley aligns TWF",
+      "source": "dependence.json",
+      "observed": "aligned",
+      "expected": "aligned",
+      "passed": true
+    },
+    {
+      "claim": "MLP KernelSHAP aligns no physical mechanism",
+      "source": "other_explainers.json",
+      "observed": [
+        "not aligned",
+        "not aligned",
+        "not aligned",
+        "not aligned"
+      ],
+      "expected": [
+        "not aligned",
+        "not aligned",
+        "not aligned",
+        "not aligned"
+      ],
+      "passed": true
+    },
+    {
+      "claim": "MLP IG aligns HDF and OSF",
+      "source": "other_explainers.json",
+      "observed": [
+        "HDF",
+        "OSF"
+      ],
+      "expected": [
+        "HDF",
+        "OSF"
+      ],
+      "passed": true
+    },
+    {
+      "claim": "CWRU original inner/outer align and ball does not",
+      "source": "cwru_audit.json",
+      "observed": [
+        "aligned",
+        "not aligned",
+        "aligned"
+      ],
+      "expected": [
+        "aligned",
+        "not aligned",
+        "aligned"
+      ],
+      "passed": true
+    },
+    {
+      "claim": "Gain preserves perfect recording classification",
+      "source": "cwru_audit.json",
+      "observed": [
+        1.0,
+        1.0
+      ],
+      "expected": [
+        1.0,
+        1.0
+      ],
+      "passed": true
+    },
+    {
+      "claim": "Gain flags outer race",
+      "source": "cwru_audit.json",
+      "observed": "flagged",
+      "expected": "flagged",
+      "passed": true
+    },
+    {
+      "claim": "Wider bands align ball faults",
+      "source": "cwru_audit_band0.3_h12.json",
+      "observed": "aligned",
+      "expected": "aligned",
+      "passed": true
+    },
+    {
+      "claim": "tep_audit reactor aligned / condenser flagged",
+      "source": "tep_audit.json",
+      "observed": [
+        "aligned",
+        "flagged"
+      ],
+      "expected": [
+        "aligned",
+        "flagged"
+      ],
+      "passed": true
+    },
+    {
+      "claim": "tep_audit_window10 reactor aligned / condenser flagged",
+      "source": "tep_audit_window10.json",
+      "observed": [
+        "aligned",
+        "flagged"
+      ],
+      "expected": [
+        "aligned",
+        "flagged"
+      ],
+      "passed": true
+    },
+    {
+      "claim": "tep_lstm reactor aligned / condenser flagged",
+      "source": "tep_lstm.json",
+      "observed": [
+        "aligned",
+        "flagged"
+      ],
+      "expected": [
+        "aligned",
+        "flagged"
+      ],
+      "passed": true
+    },
+    {
+      "claim": "TEP pooled F1 static, temporal-feature, LSTM",
+      "source": "tep_*.json",
+      "observed": [
+        0.76,
+        0.94,
+        0.91
+      ],
+      "expected": [
+        0.76,
+        0.94,
+        0.91
+      ],
+      "passed": true
+    },
+    {
+      "claim": "tep_audit verdicts unchanged under rotated labels",
+      "source": "tep_audit_shift.json",
+      "observed": [
+        "aligned",
+        "flagged"
+      ],
+      "expected": [
+        "aligned",
+        "flagged"
+      ],
+      "passed": true
+    },
+    {
+      "claim": "tep_audit_window10 verdicts unchanged under rotated labels",
+      "source": "tep_audit_window10_shift.json",
+      "observed": [
+        "aligned",
+        "flagged"
+      ],
+      "expected": [
+        "aligned",
+        "flagged"
+      ],
+      "passed": true
+    },
+    {
+      "claim": "Distributed .35 proxies remove alignment without localization",
+      "source": "multi_proxy_3.json",
+      "observed": "not aligned",
+      "expected": "not aligned",
+      "passed": true
+    },
+    {
+      "claim": "Distributed .35 proxy shares round to 38% total / 14% largest",
+      "source": "multi_proxy_3.json",
+      "observed": [
+        38,
+        14
+      ],
+      "expected": [
+        38,
+        14
+      ],
+      "passed": true
+    },
+    {
+      "claim": "Strong shortcut flagged in all ten generated-data runs",
+      "source": "scale.json",
+      "observed": [
+        10,
+        10
+      ],
+      "expected": [
+        10,
+        10
+      ],
+      "passed": true
+    },
+    {
+      "claim": "Largest-scale condition uses one generation seed",
+      "source": "scale.json",
+      "observed": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "claim": "Seven TWF flags among thirty scale runs",
+      "source": "scale.json",
+      "observed": [
+        30,
+        7
+      ],
+      "expected": [
+        30,
+        7
+      ],
+      "passed": true
+    },
+    {
+      "claim": "Wear/overstrain Spearman overall and TWF subset",
+      "source": "dataset/ai4i2020.csv",
+      "observed": [
+        0.92,
+        0.13
+      ],
+      "expected": [
+        0.92,
+        0.13
+      ],
+      "passed": true
+    }
+  ],
+  "checks_passed": 28,
+  "evidence_tables_figures_unchanged": 78
+}
