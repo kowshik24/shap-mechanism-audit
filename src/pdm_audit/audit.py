@@ -9,6 +9,8 @@ over S_m:
 
   shortcut score   C_m = max_{j not in E_m} [ s_j(S_m) - s_j(F minus S_m) ], s_j = share of feature j
                    (stored under the key 'S'; the IEEE BigData paper calls it S_m)
+  grouped score    C3_m = sum of the three largest positive excesses outside E_m (key 'S3'); added
+                   for the camera-ready revision to detect reliance spread over several features
 
 R_m asks whether attribution on the mechanism's rows sits on its trigger features; D_m asks whether
 that concentration is specific to the mechanism's rows rather than common to every failure. C_m asks
@@ -209,6 +211,7 @@ def statistics(A: pd.DataFrame, df: pd.DataFrame, groups: dict, extra_features=(
         out[m] = {'R': _share(own, TRIGGER_FEATURES[m]),
                   'D': _share(own, TRIGGER_FEATURES[m]) - _share(rest, TRIGGER_FEATURES[m]),
                   'S': float(excess.max()), 'S_feature': str(excess.idxmax()),
+                  'S3': float(excess.clip(lower=0).nlargest(3).sum()),
                   'excess': {k: float(v) for k, v in excess.items()},
                   'shares': {k: float(v) for k, v in (own / own.sum()).items()},
                   'Rk': _rank_share(A, groups[m], TRIGGER_FEATURES[m]),
@@ -293,7 +296,7 @@ def run_audit(df, numeric_cols, params, *, seed=SEED, K=100, cross_fit=True, tra
     for name in groups_by_name:
         tests, null_store = {}, {}
         for m in PHYSICAL:
-            for stat in ('R', 'D', 'S', 'Rk', 'Dk'):
+            for stat in ('R', 'D', 'S', 'S3', 'Rk', 'Dk'):
                 null = [d[name][m][stat] for d in draws]
                 null_store[f'{m}.{stat}'] = null
                 tests[f'{m}.{stat}'] = permutation_p(observed[name][m][stat], null)
@@ -328,7 +331,7 @@ def run_audit(df, numeric_cols, params, *, seed=SEED, K=100, cross_fit=True, tra
             'p_holm_D': holm({m: tests[f'{m}.D'] for m in PHYSICAL}),
             'p_holm_S': holm({m: tests[f'{m}.S'] for m in PHYSICAL}),  # small = shortcut flagged
             'p_holm_Z': holm({m: tests[f'{m}.Z'] for m in PHYSICAL}),  # studentized shortcut score
-            **{f'p_holm_{s}': holm({m: tests[f'{m}.{s}'] for m in PHYSICAL}) for s in ('Rk', 'Dk', 'N')},
+            **{f'p_holm_{s}': holm({m: tests[f'{m}.{s}'] for m in PHYSICAL}) for s in ('S3', 'Rk', 'Dk', 'N')},
             'p_RNF_more_concentrated': permutation_p(observed[name]['RNF']['top_share'], rnf_null),
             'null_mean': {k: float(np.mean(v)) for k, v in null_store.items()},
             'null_draws': null_store,
