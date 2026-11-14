@@ -34,3 +34,6 @@ archive/
 tmp/
 .DS_Store
 papers/
+
+# Duplicate portal download of the certified camera-ready PDF
+paper/camera_ready/SP11217_5055.pdf
